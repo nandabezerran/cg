@@ -16,6 +16,7 @@ class Biblioteca{
         VectorXd NormalizaVetor(VectorXd vetor, int tamanho);
         VectorXd EncontrarNormal(VectorXd vetor1, VectorXd vetor2, int tamanho);
         VectorXd SubtracaoPontos(Ponto p1, Ponto p2, int tamanho);
+        Ponto IntersecaoRetaPlano(Ponto p0, VectorXd vetor0, Ponto p_pi, VectorXd vetor_n_plano, int tamanho);
     private:
 };
 
