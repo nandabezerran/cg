@@ -45,6 +45,19 @@ VectorXd Biblioteca::SubtracaoPontos(Ponto p1, Ponto p2, int tamanho){
 
     return vetor_resultante;
 }
+Ponto Biblioteca::EquacaoDaReta(Ponto p, double t, VectorXd vetor){
+    Ponto resultante;
+    resultante.x = p.x + t*vetor[0];
+    resultante.y = p.y + t*vetor[1];
+    resultante.z = p.z + t*vetor[2];
+    return resultante;
+}
+
+double Biblioteca::EquacaoDoPlano(Ponto p1, Ponto p0, const VectorXd vetor_n_plano, int tamanho) {
+    VectorXd vetor_aux = this->SubtracaoPontos(p1,p0,tamanho);
+    double resultado = this->ProdutoEscalar(vetor_aux,vetor_n_plano,tamanho);
+    return resultado;
+}
 
 Ponto Biblioteca::IntersecaoRetaPlano(Ponto p0, VectorXd vetor0, Ponto p_pi, VectorXd vetor_n_plano, int tamanho){
     //p_t_int eh o ponto dado o t_int
@@ -63,9 +76,7 @@ Ponto Biblioteca::IntersecaoRetaPlano(Ponto p0, VectorXd vetor0, Ponto p_pi, Vec
     double t_int = produto0/produto1;
 
     //Dado um ponto p0 e um vetor vetor0 retornar a equacao da reta (P(t) = Po + t * V)
-    p_t_int.x = p0.x + t_int*vetor0[0];
-    p_t_int.y = p0.y + t_int*vetor0[1];
-    p_t_int.z = p0.z + t_int*vetor0[2];
+    p_t_int = this->EquacaoDaReta(p0,t_int,vetor0);
 
     return p_t_int;
 }

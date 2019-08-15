@@ -61,14 +61,13 @@ int main(void){
     /*Dado o ponto (p0), o vetor (vetor0) da reta o ponto (p_pi), o vetor normal (vetor_n_plano) do plano 
     retornar o ponto de interseção da reta com o plano*/
     Ponto p_int = lib.IntersecaoRetaPlano(p0,vetor0,p_pi,vetor_n_plano,tamanho);
-    cout << "Ponto= " << " ";
+    cout << "Ponto = " << " ";
     cout << "x: " << p_int.x << " ";
     cout << "y: " << p_int.y << " ";
     cout << "z: " << p_int.z << endl;
     
     /* Teste equação do plano (P_int - P_pi) * vetor_n_plano = 0 */
-    VectorXd vetor_aux = lib.SubtracaoPontos(p_pi,p_int,tamanho);
-    double teste = lib.ProdutoEscalar(vetor_aux,vetor_n_plano,tamanho);
+    double teste = lib.EquacaoDoPlano(p_pi,p_int,vetor_n_plano,tamanho);
     cout << "Deve ser 0: " << teste << endl;
 
     return 0;
