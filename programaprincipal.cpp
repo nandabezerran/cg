@@ -38,10 +38,10 @@ int main(void){
     vetor0 << 1,1,1;
 
     Ponto p_pi;
-    p_pi.x = 3, p_pi.y = 7, p_pi.z = -4;
+    p_pi.x = 2, p_pi.y = 2, p_pi.z = 2;
 
     VectorXd vetor_n_plano(tamanho);
-    vetor_n_plano << 4,9,8;
+    vetor_n_plano << 7,3,-5;
 
     /*Produto Escalar de dois vetores*/
     cout << lib.ProdutoEscalar(vetor1,vetor2,tamanho) << endl;
@@ -60,12 +60,16 @@ int main(void){
 
     /*Dado o ponto (p0), o vetor (vetor0) da reta o ponto (p_pi), o vetor normal (vetor_n_plano) do plano 
     retornar o ponto de interseção da reta com o plano*/
-    Ponto resultado = lib.IntersecaoRetaPlano(p0,vetor0,p_pi,vetor_n_plano,tamanho);
+    Ponto p_int = lib.IntersecaoRetaPlano(p0,vetor0,p_pi,vetor_n_plano,tamanho);
     cout << "Ponto= " << " ";
-    cout << "x: " << resultado.x << " ";
-    cout << "y: " << resultado.y << " ";
-    cout << "z: " << resultado.z << endl;
-
+    cout << "x: " << p_int.x << " ";
+    cout << "y: " << p_int.y << " ";
+    cout << "z: " << p_int.z << endl;
+    
+    /* Teste equação do plano (P_int - P_pi) * vetor_n_plano = 0 */
+    VectorXd vetor_aux = lib.SubtracaoPontos(p_pi,p_int,tamanho);
+    double teste = lib.ProdutoEscalar(vetor_aux,vetor_n_plano,tamanho);
+    cout << "Deve ser 0: " << teste << endl;
 
     return 0;
 }

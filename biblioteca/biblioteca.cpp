@@ -53,7 +53,7 @@ Ponto Biblioteca::IntersecaoRetaPlano(Ponto p0, VectorXd vetor0, Ponto p_pi, Vec
     //t_int = ( (Ppi - P0) * n ) / (u*n)
 
     //vetor eh o Ppi - p0
-    VectorXd vetor = this->SubtracaoPontos(p_pi,p0,tamanho);
+    VectorXd vetor = this->SubtracaoPontos(p0,p_pi,tamanho);
     //produto0 eh o resultado do vetor * n
     double produto0 = this->ProdutoEscalar(vetor,vetor_n_plano,tamanho);
     //produto1 eh o u*n
