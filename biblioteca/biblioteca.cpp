@@ -87,12 +87,13 @@ Ponto Biblioteca::IntersecaoRetaEsfera(Ponto p0, VectorXd vetor0, Ponto c0_centr
 
     // A*t_int² + B*t_int + C = 0
 
+    // C0P0 eh o P0 - C0
+    VectorXd C0P0 = this->SubtracaoPontos(p0,c0_centro,tamanho);
+
     // A = u*u
     double produtoA = this->ProdutoEscalar(vetor0,vetor0,tamanho);
 
     // B = 2 * (P0 - C0) * u
-    VectorXd C0P0 = this->SubtracaoPontos(p0,c0_centro,tamanho);
-
     double produtoB = 2 * this->ProdutoEscalar(C0P0,vetor0,tamanho);
 
     // C = (P0 - C0) * (P0 - C0) - R²
@@ -105,7 +106,6 @@ Ponto Biblioteca::IntersecaoRetaEsfera(Ponto p0, VectorXd vetor0, Ponto c0_centr
     Δ > 0 tem 2 intersecoes
 
     */
-
 
     double Delta = (produtoB*produtoB) - 4*(produtoA)*(produtoC);
 
