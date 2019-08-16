@@ -19,6 +19,8 @@ class Biblioteca{
         Ponto EquacaoDaReta(Ponto p, double t, VectorXd vetor);
         double EquacaoDoPlano(Ponto p1, Ponto po, VectorXd vetor_n_plano, int tamanho);
         Ponto IntersecaoRetaPlano(Ponto p0, VectorXd vetor0, Ponto p_pi, VectorXd vetor_n_plano, int tamanho);
+        Ponto IntersecaoRetaEsfera(Ponto p0, VectorXd vetor0, Ponto c0_centro, float raio, int tamanho);
+
     private:
 };
 

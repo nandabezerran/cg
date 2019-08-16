@@ -80,3 +80,58 @@ Ponto Biblioteca::IntersecaoRetaPlano(Ponto p0, VectorXd vetor0, Ponto p_pi, Vec
 
     return p_t_int;
 }
+
+Ponto Biblioteca::IntersecaoRetaEsfera(Ponto p0, VectorXd vetor0, Ponto c0_centro, float raio, int tamanho){
+    //p_t_int eh o ponto dado o t_int
+    Ponto p_t_int;
+
+    // A*t_int² + B*t_int + C = 0
+
+    // A = u*u
+    double produtoA = this->ProdutoEscalar(vetor0,vetor0,tamanho);
+
+    // B = 2 * (P0 - C0) * u
+    VectorXd C0P0 = this->SubtracaoPontos(p0,c0_centro,tamanho);
+
+    double produtoB = 2 * this->ProdutoEscalar(C0P0,vetor0,tamanho);
+
+    // C = (P0 - C0) * (P0 - C0) - R²
+    double produtoC = this->ProdutoEscalar(C0P0,C0P0,tamanho) - (raio*raio);
+
+    /* 
+
+    Δ < 0 nao tem intersecao
+    Δ = 0 tem 1 intersecao
+    Δ > 0 tem 2 intersecoes
+
+    */
+
+
+    double Delta = (produtoB*produtoB) - 4*(produtoA)*(produtoC);
+
+    /*
+    if (Delta < 0){
+        return NULL;
+    }
+    */
+
+    if (Delta == 0){        
+        
+        double t_int = (-produtoB + sqrt(Delta))/2*produtoA;
+        p_t_int = this->EquacaoDaReta(p0,t_int,vetor0);
+        return p_t_int;
+    }
+
+    else if(Delta > 0){
+
+        double t_int1 = (-produtoB + sqrt(Delta))/2*produtoA;
+        double t_int2 = (-produtoB - sqrt(Delta))/2*produtoA;
+
+        p_t_int = this->EquacaoDaReta(p0,t_int1,vetor0);
+        return p_t_int;
+    }
+
+
+}
+
+
