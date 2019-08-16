@@ -65,6 +65,17 @@ int main(void){
     cout << "x: " << p_int.x << " ";
     cout << "y: " << p_int.y << " ";
     cout << "z: " << p_int.z << endl;
+
+    /*Dado o ponto (p0), o vetor (vetor0) da reta o ponto (c0_centro), o raio da esfera 
+    retornar o ponto de interseção da reta com o plano*/
+    Ponto c0_centro;
+    c0_centro.x = 5, c0_centro.y = 5, c0_centro.z = 5;
+
+    Ponto p_int2 = lib.IntersecaoRetaEsfera(p0,vetor0,c0_centro,5,tamanho);
+    cout << "Ponto 2 = " << " ";
+    cout << "x: " << p_int2.x << " ";
+    cout << "y: " << p_int2.y << " ";
+    cout << "z: " << p_int2.z << endl;
     
     /* Teste equação do plano (P_int - P_pi) * vetor_n_plano = 0 */
     double teste = lib.EquacaoDoPlano(p_pi,p_int,vetor_n_plano,tamanho);
