@@ -68,14 +68,24 @@ int main(void){
 
     /*Dado o ponto (p0), o vetor (vetor0) da reta o ponto (c0_centro), o raio da esfera 
     retornar o ponto de interseção da reta com o plano*/
-    Ponto c0_centro;
-    c0_centro.x = 5, c0_centro.y = 5, c0_centro.z = 5;
+    int intersec;
+    double raio = 1;
+    Ponto c0_centro, p1, p2;
+    c0_centro.x = 0, c0_centro.y = 0, c0_centro.z = 0;
+    
+    tie(p1,p2,intersec) = lib.IntersecaoRetaEsfera(p0,vetor0,c0_centro,raio,tamanho);
+    
+    if (intersec == 2){
+    	cout << "Ponto 1 = " << "[" << p1.x << ", " << p1.y << ", " << p1.z << "]" << endl;
+    	cout << "Ponto 2 = " << "[" << p2.x << ", " << p2.y << ", " << p2.z << "]" << endl;
+    }
 
-    Ponto p_int2 = lib.IntersecaoRetaEsfera(p0,vetor0,c0_centro,5,tamanho);
-    cout << "Ponto 2 = " << " ";
-    cout << "x: " << p_int2.x << " ";
-    cout << "y: " << p_int2.y << " ";
-    cout << "z: " << p_int2.z << endl;
+    else if(intersec == 1)
+    	cout << "Ponto 1 = " << "[" << p1.x << ", " << p1.y << ", " << p1.z << "]" << endl;
+
+    else
+    	cout << "Nao ha IntersecaoRetaEsfera" << endl;
+
     
     /* Teste equação do plano (P_int - P_pi) * vetor_n_plano = 0 */
     double teste = lib.EquacaoDoPlano(p_pi,p_int,vetor_n_plano,tamanho);
