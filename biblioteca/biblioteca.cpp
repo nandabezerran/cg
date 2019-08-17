@@ -127,3 +127,24 @@ tuple<Ponto,Ponto,int> Biblioteca::IntersecaoRetaEsfera(Ponto p0, VectorXd vetor
     return make_tuple(p_t_int1, p_t_int2, intersec);
 
 }
+
+tuple<Ponto, Ponto> Biblioteca::PontosDadoDistancia(Ponto p_origem, const VectorXd vetor1, const VectorXd vetor2,
+                                     double l_comprimento, int tamanho){
+
+    double s, t;
+    Ponto p1, p2;
+
+    s = pow(l_comprimento, 2);
+    s = s/((ProdutoEscalar(vetor2,vetor2,tamanho)) -
+           (pow(ProdutoEscalar(vetor1,vetor2,tamanho),2)/ProdutoEscalar(vetor1,vetor1,tamanho)));
+    s = sqrt(s);
+
+    t = ProdutoEscalar(vetor1,vetor2,tamanho)/ProdutoEscalar(vetor1,vetor1,tamanho);
+    t = t * s;
+
+    p1 = this->EquacaoDaReta(p_origem, t, vetor1);
+    p2 = this->EquacaoDaReta(p_origem, s, vetor2);
+
+    return make_tuple(p1,p2);
+
+}

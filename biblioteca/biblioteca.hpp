@@ -22,7 +22,9 @@ class Biblioteca{
         double EquacaoDoPlano(Ponto p1, Ponto po, VectorXd vetor_n_plano, int tamanho);
         Ponto IntersecaoRetaPlano(Ponto p0, VectorXd vetor0, Ponto p_pi, VectorXd vetor_n_plano, int tamanho);
         tuple<Ponto,Ponto,int> IntersecaoRetaEsfera(Ponto p0, VectorXd vetor0, Ponto c0_centro, float raio, int tamanho);
-
+        //TODO: Encontrar nome melhor pra essa função (solução da prova 1)
+        tuple<Ponto, Ponto> PontosDadoDistancia(Ponto p_origem, VectorXd vetor1, VectorXd vetor2,
+                             double l_comprimento, int tamanho);
     private:
 };
 
