@@ -81,9 +81,11 @@ Ponto Biblioteca::IntersecaoRetaPlano(Ponto p0, VectorXd vetor0, Ponto p_pi, Vec
     return p_t_int;
 }
 
-Ponto Biblioteca::IntersecaoRetaEsfera(Ponto p0, VectorXd vetor0, Ponto c0_centro, float raio, int tamanho){
+tuple<Ponto,Ponto,int> Biblioteca::IntersecaoRetaEsfera(Ponto p0, VectorXd vetor0, Ponto c0_centro, float raio, int tamanho){
     //p_t_int eh o ponto dado o t_int
-    Ponto p_t_int;
+    Ponto p_t_int1, p_t_int2;
+    double t_int1, t_int2;
+    
 
     // A*t_int² + B*t_int + C = 0
 
@@ -99,39 +101,29 @@ Ponto Biblioteca::IntersecaoRetaEsfera(Ponto p0, VectorXd vetor0, Ponto c0_centr
     // C = (P0 - C0) * (P0 - C0) - R²
     double produtoC = this->ProdutoEscalar(C0P0,C0P0,tamanho) - (raio*raio);
 
-    /* 
+    /*  Δ > 0 tem 2 intersecoes
+        Δ = 0 tem 1 intersecao
+        Δ < 0 tem 0 intersecoes */
 
-    Δ < 0 nao tem intersecao
-    Δ = 0 tem 1 intersecao
-    Δ > 0 tem 2 intersecoes
-
-    */
-
+    int intersec = 0;
     double Delta = (produtoB*produtoB) - 4*(produtoA)*(produtoC);
 
-    /*
-    if (Delta < 0){
-        return NULL;
-    }
-    */
+    if (Delta > 0){
 
-    if (Delta == 0){        
+        intersec = 2;
+        t_int1 = (-produtoB + sqrt(Delta))/2*produtoA;
+        t_int2 = (-produtoB - sqrt(Delta))/2*produtoA;
+        p_t_int1 = this->EquacaoDaReta(p0,t_int1,vetor0);
+        p_t_int2 = this->EquacaoDaReta(p0,t_int2,vetor0);
+    }
+    
+    else if (Delta == 0){        
         
-        double t_int = (-produtoB + sqrt(Delta))/2*produtoA;
-        p_t_int = this->EquacaoDaReta(p0,t_int,vetor0);
-        return p_t_int;
+        intersec = 1;
+        t_int1 = (-produtoB + sqrt(Delta))/2*produtoA;
+        p_t_int1 = this->EquacaoDaReta(p0,t_int1,vetor0);
     }
 
-    else if(Delta > 0){
-
-        double t_int1 = (-produtoB + sqrt(Delta))/2*produtoA;
-        double t_int2 = (-produtoB - sqrt(Delta))/2*produtoA;
-
-        p_t_int = this->EquacaoDaReta(p0,t_int1,vetor0);
-        return p_t_int;
-    }
-
+    return make_tuple(p_t_int1, p_t_int2, intersec);
 
 }
-
-
