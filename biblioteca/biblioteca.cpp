@@ -45,6 +45,8 @@ VectorXd Biblioteca::SubtracaoPontos(Ponto p1, Ponto p2, int tamanho){
 
     return vetor_resultante;
 }
+
+
 Ponto Biblioteca::EquacaoDaReta(Ponto p, double t, VectorXd vetor){
     Ponto resultante;
     resultante.x = p.x + t*vetor[0];
@@ -125,6 +127,63 @@ tuple<Ponto,Ponto,int> Biblioteca::IntersecaoRetaEsfera(Ponto p0, VectorXd vetor
     }
 
     return make_tuple(p_t_int1, p_t_int2, intersec);
+
+}
+
+tuple<Ponto,Ponto,int> Biblioteca::IntersecaoRetaCilindro(Ponto p0, VectorXd vetor0, VectorXd vetor_n, Ponto c0_centro, float raio, float H, int tamanho){
+    //p_t_int eh o ponto dado o t_int
+    Ponto p_t_int1, p_t_int2;
+    double t_int1, t_int2;
+
+    // A*t_int² + 2B*t_int + C = 0
+
+    // C0P0 eh o P0 - C0
+    VectorXd C0P0 = this->SubtracaoPontos(p0,c0_centro,tamanho);
+
+    // V eh o ((C0P0) - ((C0P0)* vetor0)* vetor0)
+    VectorXd C0P0_u = this->ProdutoVetorial(C0P0,vetor0,tamanho);
+    VectorXd C0P0_u2 = this->ProdutoVetorial(C0P0_u,vetor0,tamanho);
+    VectorXd v = C0P0 - C0P0_u2;
+
+    // W eh o (vetor_n - (vetor_n * vetor0)*vetor0)
+    VectorXd VetorN_u = this->ProdutoVetorial(vetor_n,vetor0,tamanho);
+    VectorXd VetorN_u2 = this->ProdutoVetorial(VetorN_u,vetor0,tamanho);
+    VectorXd w = vetor_n - VetorN_u2;
+   
+    //A = w*w
+    double produtoA = this->ProdutoEscalar(w,w,tamanho);
+
+    //B = (v*w)
+    double produtoB = this->ProdutoEscalar(v,w,tamanho);
+    
+    //C = (v*v - R²)
+    double produtoC = this->ProdutoEscalar(v,v,tamanho) - (raio*raio);
+    
+    /*  Δ > 0 tem 2 intersecoes
+        Δ = 0 tem 1 intersecao
+        Δ < 0 tem 0 intersecoes */
+
+    int intersec = 0;
+    double Delta = (produtoB*produtoB) - (produtoA)*(produtoC);
+
+    if (Delta > 0){
+
+        intersec = 2;
+        t_int1 = (-produtoB + sqrt(Delta))/produtoA;
+        t_int2 = (-produtoB - sqrt(Delta))/produtoA;
+        p_t_int1 = this->EquacaoDaReta(p0,t_int1,vetor0);
+        p_t_int2 = this->EquacaoDaReta(p0,t_int2,vetor0);
+    }
+    
+    else if (Delta == 0){        
+        
+        intersec = 1;
+        t_int1 = (-produtoB + sqrt(Delta))/produtoA;
+        p_t_int1 = this->EquacaoDaReta(p0,t_int1,vetor0);
+    }
+
+    return make_tuple(p_t_int1, p_t_int2, intersec);
+
 
 }
 
