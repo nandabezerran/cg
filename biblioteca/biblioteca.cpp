@@ -91,6 +91,7 @@ tuple<Ponto,Ponto,int> Biblioteca::IntersecaoRetaEsfera(Ponto p0, VectorXd vetor
 
     // A*t_int² + B*t_int + C = 0
 
+
     // C0P0 eh o P0 - C0
     VectorXd C0P0 = this->SubtracaoPontos(p0,c0_centro,tamanho);
 
@@ -108,13 +109,13 @@ tuple<Ponto,Ponto,int> Biblioteca::IntersecaoRetaEsfera(Ponto p0, VectorXd vetor
         Δ < 0 tem 0 intersecoes */
 
     int intersec = 0;
-    double Delta = (produtoB*produtoB) - 4*(produtoA)*(produtoC);
+    double Delta = (produtoB*produtoB) - (produtoA)*(produtoC);
 
     if (Delta > 0){
 
         intersec = 2;
-        t_int1 = (-produtoB + sqrt(Delta))/2*produtoA;
-        t_int2 = (-produtoB - sqrt(Delta))/2*produtoA;
+        t_int1 = (-produtoB + sqrt(Delta))/produtoA;
+        t_int2 = (-produtoB - sqrt(Delta))/produtoA;
         p_t_int1 = this->EquacaoDaReta(p0,t_int1,vetor0);
         p_t_int2 = this->EquacaoDaReta(p0,t_int2,vetor0);
     }
@@ -122,7 +123,7 @@ tuple<Ponto,Ponto,int> Biblioteca::IntersecaoRetaEsfera(Ponto p0, VectorXd vetor
     else if (Delta == 0){        
         
         intersec = 1;
-        t_int1 = (-produtoB + sqrt(Delta))/2*produtoA;
+        t_int1 = (-produtoB + sqrt(Delta))/produtoA;
         p_t_int1 = this->EquacaoDaReta(p0,t_int1,vetor0);
     }
 
@@ -137,18 +138,19 @@ tuple<Ponto,Ponto,int> Biblioteca::IntersecaoRetaCilindro(Ponto p0, VectorXd vet
 
     // A*t_int² + 2B*t_int + C = 0
 
+    // Normalizar o vetor_d
+    vetor_n = this->NormalizaVetor(vetor_n,tamanho);
+
     // C0P0 eh o P0 - C0
     VectorXd C0P0 = this->SubtracaoPontos(p0,c0_centro,tamanho);
 
     // V eh o ((C0P0) - ((C0P0)* vetor0)* vetor0)
-    VectorXd C0P0_u = this->ProdutoVetorial(C0P0,vetor0,tamanho);
-    VectorXd C0P0_u2 = this->ProdutoVetorial(C0P0_u,vetor0,tamanho);
-    VectorXd v = C0P0 - C0P0_u2;
+    double C0P0_u = this->ProdutoEscalar(C0P0,vetor0,tamanho);
+    VectorXd v = C0P0 - (C0P0_u * vetor0);
 
     // W eh o (vetor_n - (vetor_n * vetor0)*vetor0)
-    VectorXd VetorN_u = this->ProdutoVetorial(vetor_n,vetor0,tamanho);
-    VectorXd VetorN_u2 = this->ProdutoVetorial(VetorN_u,vetor0,tamanho);
-    VectorXd w = vetor_n - VetorN_u2;
+    double VetorN_u = this->ProdutoEscalar(vetor_n,vetor0,tamanho);
+    VectorXd w = vetor_n - (VetorN_u * vetor0);
    
     //A = w*w
     double produtoA = this->ProdutoEscalar(w,w,tamanho);
@@ -164,9 +166,10 @@ tuple<Ponto,Ponto,int> Biblioteca::IntersecaoRetaCilindro(Ponto p0, VectorXd vet
         Δ < 0 tem 0 intersecoes */
 
     int intersec = 0;
+    bool tratamento = ((0 <= C0P0_u && C0P0_u <= H) ? true : false);
     double Delta = (produtoB*produtoB) - (produtoA)*(produtoC);
 
-    if (Delta > 0){
+    if (Delta > 0 && tratamento){
 
         intersec = 2;
         t_int1 = (-produtoB + sqrt(Delta))/produtoA;
@@ -175,7 +178,7 @@ tuple<Ponto,Ponto,int> Biblioteca::IntersecaoRetaCilindro(Ponto p0, VectorXd vet
         p_t_int2 = this->EquacaoDaReta(p0,t_int2,vetor0);
     }
     
-    else if (Delta == 0){        
+    else if (Delta == 0 && tratamento){        
         
         intersec = 1;
         t_int1 = (-produtoB + sqrt(Delta))/produtoA;
