@@ -90,42 +90,51 @@ int main(void){
     Retornar o(s) ponto(s) de interseção da reta com a esfera*/
     int intersec;
     double raio = 1;
-    Ponto c0_centro, p1, p2;
+
+    VectorXd vetor0_esfera(tamanho);
+    vetor0_esfera << 0,1,0;
+
+    Ponto p0_esfera, c0_centro, p1, p2;
+    p0_esfera.x = 0, p0_esfera.y = 0, p0_esfera.z = 0;
     c0_centro.x = 0, c0_centro.y = 0, c0_centro.z = 0;
 
-    tie(p1,p2,intersec) = lib.IntersecaoRetaEsfera(p0,vetor0,c0_centro,raio,tamanho);
+    tie(p1,p2,intersec) = lib.IntersecaoRetaEsfera(p0_esfera,vetor0_esfera,c0_centro,raio,tamanho);
 
     if (intersec == 2){
-    	cout << "Ponto 1 = " << "[" << p1.x << ", " << p1.y << ", " << p1.z << "]" << endl;
-    	cout << "Ponto 2 = " << "[" << p2.x << ", " << p2.y << ", " << p2.z << "]" << endl;
+    	cout << "Ponto Esfera 1 = " << "[" << p1.x << ", " << p1.y << ", " << p1.z << "]" << endl;
+    	cout << "Ponto Esfera 2 = " << "[" << p2.x << ", " << p2.y << ", " << p2.z << "]" << endl;
     }
 
     else if(intersec == 1)
-    	cout << "Ponto 1 = " << "[" << p1.x << ", " << p1.y << ", " << p1.z << "]" << endl;
+    	cout << "Ponto Esfera 1 = " << "[" << p1.x << ", " << p1.y << ", " << p1.z << "]" << endl;
 
     else
     	cout << "Nao ha IntersecaoRetaEsfera" << endl;
 
     /*Dado o ponto (p0), o vetor (vetor0) da reta, o vetor (vetor_n) da direcao,  
     o ponto (c0_centro), o raio da esfera e a altura (H) do cilindro.
-    Retornar o(s) ponto(s) de interseção da reta com o cilindro*/
+    Retornar o(s) ponto(s) de interseção da Reta com o Cilindro*/
     int intersec2;
-    VectorXd vetor_n_cilindro(tamanho);
+    double H = 2;
+    double raio2 = 2;
+
+    VectorXd vetor0_cilindro(tamanho), vetor_n_cilindro(tamanho);
+    vetor0_cilindro << 1,1,1;
     vetor_n_cilindro << 1,1,1;
-    double raio2 = 1;
-    double H = 1;
-    Ponto c0_centro2, p3, p4;
+    
+    Ponto p0_cilindro, c0_centro2, p3, p4;
+    p0_cilindro.x = 0, p0_cilindro.y = 0, p0_cilindro.z = 0;
     c0_centro2.x = 0, c0_centro2.y = 0, c0_centro2.z = 0;
 
-    tie(p3,p4,intersec2) = lib.IntersecaoRetaCilindro(p0,vetor0,vetor_n_cilindro,c0_centro2,raio2,H,tamanho);
+    tie(p3,p4,intersec2) = lib.IntersecaoRetaCilindro(p0_cilindro,vetor0_cilindro,vetor_n_cilindro,c0_centro2,raio2,H,tamanho);
 
     if (intersec2 == 2){
-    	cout << "Ponto 1 = " << "[" << p3.x << ", " << p3.y << ", " << p3.z << "]" << endl;
-    	cout << "Ponto 2 = " << "[" << p4.x << ", " << p4.y << ", " << p4.z << "]" << endl;
+    	cout << "Ponto Cilindro 1 = " << "[" << p3.x << ", " << p3.y << ", " << p3.z << "]" << endl;
+    	cout << "Ponto Cilindro 2 = " << "[" << p4.x << ", " << p4.y << ", " << p4.z << "]" << endl;
     }
 
     else if(intersec2 == 1)
-    	cout << "Ponto 1 = " << "[" << p3.x << ", " << p3.y << ", " << p3.z << "]" << endl;
+    	cout << "Ponto Cilindro 1 = " << "[" << p3.x << ", " << p3.y << ", " << p3.z << "]" << endl;
 
     else
     	cout << "Nao ha IntersecaoRetaCilindro" << endl;
