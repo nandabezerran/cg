@@ -33,7 +33,7 @@ Ponto** createGrid(float pLength, float pYDistance, int pMatrixSize){
     float pointDistance = pLength/(pMatrixSize -1);
     float posX;
     float posY;
-    float z = pYDistance;
+    float z = -pYDistance;
 
     Ponto **finalMatrix = MatrixAllocation(pMatrixSize);
 
