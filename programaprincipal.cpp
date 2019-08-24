@@ -10,7 +10,8 @@ Biblioteca lib = Biblioteca();
 IOFormat CommaInitFmt(StreamPrecision, DontAlignCols, ", ", ", ", "", "", "[", "]");
 
 int main(void){
-
+    cout << fixed;
+    cout.precision(3);
 	//----------------------------------FUNCOES BASICAS----------------------------------
 
     /*
@@ -133,10 +134,17 @@ int main(void){
 
     // Intersecao Reta/Cone
 
+    H = 4;
+    raio = 4;
+    vetor0 << 0,0,1;
+    vetor_n << 0,1,0;
+    p0.x = 4, p0.y = 0, p0.z = 4;
+    p_centro.x = 0, p_centro.y = 0, p_centro.z = 0;
+    int validacao;
 
-
-
-
+    cout << "\nReta/Cone: " << endl;
+    tie(p_int1,p_int2,validacao, intersec) = lib.IntersecaoRetaCone(p0,vetor0,vetor_n,p_centro,raio,H,tamanho);
+    printIntersecoes(p_int1,p_int2,validacao,intersec);
 
     return 0;
 }
@@ -153,6 +161,40 @@ void printIntersecoes(Ponto p_int1, Ponto p_int2, int intersec){
     	cout << "Ponto 1 = " << "[" << p_int1.x << ", " << p_int1.y << ", " << p_int1.z << "]" << endl;
 
     else
-    	cout << "Nao ha IntersecaoRetaEsfera" << endl;
+    	cout << "Nao ha IntersecaoRetaObjeto" << endl;
 
+} 
+
+void printIntersecoes(Ponto p_int1, Ponto p_int2, int validacao, int intersec){
+
+    if (intersec == 2){
+
+        if(validacao==3){
+            cout << "Os dois pontos são válidos" << endl;
+        }else if(validacao==2){
+            cout << "Apenas o ponto 2 é valido" << endl;
+        }else if(validacao==1){
+            cout << "Apenas o ponto 1 é valido" << endl;
+        }else{
+            cout << "Nao há pontos validos" << endl;
+        }
+
+    	cout << "Ponto 1 = " << "[" << p_int1.x << ", " << p_int1.y << ", " << p_int1.z << "]" << endl;
+    	cout << "Ponto 2 = " << "[" << p_int2.x << ", " << p_int2.y << ", " << p_int2.z << "]" << endl;
+    }
+    
+    else if(intersec == 1){
+
+        if(validacao==1){
+            cout << "O ponto é valido" << endl;
+        }else{
+            cout << "O ponto não é valido" << endl;
+        }
+
+    	cout << "Ponto 1 = " << "[" << p_int1.x << ", " << p_int1.y << ", " << p_int1.z << "]" << endl;
+    }
+    else{
+        cout << "Nao ha IntersecaoRetaCone" << endl;
+    }
+    	
 } 
