@@ -5,17 +5,20 @@ using namespace std;
 //Como compilar: g++ programaprincipal.cpp ./biblioteca/biblioteca.cpp -o principal 
 //Como executar: ./principal
 
+int tamanho = 3;
+Biblioteca lib = Biblioteca();
+IOFormat CommaInitFmt(StreamPrecision, DontAlignCols, ", ", ", ", "", "", "[", "]");
+
 int main(void){
-    Biblioteca lib = Biblioteca();
 
-    int tamanho = 3;
+	//----------------------------------FUNCOES BASICAS----------------------------------
 
-    /*PE = ProdutoEscalar
+    /*
+      PE = ProdutoEscalar
       PV = ProdutoVetorial
       NV = NormalizaVetor
       EN = EncontraNormal
       SP = SubtracaoPontos
-      IRP = IntersecaoRetaPlano 
     */
 
     /*Inicialização dos dados necessários para PE, PV, NV, EN*/
@@ -30,119 +33,126 @@ int main(void){
     Ponto ponto2;
     ponto2.x = 3, ponto2.y = 4, ponto2.z = 3;
 
-    /*Inicialização dos dados necessários para IRP*/
-    Ponto p0;
-    p0.x = 0, p0.y = 0, p0.z = 0;
-
-    VectorXd vetor0(tamanho);
-    vetor0 << 1,1,1;
-
-    Ponto p_pi;
-    p_pi.x = 2, p_pi.y = 2, p_pi.z = 2;
-
-    VectorXd vetor_n_plano(tamanho);
-    vetor_n_plano << 7,3,-5;
 
     /*Produto Escalar de dois vetores*/
-    cout << lib.ProdutoEscalar(vetor1,vetor2,tamanho) << endl;
+    cout << "Produto Escalar: " << lib.ProdutoEscalar(vetor1,vetor2,tamanho) << endl;
 
     /*Produto Vetorial de dois vetores*/
-    cout << lib.ProdutoVetorial(vetor1,vetor2,tamanho) << endl;
+    cout << "\nProduto Vetorial:" << lib.ProdutoVetorial(vetor1,vetor2,tamanho).format(CommaInitFmt) << endl;
 
     /*Normalização de um vetor*/
-    cout << lib.NormalizaVetor(vetor2, tamanho) << endl;
+    cout << "\nNormaliza Vetor:\n" << lib.NormalizaVetor(vetor2, tamanho).format(CommaInitFmt) << endl;
 
     /*Encontra o vetor normalizado do vetor normal (produto vetorial) a 2 vetores */
-    cout << lib.EncontrarNormal(vetor1,vetor2,tamanho) << endl;
+    cout << "\nNormal:\n" << lib.EncontrarNormal(vetor1,vetor2,tamanho).format(CommaInitFmt) << endl;
 
     /*Dado 2 pontos mostra o vetor resultante*/
-    cout << lib.SubtracaoPontos(ponto1,ponto2,tamanho) << endl;
+    cout << "\nSubtracao de Pontos:\n" << lib.SubtracaoPontos(ponto1,ponto2,tamanho).format(CommaInitFmt) << endl;
 
-    /*Dado os vetores (vetor1, vetor2), o comprimento (L) retornar os dois pontos(p1, p2)*/
+
+    //---------------------------------- OUTRAS FUNCOES ----------------------------------
+
+
+    /*Dado os vetores (vetor1, vetor2), o comprimento (L) retornar os dois pontos(p_int1, p_int2)*/
 //    VectorXd v1_(tamanho), v2_(tamanho);
 //    v1_ << 1 ,0 ,0;
 //    v2_ << sqrt(2)/2, -sqrt(2)/2, 0;
 //    double l_comprimento = 100;
-//    Ponto p1, p2, po;
+//    Ponto p_int1, p_int2, po;
 //    po.x = 0;
 //    po.y = 0;
 //    po.z = 0;
-//    tie(p1,p2) = lib.PontosDadoDistancia(po,v1_,v2_,l_comprimento, tamanho);
+//    tie(p_int1,p_int2) = lib.PontosDadoDistancia(po,v1_,v2_,l_comprimento, tamanho);
 //    cout << "Ponto1 = " << " ";
-//    cout << "x: " << p1.x << " ";
-//    cout << "y: " << p1.y << " ";
-//    cout << "z: " << p1.z << endl;
+//    cout << "x: " << p_int1.x << " ";
+//    cout << "y: " << p_int1.y << " ";
+//    cout << "z: " << p_int1.z << endl;
 //
 //    cout << "Ponto2 = " << " ";
-//    cout << "x: " << p2.x << " ";
-//    cout << "y: " << p2.y << " ";
-//    cout << "z: " << p2.z << endl;
+//    cout << "x: " << p_int2.x << " ";
+//    cout << "y: " << p_int2.y << " ";
+//    cout << "z: " << p_int2.z << endl;
 
-    /*Dado o ponto (p0), o vetor (vetor0) da reta o ponto (p_pi), o vetor normal (vetor_n_plano) do plano
-    retornar o ponto de interseção da reta com o plano*/
-    Ponto p_int = lib.IntersecaoRetaPlano(p0,vetor0,p_pi,vetor_n_plano,tamanho);
-    cout << "Ponto = " << " ";
-    cout << "x: " << p_int.x << " ";
-    cout << "y: " << p_int.y << " ";
-    cout << "z: " << p_int.z << endl;
 
-    /*Dado o ponto (p0), o vetor (vetor0) da reta o ponto (c0_centro), o raio da esfera
-    Retornar o(s) ponto(s) de interseção da reta com a esfera*/
+
+    //-------------------------------------------------------------------------
+
+    cout << "\n--------------TESTE DAS INTERSECOES--------------" << endl;
+
+	
+	// Declarações para Intersecoes
+
     int intersec;
-    double raio = 1;
+    double raio, H;
+    Ponto p0, p_pi, p_centro, p_int1, p_int2;
+    VectorXd vetor0(tamanho), vetor_n(tamanho);
 
-    VectorXd vetor0_esfera(tamanho);
-    vetor0_esfera << 0,1,0;
 
-    Ponto p0_esfera, c0_centro, p1, p2;
-    p0_esfera.x = 0, p0_esfera.y = 0, p0_esfera.z = 0;
-    c0_centro.x = 0, c0_centro.y = 0, c0_centro.z = 0;
+    // Intersecao Reta/Plano
 
-    tie(p1,p2,intersec) = lib.IntersecaoRetaEsfera(p0_esfera,vetor0_esfera,c0_centro,raio,tamanho);
+    vetor0 << 1,1,1;
+    vetor_n << 7,3,-5;
+    p0.x = 0, p0.y = 0, p0.z = 0;
+    p_pi.x = 2, p_pi.y = 2, p_pi.z = 2;
+
+    cout << "\nReta/Plano: " << endl;
+    p_int1 = lib.IntersecaoRetaPlano(p0,vetor0,p_pi,vetor_n,tamanho);
+    printIntersecoes(p_int1,p_int1,1);
+
+
+    /* Teste Equação do Plano (P_int - P_pi) * vetor_n = 0 */
+    double teste = lib.EquacaoDoPlano(p_pi,p_int1,vetor_n,tamanho);
+    cout << "\nEquacao do Plano: " << teste << endl;
+    
+
+    // Intersecao Reta/Esfera
+
+    raio = 2;
+    vetor0 << 0,1,0;
+    p0.x = 0, p0.y = 0, p0.z = 0;
+    p_centro.x = 0, p_centro.y = 0, p_centro.z = 0;
+
+    cout << "\nReta/Esfera: " << endl;
+    tie(p_int1,p_int2,intersec) = lib.IntersecaoRetaEsfera(p0,vetor0,p_centro,raio,tamanho);
+    printIntersecoes(p_int1,p_int2,intersec);
+
+
+    // Intersecao Reta/Cilindro 
+
+    H = 2;
+    raio = 2;
+    vetor0 << 1,1,1;
+    vetor_n << 1,1,1;
+    p0.x = 0, p0.y = 0, p0.z = 0;
+    p_centro.x = 0, p_centro.y = 0, p_centro.z = 0;
+
+    cout << "\nReta/Cilindro: " << endl;
+    tie(p_int1,p_int2,intersec) = lib.IntersecaoRetaCilindro(p0,vetor0,vetor_n,p_centro,raio,H,tamanho);
+    printIntersecoes(p_int1,p_int2,intersec);
+
+
+    // Intersecao Reta/Cone
+
+
+
+
+
+
+    return 0;
+}
+
+
+void printIntersecoes(Ponto p_int1, Ponto p_int2, int intersec){
 
     if (intersec == 2){
-    	cout << "Ponto Esfera 1 = " << "[" << p1.x << ", " << p1.y << ", " << p1.z << "]" << endl;
-    	cout << "Ponto Esfera 2 = " << "[" << p2.x << ", " << p2.y << ", " << p2.z << "]" << endl;
+    	cout << "Ponto 1 = " << "[" << p_int1.x << ", " << p_int1.y << ", " << p_int1.z << "]" << endl;
+    	cout << "Ponto 2 = " << "[" << p_int2.x << ", " << p_int2.y << ", " << p_int2.z << "]" << endl;
     }
 
     else if(intersec == 1)
-    	cout << "Ponto Esfera 1 = " << "[" << p1.x << ", " << p1.y << ", " << p1.z << "]" << endl;
+    	cout << "Ponto 1 = " << "[" << p_int1.x << ", " << p_int1.y << ", " << p_int1.z << "]" << endl;
 
     else
     	cout << "Nao ha IntersecaoRetaEsfera" << endl;
 
-    /*Dado o ponto (p0), o vetor (vetor0) da reta, o vetor (vetor_n) da direcao,  
-    o ponto (c0_centro), o raio da esfera e a altura (H) do cilindro.
-    Retornar o(s) ponto(s) de interseção da Reta com o Cilindro*/
-    int intersec2;
-    double H = 2;
-    double raio2 = 2;
-
-    VectorXd vetor0_cilindro(tamanho), vetor_n_cilindro(tamanho);
-    vetor0_cilindro << 1,1,1;
-    vetor_n_cilindro << 1,1,1;
-    
-    Ponto p0_cilindro, c0_centro2, p3, p4;
-    p0_cilindro.x = 0, p0_cilindro.y = 0, p0_cilindro.z = 0;
-    c0_centro2.x = 0, c0_centro2.y = 0, c0_centro2.z = 0;
-
-    tie(p3,p4,intersec2) = lib.IntersecaoRetaCilindro(p0_cilindro,vetor0_cilindro,vetor_n_cilindro,c0_centro2,raio2,H,tamanho);
-
-    if (intersec2 == 2){
-    	cout << "Ponto Cilindro 1 = " << "[" << p3.x << ", " << p3.y << ", " << p3.z << "]" << endl;
-    	cout << "Ponto Cilindro 2 = " << "[" << p4.x << ", " << p4.y << ", " << p4.z << "]" << endl;
-    }
-
-    else if(intersec2 == 1)
-    	cout << "Ponto Cilindro 1 = " << "[" << p3.x << ", " << p3.y << ", " << p3.z << "]" << endl;
-
-    else
-    	cout << "Nao ha IntersecaoRetaCilindro" << endl;
-
-
-    /* Teste equação do plano (P_int - P_pi) * vetor_n_plano = 0 */
-    double teste = lib.EquacaoDoPlano(p_pi,p_int,vetor_n_plano,tamanho);
-    cout << "Deve ser 0: " << teste << endl;
-
-    return 0;
-}
+} 
