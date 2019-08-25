@@ -13,7 +13,8 @@ public:
     Ponto centro;
     VectorXd normal;
     Cilindro(float pAltura, float pRaio, Ponto pCentro, VectorXd pNormal);
-    tuple<Ponto,Ponto,int> IntersecaoRetaCilindro(Ponto pP0, VectorXd pVetor0, int pTamanho);
+    tuple<Ponto,Ponto,int,int> IntersecaoRetaCilindro(Ponto pP0, VectorXd pVetor0, int pTamanho);
+    bool ValidacaoPontoCilindro(Ponto vertice, Ponto p_int, int tamanho);
 
 
 };

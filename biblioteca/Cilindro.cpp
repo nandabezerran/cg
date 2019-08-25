@@ -7,10 +7,8 @@
 Cilindro::Cilindro(float pAltura, float pRaio, Ponto pCentro, VectorXd pNormal) : altura(pAltura), raio(pRaio),
                                                                                   centro(pCentro), normal(pNormal) {}
 
-tuple<Ponto,Ponto,int> Cilindro::IntersecaoRetaCilindro(Ponto pP0, VectorXd pVetor0, int pTamanho){
-    //p_t_int eh o ponto dado o t_int
-    Ponto p_t_int1, p_t_int2;
-    double t_int1, t_int2;
+tuple<Ponto,Ponto,int,int> Cilindro::IntersecaoRetaCilindro(Ponto pP0, VectorXd pVetor0, int pTamanho){
+
 
     // A*t_int² + 2B*t_int + C = 0
 
@@ -29,39 +27,89 @@ tuple<Ponto,Ponto,int> Cilindro::IntersecaoRetaCilindro(Ponto pP0, VectorXd pVet
     VectorXd w = this->normal - (VetorN_u * pVetor0);
 
     //A = w*w
-    double produtoA = biblioteca::ProdutoEscalar(w,w,pTamanho);
+    double a = biblioteca::ProdutoEscalar(w,w,pTamanho);
 
     //B = (v*w)
-    double produtoB = biblioteca::ProdutoEscalar(v,w,pTamanho);
+    double b = biblioteca::ProdutoEscalar(v,w,pTamanho);
 
     //C = (v*v - R²)
-    double produtoC = biblioteca::ProdutoEscalar(v,v,pTamanho) - (this->raio*this->raio);
+    double c = biblioteca::ProdutoEscalar(v,v,pTamanho) - (this->raio*this->raio);
+    
 
-    /*  Δ > 0 tem 2 intersecoes
+    //delta
+    double delta = b*b - a*c;
+   /*  Δ > 0 tem 2 intersecoes
         Δ = 0 tem 1 intersecao
         Δ < 0 tem 0 intersecoes */
 
     int intersec = 0;
-    bool tratamento = 0 <= C0P0_u && C0P0_u <= this->altura;
-    double Delta = (produtoB*produtoB) - (produtoA)*(produtoC);
+    double t_int1,t_int2;
+    Ponto p_int1,p_int2;
+    bool tratamento_int1 = false, tratamento_int2 = false;
+    //Vetor auxiliar para calcular o vertice do cone (H*n)
+    VectorXd vetor_aux = this->altura*this->normal;
+    Ponto vertice = biblioteca::CriarPonto(this->centro.x + vetor_aux[0], this->centro.y + vetor_aux[1],
+            this->centro.z + vetor_aux[2]);
 
-    if (Delta > 0 && tratamento){
-
+    if (delta > 0){
         intersec = 2;
-        t_int1 = (-produtoB + sqrt(Delta))/produtoA;
-        t_int2 = (-produtoB - sqrt(Delta))/produtoA;
-        p_t_int1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
-        p_t_int2 = biblioteca::EquacaoDaReta(pP0,t_int2,pVetor0);
+
+        if(a!=0){
+            t_int1 = (-b + sqrt(delta))/a;
+            t_int2 = (-b - sqrt(delta))/a;
+        }else{
+            t_int1 = -c / 2*b;
+            t_int2 = -c / 2*b;
+        }
+
+        p_int1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
+        p_int2 = biblioteca::EquacaoDaReta(pP0,t_int2,pVetor0);
+        tratamento_int1 = this->ValidacaoPontoCilindro(vertice,p_int1, pTamanho);
+        tratamento_int2 = this->ValidacaoPontoCilindro(vertice,p_int2, pTamanho);
+
     }
-
-    else if (Delta == 0 && tratamento){
-
+    else if (delta == 0 && (b!=0 && a!=0)){
         intersec = 1;
-        t_int1 = (-produtoB + sqrt(Delta))/produtoA;
-        p_t_int1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
+        t_int1 = (-b + sqrt(delta))/a;
+        p_int1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
+        tratamento_int1 = this->ValidacaoPontoCilindro(vertice,p_int1, pTamanho);
     }
 
-    return make_tuple(p_t_int1, p_t_int2, intersec);
+    /* Pontos validos
+        0 = nenhum ponto valido
+        1 = primeiro ponto valido apenas
+        2 = segundo ponto valido apenas
+        3 = os dois pontos sao validos
+    */
+
+    int validacao = 0;
+
+    if(tratamento_int1 && tratamento_int2){
+        validacao = 3;
+    }else if(tratamento_int1 && !tratamento_int2){
+        validacao = 1;
+    }else if(!tratamento_int1 && tratamento_int2){
+        validacao = 2;
+    }
+
+    return make_tuple(p_int1, p_int2, validacao, intersec);
 }
+
+bool Cilindro::ValidacaoPontoCilindro(Ponto vertice, Ponto p_int, int tamanho){
+
+    //escalar_tratamento e vetor_aux_tratamento
+    VectorXd vetor_aux_tratamento(tamanho);
+    vetor_aux_tratamento[0] = vertice.x - p_int.x;
+    vetor_aux_tratamento[1] = vertice.y - p_int.y;
+    vetor_aux_tratamento[2] = vertice.z - p_int.z;
+
+    double escalar_tratamento = biblioteca::ProdutoEscalar(vetor_aux_tratamento,this->normal,tamanho);
+
+    bool tratamento_int = 0 <= escalar_tratamento && escalar_tratamento <= this->altura;
+
+    return tratamento_int;
+}
+
+
 
 
