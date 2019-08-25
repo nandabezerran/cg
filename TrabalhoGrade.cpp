@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include "biblioteca/Cilindro.hpp"
 #include "biblioteca/biblioteca.hpp"
-
+#include "biblioteca/Cone.hpp"
 
 Ponto** MatrixAllocation(int size){
     auto **matrix = new Ponto*[size];
@@ -26,6 +26,7 @@ void PrintMatrix(Ponto **matrix, int size){
     }
     cout << "\n";
 }
+
 /// Function to create the grid
 /// \param pLenght
 /// \param pYDistance distance from the axis Y
@@ -56,11 +57,30 @@ Ponto** createGrid(float pLength, float pYDistance, int pMatrixSize){
     return finalMatrix;
 }
 
-//void intersections(double pDistanceObserver, Ponto point){
-//};
+void intersections(double pDistanceObserver, Ponto pointGrid){
+    int tamanho = 3;
+    VectorXd normal(3);
+    normal << 0,1,0;
+
+    Cilindro* objeto2 = new Cilindro(10, 2, biblioteca::CriarPonto(0,0,4), normal);
+    Cone* objeto1 = new Cone(20, 4, biblioteca::CriarPonto(0,10,4), normal);
+    Ponto observerPos = biblioteca::CriarPonto(0, 0, pDistanceObserver);
+
+    VectorXd lineObGrid = biblioteca::SubtracaoPontos(observerPos, pointGrid, tamanho);
+    cout << lineObGrid[0] << "-" << lineObGrid[1] << "-" << lineObGrid[2];
+
+    Ponto p_int1, p_int2;
+    int intersec;
+    tie(p_int1,p_int2,intersec) = objeto2->IntersecaoRetaCilindro(observerPos, lineObGrid, tamanho);
+
+    cout << p_int1.x << "," << p_int1.y  << "," << p_int1.z << "||" << p_int2.x << "," << p_int2.y  << "," << p_int2.z
+    << "||" << intersec << endl;
+
+
+};
 int main(){
-    Ponto** matrix = createGrid(10, 2, 4);
-    PrintMatrix(matrix,4);
-    //intersections(4, matrix[1][2]);
+    Ponto** matrix = createGrid(20, 2, 10);
+    //PrintMatrix(matrix,10);
+    intersections(6, matrix[1][1]);
 
 }
