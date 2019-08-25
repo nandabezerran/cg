@@ -3,6 +3,7 @@
 //
 
 #include "Cilindro.hpp"
+#include "Plano.hpp"
 
 Cilindro::Cilindro(float pAltura, float pRaio, Ponto* pCentro, VectorXd pNormal) : altura(pAltura), raio(pRaio),
                                                                                   centro(pCentro), normal(pNormal) {}
@@ -45,60 +46,47 @@ tuple<Ponto*,Ponto*> Cilindro::IntersecaoRetaCilindro(Ponto* pP0, VectorXd pVeto
     double t_int1,t_int2;
     Ponto* p_int1 = nullptr;
     Ponto* p_int2 = nullptr;
-    bool tratamento_int1 = false, tratamento_int2 = false;
-    //Vetor auxiliar para calcular o vertice do cone (H*n)
-    VectorXd vetor_aux = this->altura*this->normal;
-    Ponto* vertice = biblioteca::CriarPonto(this->centro->x + vetor_aux[0], this->centro->y + vetor_aux[1],
-            this->centro->z + vetor_aux[2]);
 
-    if (delta > 0){
-        if(a!=0){
-            t_int1 = (-b + sqrt(delta))/a;
-            t_int2 = (-b - sqrt(delta))/a;
-        }else{
-            t_int1 = -c / 2*b;
-            t_int2 = -c / 2*b;
-        }
+    //Centro da Base Superior e da Base Inferior
+    VectorXd H_n = this->altura*this->normal;
+    Ponto* centroInf = this->centro;
+    Ponto* centroSup = biblioteca::CriarPonto(this->centro->x + H_n[0], this->centro->y + H_n[1],this->centro->z + H_n[2]);
 
-        p_int1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
-        p_int2 = biblioteca::EquacaoDaReta(pP0,t_int2,pVetor0);
-        tratamento_int1 = this->ValidacaoPontoCilindro(vertice,p_int1, pTamanho);
-        tratamento_int2 = this->ValidacaoPontoCilindro(vertice,p_int2, pTamanho);
 
-    }
-    else if (delta == 0 && (b!=0 && a!=0)){
-        t_int1 = (-b + sqrt(delta))/a;
-        p_int1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
-        tratamento_int1 = this->ValidacaoPontoCilindro(vertice,p_int1, pTamanho);
-    }
 
-    if(p_int1){
-        if(!tratamento_int1){
-            p_int1 = nullptr;
-        }
-    }
-    if(p_int2){
-        if(!tratamento_int2){
-            p_int2 = nullptr;
-        }
-    }
+    //ESCREVER CASOS
+
+
+
 
     return make_tuple(p_int1, p_int2);
 }
 
-bool Cilindro::ValidacaoPontoCilindro(Ponto* vertice, Ponto* p_int, int tamanho){
+bool Cilindro::ValidacaoPontoLateral(Ponto* p_int, int tamanho){
 
-    //escalar_tratamento e vetor_aux_tratamento
-    VectorXd vetor_aux_tratamento(tamanho);
-    vetor_aux_tratamento[0] = vertice->x - p_int->x;
-    vetor_aux_tratamento[1] = vertice->y - p_int->y;
-    vetor_aux_tratamento[2] = vertice->z - p_int->z;
+    VectorXd PB = biblioteca::SubtracaoPontos(p_int,this->centro,tamanho);
+    double PB_u = biblioteca::ProdutoEscalar(PB, this->normal,tamanho);
 
-    double escalar_tratamento = biblioteca::ProdutoEscalar(vetor_aux_tratamento,this->normal,tamanho);
+    if (0 <= PB_u && PB_u <= this->altura)    
+        return true;
+    else 
+        return false;
 
-    bool tratamento_int = 0 <= escalar_tratamento && escalar_tratamento <= this->altura;
+}
 
-    return tratamento_int;
+bool Cilindro::ValidacaoPontoBase(Ponto* pP0,VectorXd pVetor0, Ponto* centro, int tamanho){
+
+    Plano* base = new Plano(centro, this->normal);
+    Ponto* p_int = base->IntersecaoRetaPlano(pP0, pVetor0, tamanho);
+
+    VectorXd BasePonto = biblioteca::SubtracaoPontos(p_int,centro,tamanho);
+    double norma = sqrt(biblioteca::ProdutoEscalar(BasePonto,BasePonto,tamanho));
+
+    if (0 <= norma && norma <= this->raio)
+        return true;
+    else
+        return false;
+
 }
 
 
