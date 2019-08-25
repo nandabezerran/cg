@@ -4,11 +4,11 @@
 
 #include "Plano.hpp"
 
-Plano::Plano(Ponto pPi, VectorXd pNormal) : p_pi(pPi), normal(pNormal) {}
+Plano::Plano(Ponto* pPi, VectorXd pNormal) : p_pi(pPi), normal(pNormal) {}
 
-Ponto Plano::IntersecaoRetaPlano(Ponto p0, VectorXd vetor0, int tamanho){
+Ponto* Plano::IntersecaoRetaPlano(Ponto* p0, VectorXd vetor0, int tamanho){
     //p_t_int eh o ponto dado o t_int
-    Ponto p_t_int;
+    Ponto* p_t_int = nullptr;
 
     //t_int = ( (Ppi - P0) * n ) / (u*n)
 

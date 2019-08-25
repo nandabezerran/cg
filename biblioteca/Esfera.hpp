@@ -9,9 +9,9 @@
 class Esfera {
 public:
     float raio;
-    Ponto centro;
-    Esfera(float pRaio, Ponto pCentro);
-    tuple<Ponto,Ponto,int> IntersecaoRetaEsfera(Ponto pP0, VectorXd pVetor0, int pTamanho);
+    Ponto* centro;
+    Esfera(float pRaio, Ponto* pCentro);
+    tuple<Ponto*,Ponto*> IntersecaoRetaEsfera(Ponto* pP0, VectorXd pVetor0, int pTamanho);
 
 };
 

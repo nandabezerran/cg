@@ -32,8 +32,8 @@ int main(void){
     vetor2 << 2,3,4;
 
     //Inicialização dos dados necessários para SP
-    Ponto ponto1 = biblioteca::CriarPonto(1,-1,-4);
-    Ponto ponto2 = biblioteca::CriarPonto(3,4,3);
+    Ponto* ponto1 = biblioteca::CriarPonto(1,-1,-4);
+    Ponto* ponto2 = biblioteca::CriarPonto(3,4,3);
 
 
 
@@ -90,7 +90,11 @@ int main(void){
 
     int intersec,validacao;
     double raio, H;
-    Ponto p0, p_pi, p_centro, p_int1, p_int2;
+    Ponto* p0;
+    Ponto* p_pi;
+    Ponto* p_centro;
+    Ponto* p_int1;
+    Ponto* p_int2;
     VectorXd vetor0(tamanho), vetor_n(tamanho);
 
 
@@ -104,7 +108,7 @@ int main(void){
     cout << "\nReta/Plano: " << endl;
     Plano* plano = new Plano(p_pi, vetor_n);
     p_int1 = plano->IntersecaoRetaPlano(p0, vetor0, tamanho);
-    printIntersecoes(p_int1,p_int1,1);
+    printIntersecoes(p_int1);
 
 
     // Teste Equação do Plano (P_int - P_pi) * vetor_n = 0 
@@ -121,9 +125,9 @@ int main(void){
 
     cout << "\nReta/Esfera: " << endl;
     Esfera* esfera = new Esfera(raio, p_centro);
-    tie(p_int1,p_int2,intersec) = esfera->IntersecaoRetaEsfera(p0, vetor0, tamanho);
+    tie(p_int1,p_int2) = esfera->IntersecaoRetaEsfera(p0, vetor0, tamanho);
 
-    printIntersecoes(p_int1,p_int2,intersec);
+    printIntersecoes(p_int1,p_int2);
 
 
     // Intersecao Reta/Cilindro
@@ -138,10 +142,9 @@ int main(void){
     
     cout << "\nReta/Cilindro: " << endl;
     Cilindro* cilindro = new Cilindro(H, raio, p_centro, vetor_n);
-    tie(p_int1,p_int2,validacao,intersec) = cilindro->IntersecaoRetaCilindro(p0, vetor0, tamanho);
+    std::tie(p_int1,p_int2) = cilindro->IntersecaoRetaCilindro(p0, vetor0, tamanho);
 
-    printIntersecoes(p_int1,p_int2,validacao,intersec);
-
+    printIntersecoes(p_int1, p_int2);
 
     // Intersecao Reta/Cone
 
@@ -155,64 +158,34 @@ int main(void){
 
     cout << "\nReta/Cone: " << endl;
     Cone* cone = new Cone(H, raio, p_centro, vetor_n);
-    tie(p_int1,p_int2,validacao,intersec) = cone->IntersecaoRetaCone(p0, vetor0, tamanho);
+    tie(p_int1,p_int2) = cone->IntersecaoRetaCone(p0, vetor0, tamanho);
 
-    printIntersecoes(p_int1,p_int2,validacao,intersec);
-
+    printIntersecoes(p_int1, p_int2);
 
     return 0;
 }
 
+void printIntersecoes(Ponto* p_int1, Ponto* p_int2){
 
-
-void printIntersecoes(Ponto p_int1, Ponto p_int2, int intersec){
-
-    if (intersec == 2){
-    	cout << "Ponto 1 = " << "[" << p_int1.x << ", " << p_int1.y << ", " << p_int1.z << "]" << endl;
-    	cout << "Ponto 2 = " << "[" << p_int2.x << ", " << p_int2.y << ", " << p_int2.z << "]" << endl;
-    }
-
-    else if(intersec == 1)
-    	cout << "Ponto 1 = " << "[" << p_int1.x << ", " << p_int1.y << ", " << p_int1.z << "]" << endl;
-
-    else
-    	cout << "Nao ha IntersecaoRetaObjeto" << endl;
-
-}
-
-
-
-void printIntersecoes(Ponto p_int1, Ponto p_int2, int validacao, int intersec){
-
-    if (intersec == 2){
-
-        if(validacao==3){
-            cout << "Os dois pontos são válidos" << endl;
-        }else if(validacao==2){
-            cout << "Apenas o ponto 2 é valido" << endl;
-        }else if(validacao==1){
-            cout << "Apenas o ponto 1 é valido" << endl;
-        }else{
-            cout << "Nao há pontos validos" << endl;
-        }
-
-    	cout << "Ponto 1 = " << "[" << p_int1.x << ", " << p_int1.y << ", " << p_int1.z << "]" << endl;
-    	cout << "Ponto 2 = " << "[" << p_int2.x << ", " << p_int2.y << ", " << p_int2.z << "]" << endl;
-    }
-
-    else if(intersec == 1){
-
-        if(validacao==1){
-            cout << "O ponto é valido" << endl;
-        }else{
-            cout << "O ponto não é valido" << endl;
-        }
-
-    	cout << "Ponto 1 = " << "[" << p_int1.x << ", " << p_int1.y << ", " << p_int1.z << "]" << endl;
-    }
-    else{
+    if (!p_int1 && !p_int2){
         cout << "Nao ha IntersecaoRetaObjeto" << endl;
     }
-
+    if(p_int1){
+        cout << "Ponto 1 = " << "[" << p_int1->x << ", " << p_int1->y << ", " << p_int1->z << "]" << endl;
+    }
+    if(p_int2){
+        cout << "Ponto 2 = " << "[" << p_int2->x << ", " << p_int2->y << ", " << p_int2->z << "]" << endl;
+    }
 }
+
+void printIntersecoes(Ponto* p_int1){
+
+    if (!p_int1){
+        cout << "Nao ha IntersecaoRetaObjeto" << endl;
+    }
+    if(p_int1){
+        cout << "Ponto 1 = " << "[" << p_int1->x << ", " << p_int1->y << ", " << p_int1->z << "]" << endl;
+    }
+}
+
 

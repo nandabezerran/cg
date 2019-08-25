@@ -4,10 +4,10 @@
 
 #include "Cone.hpp"
 
-Cone::Cone(float pAltura, float pRaio, Ponto pCentro, VectorXd pNormal) : altura(pAltura), raio(pRaio),
+Cone::Cone(float pAltura, float pRaio, Ponto* pCentro, VectorXd pNormal) : altura(pAltura), raio(pRaio),
                                                                           centro(pCentro), normal(pNormal){}
 
-tuple<Ponto, Ponto, int, int> Cone::IntersecaoRetaCone(Ponto pP0, VectorXd pVetor0, int pTamanho){
+tuple<Ponto*, Ponto*> Cone::IntersecaoRetaCone(Ponto* pP0, VectorXd pVetor0, int pTamanho){
 
     //Vertice do cone
     //V = C + H*n
@@ -15,8 +15,8 @@ tuple<Ponto, Ponto, int, int> Cone::IntersecaoRetaCone(Ponto pP0, VectorXd pVeto
     //Vetor auxiliar para calcular o vertice do cone (H*n)
     VectorXd vetor_aux = this->altura*this->normal;
 
-    Ponto vertice = biblioteca::CriarPonto(this->centro.x + vetor_aux[0], this->centro.y + vetor_aux[1],
-            this->centro.z + vetor_aux[2]);
+    Ponto* vertice = biblioteca::CriarPonto(this->centro->x + vetor_aux[0], this->centro->y + vetor_aux[1],
+            this->centro->z + vetor_aux[2]);
 
 
     //cout << vertice.x << vertice.y << vertice.z << endl;
@@ -29,9 +29,9 @@ tuple<Ponto, Ponto, int, int> Cone::IntersecaoRetaCone(Ponto pP0, VectorXd pVeto
 
     //vetor v
     VectorXd v(pTamanho);
-    v[0] = vertice.x - pP0.x;
-    v[1] = vertice.y - pP0.y;
-    v[2] = vertice.z - pP0.z;
+    v[0] = vertice->x - pP0->x;
+    v[1] = vertice->y - pP0->y;
+    v[2] = vertice->z - pP0->z;
     //cout << v << endl;
 
     //a
@@ -56,13 +56,12 @@ tuple<Ponto, Ponto, int, int> Cone::IntersecaoRetaCone(Ponto pP0, VectorXd pVeto
         Δ = 0 tem 1 intersecao
         Δ < 0 tem 0 intersecoes */
 
-    int intersec = 0;
     double t_int1,t_int2;
-    Ponto p_int1,p_int2;
+    Ponto* p_int1 = nullptr;
+    Ponto* p_int2 = nullptr;
     bool tratamento_int1 = false, tratamento_int2 = false;
 
     if (delta > 0){
-        intersec = 2;
 
         if(a!=0){
             t_int1 = (-b + sqrt(delta))/a;
@@ -79,39 +78,32 @@ tuple<Ponto, Ponto, int, int> Cone::IntersecaoRetaCone(Ponto pP0, VectorXd pVeto
 
     }
     else if (delta == 0 && (b!=0 && a!=0)){
-        intersec = 1;
         t_int1 = (-b + sqrt(delta))/a;
         p_int1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
         tratamento_int1 = this->ValidacaoPontoCone(vertice,p_int1, pTamanho);
     }
 
-    /* Pontos validos
-        0 = nenhum ponto valido
-        1 = primeiro ponto valido apenas
-        2 = segundo ponto valido apenas
-        3 = os dois pontos sao validos
-    */
-
-    int validacao = 0;
-
-    if(tratamento_int1 && tratamento_int2){
-        validacao = 3;
-    }else if(tratamento_int1 && !tratamento_int2){
-        validacao = 1;
-    }else if(!tratamento_int1 && tratamento_int2){
-        validacao = 2;
+    if(p_int1){
+        if(!tratamento_int1){
+            p_int1 = nullptr;
+        }
+    }
+    if(p_int2){
+        if(!tratamento_int2){
+            p_int2 = nullptr;
+        }
     }
 
-    return make_tuple(p_int1, p_int2, validacao, intersec);
+    return make_tuple(p_int1, p_int2);
 }
 
-bool Cone::ValidacaoPontoCone(Ponto vertice, Ponto p_int, int tamanho){
+bool Cone::ValidacaoPontoCone(Ponto* vertice, Ponto* p_int, int tamanho){
 
     //escalar_tratamento e vetor_aux_tratamento
     VectorXd vetor_aux_tratamento(tamanho);
-    vetor_aux_tratamento[0] = vertice.x - p_int.x;
-    vetor_aux_tratamento[1] = vertice.y - p_int.y;
-    vetor_aux_tratamento[2] = vertice.z - p_int.z;
+    vetor_aux_tratamento[0] = vertice->x - p_int->x;
+    vetor_aux_tratamento[1] = vertice->y - p_int->y;
+    vetor_aux_tratamento[2] = vertice->z - p_int->z;
 
     double escalar_tratamento = biblioteca::ProdutoEscalar(vetor_aux_tratamento,this->normal,tamanho);
 

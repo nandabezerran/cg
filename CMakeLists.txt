@@ -3,6 +3,6 @@ project(ComputacaoGrafica)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(ComputacaoGrafica programaprincipal.cpp biblioteca/biblioteca.cpp biblioteca/biblioteca.hpp
+add_executable(ComputacaoGrafica biblioteca/biblioteca.cpp biblioteca/biblioteca.hpp
         biblioteca/Cone.cpp biblioteca/Cone.hpp biblioteca/Cilindro.cpp biblioteca/Cilindro.hpp biblioteca/Esfera.cpp
-        biblioteca/Esfera.hpp biblioteca/Plano.cpp biblioteca/Plano.hpp)
+        biblioteca/Esfera.hpp biblioteca/Plano.cpp biblioteca/Plano.hpp programaprincipal.cpp )

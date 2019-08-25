@@ -11,7 +11,7 @@ Ponto** MatrixAllocation(int size){
     auto **matrix = new Ponto*[size];
 
     for (int i = 0; i < size; i++){
-        matrix[i] = new Ponto[size];;
+        matrix[i] = new Ponto[size];
     }
     return matrix;
 }
@@ -57,23 +57,25 @@ Ponto** createGrid(float pLength, float pYDistance, int pMatrixSize){
     return finalMatrix;
 }
 
-void intersections(double pDistanceObserver, Ponto pointGrid){
+void intersections(double pDistanceObserver, Ponto* pointGrid){
     int tamanho = 3;
     VectorXd normal(3);
     normal << 0,1,0;
 
     Cilindro* objeto2 = new Cilindro(10, 2, biblioteca::CriarPonto(0,0,4), normal);
     Cone* objeto1 = new Cone(20, 4, biblioteca::CriarPonto(0,10,4), normal);
-    Ponto observerPos = biblioteca::CriarPonto(0, 0, pDistanceObserver);
+    Ponto* observerPos = biblioteca::CriarPonto(0, 0, pDistanceObserver);
 
     VectorXd lineObGrid = biblioteca::SubtracaoPontos(observerPos, pointGrid, tamanho);
     cout << lineObGrid[0] << "-" << lineObGrid[1] << "-" << lineObGrid[2];
 
-    Ponto p_int1, p_int2;
+    Ponto* p_int1;
+    Ponto* p_int2;
     int intersec;
-    tie(p_int1,p_int2,intersec) = objeto2->IntersecaoRetaCilindro(observerPos, lineObGrid, tamanho);
+    int validacao;
+    std::tie(p_int1,p_int2) = objeto2->IntersecaoRetaCilindro(observerPos, lineObGrid, tamanho);
 
-    cout << p_int1.x << "," << p_int1.y  << "," << p_int1.z << "||" << p_int2.x << "," << p_int2.y  << "," << p_int2.z
+    cout << p_int1->x << "," << p_int1->y  << "," << p_int1->z << "||" << p_int2->x << "," << p_int2->y  << "," << p_int2->z
     << "||" << intersec << endl;
 
 

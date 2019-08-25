@@ -4,11 +4,12 @@
 
 #include "Esfera.hpp"
 
-Esfera::Esfera(float pRaio, Ponto pCentro) : raio(pRaio), centro(pCentro) {}
+Esfera::Esfera(float pRaio, Ponto* pCentro) : raio(pRaio), centro(pCentro) {}
 
-tuple<Ponto,Ponto,int> Esfera::IntersecaoRetaEsfera(Ponto pP0, VectorXd pVetor0,int pTamanho){
+tuple<Ponto*,Ponto*> Esfera::IntersecaoRetaEsfera(Ponto* pP0, VectorXd pVetor0,int pTamanho){
     //p_t_int eh o ponto dado o t_int
-    Ponto p_t_int1, p_t_int2;
+    Ponto* p_t_int1 = nullptr;
+    Ponto* p_t_int2 = nullptr;
     double t_int1, t_int2;
 
     // A*t_int² + B*t_int + C = 0
@@ -29,12 +30,10 @@ tuple<Ponto,Ponto,int> Esfera::IntersecaoRetaEsfera(Ponto pP0, VectorXd pVetor0,
         Δ = 0 tem 1 intersecao
         Δ < 0 tem 0 intersecoes */
 
-    int intersec = 0;
     double Delta = (produtoB*produtoB) - (produtoA)*(produtoC);
 
     if (Delta > 0){
 
-        intersec = 2;
         t_int1 = (-produtoB + sqrt(Delta))/produtoA;
         t_int2 = (-produtoB - sqrt(Delta))/produtoA;
         p_t_int1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
@@ -43,12 +42,11 @@ tuple<Ponto,Ponto,int> Esfera::IntersecaoRetaEsfera(Ponto pP0, VectorXd pVetor0,
 
     else if (Delta == 0){
 
-        intersec = 1;
         t_int1 = (-produtoB + sqrt(Delta))/produtoA;
         p_t_int1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
     }
 
-    return make_tuple(p_t_int1, p_t_int2, intersec);
+    return make_tuple(p_t_int1, p_t_int2);
 
 }
 
