@@ -3,16 +3,19 @@
 //
 #include <iostream>
 #include <stdlib.h>
+#include "biblioteca/Cilindro.hpp"
 #include "biblioteca/biblioteca.hpp"
 
+
 Ponto** MatrixAllocation(int size){
-    auto **matrix = (Ponto**)malloc(size * sizeof(Ponto*));
+    auto **matrix = new Ponto*[size];
 
     for (int i = 0; i < size; i++){
-        matrix[i] = (Ponto*) malloc(size * sizeof(Ponto));
+        matrix[i] = new Ponto[size];;
     }
     return matrix;
 }
+
 void PrintMatrix(Ponto **matrix, int size){
     for (int l = 0; l < size; ++l) {
         for (int m = 0; m < size; ++m) {
@@ -53,8 +56,11 @@ Ponto** createGrid(float pLength, float pYDistance, int pMatrixSize){
     return finalMatrix;
 }
 
+//void intersections(double pDistanceObserver, Ponto point){
+//};
 int main(){
     Ponto** matrix = createGrid(10, 2, 4);
     PrintMatrix(matrix,4);
-    cout << "sadsad" << endl;
+    //intersections(4, matrix[1][2]);
+
 }
