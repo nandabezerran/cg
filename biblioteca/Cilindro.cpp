@@ -2,14 +2,15 @@
 // Created by fbeze on 24/08/2019.
 //
 
+//Changes: natalia-rios, 26/08/2019.
+
 #include "Cilindro.hpp"
 #include "Plano.hpp"
 
 Cilindro::Cilindro(float pAltura, float pRaio, Ponto* pCentro, VectorXd pNormal) : altura(pAltura), raio(pRaio),
-                                                                                  centro(pCentro), normal(pNormal),
-                                                                                  Objeto("Cilindro") {}
+                                                                                  centro(pCentro), normal(pNormal) {}
 
-tuple<Ponto*,Ponto*> Cilindro::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTamanho){
+tuple<Ponto*,Ponto*> Cilindro::IntersecaoRetaCilindro(Ponto* pP0, VectorXd pVetor0, int pTamanho){
 
 
     // A*t_int² + 2B*t_int + C = 0
@@ -53,12 +54,65 @@ tuple<Ponto*,Ponto*> Cilindro::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int 
     Ponto* centroInf = this->centro;
     Ponto* centroSup = biblioteca::CriarPonto(this->centro->x + H_n[0], this->centro->y + H_n[1],this->centro->z + H_n[2]);
 
+    bool tratamento_int1 = false, tratamento_int2 = false;
 
 
-    //ESCREVER CASOS
+    if(a == 0) {
+          t_int1 = -c / 2*b;
+          t_int2 = -c / 2*b;
+          p_int1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
+          p_int2 = biblioteca::EquacaoDaReta(pP0,t_int2,pVetor0);
+
+    }else {
+
+        if(delta == 0) {
+            t_int1 = (-b + sqrt(delta))/a;
+            tratamento_int1 = this->ValidacaoPontoLateral(p_int1, pTamanho);
 
 
+            if(tratamento_int1) {
+                if(Cilindro::ValidacaoPontoBase(centroInf, pP0, this->centro, pTamanho) || Cilindro::ValidacaoPontoBase(centroSup, pP0, this->centro, pTamanho)) {
+                    p_int1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
+                }
+            }
+        }
 
+    }else if(delta > 0 && a!=0) {
+
+        t_int1 = (-b + sqrt(delta))/a;
+        t_int2 = (-b - sqrt(delta))/a;
+
+        tratamento_int1 = this->ValidacaoPontoLateral(p_int1, pTamanho);
+        tratamento_int2 = this->ValidacaoPontoLateral(p_int2, pTamanho);
+
+        if(tratamento_int1 && tratamento_int2) {
+            p_int1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
+            p_int2 = biblioteca::EquacaoDaReta(pP0,t_int2,pVetor0);
+        }
+
+      
+        if(tratamento_int2) {
+            p_int2 = biblioteca::EquacaoDaReta(pP0,t_int2,pVetor0);
+            if(Cilindro::ValidacaoPontoBase(centroInf, pP0, this->centro, pTamanho) || Cilindro::ValidacaoPontoBase(centroSup, pP0, this->centro, pTamanho)) {
+                p_int1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
+            }
+        }
+
+        if(tratamento_int1) {
+            p_int1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
+            if(Cilindro::ValidacaoPontoBase(centroInf, pP0, this->centro, pTamanho) || Cilindro::ValidacaoPontoBase(centroSup, pP0, this->centro, pTamanho)) {
+                p_int2 = biblioteca::EquacaoDaReta(pP0,t_int2,pVetor0);
+            }
+        }
+
+        if(!tratamento_int1 && !tratamento_int2 && (biblioteca::ProdutoVetorial(pVetor0,VetorN_u) == 0)) {
+            if(Cilindro::ValidacaoPontoBase(centroInf, pP0, this->centro, pTamanho) && Cilindro::ValidacaoPontoBase(centroSup, pP0, this->centro, pTamanho)) {
+                p_int1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
+                p_int2 = biblioteca::EquacaoDaReta(pP0,t_int2,pVetor0);
+
+        }
+
+    } 
 
     return make_tuple(p_int1, p_int2);
 }
@@ -89,7 +143,5 @@ bool Cilindro::ValidacaoPontoBase(Ponto* pP0,VectorXd pVetor0, Ponto* centro, in
         return false;
 
 }
-
-
 
 
