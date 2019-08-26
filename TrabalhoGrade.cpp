@@ -67,7 +67,7 @@ void intersections(vector<Objeto*> Objects, double pDistanceObserver, Ponto poin
     Ponto* observerPos = biblioteca::CriarPonto(0, 0, pDistanceObserver);
 
     VectorXd lineObGrid = biblioteca::SubtracaoPontos(observerPos, p, tamanho);
-    lineObGrid = biblioteca::NormalizaVetor(lineObGrid, tamanho);
+    //lineObGrid = biblioteca::NormalizaVetor(lineObGrid, tamanho);
 
 
     Ponto* p_int1;
@@ -81,11 +81,11 @@ void intersections(vector<Objeto*> Objects, double pDistanceObserver, Ponto poin
         }
         else{
             if(p_int1 != nullptr){
-                cout << "Uma intersecao no objeto : " << Object->nome;
+                cout << "Uma intersecao no objeto : " << Object->nome << "\n";
                 cout << "Ponto de intersecao : " << p_int1->x << "," << p_int1->y  << "," << p_int1->z;
             }
             else if(p_int2 != nullptr){
-                cout << "Uma intersecao no objeto : " << Object->nome;
+                cout << "Uma intersecao no objeto : " << Object->nome << "\n";
                 cout << "Ponto de intersecao : " << p_int2->x << "," << p_int2->y  << "," << p_int2->z;
             }
             else{
@@ -103,8 +103,8 @@ int main(){
     VectorXd normal(3);
     normal << 0,1,0;
     //ALTURA, RAIO, CENTRO, NORMAL
-    Cilindro *objeto2 = new Cilindro(10, 2, biblioteca::CriarPonto(0,0,4), normal);
-    Cone *objeto1 = new Cone(20, 4, biblioteca::CriarPonto(0,10,4), normal);
+    Cilindro *objeto2 = new Cilindro(100, 20, biblioteca::CriarPonto(0,0,4), normal);
+    Cone *objeto1 = new Cone(200, 40, biblioteca::CriarPonto(0,100,4), normal);
     //Cubo* objeto3 = new Cubo(...);
     //Cubo* objeto4 = new Cubo(...);
     //Cubo* objeto5 = new Cubo(...);
