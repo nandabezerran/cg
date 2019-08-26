@@ -16,9 +16,10 @@ public:
     Cilindro(float pAltura, float pRaio, Ponto* pCentro, VectorXd pNormal);
     tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTamanho);
     bool ValidacaoPontoLateral(Ponto* p_int, int tamanho);
-    bool ValidacaoPontoBase(Ponto* pP0,VectorXd pVetor0, Ponto* centro, int tamanho);
 
-
+    int ValidacaoPontoBase(Ponto* pP0,VectorXd pVetor0, int tamanho);
+    Ponto* IntersecaoRetaBase(Ponto* centro, Ponto* pP0,VectorXd pVetor0, int tamanho);
+    Ponto* ChoseBase(Ponto* pP0,VectorXd pVetor0, int tamanho);
 };
 
 
