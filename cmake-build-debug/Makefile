@@ -204,6 +204,33 @@ biblioteca/Cone.cpp.s:
 	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.cpp.s
 .PHONY : biblioteca/Cone.cpp.s
 
+biblioteca/Cubo.o: biblioteca/Cubo.cpp.o
+
+.PHONY : biblioteca/Cubo.o
+
+# target to build an object file
+biblioteca/Cubo.cpp.o:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.o
+.PHONY : biblioteca/Cubo.cpp.o
+
+biblioteca/Cubo.i: biblioteca/Cubo.cpp.i
+
+.PHONY : biblioteca/Cubo.i
+
+# target to preprocess a source file
+biblioteca/Cubo.cpp.i:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.i
+.PHONY : biblioteca/Cubo.cpp.i
+
+biblioteca/Cubo.s: biblioteca/Cubo.cpp.s
+
+.PHONY : biblioteca/Cubo.s
+
+# target to generate assembly for a file
+biblioteca/Cubo.cpp.s:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.s
+.PHONY : biblioteca/Cubo.cpp.s
+
 biblioteca/Esfera.o: biblioteca/Esfera.cpp.o
 
 .PHONY : biblioteca/Esfera.o
@@ -230,6 +257,33 @@ biblioteca/Esfera.s: biblioteca/Esfera.cpp.s
 biblioteca/Esfera.cpp.s:
 	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.cpp.s
 .PHONY : biblioteca/Esfera.cpp.s
+
+biblioteca/Objeto.o: biblioteca/Objeto.cpp.o
+
+.PHONY : biblioteca/Objeto.o
+
+# target to build an object file
+biblioteca/Objeto.cpp.o:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.o
+.PHONY : biblioteca/Objeto.cpp.o
+
+biblioteca/Objeto.i: biblioteca/Objeto.cpp.i
+
+.PHONY : biblioteca/Objeto.i
+
+# target to preprocess a source file
+biblioteca/Objeto.cpp.i:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.i
+.PHONY : biblioteca/Objeto.cpp.i
+
+biblioteca/Objeto.s: biblioteca/Objeto.cpp.s
+
+.PHONY : biblioteca/Objeto.s
+
+# target to generate assembly for a file
+biblioteca/Objeto.cpp.s:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.s
+.PHONY : biblioteca/Objeto.cpp.s
 
 biblioteca/Plano.o: biblioteca/Plano.cpp.o
 
@@ -303,9 +357,15 @@ help:
 	@echo "... biblioteca/Cone.o"
 	@echo "... biblioteca/Cone.i"
 	@echo "... biblioteca/Cone.s"
+	@echo "... biblioteca/Cubo.o"
+	@echo "... biblioteca/Cubo.i"
+	@echo "... biblioteca/Cubo.s"
 	@echo "... biblioteca/Esfera.o"
 	@echo "... biblioteca/Esfera.i"
 	@echo "... biblioteca/Esfera.s"
+	@echo "... biblioteca/Objeto.o"
+	@echo "... biblioteca/Objeto.i"
+	@echo "... biblioteca/Objeto.s"
 	@echo "... biblioteca/Plano.o"
 	@echo "... biblioteca/Plano.i"
 	@echo "... biblioteca/Plano.s"

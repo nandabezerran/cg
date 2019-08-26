@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.o"
   "CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.cpp.o"
   "CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.cpp.o"
+  "CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.o"
+  "CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.o"
   "CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.o"
   "ComputacaoGrafica.pdb"
   "ComputacaoGrafica"

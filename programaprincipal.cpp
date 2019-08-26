@@ -1,6 +1,8 @@
 #include "programaprincipal.hpp"
+#include "biblioteca/Cubo.hpp"
 #include <iostream>
 #include <stdlib.h>
+
 
 
 using namespace std;
@@ -125,7 +127,7 @@ int main(void){
 
     cout << "\nReta/Esfera: " << endl;
     Esfera* esfera = new Esfera(raio, p_centro);
-    tie(p_int1,p_int2) = esfera->IntersecaoRetaEsfera(p0, vetor0, tamanho);
+    tie(p_int1,p_int2) = esfera->IntersecaoReta(p0, vetor0, tamanho);
 
     printIntersecoes(p_int1,p_int2);
 
@@ -142,7 +144,7 @@ int main(void){
     
     cout << "\nReta/Cilindro: " << endl;
     Cilindro* cilindro = new Cilindro(H, raio, p_centro, vetor_n);
-    std::tie(p_int1,p_int2) = cilindro->IntersecaoRetaCilindro(p0, vetor0, tamanho);
+    std::tie(p_int1,p_int2) = cilindro->IntersecaoReta(p0, vetor0, tamanho);
 
     printIntersecoes(p_int1, p_int2);
 
@@ -158,7 +160,7 @@ int main(void){
 
     cout << "\nReta/Cone: " << endl;
     Cone* cone = new Cone(H, raio, p_centro, vetor_n);
-    tie(p_int1,p_int2) = cone->IntersecaoRetaCone(p0, vetor0, tamanho);
+    tie(p_int1,p_int2) = cone->IntersecaoReta(p0, vetor0, tamanho);
 
     printIntersecoes(p_int1, p_int2);
 

@@ -99,10 +99,22 @@
 		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cone.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.cpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.hpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
 		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Esfera.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
 		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Esfera.hpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.cpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
 		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Plano.cpp">

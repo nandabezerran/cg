@@ -7,6 +7,7 @@
 #include "biblioteca/Cilindro.hpp"
 #include "biblioteca/biblioteca.hpp"
 #include "biblioteca/Cone.hpp"
+#include "biblioteca/Cubo.hpp"
 
 Ponto** MatrixAllocation(int size){
     auto **matrix = new Ponto*[size];
@@ -102,15 +103,15 @@ int main(){
     normal << 0,1,0;
     //ALTURA, RAIO, CENTRO, NORMAL
     //Cilindro *objeto2 = new Cilindro(10, 2, biblioteca::CriarPonto(0,0,4), normal);
-    Cone *objeto1 = new Cone(20, 4, biblioteca::CriarPonto(0,0,4), normal);
-    //Cubo* objeto3 = new Cubo(...);
-    //Cubo* objeto4 = new Cubo(...);
-    //Cubo* objeto5 = new Cubo(...);
+    //Cone *objeto1 = new Cone(20, 4, biblioteca::CriarPonto(0,0,4), normal);
+    Cubo* objeto3 = new Cubo(normal, 4, biblioteca::CriarPonto(0,0,5));
+    //Cubo* objeto4 = new Cubo();
+    //Cubo* objeto5 = new Cubo();
 
 
-    objects.push_back(objeto1);
+    //objects.push_back(objeto1);
     //objects.push_back(objeto2);
-    //objects.push_back(objeto3);
+    objects.push_back(objeto3);
     //objects.push_back(objeto4);
     //objects.push_back(objeto5);
 
