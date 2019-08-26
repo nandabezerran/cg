@@ -36,7 +36,7 @@ void PrintMatrix(Ponto **matrix, int size){
 /// \param pPointDistance
 /// \return Matrix filled with the points
 Ponto** createGrid(float pLength, float pYDistance, int pMatrixSize){
-    float pointDistance = pLength/(pMatrixSize -1);
+    float pointDistance = pLength/(pMatrixSize - 1);
     float posX;
     float posY;
     float z = -pYDistance;
@@ -65,25 +65,29 @@ void intersections(vector<Objeto*> Objects, double pDistanceObserver, Ponto poin
     auto *p = new Ponto;
     *p = pointGrid;
 
+    //Ponto localizado o olho do observador
     Ponto* observerPos = biblioteca::CriarPonto(0, 0, - pDistanceObserver - pointGrid.z);
 
+    //Reta observador -> Ponto na grade; Ponto na grade - Observador, transformaremos em vetor unitário dentro da
+    //função de interseção
     VectorXd lineObGrid = biblioteca::SubtracaoPontos(observerPos, p, tamanho);
 
     Ponto* p_int1;
     Ponto* p_int2;
+
     for (auto &Object : Objects) {
         std::tie(p_int1,p_int2) = Object->IntersecaoReta(observerPos, lineObGrid, tamanho);
-        if(p_int1 != nullptr && p_int2 != nullptr){
+        if(p_int1 && p_int2){
             cout << "Duas intersecao no objeto : " << Object->nome<< "\n";
             cout << "Primeira intersecao : " << p_int1->x << "," << p_int1->y  << "," << p_int1->z<< "\n";
             cout << "Segunda intersecao : " << p_int2->x << "," << p_int2->y  << "," << p_int2->z;
         }
         else{
-            if(p_int1 != nullptr){
+            if(p_int1){
                 cout << "Uma intersecao no objeto : " << Object->nome << "\n";
                 cout << "Ponto de intersecao : " << p_int1->x << "," << p_int1->y  << "," << p_int1->z;
             }
-            else if(p_int2 != nullptr){
+            else if(p_int2){
                 cout << "Uma intersecao no objeto : " << Object->nome << "\n";
                 cout << "Ponto de intersecao : " << p_int2->x << "," << p_int2->y  << "," << p_int2->z;
             }
