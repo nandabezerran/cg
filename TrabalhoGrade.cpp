@@ -64,18 +64,16 @@ void intersections(vector<Objeto*> Objects, double pDistanceObserver, Ponto poin
     auto *p = new Ponto;
     *p = pointGrid;
 
-    Ponto* observerPos = biblioteca::CriarPonto(0, 0, pDistanceObserver);
+    Ponto* observerPos = biblioteca::CriarPonto(0, 0, - pDistanceObserver - pointGrid.z);
 
     VectorXd lineObGrid = biblioteca::SubtracaoPontos(observerPos, p, tamanho);
-    //lineObGrid = biblioteca::NormalizaVetor(lineObGrid, tamanho);
-
 
     Ponto* p_int1;
     Ponto* p_int2;
     for (auto &Object : Objects) {
         std::tie(p_int1,p_int2) = Object->IntersecaoReta(observerPos, lineObGrid, tamanho);
         if(p_int1 != nullptr && p_int2 != nullptr){
-            cout << "Duas intersecao no objeto : " << Object->nome;
+            cout << "Duas intersecao no objeto : " << Object->nome<< "\n";
             cout << "Primeira intersecao : " << p_int1->x << "," << p_int1->y  << "," << p_int1->z<< "\n";
             cout << "Segunda intersecao : " << p_int2->x << "," << p_int2->y  << "," << p_int2->z;
         }
@@ -103,22 +101,22 @@ int main(){
     VectorXd normal(3);
     normal << 0,1,0;
     //ALTURA, RAIO, CENTRO, NORMAL
-    Cilindro *objeto2 = new Cilindro(100, 20, biblioteca::CriarPonto(0,0,4), normal);
-    Cone *objeto1 = new Cone(200, 40, biblioteca::CriarPonto(0,100,4), normal);
+    //Cilindro *objeto2 = new Cilindro(10, 2, biblioteca::CriarPonto(0,0,4), normal);
+    Cone *objeto1 = new Cone(20, 4, biblioteca::CriarPonto(0,0,4), normal);
     //Cubo* objeto3 = new Cubo(...);
     //Cubo* objeto4 = new Cubo(...);
     //Cubo* objeto5 = new Cubo(...);
 
 
     objects.push_back(objeto1);
-    objects.push_back(objeto2);
+    //objects.push_back(objeto2);
     //objects.push_back(objeto3);
     //objects.push_back(objeto4);
     //objects.push_back(objeto5);
 
-    float pDistanceObserverGrid = 6;
+    float pDistanceObserverGrid = 10;
     int matrixSize = 10;
-    float pLength = 10;
+    float pLength = 20;
     float pYDistance = 10;
     Ponto** matrix = createGrid(pLength, pYDistance, matrixSize);
     //PrintMatrix(matrix,10);
