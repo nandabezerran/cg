@@ -36,7 +36,8 @@ tuple<Ponto*, Ponto*> Cone::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTa
     //cout << v << endl;
 
     //a
-    double a = pow(biblioteca::ProdutoEscalar(d,this->normal,pTamanho),2) - pow(cos_alfa,2);
+    double a = pow(biblioteca::ProdutoEscalar(d,this->normal,pTamanho),2) - (biblioteca::ProdutoEscalar(d,d, pTamanho) *
+            pow(cos_alfa,2));
     //cout << a << endl;
 
     //b
