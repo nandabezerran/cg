@@ -5,9 +5,10 @@
 #include "Cone.hpp"
 
 Cone::Cone(float pAltura, float pRaio, Ponto* pCentro, VectorXd pNormal) : altura(pAltura), raio(pRaio),
-                                                                          centro(pCentro), normal(pNormal){}
+                                                                          centro(pCentro), normal(pNormal),
+                                                                           Objeto("Cone") {}
 
-tuple<Ponto*, Ponto*> Cone::IntersecaoRetaCone(Ponto* pP0, VectorXd pVetor0, int pTamanho){
+tuple<Ponto*, Ponto*> Cone::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTamanho){
 
     //Vertice do cone
     //V = C + H*n

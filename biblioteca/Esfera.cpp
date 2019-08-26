@@ -4,9 +4,10 @@
 
 #include "Esfera.hpp"
 
-Esfera::Esfera(float pRaio, Ponto* pCentro) : raio(pRaio), centro(pCentro) {}
+Esfera::Esfera(float pRaio, Ponto* pCentro) : raio(pRaio), centro(pCentro),
+                                              Objeto("Esfera")  {}
 
-tuple<Ponto*,Ponto*> Esfera::IntersecaoRetaEsfera(Ponto* pP0, VectorXd pVetor0,int pTamanho){
+tuple<Ponto*,Ponto*> Esfera::IntersecaoReta(Ponto* pP0, VectorXd pVetor0,int pTamanho){
     //p_t_int eh o ponto dado o t_int
     Ponto* p_t_int1 = nullptr;
     Ponto* p_t_int2 = nullptr;

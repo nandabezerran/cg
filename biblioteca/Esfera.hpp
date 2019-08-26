@@ -5,13 +5,14 @@
 #ifndef COMPUTACAOGRAFICA_ESFERA_HPP
 #define COMPUTACAOGRAFICA_ESFERA_HPP
 #include "biblioteca.hpp"
-
-class Esfera {
+#include "Objeto.hpp"
+class Esfera : public Objeto {
 public:
+    string nome;
     float raio;
     Ponto* centro;
     Esfera(float pRaio, Ponto* pCentro);
-    tuple<Ponto*,Ponto*> IntersecaoRetaEsfera(Ponto* pP0, VectorXd pVetor0, int pTamanho);
+    tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTamanho) override;
 
 };
 
