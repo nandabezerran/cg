@@ -6,21 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.cpp
-Cubo.hpp
-/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.hpp
-biblioteca.hpp
-/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.hpp
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cilindro.cpp
+Cilindro.hpp
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cilindro.hpp
 Plano.hpp
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Plano.hpp
 
-/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.hpp
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cilindro.hpp
 biblioteca.hpp
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.hpp
 Objeto.hpp
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.hpp
-Plano.hpp
-/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Plano.hpp
 
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.hpp
 biblioteca.hpp
