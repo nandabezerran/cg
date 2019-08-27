@@ -39,7 +39,7 @@ Ponto** createGrid(float pLength, float pYDistance, int pMatrixSize){
     float pointDistance = pLength/(pMatrixSize - 1);
     float posX;
     float posY;
-    float z = -pYDistance;
+    float z = pYDistance;
 
     Ponto **finalMatrix = MatrixAllocation(pMatrixSize);
 
@@ -66,7 +66,7 @@ void intersections(vector<Objeto*> Objects, double pDistanceObserver, Ponto poin
     *p = pointGrid;
 
     //Ponto localizado o olho do observador
-    Ponto* observerPos = biblioteca::CriarPonto(0, 0, - pDistanceObserver - pointGrid.z);
+    Ponto* observerPos = biblioteca::CriarPonto(0, 0,  pDistanceObserver + pointGrid.z);
 
     //Reta observador -> Ponto na grade; Ponto na grade - Observador, transformaremos em vetor unitário dentro da
     //função de interseção
@@ -106,23 +106,23 @@ int main(){
     VectorXd normal(3);
     normal << 0,1,0;
     //ALTURA, RAIO, CENTRO, NORMAL
-    //Cilindro *objeto2 = new Cilindro(10, 2, biblioteca::CriarPonto(0,0,4), normal);
-    //Cone *objeto1 = new Cone(20, 4, biblioteca::CriarPonto(0,0,4), normal);
-    Cubo* objeto3 = new Cubo(normal, 4, biblioteca::CriarPonto(0,0,5));
+    Cilindro *objeto2 = new Cilindro(10, 4, biblioteca::CriarPonto(0,0,-4), normal);
+    Cone *objeto1 = new Cone(20, 8, biblioteca::CriarPonto(0,10,-4), normal);
+    //Cubo* objeto3 = new Cubo(normal, 4, biblioteca::CriarPonto(0,0,-5));
     //Cubo* objeto4 = new Cubo();
     //Cubo* objeto5 = new Cubo();
 
 
-    //objects.push_back(objeto1);
-    //objects.push_back(objeto2);
-    objects.push_back(objeto3);
+    objects.push_back(objeto1);
+    objects.push_back(objeto2);
+    //objects.push_back(objeto3);
     //objects.push_back(objeto4);
     //objects.push_back(objeto5);
 
-    float pDistanceObserverGrid = 10;
+    float pDistanceObserverGrid = 4;
     int matrixSize = 10;
-    float pLength = 20;
-    float pYDistance = 10;
+    float pLength = 2;
+    float pYDistance = 2;
     Ponto** matrix = createGrid(pLength, pYDistance, matrixSize);
     //PrintMatrix(matrix,10);
 
