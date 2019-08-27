@@ -3,6 +3,8 @@
 //
 
 #include "Cone.hpp"
+#include "Plano.hpp"
+
 
 Cone::Cone(float pAltura, float pRaio, Ponto* pCentro, VectorXd pNormal) : altura(pAltura), raio(pRaio),
                                                                           centro(pCentro), normal(pNormal),
@@ -36,8 +38,7 @@ tuple<Ponto*, Ponto*> Cone::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTa
     //cout << v << endl;
 
     //a
-    double a = pow(biblioteca::ProdutoEscalar(d,this->normal,pTamanho),2) - (biblioteca::ProdutoEscalar(d,d, pTamanho) *
-            pow(cos_alfa,2));
+    double a = pow(biblioteca::ProdutoEscalar(d,this->normal,pTamanho),2) - pow(cos_alfa,2);
     //cout << a << endl;
 
     //b
@@ -52,6 +53,11 @@ tuple<Ponto*, Ponto*> Cone::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTa
 
     //delta
     double delta = b*b - a*c;
+
+    if (delta < 0.000001)
+        delta = 0;
+    
+
     //cout<<"delta:"<<delta<<endl;
 
     /*  Δ > 0 tem 2 intersecoes
@@ -73,30 +79,36 @@ tuple<Ponto*, Ponto*> Cone::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTa
             t_int2 = -c / 2*b;
         }
 
-        p_int1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
-        p_int2 = biblioteca::EquacaoDaReta(pP0,t_int2,pVetor0);
-        tratamento_int1 = this->ValidacaoPontoCone(vertice,p_int1, pTamanho);
-        tratamento_int2 = this->ValidacaoPontoCone(vertice,p_int2, pTamanho);
+        Ponto* p_teste1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
+        Ponto* p_teste2 = biblioteca::EquacaoDaReta(pP0,t_int2,pVetor0);
+        tratamento_int1 = this->ValidacaoPontoCone(vertice,p_teste1, pTamanho);
+        tratamento_int2 = this->ValidacaoPontoCone(vertice,p_teste2, pTamanho);
 
+        if (tratamento_int1)
+            p_int1 = p_teste1;
+        else if(Cone::ValidacaoPontoBase(pP0, pVetor0, pTamanho))
+            p_int1 = Cone::IntersecaoRetaBase(this->centro, pP0, pVetor0, pTamanho);
+
+        if (tratamento_int2) 
+            p_int2 = p_teste2;
+        else if(Cone::ValidacaoPontoBase(pP0, pVetor0, pTamanho))
+            p_int2 = Cone::IntersecaoRetaBase(this->centro, pP0, pVetor0, pTamanho);
+        
     }
     else if (delta == 0 && (b!=0 && a!=0)){
         t_int1 = (-b + sqrt(delta))/a;
-        p_int1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
-        tratamento_int1 = this->ValidacaoPontoCone(vertice,p_int1, pTamanho);
-    }
+        Ponto* p_teste1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
+        tratamento_int1 = this->ValidacaoPontoCone(vertice,p_teste1, pTamanho);
 
-    if(p_int1){
-        if(!tratamento_int1){
-            p_int1 = nullptr;
-        }
-    }
-    if(p_int2){
-        if(!tratamento_int2){
-            p_int2 = nullptr;
-        }
+        if (tratamento_int1)
+            p_int1 = p_teste1;
+        if(Cone::ValidacaoPontoBase(pP0, pVetor0, pTamanho))
+            p_int2 = Cone::IntersecaoRetaBase(this->centro, pP0, pVetor0, pTamanho);
+
     }
 
     return make_tuple(p_int1, p_int2);
+    
 }
 
 bool Cone::ValidacaoPontoCone(Ponto* vertice, Ponto* p_int, int tamanho){
@@ -114,4 +126,28 @@ bool Cone::ValidacaoPontoCone(Ponto* vertice, Ponto* p_int, int tamanho){
     return tratamento_int;
 }
 
+Ponto* Cone::IntersecaoRetaBase(Ponto* centro, Ponto* pP0,VectorXd pVetor0, int tamanho){
+
+    Plano* base = new Plano(centro, this->normal);
+    Ponto* p_int = base->IntersecaoRetaPlano(pP0, pVetor0, tamanho);
+    return p_int;
+
+}
+
+bool Cone::ValidacaoPontoBase(Ponto* pP0,VectorXd pVetor0, int tamanho){
+
+    /*
+        Interseção com nenhuma Base = 0
+        Interseção com uma Base = 1
+    */
+
+    Ponto* p = IntersecaoRetaBase(this->centro, pP0, pVetor0, tamanho);
+    VectorXd BasePonto = biblioteca::SubtracaoPontos(p,this->centro,tamanho);
+    double norma = sqrt(biblioteca::ProdutoEscalar(BasePonto,BasePonto,tamanho));
+
+    if ((0 <= norma && norma <= this->raio))
+        return true;
+    else
+        return false;
+}
 

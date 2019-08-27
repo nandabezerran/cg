@@ -18,15 +18,15 @@ tuple<Ponto*,Ponto*> Cilindro::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int 
     pVetor0 = biblioteca::NormalizaVetor(pVetor0,pTamanho);
 
     // C0P0 eh o P0 - C0
-    VectorXd C0P0 = biblioteca::SubtracaoPontos(pP0,this->centro,pTamanho);
+    VectorXd C0P0 = biblioteca::SubtracaoPontos(this->centro,pP0,pTamanho);
 
-    // V eh o ((C0P0) - ((C0P0)* pVetor0)* pVetor0)
-    double C0P0_u = biblioteca::ProdutoEscalar(C0P0,pVetor0,pTamanho);
-    VectorXd v = C0P0 - (C0P0_u * pVetor0);
+    // V eh o ((C0P0) - ((C0P0)* vetor_n)* vetor_n)
+    double C0P0_u = biblioteca::ProdutoEscalar(C0P0,this->normal,pTamanho);
+    VectorXd v = C0P0 - (C0P0_u * this->normal);
 
-    // W eh o (vetor_n - (vetor_n * pVetor0)*pVetor0)
-    double VetorN_u = biblioteca::ProdutoEscalar(this->normal,pVetor0,pTamanho);
-    VectorXd w = this->normal - (VetorN_u * pVetor0);
+    // W eh o (pVetor0 - (pVetor0 * vetor_n)*vetor_n)
+    double Vetor0_n = biblioteca::ProdutoEscalar(pVetor0,this->normal,pTamanho);
+    VectorXd w = pVetor0 - (Vetor0_n * this->normal);
 
     //A = w*w
     double a = biblioteca::ProdutoEscalar(w,w,pTamanho);
@@ -92,13 +92,14 @@ tuple<Ponto*,Ponto*> Cilindro::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int 
             p_int2 = p_teste2;
     }
 
+
     return make_tuple(p_int1, p_int2);
 
 }
 
 bool Cilindro::ValidacaoPontoLateral(Ponto* p_int, int tamanho){
 
-    VectorXd PB = biblioteca::SubtracaoPontos(p_int,this->centro,tamanho);
+    VectorXd PB = biblioteca::SubtracaoPontos(this->centro,p_int,tamanho);
     double PB_u = biblioteca::ProdutoEscalar(PB, this->normal,tamanho);
 
     if (0 <= PB_u && PB_u <= this->altura)
@@ -108,33 +109,6 @@ bool Cilindro::ValidacaoPontoLateral(Ponto* p_int, int tamanho){
 
 }
 
-int Cilindro::ValidacaoPontoBase(Ponto* pP0,VectorXd pVetor0, int tamanho){
-
-    /*
-        Interseção com nenhuma Base = 0
-        Interseção com uma Base = 1
-        Interseção com uma Base = 2
-    */
-
-    VectorXd H_n = this->altura*this->normal;
-    Ponto* centroInf = this->centro;
-    Ponto* centroSup = biblioteca::CriarPonto(this->centro->x + H_n[0], this->centro->y + H_n[1],this->centro->z + H_n[2]);
-
-    Ponto* p1 = IntersecaoRetaBase(centroInf, pP0, pVetor0, tamanho);
-    VectorXd BasePonto1 = biblioteca::SubtracaoPontos(p1,centroInf,tamanho);
-    double norma1 = sqrt(biblioteca::ProdutoEscalar(BasePonto1,BasePonto1,tamanho));
-
-    Ponto* p2 = IntersecaoRetaBase(centroSup, pP0, pVetor0, tamanho);
-    VectorXd BasePonto2 = biblioteca::SubtracaoPontos(p2,centroSup,tamanho);
-    double norma2 = sqrt(biblioteca::ProdutoEscalar(BasePonto2,BasePonto2,tamanho));
-
-    if ((0 <= norma1 && norma1 <= this->raio) && (0 <= norma2 && norma2 <= this->raio))
-        return 2;
-    else if ((0 <= norma1 && norma1 <= this->raio) || (0 <= norma2 && norma2 <= this->raio))
-        return 1;
-    else
-        return 0;
-}
 
 Ponto* Cilindro::IntersecaoRetaBase(Ponto* centro, Ponto* pP0,VectorXd pVetor0, int tamanho){
 
@@ -151,7 +125,7 @@ Ponto* Cilindro::ChoseBase(Ponto* pP0,VectorXd pVetor0, int tamanho){
     Ponto* centroSup = biblioteca::CriarPonto(this->centro->x + H_n[0], this->centro->y + H_n[1],this->centro->z + H_n[2]);
 
     Ponto* p = IntersecaoRetaBase(centroInf, pP0, pVetor0, tamanho);
-    VectorXd BasePonto = biblioteca::SubtracaoPontos(p,centroInf,tamanho);
+    VectorXd BasePonto = biblioteca::SubtracaoPontos(centroInf,p,tamanho);
     double norma = sqrt(biblioteca::ProdutoEscalar(BasePonto,BasePonto,tamanho));
 
     if((0 <= norma && norma <= this->raio)) {
@@ -161,4 +135,32 @@ Ponto* Cilindro::ChoseBase(Ponto* pP0,VectorXd pVetor0, int tamanho){
     else
         return(IntersecaoRetaBase(centroSup, pP0, pVetor0, tamanho));
 
+}
+
+int Cilindro::ValidacaoPontoBase(Ponto* pP0,VectorXd pVetor0, int tamanho){
+
+    /*
+        Interseção com nenhuma Base = 0
+        Interseção com uma Base = 1
+        Interseção com uma Base = 2
+    */
+
+    VectorXd H_n = this->altura*this->normal;
+    Ponto* centroInf = this->centro;
+    Ponto* centroSup = biblioteca::CriarPonto(this->centro->x + H_n[0], this->centro->y + H_n[1],this->centro->z + H_n[2]);
+
+    Ponto* p1 = IntersecaoRetaBase(centroInf, pP0, pVetor0, tamanho);
+    VectorXd BasePonto1 = biblioteca::SubtracaoPontos(centroInf,p1,tamanho);
+    double norma1 = sqrt(biblioteca::ProdutoEscalar(BasePonto1,BasePonto1,tamanho));
+
+    Ponto* p2 = IntersecaoRetaBase(centroSup, pP0, pVetor0, tamanho);
+    VectorXd BasePonto2 = biblioteca::SubtracaoPontos(centroSup,p2,tamanho);
+    double norma2 = sqrt(biblioteca::ProdutoEscalar(BasePonto2,BasePonto2,tamanho));
+
+    if ((0 <= norma1 && norma1 <= this->raio) && (0 <= norma2 && norma2 <= this->raio))
+        return 2;
+    else if ((0 <= norma1 && norma1 <= this->raio) || (0 <= norma2 && norma2 <= this->raio))
+        return 1;
+    else
+        return 0;
 }

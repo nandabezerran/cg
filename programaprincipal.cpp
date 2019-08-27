@@ -1,8 +1,6 @@
 #include "programaprincipal.hpp"
-#include "biblioteca/Cubo.hpp"
 #include <iostream>
 #include <stdlib.h>
-
 
 
 using namespace std;
@@ -148,6 +146,7 @@ int main(void){
 
     printIntersecoes(p_int1, p_int2);
 
+
     // Intersecao Reta/Cone
 
     H = 4;
@@ -164,8 +163,36 @@ int main(void){
 
     printIntersecoes(p_int1, p_int2);
 
+    // --------------- GRADE TESTE -----------------------
+
+    H = 10;
+    raio = 2;
+    vetor0 << 1,0,0;
+    vetor_n << 1,0,0;
+    p0 = biblioteca::CriarPonto(0,0,0);
+    p_centro = biblioteca::CriarPonto(10,0,0);
+
+    cout << "\nReta/Cone: " << endl;
+    Cone* con = new Cone(H, raio, p_centro, vetor_n);
+
+
+    for (int i = 0; i < 2; i++){
+        for (int j = 0; j < 2; j++){
+    
+            vetor0 << 1,i,j;
+            cout << "Vetor0: " << vetor0.format(CommaInitFmt) << endl;
+            std::tie(p_int1,p_int2) = con->IntersecaoReta(p0, vetor0, tamanho);
+            printIntersecoes(p_int1, p_int2);
+
+        }
+    }
+
+
+
     return 0;
 }
+
+
 
 void printIntersecoes(Ponto* p_int1, Ponto* p_int2){
 

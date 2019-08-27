@@ -1,6 +1,7 @@
 //
 // Created by thais on 26/08/2019.
 //
+/*
 
 #ifndef COMPUTACAOGRAFICA_CUBO_HPP
 #define COMPUTACAOGRAFICA_CUBO_HPP
@@ -19,3 +20,5 @@ public:
     tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTamanho) override;
 };
 #endif //COMPUTACAOGRAFICA_CUBO_HPP
+
+*/

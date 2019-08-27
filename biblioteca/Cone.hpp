@@ -17,6 +17,10 @@ public:
     Cone(float pAltura, float pRaio, Ponto* pCentro, VectorXd pNormal);
     bool ValidacaoPontoCone(Ponto* vertice, Ponto* p_int, int tamanho);
     tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, VectorXd pVetor0,int pTamanho);
+    Ponto* IntersecaoRetaBase(Ponto* centro, Ponto* pP0,VectorXd pVetor0, int tamanho);
+    bool ValidacaoPontoBase(Ponto* pP0,VectorXd pVetor0, int tamanho);
+
+
 
 };
 

@@ -2,6 +2,8 @@
 // Created by thais on 26/08/2019.
 //
 
+/*
+
 #include "Cubo.hpp"
 #include "biblioteca.hpp"
 #include "Plano.hpp"
@@ -52,3 +54,4 @@ tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTam
 }
 
 
+*/

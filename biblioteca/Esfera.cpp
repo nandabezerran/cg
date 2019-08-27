@@ -15,14 +15,16 @@ tuple<Ponto*,Ponto*> Esfera::IntersecaoReta(Ponto* pP0, VectorXd pVetor0,int pTa
 
     // A*t_int² + B*t_int + C = 0
 
+    pVetor0 = biblioteca::NormalizaVetor(pVetor0,pTamanho);
+
     // C0P0 eh o P0 - C0
-    VectorXd C0P0 = biblioteca::SubtracaoPontos(pP0,this->centro,pTamanho);
+    VectorXd C0P0 = biblioteca::SubtracaoPontos(this->centro,pP0,pTamanho);
 
     // A = u*u
     double produtoA = biblioteca::ProdutoEscalar(pVetor0,pVetor0,pTamanho);
 
     // B = 2 * (P0 - C0) * u
-    double produtoB = 2 * biblioteca::ProdutoEscalar(C0P0,pVetor0,pTamanho);
+    double produtoB = biblioteca::ProdutoEscalar(C0P0,pVetor0,pTamanho);
 
     // C = (P0 - C0) * (P0 - C0) - R²
     double produtoC = biblioteca::ProdutoEscalar(C0P0,C0P0,pTamanho) - (this->raio*this->raio);
@@ -46,6 +48,10 @@ tuple<Ponto*,Ponto*> Esfera::IntersecaoReta(Ponto* pP0, VectorXd pVetor0,int pTa
         t_int1 = (-produtoB + sqrt(Delta))/produtoA;
         p_t_int1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
     }
+
+
+
+    //cout << "Esfera  " << produtoA << " "<< produtoB  << " "<<  produtoC  << " "<<  Delta  << " "<<  t_int1  << " "<< t_int2 <<  endl; 
 
     return make_tuple(p_t_int1, p_t_int2);
 
