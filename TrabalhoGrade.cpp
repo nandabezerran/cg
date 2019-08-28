@@ -68,10 +68,11 @@ Ponto** createGrid(float pLength, float pYDistance, int pMatrixSize){
 
     Ponto **finalMatrix = MatrixAllocation(pMatrixSize);
 
-    for(int row = 0; row < pMatrixSize; ++row ){
-        posX = -pLength/2 + row*pointDistance;
-        for (int column = 0; column < pMatrixSize; ++column){
-            posY = pLength/2 - column*pointDistance;
+    for(int column = 0; column < pMatrixSize; ++column ){
+        posY = -pLength/2 + column*pointDistance;
+        for (int row = 0; row < pMatrixSize; ++row){
+            posX = -pLength/2 + row*pointDistance;
+
             Ponto p;
             p.x = posX;
             p.y = posY;
@@ -137,16 +138,16 @@ int main(){
     normal << 0,1,0;
     //ALTURA, RAIO, CENTRO, NORMAL
     //auto *objeto3 = new Esfera(5, biblioteca::CriarPonto(0,0,-10));
-    //auto *objeto2 = new Cilindro(10, 4, biblioteca::CriarPonto(0,0,-10), normal);
-    auto *objeto1 = new Cone(20, 8, biblioteca::CriarPonto(0,10,-10), normal);
+    auto *objeto2 = new Cilindro(10, 4, biblioteca::CriarPonto(0,0,-10), normal);
+    //auto *objeto1 = new Cone(20, 8, biblioteca::CriarPonto(0,10,-10), normal);
     //Cone *objeto1 = new Cone(20, 4, biblioteca::CriarPonto(0,0,-4), normal);
     //Cubo* objeto3 = new Cubo(normal, 4, biblioteca::CriarPonto(0,0,-5));
     //Cubo* objeto4 = new Cubo();
     //Cubo* objeto5 = new Cubo();
 
 
-    objects.push_back(objeto1);
-    //objects.push_back(objeto2);
+    //objects.push_back(objeto1);
+    objects.push_back(objeto2);
     //objects.push_back(objeto3);
     //objects.push_back(objeto4);
     //objects.push_back(objeto5);
@@ -164,6 +165,7 @@ int main(){
         for (int j = 0; j < matrixSize ; ++j) {
             cout << "Ponto da grade: " << matrix[i][j].x << "," << matrix[i][j].y << "," << matrix[i][j].z << "\n";
             pintura[i][j] = intersections(objects, pZObserver, pYObserver, matrix[i][j]);;
+
         }
     }
     PrintMatrixInt(pintura, matrixSize);
