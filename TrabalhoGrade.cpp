@@ -24,10 +24,29 @@ Ponto** MatrixAllocation(int size){
     return matrix;
 }
 
+int** MatrixAllocationInt(int size){
+    auto **matrix = new int*[size];
+
+    for (int i = 0; i < size; i++){
+        matrix[i] = new int[size];
+    }
+    return matrix;
+}
+
 void PrintMatrix(Ponto **matrix, int size){
     for (int l = 0; l < size; ++l) {
         for (int m = 0; m < size; ++m) {
             cout << matrix[l][m].x << " ," << matrix[l][m].y << " ,"<< matrix[l][m].z;
+            cout << " | ";
+        }
+        cout << "\n";
+    }
+    cout << "\n";
+}
+void PrintMatrixInt(int **matrix, int size){
+    for (int l = 0; l < size; ++l) {
+        for (int m = 0; m < size; ++m) {
+            cout << matrix[l][m];
             cout << " | ";
         }
         cout << "\n";
@@ -65,7 +84,7 @@ Ponto** createGrid(float pLength, float pYDistance, int pMatrixSize){
     return finalMatrix;
 }
 
-void intersections(vector<Objeto*> Objects, double pZObserver, double pYObserver, Ponto pointGrid){
+int intersections(vector<Objeto*> Objects, double pZObserver, double pYObserver, Ponto pointGrid){
     int tamanho = 3;
 
     auto *p = new Ponto;
@@ -85,23 +104,29 @@ void intersections(vector<Objeto*> Objects, double pZObserver, double pYObserver
             cout << "Duas intersecao no objeto : " << Object->nome<< "\n";
             cout << "Primeira intersecao : " << p_int1->x << "," << p_int1->y  << "," << p_int1->z<< "\n";
             cout << "Segunda intersecao : " << p_int2->x << "," << p_int2->y  << "," << p_int2->z;
+            return 1;
+
         }
         else{
             if(p_int1 != nullptr){
                 cout << "Uma intersecao no objeto : " << Object->nome << "\n";
                 cout << "Ponto de intersecao : " << p_int1->x << "," << p_int1->y  << "," << p_int1->z;
+                return 1;
             }
             else if(p_int2 != nullptr){
                 cout << "Uma intersecao no objeto : " << Object->nome << "\n";
                 cout << "Ponto de intersecao : " << p_int2->x << "," << p_int2->y  << "," << p_int2->z;
+                return 1;
             }
             else{
-                cout << "Nenhuma intersecao no objeto : " << Object->nome;
+                cout << "Nenhuma intersecao no objeto : " << Object->nome<< "\n";
+                return 0;
             }
         }
-        cout << "\n";
+
     }
     cout << "\n\n";
+    cout << "\n";
     delete(p);
 }
 
@@ -111,8 +136,9 @@ int main(){
     VectorXd normal(3);
     normal << 0,1,0;
     //ALTURA, RAIO, CENTRO, NORMAL
-    //Esfera *objeto2 = new Esfera(5, biblioteca::CriarPonto(0,0,10));
-    Cilindro *objeto2 = new Cilindro(10, 4, biblioteca::CriarPonto(0,0,10), normal);
+    auto *objeto3 = new Esfera(5, biblioteca::CriarPonto(0,0,10));
+    //auto *objeto2 = new Cilindro(10, 4, biblioteca::CriarPonto(0,0,10), normal);
+    //auto *objeto1 = new Cone(20, 8, biblioteca::CriarPonto(0,10,10), normal);
     //Cone *objeto1 = new Cone(20, 4, biblioteca::CriarPonto(0,0,4), normal);
     //Cubo* objeto3 = new Cubo(normal, 4, biblioteca::CriarPonto(0,0,5));
     //Cubo* objeto4 = new Cubo();
@@ -120,8 +146,8 @@ int main(){
 
 
     //objects.push_back(objeto1);
-    objects.push_back(objeto2);
-    //objects.push_back(objeto3);
+    //objects.push_back(objeto2);
+    objects.push_back(objeto3);
     //objects.push_back(objeto4);
     //objects.push_back(objeto5);
 
@@ -131,14 +157,16 @@ int main(){
     float pLength = 10;
     float pZGrid = 4;
     Ponto** matrix = createGrid(pLength, pZGrid, matrixSize);
+    int** pintura = MatrixAllocationInt(matrixSize);
     //PrintMatrix(matrix,10);
 
     for (int i = 0; i < matrixSize; ++i) {
         for (int j = 0; j < matrixSize ; ++j) {
             cout << "Ponto da grade: " << matrix[i][j].x << "," << matrix[i][j].y << "," << matrix[i][j].z << "\n";
-            intersections(objects, pZObserver, pYObserver, matrix[i][j]);
+            pintura[i][j] = intersections(objects, pZObserver, pYObserver, matrix[i][j]);;
         }
     }
+    PrintMatrixInt(pintura, matrixSize);
 
 
 }
