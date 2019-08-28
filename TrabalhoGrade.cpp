@@ -44,9 +44,9 @@ void PrintMatrix(Ponto **matrix, int size){
     cout << "\n";
 }
 void PrintMatrixInt(int **matrix, int size){
-    for (int l = 0; l < size; ++l) {
+    for (int l = size-1; l >=0; --l) {
         for (int m = 0; m < size; ++m) {
-            cout << matrix[l][m];
+            cout << matrix[m][l];
             cout << " | ";
         }
         cout << "\n";
@@ -110,12 +110,12 @@ int intersections(vector<Objeto*> Objects, double pZObserver, double pYObserver,
         else{
             if(p_int1 != nullptr){
                 cout << "Uma intersecao no objeto : " << Object->nome << "\n";
-                cout << "Ponto de intersecao : " << p_int1->x << "," << p_int1->y  << "," << p_int1->z;
+                cout << "Ponto de intersecao : " << p_int1->x << "," << p_int1->y  << "," << p_int1->z<< "\n";
                 return 1;
             }
             else if(p_int2 != nullptr){
                 cout << "Uma intersecao no objeto : " << Object->nome << "\n";
-                cout << "Ponto de intersecao : " << p_int2->x << "," << p_int2->y  << "," << p_int2->z;
+                cout << "Ponto de intersecao : " << p_int2->x << "," << p_int2->y  << "," << p_int2->z<< "\n";
                 return 1;
             }
             else{
@@ -136,18 +136,18 @@ int main(){
     VectorXd normal(3);
     normal << 0,1,0;
     //ALTURA, RAIO, CENTRO, NORMAL
-    auto *objeto3 = new Esfera(5, biblioteca::CriarPonto(0,0,10));
+    //auto *objeto3 = new Esfera(5, biblioteca::CriarPonto(0,0,10));
     //auto *objeto2 = new Cilindro(10, 4, biblioteca::CriarPonto(0,0,10), normal);
-    //auto *objeto1 = new Cone(20, 8, biblioteca::CriarPonto(0,10,10), normal);
+    auto *objeto1 = new Cone(20, 8, biblioteca::CriarPonto(0,10,10), normal);
     //Cone *objeto1 = new Cone(20, 4, biblioteca::CriarPonto(0,0,4), normal);
     //Cubo* objeto3 = new Cubo(normal, 4, biblioteca::CriarPonto(0,0,5));
     //Cubo* objeto4 = new Cubo();
     //Cubo* objeto5 = new Cubo();
 
 
-    //objects.push_back(objeto1);
+    objects.push_back(objeto1);
     //objects.push_back(objeto2);
-    objects.push_back(objeto3);
+    //objects.push_back(objeto3);
     //objects.push_back(objeto4);
     //objects.push_back(objeto5);
 
