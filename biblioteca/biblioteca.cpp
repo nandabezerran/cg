@@ -48,10 +48,7 @@ VectorXd biblioteca::SubtracaoPontos(Ponto* p1, Ponto* p2, int tamanho){
 
 
 Ponto* biblioteca::EquacaoDaReta(Ponto* p, double t, VectorXd vetor){
-    Ponto* resultante = new Ponto;
-    resultante->x = p->x + t*vetor[0];
-    resultante->y = p->y + t*vetor[1];
-    resultante->z = p->z + t*vetor[2];
+    Ponto* resultante = biblioteca::CriarPonto(p->x + t*vetor[0],p->y + t*vetor[1],p->z + t*vetor[2]);
     return resultante;
 }
 

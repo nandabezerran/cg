@@ -8,6 +8,7 @@
 #include "biblioteca.hpp"
 #include "Objeto.hpp"
 #include "Plano.hpp"
+#include <vector>
 
 struct Aresta{
     Vector3d aresta;

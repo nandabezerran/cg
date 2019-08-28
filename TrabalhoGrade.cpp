@@ -45,7 +45,7 @@ Ponto** createGrid(float pLength, float pYDistance, int pMatrixSize){
     float pointDistance = pLength/(pMatrixSize -1);
     float posX;
     float posY;
-    float z = -pYDistance;
+    float z = pYDistance;
 
     Ponto **finalMatrix = MatrixAllocation(pMatrixSize);
 
@@ -65,15 +65,17 @@ Ponto** createGrid(float pLength, float pYDistance, int pMatrixSize){
     return finalMatrix;
 }
 
-void intersections(vector<Objeto*> Objects, double pDistanceObserver, Ponto pointGrid){
+void intersections(vector<Objeto*> Objects, double pZObserver, double pYObserver, Ponto pointGrid){
     int tamanho = 3;
 
     auto *p = new Ponto;
     *p = pointGrid;
 
-    Ponto* observerPos = biblioteca::CriarPonto(0, 0, - pDistanceObserver - pointGrid.z);
+    Ponto* observerPos = biblioteca::CriarPonto(0, pYObserver, pZObserver);
 
     VectorXd lineObGrid = biblioteca::SubtracaoPontos(observerPos, p, tamanho);
+
+    cout << lineObGrid << endl;
 
     Ponto* p_int1;
     Ponto* p_int2;
@@ -100,16 +102,17 @@ void intersections(vector<Objeto*> Objects, double pDistanceObserver, Ponto poin
         cout << "\n";
     }
     cout << "\n\n";
+    delete(p);
 }
 
 int main(){
 
     vector<Objeto*> objects;
     VectorXd normal(3);
-    normal << 0,0,1;
+    normal << 0,1,0;
     //ALTURA, RAIO, CENTRO, NORMAL
     //Esfera *objeto2 = new Esfera(5, biblioteca::CriarPonto(0,0,10));
-    Cilindro *objeto2 = new Cilindro(10, 2, biblioteca::CriarPonto(0,0,10), normal);
+    Cilindro *objeto2 = new Cilindro(10, 4, biblioteca::CriarPonto(0,0,10), normal);
     //Cone *objeto1 = new Cone(20, 4, biblioteca::CriarPonto(0,0,4), normal);
     //Cubo* objeto3 = new Cubo(normal, 4, biblioteca::CriarPonto(0,0,5));
     //Cubo* objeto4 = new Cubo();
@@ -122,17 +125,18 @@ int main(){
     //objects.push_back(objeto4);
     //objects.push_back(objeto5);
 
-    float pDistanceObserverGrid = 0;
-    int matrixSize = 5;
-    float pLength = 4;
-    float pYDistance = -1;
-    Ponto** matrix = createGrid(pLength, pYDistance, matrixSize);
+    float pZObserver = 0;
+    float pYObserver = 0;
+    int matrixSize = 10;
+    float pLength = 10;
+    float pZGrid = 4;
+    Ponto** matrix = createGrid(pLength, pZGrid, matrixSize);
     //PrintMatrix(matrix,10);
 
     for (int i = 0; i < matrixSize; ++i) {
         for (int j = 0; j < matrixSize ; ++j) {
             cout << "Ponto da grade: " << matrix[i][j].x << "," << matrix[i][j].y << "," << matrix[i][j].z << "\n";
-            intersections(objects,  pDistanceObserverGrid, matrix[i][j]);
+            intersections(objects, pZObserver, pYObserver, matrix[i][j]);
         }
     }
 
