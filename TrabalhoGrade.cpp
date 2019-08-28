@@ -136,11 +136,11 @@ int main(){
     VectorXd normal(3);
     normal << 0,1,0;
     //ALTURA, RAIO, CENTRO, NORMAL
-    //auto *objeto3 = new Esfera(5, biblioteca::CriarPonto(0,0,10));
-    //auto *objeto2 = new Cilindro(10, 4, biblioteca::CriarPonto(0,0,10), normal);
-    auto *objeto1 = new Cone(20, 8, biblioteca::CriarPonto(0,10,10), normal);
-    //Cone *objeto1 = new Cone(20, 4, biblioteca::CriarPonto(0,0,4), normal);
-    //Cubo* objeto3 = new Cubo(normal, 4, biblioteca::CriarPonto(0,0,5));
+    //auto *objeto3 = new Esfera(5, biblioteca::CriarPonto(0,0,-10));
+    //auto *objeto2 = new Cilindro(10, 4, biblioteca::CriarPonto(0,0,-10), normal);
+    auto *objeto1 = new Cone(20, 8, biblioteca::CriarPonto(0,10,-10), normal);
+    //Cone *objeto1 = new Cone(20, 4, biblioteca::CriarPonto(0,0,-4), normal);
+    //Cubo* objeto3 = new Cubo(normal, 4, biblioteca::CriarPonto(0,0,-5));
     //Cubo* objeto4 = new Cubo();
     //Cubo* objeto5 = new Cubo();
 
@@ -155,7 +155,7 @@ int main(){
     float pYObserver = 0;
     int matrixSize = 10;
     float pLength = 10;
-    float pZGrid = 4;
+    float pZGrid = -4;
     Ponto** matrix = createGrid(pLength, pZGrid, matrixSize);
     int** pintura = MatrixAllocationInt(matrixSize);
     //PrintMatrix(matrix,10);
