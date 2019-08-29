@@ -17,18 +17,22 @@ tuple<Ponto*, Ponto*> Cone::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTa
 
     //Vetor auxiliar para calcular o vertice do cone (H*n)
     VectorXd vetor_aux = this->altura*this->normal;
+    //cout << "altura: " << this->altura << endl;
+    //cout << "normal: " << this->normal << endl;
 
     Ponto* vertice = biblioteca::CriarPonto(this->centro->x + vetor_aux[0], this->centro->y + vetor_aux[1],
             this->centro->z + vetor_aux[2]);
 
 
-    //cout << vertice.x << vertice.y << vertice.z << endl;
+    //cout << "x:" << vertice->x << " y:" << vertice->y << " z:" << vertice->z << endl;
 
     //vetor d normalizado
     VectorXd d = biblioteca::NormalizaVetor(pVetor0,pTamanho);
+    //cout << "vetor d: " << d << endl;
 
     //cos alfa
     double cos_alfa = this->altura / (sqrt(pow(this->altura,2) + pow(raio,2)));
+    //cout << "cos_alfa: " << cos_alfa << endl;
 
     //vetor v
     VectorXd v(pTamanho);
@@ -39,25 +43,29 @@ tuple<Ponto*, Ponto*> Cone::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTa
 
     //a
     double a = pow(biblioteca::ProdutoEscalar(d,this->normal,pTamanho),2) - pow(cos_alfa,2);
-    //cout << a << endl;
+    cout << "a: " << a << endl;
 
     //b
     double b = (biblioteca::ProdutoEscalar(v,d,pTamanho) * pow(cos_alfa,2))
             - (biblioteca::ProdutoEscalar(v,this->normal,pTamanho)) * (biblioteca::ProdutoEscalar(d,this->normal,pTamanho));
-    //cout << b << endl;
+    cout << "b: " << b << endl;
 
     //c
     double c = pow(biblioteca::ProdutoEscalar(v,this->normal,pTamanho),2)
             - (biblioteca::ProdutoEscalar(v,v,pTamanho)*pow(cos_alfa,2));
-    //cout << c << endl;
+    cout << "c: " << c << endl;
 
     //delta
     double delta = b*b - a*c;
 
-    if (delta < 0.000001)
+    if (delta < 0.00000000001 && delta >-0.00000000001 )
         delta = 0;
-    
-
+    if (a < 0.00000000001 && a>-0.00000000001)
+        a = 0;
+    if (b < 0.00000000001 && b>-0.00000000001)
+        b = 0;
+    if (c < 0.00000000001 && c>-0.00000000001)
+        c = 0;  
     //cout<<"delta:"<<delta<<endl;
 
     /*  Δ > 0 tem 2 intersecoes
@@ -70,7 +78,6 @@ tuple<Ponto*, Ponto*> Cone::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTa
     bool tratamento_int1 = false, tratamento_int2 = false;
 
     if (delta > 0){
-
         if(a!=0){
             t_int1 = (-b + sqrt(delta))/a;
             t_int2 = (-b - sqrt(delta))/a;

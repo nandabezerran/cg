@@ -95,16 +95,17 @@ int intersections(vector<Objeto*> Objects, double pZObserver, double pYObserver,
 
     VectorXd lineObGrid = biblioteca::SubtracaoPontos(observerPos, p, tamanho);
 
-    cout << lineObGrid << endl;
-
+    //cout << lineObGrid << endl;
+    cout << endl;
     Ponto* p_int1;
     Ponto* p_int2;
     for (auto &Object : Objects) {
-        std::tie(p_int1,p_int2) = Object->IntersecaoReta(observerPos, lineObGrid, tamanho);
+        tie(p_int1,p_int2) = Object->IntersecaoReta(observerPos, lineObGrid, tamanho);
+        
         if(p_int1 != nullptr && p_int2 != nullptr){
             cout << "Duas intersecao no objeto : " << Object->nome<< "\n";
             cout << "Primeira intersecao : " << p_int1->x << "," << p_int1->y  << "," << p_int1->z<< "\n";
-            cout << "Segunda intersecao : " << p_int2->x << "," << p_int2->y  << "," << p_int2->z;
+            cout << "Segunda intersecao : " << p_int2->x << "," << p_int2->y  << "," << p_int2->z << endl;
             return 1;
 
         }
@@ -138,24 +139,24 @@ int main(){
     normal << 0,1,0;
     //ALTURA, RAIO, CENTRO, NORMAL
     //auto *objeto3 = new Esfera(5, biblioteca::CriarPonto(0,0,-10));
-    auto *objeto2 = new Cilindro(10, 4, biblioteca::CriarPonto(0,0,-10), normal);
+    //auto *objeto2 = new Cilindro(10, 4, biblioteca::CriarPonto(0,0,-10), normal);
     //auto *objeto1 = new Cone(20, 8, biblioteca::CriarPonto(0,10,-10), normal);
-    //Cone *objeto1 = new Cone(20, 4, biblioteca::CriarPonto(0,0,-4), normal);
+    auto *objeto1 = new Cone(10, 4, biblioteca::CriarPonto(0,0,-10), normal);
     //Cubo* objeto3 = new Cubo(normal, 4, biblioteca::CriarPonto(0,0,-5));
     //Cubo* objeto4 = new Cubo();
     //Cubo* objeto5 = new Cubo();
 
 
-    //objects.push_back(objeto1);
-    objects.push_back(objeto2);
+    objects.push_back(objeto1);
+    //objects.push_back(objeto2);
     //objects.push_back(objeto3);
     //objects.push_back(objeto4);
     //objects.push_back(objeto5);
 
     float pZObserver = 0;
     float pYObserver = 0;
-    int matrixSize = 10;
-    float pLength = 10;
+    int matrixSize = 12;
+    float pLength = 4;
     float pZGrid = -4;
     Ponto** matrix = createGrid(pLength, pZGrid, matrixSize);
     int** pintura = MatrixAllocationInt(matrixSize);
