@@ -1,3 +1,4 @@
+/*
 //
 // Created by thais on 26/08/2019.
 //
@@ -51,3 +52,5 @@ Cubo::Cubo(double cAresta, Ponto* cCentro, VectorXd cNormal): aresta(cAresta), c
 //}
 
 
+
+*/

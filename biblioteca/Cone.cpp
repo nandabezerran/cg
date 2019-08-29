@@ -42,7 +42,7 @@ tuple<Ponto*, Ponto*> Cone::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTa
     //cout << v << endl;
 
     //a
-    double a = pow(biblioteca::ProdutoEscalar(d,this->normal,pTamanho),2) - pow(cos_alfa,2);
+    double a = pow(biblioteca::ProdutoEscalar(d,this->normal,pTamanho),2) - (biblioteca::ProdutoEscalar(d,d,pTamanho)*pow(cos_alfa,2));
     cout << "a: " << a << endl;
 
     //b
@@ -86,8 +86,8 @@ tuple<Ponto*, Ponto*> Cone::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTa
             t_int2 = -c / 2*b;
         }
 
-        Ponto* p_teste1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
-        Ponto* p_teste2 = biblioteca::EquacaoDaReta(pP0,t_int2,pVetor0);
+        Ponto* p_teste1 = biblioteca::EquacaoDaReta(pP0,t_int1,d);
+        Ponto* p_teste2 = biblioteca::EquacaoDaReta(pP0,t_int2,d);
         tratamento_int1 = this->ValidacaoPontoCone(vertice,p_teste1, pTamanho);
         tratamento_int2 = this->ValidacaoPontoCone(vertice,p_teste2, pTamanho);
 
@@ -104,7 +104,7 @@ tuple<Ponto*, Ponto*> Cone::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTa
     }
     else if (delta == 0 && (b!=0 && a!=0)){
         t_int1 = (-b + sqrt(delta))/a;
-        Ponto* p_teste1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
+        Ponto* p_teste1 = biblioteca::EquacaoDaReta(pP0,t_int1,d);
         tratamento_int1 = this->ValidacaoPontoCone(vertice,p_teste1, pTamanho);
 
         if (tratamento_int1)
@@ -127,8 +127,11 @@ bool Cone::ValidacaoPontoCone(Ponto* vertice, Ponto* p_int, int tamanho){
     vetor_aux_tratamento[2] = vertice->z - p_int->z;
 
     double escalar_tratamento = biblioteca::ProdutoEscalar(vetor_aux_tratamento,this->normal,tamanho);
-
-    bool tratamento_int = 0 <= escalar_tratamento && escalar_tratamento <= this->altura;
+    
+    bool tratamento_int = 0;
+    if(escalar_tratamento >= 0 && escalar_tratamento <= this->altura){
+        tratamento_int = 1;
+    }
 
     return tratamento_int;
 }

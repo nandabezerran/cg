@@ -143,12 +143,12 @@ int main(){
 
     vector<Objeto*> objects;
     VectorXd normal(3);
-    normal << 0,0,1;
+    normal << 0,1,0;
     //ALTURA, RAIO, CENTRO, NORMAL
     //auto *objeto3 = new Esfera(3, biblioteca::CriarPonto(0,0,-10));
-    //auto *objeto3 = new Cilindro(3, 1, biblioteca::CriarPonto(0,0,-10), normal);
-    //auto *objeto3 = new Cone(20, 8, biblioteca::CriarPonto(0,10,-10), normal);
-    auto *objeto3 = new Cone(5, 3, biblioteca::CriarPonto(0,0,-15), normal);
+    //auto *objeto2 = new Cilindro(3, 1, biblioteca::CriarPonto(0,-5,-10), normal);
+    //auto *objeto3 = new Cone(20, 8, biblioteca::CriarPonto(0,0,-10), normal);
+    auto *objeto3 = new Cone(3, 1, biblioteca::CriarPonto(0,0,-10), normal);
     //Cubo* objeto3 = new Cubo(normal, 4, biblioteca::CriarPonto(0,0,-5));
     //Cubo* objeto4 = new Cubo();
     //Cubo* objeto5 = new Cubo();
@@ -159,7 +159,7 @@ int main(){
     objects.push_back(objeto3);
     //objects.push_back(objeto4);
     //objects.push_back(objeto5);
-
+    
     float pZObserver = 0;
     float pYObserver = 0;
     int matrixSize = 50;
@@ -177,6 +177,24 @@ int main(){
         }
     }
     PrintMatrixInt(pintura, matrixSize);
+    
+   /*
+   VectorXd teste(3);
+   teste << 0,0,0;
+   Ponto* p1;
+   Ponto* p2;
+   //for(int i = -7; i < 8; i++){
+       for(int j = -7; j< 8; j++){
+           teste << 0,j,-10;
+           cout << "Ponto da grade: " << "x: 0 "   << "y: " << j << "z: -10" << endl;
+           tie(p1,p2) = objeto3->IntersecaoReta(biblioteca::CriarPonto(0,0,0),teste,3);
+           if(p1!=nullptr){
+               cout << "Ponto1: " << "x: " << p1->x << "y: " << p1->y << "z: " << p1->z << endl;
+           }
+           if(p2!=nullptr){
+               cout << "Ponto2: " << "x: " << p2->x << "y: " << p2->y << "z: " << p2->z << endl;
+           }
+       }
 
-
+    */
 }

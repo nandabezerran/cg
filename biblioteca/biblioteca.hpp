@@ -31,7 +31,7 @@ struct Face{
     Vertice* p1;
     Vertice* p2;
     Vertice* p3;
-    vector<Aresta> arestas;
+    //vector<Aresta> arestas;
 };
 
 

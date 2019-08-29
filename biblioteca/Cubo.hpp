@@ -2,7 +2,6 @@
 // Created by thais on 26/08/2019.
 //
 
-
 #ifndef COMPUTACAOGRAFICA_CUBO_HPP
 #define COMPUTACAOGRAFICA_CUBO_HPP
 #include "biblioteca.hpp"
