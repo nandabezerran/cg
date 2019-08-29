@@ -66,6 +66,29 @@ Ponto* biblioteca::CriarPonto(double x, double y, double z) {
     return p;
 }
 
+Vertice* biblioteca::CriarVertice(Ponto* ponto, string identificador){
+    Vertice* v = new Vertice;
+    v->p->x = ponto->x;
+    v->p->y = ponto->y;
+    v->p->z = ponto->z;
+    v->id = identificador;
+    return v;
+}
+
+Aresta* biblioteca::CriarAresta(Vertice *pi, Vertice *pf, string id) {
+    VectorXd aresta = biblioteca::SubtracaoVertices(pf, pi, 3);
+    Aresta* newAresta = new Aresta;
+    newAresta->id = id;
+    newAresta->verticeFinal = pf;
+    newAresta->verticeInicial = pi;
+    newAresta->aresta = aresta;
+    return newAresta;
+}
+
+VectorXd biblioteca::SubtracaoVertices(Vertice* v1, Vertice* v2, int tamanho){
+    return biblioteca::SubtracaoPontos(v1->p, v2->p, tamanho);
+}
+
 tuple<Ponto*, Ponto*> biblioteca::PontosDadoDistancia(Ponto* p_origem, const VectorXd vetor1, const VectorXd vetor2,
                                                     double l_comprimento, int tamanho){
 

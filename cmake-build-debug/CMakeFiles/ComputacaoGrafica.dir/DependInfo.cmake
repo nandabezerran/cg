@@ -4,14 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/thais/CLionProjects/ComputacaoGrafica/TrabalhoGrade.cpp" "/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.o"
-  "/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cilindro.cpp" "/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.o"
-  "/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cone.cpp" "/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.cpp.o"
-  "/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.cpp" "/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.o"
-  "/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Esfera.cpp" "/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.cpp.o"
-  "/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.cpp" "/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.o"
-  "/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Plano.cpp" "/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.cpp.o"
-  "/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.cpp" "/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.cpp.o"
+  "/home/384382/CLionProjects/ComputacaoGrafica/TrabalhoGrade.cpp" "/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.o"
+  "/home/384382/CLionProjects/ComputacaoGrafica/biblioteca/Cilindro.cpp" "/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.o"
+  "/home/384382/CLionProjects/ComputacaoGrafica/biblioteca/Cone.cpp" "/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.cpp.o"
+  "/home/384382/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.cpp" "/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.o"
+  "/home/384382/CLionProjects/ComputacaoGrafica/biblioteca/Esfera.cpp" "/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.cpp.o"
+  "/home/384382/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.cpp" "/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.o"
+  "/home/384382/CLionProjects/ComputacaoGrafica/biblioteca/Plano.cpp" "/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.cpp.o"
+  "/home/384382/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.cpp" "/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

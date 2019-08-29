@@ -2,24 +2,30 @@
 // Created by thais on 26/08/2019.
 //
 
-
-
 #include "Cubo.hpp"
 #include "biblioteca.hpp"
 #include "Plano.hpp"
 
-Cubo::Cubo(double cAresta, Ponto* cCentro, VectorXd cNormal): normal(cNormal), aresta(cAresta), centro(cCentro), Objeto("Cubo"){
-    Ponto* p1 = biblioteca::CriarPonto(this->centro->x + aresta/2, this->centro->y, this->centro->z + aresta/2);
-    Ponto* p2 = biblioteca::CriarPonto(this->centro->x + aresta/2, this->centro->y, this->centro->z - aresta/2);
+Cubo::Cubo(double cAresta, Ponto* cCentro, VectorXd cNormal): aresta(cAresta), centro(cCentro), Objeto("Cubo"){
+    Ponto* p1 = biblioteca::CriarPonto(this->centro->x - aresta/2, this->centro->y + aresta, this->centro->z + aresta/2);
+    Ponto* p2 = biblioteca::CriarPonto(this->centro->x - aresta/2, this->centro->y + aresta, this->centro->z - aresta/2);
     Ponto* p3 = biblioteca::CriarPonto(this->centro->x + aresta/2, this->centro->y + aresta, this->centro->z - aresta/2);
     Ponto* p4 = biblioteca::CriarPonto(this->centro->x + aresta/2, this->centro->y + aresta, this->centro->z + aresta/2);
     Ponto* p5 = biblioteca::CriarPonto(this->centro->x - aresta/2, this->centro->y, this->centro->z + aresta/2);
     Ponto* p6 = biblioteca::CriarPonto(this->centro->x - aresta/2, this->centro->y, this->centro->z - aresta/2);
-    Ponto* p7 = biblioteca::CriarPonto(this->centro->x - aresta/2, this->centro->y + aresta, this->centro->z - aresta/2);
-    Ponto* p8 = biblioteca::CriarPonto(this->centro->x - aresta/2, this->centro->y + aresta, this->centro->z + aresta/2);
+    Ponto* p7 = biblioteca::CriarPonto(this->centro->x + aresta/2, this->centro->y, this->centro->z - aresta/2);
+    Ponto* p8 = biblioteca::CriarPonto(this->centro->x + aresta/2, this->centro->y, this->centro->z + aresta/2);
 
+    Vertice* v1 = biblioteca::CriarVertice(p1, "V1");
+    Vertice* v2 = biblioteca::CriarVertice(p2, "V2");
+    Vertice* v3 = biblioteca::CriarVertice(p3, "V3");
+    Vertice* v4 = biblioteca::CriarVertice(p4, "V4");
+    Vertice* v5 = biblioteca::CriarVertice(p5, "V5");
+    Vertice* v6 = biblioteca::CriarVertice(p6, "V6");
+    Vertice* v7 = biblioteca::CriarVertice(p7, "V7");
+    Vertice* v8 = biblioteca::CriarVertice(p8, "V8");
 
-
+    //continuar
 }
 
 // tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTamanho) {
