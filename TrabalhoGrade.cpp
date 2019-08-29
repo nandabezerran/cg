@@ -10,7 +10,7 @@
 #include "biblioteca/Esfera.hpp"
 
 
-//Como compilar: g++ -c TrabalhoGrade.cpp ./biblioteca/*.cpp && g++ -o principal *.o
+//Como compilar: g++ -c TrabalhoGrade.cpp -I eigen -std=c++11 ./biblioteca/*.cpp && g++ -o principal *.o
 //Como executar: ./principal
 
 
@@ -37,17 +37,24 @@ void PrintMatrix(Ponto **matrix, int size){
     for (int l = 0; l < size; ++l) {
         for (int m = 0; m < size; ++m) {
             cout << matrix[l][m].x << " ," << matrix[l][m].y << " ,"<< matrix[l][m].z;
-            cout << " | ";
+            cout << " ";
         }
         cout << "\n";
     }
     cout << "\n";
 }
+
 void PrintMatrixInt(int **matrix, int size){
+    char c = 32;
     for (int l = size-1; l >=0; --l) {
         for (int m = 0; m < size; ++m) {
-            cout << matrix[m][l];
-            cout << " | ";
+            
+            if (matrix[m][l] == 1)
+                cout << "█";
+            else
+                cout << c; 
+
+            cout << " ";
         }
         cout << "\n";
     }
@@ -136,26 +143,26 @@ int main(){
 
     vector<Objeto*> objects;
     VectorXd normal(3);
-    normal << 0,1,0;
+    normal << 0,0,1;
     //ALTURA, RAIO, CENTRO, NORMAL
-    //auto *objeto3 = new Esfera(5, biblioteca::CriarPonto(0,0,-10));
-    //auto *objeto2 = new Cilindro(10, 4, biblioteca::CriarPonto(0,0,-10), normal);
-    //auto *objeto1 = new Cone(20, 8, biblioteca::CriarPonto(0,10,-10), normal);
-    auto *objeto1 = new Cone(10, 4, biblioteca::CriarPonto(0,0,-10), normal);
+    //auto *objeto3 = new Esfera(3, biblioteca::CriarPonto(0,0,-10));
+    //auto *objeto3 = new Cilindro(3, 1, biblioteca::CriarPonto(0,0,-10), normal);
+    //auto *objeto3 = new Cone(20, 8, biblioteca::CriarPonto(0,10,-10), normal);
+    auto *objeto3 = new Cone(5, 3, biblioteca::CriarPonto(0,0,-15), normal);
     //Cubo* objeto3 = new Cubo(normal, 4, biblioteca::CriarPonto(0,0,-5));
     //Cubo* objeto4 = new Cubo();
     //Cubo* objeto5 = new Cubo();
 
 
-    objects.push_back(objeto1);
+    //objects.push_back(objeto1);
     //objects.push_back(objeto2);
-    //objects.push_back(objeto3);
+    objects.push_back(objeto3);
     //objects.push_back(objeto4);
     //objects.push_back(objeto5);
 
     float pZObserver = 0;
     float pYObserver = 0;
-    int matrixSize = 12;
+    int matrixSize = 50;
     float pLength = 4;
     float pZGrid = -4;
     Ponto** matrix = createGrid(pLength, pZGrid, matrixSize);

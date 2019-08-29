@@ -1,6 +1,8 @@
 #ifndef BIBLIOTECA_H
 #define BIBLIOTECA_H
 #include <iostream>
+#include <string>
+#include <tuple>
 #include "../eigen/Eigen/Core"
 
 using namespace std;
