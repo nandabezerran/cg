@@ -110,6 +110,9 @@ tuple<Ponto*, Ponto*> biblioteca::PontosDadoDistancia(Ponto* p_origem, const Vec
     return make_tuple(p1,p2);
 
 }
+double biblioteca::distanciaEntrePontos(Ponto *p1, Ponto *p2) {
+    return sqrt((p2->x - p1->x) + (p2->y - p1->y) + (p2->y - p1->y));
+}
 
 
 

@@ -48,7 +48,7 @@ class biblioteca{
         static Ponto* CriarPonto(double x, double y, double z);
         static Vertice* CriarVertice(Ponto* p1, string id);
         static Aresta* CriarAresta(Vertice* pi, Vertice* pf, string id);
-
+        static double distanciaEntrePontos(Ponto* p1, Ponto* p2);
         //TODO: Encontrar nome melhor pra essa função (solução da prova 1)
         static tuple<Ponto*, Ponto*> PontosDadoDistancia(Ponto* p_origem, VectorXd vetor1, VectorXd vetor2,
                              double l_comprimento, int tamanho);
