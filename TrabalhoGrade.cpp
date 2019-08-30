@@ -8,6 +8,7 @@
 #include "biblioteca/biblioteca.hpp"
 #include "biblioteca/Cone.hpp"
 #include "biblioteca/Esfera.hpp"
+#include "biblioteca/cores.hpp"
 
 
 //Como compilar: g++ -c TrabalhoGrade.cpp -I eigen -std=c++11 ./biblioteca/*.cpp && g++ -o principal *.o
@@ -46,11 +47,11 @@ void PrintMatrix(Ponto **matrix, int size){
 
 void PrintMatrixInt(int **matrix, int size){
     char c = 32;
-    for (int l = size-1; l >=0; --l) {
+    for (int l = 0; l < size; ++l) {
         for (int m = 0; m < size; ++m) {
             
             if (matrix[m][l] == 1)
-                cout << "█";
+                cout << 219;
             else
                 cout << c; 
 
@@ -67,18 +68,18 @@ void PrintMatrixInt(int **matrix, int size){
 /// \param pMatrixSize
 /// \param pPointDistance
 /// \return Matrix filled with the points
-Ponto** createGrid(float pLength, float pYDistance, int pMatrixSize){
-    float pointDistance = pLength/(pMatrixSize -1);
+Ponto** createGrid(float pLength, float pZGrid, int pMatrixSize){
+    float pointDistance = pLength/(pMatrixSize);
     float posX;
     float posY;
-    float z = pYDistance;
+    float z = pZGrid;
 
     Ponto **finalMatrix = MatrixAllocation(pMatrixSize);
 
     for(int column = 0; column < pMatrixSize; ++column ){
-        posY = -pLength/2 + column*pointDistance;
+        posY = pLength/2 - pointDistance - column*pointDistance;
         for (int row = 0; row < pMatrixSize; ++row){
-            posX = -pLength/2 + row*pointDistance;
+            posX = -pLength/2 + pointDistance + row*pointDistance;
 
             Ponto p;
             p.x = posX;
@@ -92,92 +93,104 @@ Ponto** createGrid(float pLength, float pYDistance, int pMatrixSize){
     return finalMatrix;
 }
 
-int intersections(vector<Objeto*> Objects, double pZObserver, double pYObserver, Ponto pointGrid){
+bool intersections(vector<Objeto*> Objects, Ponto *posObs, Ponto pointGrid){
     int tamanho = 3;
 
     auto *p = new Ponto;
     *p = pointGrid;
 
-    Ponto* observerPos = biblioteca::CriarPonto(0, pYObserver, pZObserver);
+    VectorXd lineObGrid = biblioteca::SubtracaoPontos(posObs, p, tamanho);
 
-    VectorXd lineObGrid = biblioteca::SubtracaoPontos(observerPos, p, tamanho);
-
-    //cout << lineObGrid << endl;
-    cout << endl;
     Ponto* p_int1;
     Ponto* p_int2;
+    bool temPonto = false;
     for (auto &Object : Objects) {
-        tie(p_int1,p_int2) = Object->IntersecaoReta(observerPos, lineObGrid, tamanho);
+        tie(p_int1,p_int2) = Object->IntersecaoReta(posObs, lineObGrid, tamanho);
         
         if(p_int1 != nullptr && p_int2 != nullptr){
-            cout << "Duas intersecao no objeto : " << Object->nome<< "\n";
-            cout << "Primeira intersecao : " << p_int1->x << "," << p_int1->y  << "," << p_int1->z<< "\n";
-            cout << "Segunda intersecao : " << p_int2->x << "," << p_int2->y  << "," << p_int2->z << endl;
-            return 1;
+//            cout << "Duas intersecao no objeto : " << Object->nome<< "\n";
+//            cout << "Primeira intersecao : " << p_int1->x << "," << p_int1->y  << "," << p_int1->z<< "\n";
+//            cout << "Segunda intersecao : " << p_int2->x << "," << p_int2->y  << "," << p_int2->z << endl;
+            temPonto = true;
 
         }
         else{
             if(p_int1 != nullptr){
-                cout << "Uma intersecao no objeto : " << Object->nome << "\n";
-                cout << "Ponto de intersecao : " << p_int1->x << "," << p_int1->y  << "," << p_int1->z<< "\n";
-                return 1;
+//                cout << "Uma intersecao no objeto : " << Object->nome << "\n";
+//                cout << "Ponto de intersecao : " << p_int1->x << "," << p_int1->y  << "," << p_int1->z<< "\n";
+                temPonto = true;
             }
             else if(p_int2 != nullptr){
-                cout << "Uma intersecao no objeto : " << Object->nome << "\n";
-                cout << "Ponto de intersecao : " << p_int2->x << "," << p_int2->y  << "," << p_int2->z<< "\n";
-                return 1;
+//                cout << "Uma intersecao no objeto : " << Object->nome << "\n";
+//                cout << "Ponto de intersecao : " << p_int2->x << "," << p_int2->y  << "," << p_int2->z<< "\n";
+                temPonto = true;
             }
             else{
-                cout << "Nenhuma intersecao no objeto : " << Object->nome<< "\n";
-                return 0;
+//                cout << "Nenhuma intersecao no objeto : " << Object->nome<< "\n";
+
             }
         }
 
     }
-    cout << "\n\n";
-    cout << "\n";
+
     delete(p);
+    return temPonto;
 }
 
 int main(){
 
-    vector<Objeto*> objects;
-    VectorXd normal(3);
+
+
+    // ------------------------------------- Definição Objetos -------------------------------------------------------
+    //                  ORDEM DOS PARAMETROS DE ENTRADA: ALTURA, RAIO, CENTRO, NORMAL
+
+    Vector3d normal;
     normal << 0,1,0;
-    //ALTURA, RAIO, CENTRO, NORMAL
-    //auto *objeto3 = new Esfera(3, biblioteca::CriarPonto(0,0,-10));
+    auto *objeto1 = new Cone(4, 3, biblioteca::CriarPonto(0,0,-10), normal);
     auto *objeto2 = new Cilindro(5, 1, biblioteca::CriarPonto(0,-5,-10), normal);
-    //auto *objeto3 = new Cone(20, 8, biblioteca::CriarPonto(0,0,-10), normal);
-    auto *objeto3 = new Cone(4, 3, biblioteca::CriarPonto(0,0,-10), normal);
-    //Cubo* objeto3 = new Cubo(normal, 4, biblioteca::CriarPonto(0,0,-5));
-    //Cubo* objeto4 = new Cubo();
-    //Cubo* objeto5 = new Cubo();
+    //auto *objeto3 = new Cubo(normal, 4, biblioteca::CriarPonto(0,0,-5));
+    //auto *objeto4 = new Cubo();
+    //auto *objeto5 = new Cubo();
+    //auto *objeto6 = new Cone(20, 8, biblioteca::CriarPonto(0,0,-10), normal);
+    //auto *objeto7 = new Esfera(3, biblioteca::CriarPonto(0,0,-10));
 
 
-    //objects.push_back(objeto1);
-    objects.push_back(objeto2);
-    objects.push_back(objeto3);
+    vector<Objeto*> objetos;
+
+    objetos.push_back(objeto1);
+    objetos.push_back(objeto2);
+    //objects.push_back(objeto3);
     //objects.push_back(objeto4);
     //objects.push_back(objeto5);
+    //objects.push_back(objeto6);
+    //objects.push_back(objeto7);
     
-    float pZObserver = 0;
-    float pYObserver = 0;
+    // ------------------------------------- Coordenadas Observador --------------------------------------------------
+    float xObs = 0;
+    float yObs = 0;
+    float zObs = 0;
+    Ponto *posObs = biblioteca::CriarPonto(xObs, yObs, zObs);
+
+    // ------------------------------------- Infos da Grade ----------------------------------------------------------
     int matrixSize = 50;
-    float pLength = 4;
-    float pZGrid = -4;
-    Ponto** matrix = createGrid(pLength, pZGrid, matrixSize);
+    float tamGrade = 4;
+    float zGrade = -4;
+    Ponto** grade = createGrid(tamGrade, zGrade, matrixSize);
+
+
     int** pintura = MatrixAllocationInt(matrixSize);
-    //PrintMatrix(matrix,10);
 
     for (int i = 0; i < matrixSize; ++i) {
         for (int j = 0; j < matrixSize ; ++j) {
-            cout << "Ponto da grade: " << matrix[i][j].x << "," << matrix[i][j].y << "," << matrix[i][j].z << "\n";
-            pintura[i][j] = intersections(objects, pZObserver, pYObserver, matrix[i][j]);;
-
+            if(intersections(objetos, posObs, grade[i][j]))
+                pintura[i][j] = 1;
+            else
+                pintura[i][j] = 0;
         }
     }
     PrintMatrixInt(pintura, matrixSize);
-    
+    printf("%scolor", COR_VERDE);
+    cout << "sduahidusa" << endl;
 
    /*Matriz teste jarelio
 

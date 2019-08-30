@@ -1,0 +1,8 @@
+//
+// Created by fbeze on 29/08/2019.
+//
+
+#ifndef COMPUTACAOGRAFICA_CORES_HPP
+#define COMPUTACAOGRAFICA_CORES_HPP
+
+#endif //COMPUTACAOGRAFICA_CORES_HPP
