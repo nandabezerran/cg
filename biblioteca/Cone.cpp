@@ -93,13 +93,13 @@ tuple<Ponto*, Ponto*> Cone::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTa
 
         if (tratamento_int1)
             p_int1 = p_teste1;
-        else if(Cone::ValidacaoPontoBase(pP0, pVetor0, pTamanho))
-            p_int1 = Cone::IntersecaoRetaBase(this->centro, pP0, pVetor0, pTamanho);
+        else if(Cone::ValidacaoPontoBase(pP0, d, pTamanho))
+            p_int1 = Cone::IntersecaoRetaBase(this->centro, pP0, d, pTamanho);
 
         if (tratamento_int2) 
             p_int2 = p_teste2;
-        else if(Cone::ValidacaoPontoBase(pP0, pVetor0, pTamanho))
-            p_int2 = Cone::IntersecaoRetaBase(this->centro, pP0, pVetor0, pTamanho);
+        else if(Cone::ValidacaoPontoBase(pP0, d, pTamanho))
+            p_int2 = Cone::IntersecaoRetaBase(this->centro, pP0, d, pTamanho);
         
     }
     else if (delta == 0 && (b!=0 && a!=0)){
@@ -109,8 +109,8 @@ tuple<Ponto*, Ponto*> Cone::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTa
 
         if (tratamento_int1)
             p_int1 = p_teste1;
-        if(Cone::ValidacaoPontoBase(pP0, pVetor0, pTamanho))
-            p_int2 = Cone::IntersecaoRetaBase(this->centro, pP0, pVetor0, pTamanho);
+        if(Cone::ValidacaoPontoBase(pP0, d, pTamanho))
+            p_int2 = Cone::IntersecaoRetaBase(this->centro, pP0, d, pTamanho);
 
     }
 
