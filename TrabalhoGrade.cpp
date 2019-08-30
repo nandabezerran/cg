@@ -9,7 +9,49 @@
 #include "biblioteca/Cone.hpp"
 #include "biblioteca/Esfera.hpp"
 #include "biblioteca/cores.hpp"
+#include <algorithm>
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
+using namespace std;
+
+struct pontoIntersecao{
+    Ponto *p;
+    Objeto *objeto;
+    double distOrigem;
+
+};
+bool comparacaoDistancia(pontoIntersecao i,pontoIntersecao j){
+    return (i.distOrigem < j.distOrigem);
+}
+pontoIntersecao* criarPint(Ponto *p, Objeto *objeto, double distancia){
+    auto *pInt = new pontoIntersecao;
+    pInt->p = p;
+    pInt->objeto = objeto;
+    pInt->distOrigem = distancia;
+    return pInt;
+}
+struct setcolour
+{
+    colour _c;
+    HANDLE _console_handle;
+
+
+    setcolour(colour c, HANDLE console_handle)
+            : _c(c), _console_handle(0)
+    {
+        _console_handle = console_handle;
+    }
+};
+
+// We could use a template here, making it more generic. Wide streams won't
+// work with this version.
+basic_ostream<char> &operator<<(basic_ostream<char> &s, const setcolour &ref)
+{
+    SetConsoleTextAttribute(ref._console_handle, ref._c);
+    return s;
+}
 
 //Como compilar: g++ -c TrabalhoGrade.cpp -I eigen -std=c++11 ./biblioteca/*.cpp && g++ -o principal *.o
 //Como executar: ./principal
@@ -25,11 +67,11 @@ Ponto** MatrixAllocation(int size){
     return matrix;
 }
 
-int** MatrixAllocationInt(int size){
-    auto **matrix = new int*[size];
+colour** MatrixAllocationInt(int size){
+    auto **matrix = new colour*[size];
 
     for (int i = 0; i < size; i++){
-        matrix[i] = new int[size];
+        matrix[i] = new colour[size];
     }
     return matrix;
 }
@@ -38,23 +80,6 @@ void PrintMatrix(Ponto **matrix, int size){
     for (int l = 0; l < size; ++l) {
         for (int m = 0; m < size; ++m) {
             cout << matrix[l][m].x << " ," << matrix[l][m].y << " ,"<< matrix[l][m].z;
-            cout << " ";
-        }
-        cout << "\n";
-    }
-    cout << "\n";
-}
-
-void PrintMatrixInt(int **matrix, int size){
-    char c = 32;
-    for (int l = 0; l < size; ++l) {
-        for (int m = 0; m < size; ++m) {
-            
-            if (matrix[m][l] == 1)
-                cout << 219;
-            else
-                cout << c; 
-
             cout << " ";
         }
         cout << "\n";
@@ -93,7 +118,7 @@ Ponto** createGrid(float pLength, float pZGrid, int pMatrixSize){
     return finalMatrix;
 }
 
-bool intersections(vector<Objeto*> Objects, Ponto *posObs, Ponto pointGrid){
+vector<pontoIntersecao> intersections(vector<Objeto*> Objects, Ponto *posObs, Ponto pointGrid){
     int tamanho = 3;
 
     auto *p = new Ponto;
@@ -101,41 +126,120 @@ bool intersections(vector<Objeto*> Objects, Ponto *posObs, Ponto pointGrid){
 
     VectorXd lineObGrid = biblioteca::SubtracaoPontos(posObs, p, tamanho);
 
+    vector<pontoIntersecao> pInts;
     Ponto* p_int1;
     Ponto* p_int2;
-    bool temPonto = false;
+
     for (auto &Object : Objects) {
-        tie(p_int1,p_int2) = Object->IntersecaoReta(posObs, lineObGrid, tamanho);
-        
-        if(p_int1 != nullptr && p_int2 != nullptr){
-//            cout << "Duas intersecao no objeto : " << Object->nome<< "\n";
-//            cout << "Primeira intersecao : " << p_int1->x << "," << p_int1->y  << "," << p_int1->z<< "\n";
-//            cout << "Segunda intersecao : " << p_int2->x << "," << p_int2->y  << "," << p_int2->z << endl;
-            temPonto = true;
+        if(!Object->visibilidade) {
+            tie(p_int1, p_int2) = Object->IntersecaoReta(posObs, lineObGrid, tamanho);
 
-        }
-        else{
-            if(p_int1 != nullptr){
-//                cout << "Uma intersecao no objeto : " << Object->nome << "\n";
-//                cout << "Ponto de intersecao : " << p_int1->x << "," << p_int1->y  << "," << p_int1->z<< "\n";
-                temPonto = true;
-            }
-            else if(p_int2 != nullptr){
-//                cout << "Uma intersecao no objeto : " << Object->nome << "\n";
-//                cout << "Ponto de intersecao : " << p_int2->x << "," << p_int2->y  << "," << p_int2->z<< "\n";
-                temPonto = true;
-            }
-            else{
-//                cout << "Nenhuma intersecao no objeto : " << Object->nome<< "\n";
+            if (p_int1 != nullptr && p_int2 != nullptr) {
+                pInts.push_back(*criarPint(p_int1, Object, biblioteca::distanciaEntrePontos(posObs, p_int1)));
+                pInts.push_back(*criarPint(p_int2, Object, biblioteca::distanciaEntrePontos(posObs, p_int2)));
 
+            } else {
+                if (p_int1 != nullptr) {
+                    pInts.push_back(*criarPint(p_int1, Object, biblioteca::distanciaEntrePontos(posObs, p_int1)));
+                } else if (p_int2 != nullptr) {
+                    pInts.push_back(*criarPint(p_int2, Object, biblioteca::distanciaEntrePontos(posObs, p_int2)));
+
+                }
             }
         }
-
+    }
+    //Ordena o vetor
+    if (pInts.empty()){
+        return pInts;
     }
 
+    std::sort(pInts.begin(), pInts.end(), comparacaoDistancia);
     delete(p);
-    return temPonto;
+    return pInts;
 }
+
+vector<pontoIntersecao> intersections(Objeto* Object, Ponto *posObs, Ponto pointGrid){
+    int tamanho = 3;
+
+    auto *p = new Ponto;
+    *p = pointGrid;
+
+    VectorXd lineObGrid = biblioteca::SubtracaoPontos(posObs, p, tamanho);
+
+    vector<pontoIntersecao> pInts;
+    Ponto* p_int1;
+    Ponto* p_int2;
+
+    tie(p_int1, p_int2) = Object->IntersecaoReta(posObs, lineObGrid, tamanho);
+
+    if (p_int1 != nullptr && p_int2 != nullptr) {
+        pInts.push_back(*criarPint(p_int1, Object, biblioteca::distanciaEntrePontos(posObs, p_int1)));
+        pInts.push_back(*criarPint(p_int2, Object, biblioteca::distanciaEntrePontos(posObs, p_int2)));
+
+    } else {
+        if (p_int1 != nullptr) {
+            pInts.push_back(*criarPint(p_int1, Object, biblioteca::distanciaEntrePontos(posObs, p_int1)));
+        } else if (p_int2 != nullptr) {
+            pInts.push_back(*criarPint(p_int2, Object, biblioteca::distanciaEntrePontos(posObs, p_int2)));
+
+        }
+    }
+    delete(p);
+    return pInts;
+}
+
+void iniciarPintura(colour** &pintura, int tam){
+    for (int i = 0; i < tam; ++i) {
+        for (int j = 0; j < tam ; ++j) {
+            pintura[i][j] = BLUE;
+        }
+    }
+}
+
+colour** pintarObjeto(vector<Objeto*> pObjetos, int pMatrixSize, Ponto *posObs, Ponto** pGrade){
+    colour** pintura = MatrixAllocationInt(pMatrixSize);
+    iniciarPintura(pintura, pMatrixSize);
+    for (auto &pObjeto : pObjetos) {
+        if (pObjeto->visibilidade) {
+            for (int i = 0; i < pMatrixSize; ++i) {
+                for (int j = 0; j < pMatrixSize; ++j) {
+                    vector<pontoIntersecao> pints = intersections(pObjeto, posObs, pGrade[i][j]);
+                    if (!pints.empty()) {
+                        pintura[i][j] = pObjeto->cor;
+                    }
+                }
+            }
+        }
+    }
+    return pintura;
+}
+
+void PrintPintura(colour **matrix, int size){
+    HANDLE chandle = GetStdHandle(STD_OUTPUT_HANDLE);
+    for (int l = 0; l < size; ++l) {
+        for (int m = 0; m < size; ++m) {
+            #ifdef _WIN32
+            cout << setcolour(matrix[m][l], chandle) << '\xDB';
+            #elif __linux__
+            cout << "█";
+            #endif
+        }
+        cout << "\n";
+    }
+    cout << "\n";
+}
+
+/// Primeira pergunta que o creto quer, dado a linha e a coluna retornar o centro do ponto;
+/// \param linha
+/// \param coluna
+/// \param matriz
+/// \return
+Ponto* celulaMatrizPonto(int linha, int coluna, Ponto** matriz){
+    auto centroPonto = new Ponto;
+    *centroPonto = matriz[linha][coluna];
+    return centroPonto;
+}
+
 
 int main(){
 
@@ -172,25 +276,60 @@ int main(){
     Ponto *posObs = biblioteca::CriarPonto(xObs, yObs, zObs);
 
     // ------------------------------------- Infos da Grade ----------------------------------------------------------
-    int matrixSize = 50;
+    int matrixSize = 10;
     float tamGrade = 4;
     float zGrade = -4;
     Ponto** grade = createGrid(tamGrade, zGrade, matrixSize);
 
+    //int** pintura = MatrixAllocationInt(matrixSize);
+    colour** pintura;
+    int linha = 0;
+    int coluna = 0;
+    int qtdObjVisiveis = objetos.size();
+    vector<pontoIntersecao> pInts;
+    cout << "Quantidade de furos: " << matrixSize << "\n";
+    while(qtdObjVisiveis != 0){
+        cout << "Digite a linha desejada: " << "\n";
+        cin >> linha;
+        cout << "Digite a coluna desejada: " << "\n";
+        cin >> coluna;
 
-    int** pintura = MatrixAllocationInt(matrixSize);
+        pInts = intersections(objetos, posObs, grade[linha][coluna]);
 
-    for (int i = 0; i < matrixSize; ++i) {
-        for (int j = 0; j < matrixSize ; ++j) {
-            if(intersections(objetos, posObs, grade[i][j]))
-                pintura[i][j] = 1;
-            else
-                pintura[i][j] = 0;
+        cout << "Quantida de intersecoes: " << pInts.size() << "\n";
+
+
+        if(!pInts.empty()){
+            pInts[0].objeto->visibilidade = true;
+            cout << pInts[0].objeto->visibilidade << "\n";
+            cout << "Primeiro objeto acertado: " << pInts[0].objeto->nome << "\n";
+            qtdObjVisiveis -= 1;
+            PrintPintura(pintarObjeto(objetos, matrixSize, posObs, grade), matrixSize);
+            cout << objeto1->visibilidade << endl;
         }
+
+        if(qtdObjVisiveis == 0){
+            cout << "Todos os objetos encontrados !!" << endl;
+            break;
+        }
+
     }
-    PrintMatrixInt(pintura, matrixSize);
-    printf("%scolor", COR_VERDE);
-    cout << "sduahidusa" << endl;
+
+
+// ---------------------------------- Loop Para Percorrer Toda a Matriz ----------------------------------------------
+//    for (int i = 0; i < matrixSize ; ++i) {
+//        for (int j = 0; j < matrixSize ; ++j) {
+//            if(!intersections(objetos, posObs, grade[i][j]).empty()){
+//                pInts[0].objeto->visibilidade = true;
+//                PrintPintura(pintarObjeto(objetos, matrixSize, posObs, grade), matrixSize);
+//            }
+//        }
+//    }
+
+
+
+    system("pause");
+
 
    /*Matriz teste jarelio
 
