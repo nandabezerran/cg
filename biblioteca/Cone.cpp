@@ -6,9 +6,10 @@
 #include "Plano.hpp"
 
 
+
 Cone::Cone(float pAltura, float pRaio, Ponto* pCentro, VectorXd pNormal) : altura(pAltura), raio(pRaio),
                                                                           centro(pCentro), normal(pNormal),
-                                                                           Objeto("Cone") {}
+                                                                           Objeto("Cone", GREEN, false) {}
 
 tuple<Ponto*, Ponto*> Cone::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTamanho){
 
@@ -129,6 +130,8 @@ bool Cone::ValidacaoPontoCone(Ponto* vertice, Ponto* p_int, int tamanho){
     double escalar_tratamento = biblioteca::ProdutoEscalar(vetor_aux_tratamento,this->normal,tamanho);
     
     bool tratamento_int = 0;
+    if(escalar_tratamento < 0.00000000001 && escalar_tratamento > 0.00000000001)
+        escalar_tratamento = 0;
     if(escalar_tratamento >= 0 && escalar_tratamento <= this->altura){
         tratamento_int = 1;
     }
