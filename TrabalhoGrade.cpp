@@ -146,16 +146,16 @@ int main(){
     normal << 0,1,0;
     //ALTURA, RAIO, CENTRO, NORMAL
     //auto *objeto3 = new Esfera(3, biblioteca::CriarPonto(0,0,-10));
-    //auto *objeto2 = new Cilindro(3, 1, biblioteca::CriarPonto(0,-5,-10), normal);
+    auto *objeto2 = new Cilindro(5, 1, biblioteca::CriarPonto(0,-5,-10), normal);
     //auto *objeto3 = new Cone(20, 8, biblioteca::CriarPonto(0,0,-10), normal);
-    auto *objeto3 = new Cone(3, 1, biblioteca::CriarPonto(0,0,-10), normal);
+    auto *objeto3 = new Cone(4, 3, biblioteca::CriarPonto(0,0,-10), normal);
     //Cubo* objeto3 = new Cubo(normal, 4, biblioteca::CriarPonto(0,0,-5));
     //Cubo* objeto4 = new Cubo();
     //Cubo* objeto5 = new Cubo();
 
 
     //objects.push_back(objeto1);
-    //objects.push_back(objeto2);
+    objects.push_back(objeto2);
     objects.push_back(objeto3);
     //objects.push_back(objeto4);
     //objects.push_back(objeto5);
@@ -178,23 +178,50 @@ int main(){
     }
     PrintMatrixInt(pintura, matrixSize);
     
-   /*
+
+   /*Matriz teste jarelio
+
+   int tamanho_matriz = 20;
+   MatrixXd testem(tamanho_matriz+1,tamanho_matriz+1);
+   for(int i = 0; i<=tamanho_matriz; i++){
+       for(int j = 0; j<=tamanho_matriz; j++){
+           testem(i,j) = 0;
+       }
+   }
+            
    VectorXd teste(3);
    teste << 0,0,0;
    Ponto* p1;
    Ponto* p2;
-   //for(int i = -7; i < 8; i++){
-       for(int j = -7; j< 8; j++){
-           teste << 0,j,-10;
-           cout << "Ponto da grade: " << "x: 0 "   << "y: " << j << "z: -10" << endl;
-           tie(p1,p2) = objeto3->IntersecaoReta(biblioteca::CriarPonto(0,0,0),teste,3);
-           if(p1!=nullptr){
-               cout << "Ponto1: " << "x: " << p1->x << "y: " << p1->y << "z: " << p1->z << endl;
-           }
-           if(p2!=nullptr){
-               cout << "Ponto2: " << "x: " << p2->x << "y: " << p2->y << "z: " << p2->z << endl;
+   
+   for(Objeto* o : objects){
+       for(int i = -floor(tamanho_matriz/2); i <= floor(tamanho_matriz/2); i++){
+           for(int j = -floor(tamanho_matriz/2); j <= floor(tamanho_matriz/2); j++){
+                teste << i,j,-10;
+                cout << "Ponto da grade: " << "x: 0 "   << "y: " << j << "z: -10" << endl;
+                tie(p1,p2) = o->IntersecaoReta(biblioteca::CriarPonto(0,0,0),teste,3);
+                if(p1!=nullptr){
+                    testem(floor(tamanho_matriz/2)-j,i+floor(tamanho_matriz/2)) = 1;
+                    cout << "Ponto1: " << "x: " << p1->x << "y: " << p1->y << "z: " << p1->z << endl;
+                }
+                if(p2!=nullptr){
+                    testem(floor(tamanho_matriz/2)-j,i+floor(tamanho_matriz/2)) = 1;
+                    cout << "Ponto2: " << "x: " << p2->x << "y: " << p2->y << "z: " << p2->z << endl;
+                }
            }
        }
+   }
+   cout << endl << testem << endl;
 
+   char c = 32;
+       for(int i = -floor(tamanho_matriz/2); i <= floor(tamanho_matriz/2); i++){
+           for(int j = -floor(tamanho_matriz/2); j <= floor(tamanho_matriz/2); j++){  
+            if (testem(i+floor(tamanho_matriz/2),floor(tamanho_matriz/2)-j) == 1)
+                cout << "█";
+            else
+                cout << c;
+        }
+        cout << endl;
+    }
     */
 }
