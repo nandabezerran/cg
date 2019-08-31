@@ -66,7 +66,9 @@ tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTam
     vector<Ponto*> v;
     for(int i=0; i<12; i++){
         Ponto* p = faces[i]->p->IntersecaoRetaPlano(pP0, pVetor0, pTamanho);
-        v.push_back(p);
+        if(p){
+            v.push_back(p);
+        }
     }
 }
 
