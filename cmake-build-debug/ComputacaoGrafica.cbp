@@ -8,28 +8,28 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug"/>
+				<Option working_dir="/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug"/>
+				<Option working_dir="/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="ComputacaoGrafica">
-				<Option output="/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/ComputacaoGrafica" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug"/>
+				<Option output="/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/ComputacaoGrafica" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -44,15 +44,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 ComputacaoGrafica"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 ComputacaoGrafica"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="ComputacaoGrafica/fast">
-				<Option output="/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/ComputacaoGrafica" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug"/>
+				<Option output="/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/ComputacaoGrafica" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -67,69 +67,69 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 ComputacaoGrafica/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 ComputacaoGrafica/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug"/>
+				<Option working_dir="/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/384382/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/384382/CLionProjects/ComputacaoGrafica/TrabalhoGrade.cpp">
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/TrabalhoGrade.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/384382/CLionProjects/ComputacaoGrafica/biblioteca/Cilindro.cpp">
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cilindro.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/384382/CLionProjects/ComputacaoGrafica/biblioteca/Cilindro.hpp">
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cilindro.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/384382/CLionProjects/ComputacaoGrafica/biblioteca/Cone.cpp">
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cone.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/384382/CLionProjects/ComputacaoGrafica/biblioteca/Cone.hpp">
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cone.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/384382/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.cpp">
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/384382/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.hpp">
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/384382/CLionProjects/ComputacaoGrafica/biblioteca/Esfera.cpp">
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Esfera.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/384382/CLionProjects/ComputacaoGrafica/biblioteca/Esfera.hpp">
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Esfera.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/384382/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.cpp">
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/384382/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.hpp">
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/384382/CLionProjects/ComputacaoGrafica/biblioteca/Plano.cpp">
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Plano.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/384382/CLionProjects/ComputacaoGrafica/biblioteca/Plano.hpp">
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Plano.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/384382/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.cpp">
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/384382/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.hpp">
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/384382/CLionProjects/ComputacaoGrafica/CMakeLists.txt">
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

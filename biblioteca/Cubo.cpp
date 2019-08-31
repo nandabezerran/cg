@@ -1,4 +1,4 @@
-/*
+
 //
 // Created by thais on 26/08/2019.
 //
@@ -7,7 +7,7 @@
 #include "biblioteca.hpp"
 #include "Plano.hpp"
 
-Cubo::Cubo(double cAresta, Ponto* cCentro, VectorXd cNormal): aresta(cAresta), centro(cCentro), Objeto("Cubo"){
+Cubo::Cubo(double cAresta, Ponto* cCentro): aresta(cAresta), centro(cCentro), Objeto("Cubo"){
     Ponto* p1 = biblioteca::CriarPonto(this->centro->x - aresta/2, this->centro->y + aresta, this->centro->z + aresta/2);
     Ponto* p2 = biblioteca::CriarPonto(this->centro->x - aresta/2, this->centro->y + aresta, this->centro->z - aresta/2);
     Ponto* p3 = biblioteca::CriarPonto(this->centro->x + aresta/2, this->centro->y + aresta, this->centro->z - aresta/2);
@@ -16,41 +16,81 @@ Cubo::Cubo(double cAresta, Ponto* cCentro, VectorXd cNormal): aresta(cAresta), c
     Ponto* p6 = biblioteca::CriarPonto(this->centro->x - aresta/2, this->centro->y, this->centro->z - aresta/2);
     Ponto* p7 = biblioteca::CriarPonto(this->centro->x + aresta/2, this->centro->y, this->centro->z - aresta/2);
     Ponto* p8 = biblioteca::CriarPonto(this->centro->x + aresta/2, this->centro->y, this->centro->z + aresta/2);
+    int cont = 1;
+    vector<Vertice*> vertices;
+    for(int i = 0; i<8; i++){
+        Vertice* v = this->CriarVertice(p1, "V" + cont);
+        vertices.push_back(v);
+        cont++;
+    }
+    this->vertices = vertices;
 
-    Vertice* v1 = biblioteca::CriarVertice(p1, "V1");
-    Vertice* v2 = biblioteca::CriarVertice(p2, "V2");
-    Vertice* v3 = biblioteca::CriarVertice(p3, "V3");
-    Vertice* v4 = biblioteca::CriarVertice(p4, "V4");
-    Vertice* v5 = biblioteca::CriarVertice(p5, "V5");
-    Vertice* v6 = biblioteca::CriarVertice(p6, "V6");
-    Vertice* v7 = biblioteca::CriarVertice(p7, "V7");
-    Vertice* v8 = biblioteca::CriarVertice(p8, "V8");
+    Face* f1 = this->CriarFace(vertices[0], vertices[3], vertices[1], "F1");
+    Face* f2 = this->CriarFace(vertices[3], vertices[2], vertices[1], "F2");
+    Face* f3 = this->CriarFace(vertices[6], vertices[5], vertices[3], "F3");
+    Face* f4 = this->CriarFace(vertices[5], vertices[2], vertices[3], "F4");
+    Face* f5 = this->CriarFace(vertices[7], vertices[6], vertices[0], "F5");
+    Face* f6 = this->CriarFace(vertices[6], vertices[3], vertices[0], "F6");
+    Face* f7 = this->CriarFace(vertices[7], vertices[0], vertices[4], "F7");
+    Face* f8 = this->CriarFace(vertices[0], vertices[1], vertices[4], "F8");
+    Face* f9 = this->CriarFace(vertices[6], vertices[7], vertices[4], "F9");
+    Face* f10 = this->CriarFace(vertices[5], vertices[6], vertices[4], "F10");
+    Face* f11 = this->CriarFace(vertices[4], vertices[2], vertices[5], "F11");
+    Face* f12 = this->CriarFace(vertices[4], vertices[1], vertices[2], "F12");
 
-    //continuar
+    vector<Face*> faces;
+    faces.push_back(f1);
+    faces.push_back(f2);
+    faces.push_back(f3);
+    faces.push_back(f4);
+    faces.push_back(f5);
+    faces.push_back(f6);
+    faces.push_back(f7);
+    faces.push_back(f8);
+    faces.push_back(f9);
+    faces.push_back(f10);
+    faces.push_back(f11);
+    faces.push_back(f12);
+
+    this->faces = faces;
+
 }
 
-// tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTamanho) {
-    // vector<Ponto*> v_aux;
-    // for(int i = 0; i<6; i++){
-    //     Ponto* p = this->planos[i]->IntersecaoRetaPlano(pP0, pVetor0, pTamanho);
-    //     if (p) {
-    //         v_aux.push_back(p);
-    //     }
-    // }
+tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTamanho) {
+    for(int i=0; i<12; i++){
+        VectorXd p1p2 = biblioteca::SubtracaoPontos(this->faces[i]->p2->p, this->faces[i]->p1->p, 3);
+        VectorXd p1p3 = biblioteca::SubtracaoPontos(this->faces[i]->p3->p, this->faces[i]->p1->p, 3);
+        Plano* p = new Plano(this->faces[i]->p1->p, biblioteca::EncontrarNormal(p1p2, p1p3, 3));
+        faces[i]->p = p;
+    }
+    vector<Ponto*> v;
+    for(int i=0; i<12; i++){
+        Ponto* p = faces[i]->p->IntersecaoRetaPlano(pP0, pVetor0, pTamanho);
+        v.push_back(p);
+    }
+}
 
-    // if(v_aux.size() == 2){
-    //     return make_tuple(v_aux[0], v_aux[1]);
-    // }
+Vertice* Cubo::CriarVertice(Ponto* ponto, string identificador){
+    Vertice* v = new Vertice;
+    v->p->x = ponto->x;
+    v->p->y = ponto->y;
+    v->p->z = ponto->z;
+    v->id = identificador;
+    return v;
+}
 
-    // if(v_aux.size() == 1){
-    //     return make_tuple(v_aux[0], nullptr);
-    // }
+Aresta* Cubo::CriarAresta(Vertice *pi, Vertice *pf, string id) {
+    Aresta* newAresta = new Aresta;
+    newAresta->id = id;
+    newAresta->verticeFinal = pf;
+    newAresta->verticeInicial = pi;
+    return newAresta;
+}
+Face* Cubo::CriarFace(Vertice* v1, Vertice* v2, Vertice* v3, string id){
+    Face* newFace = new Face;
+    newFace->p1 = v1;
+    newFace->p2 = v2;
+    newFace->p3 = v3;
+    newFace->id = id;
+}
 
-    // if(v_aux.size() == 0){
-    //     return make_tuple(nullptr, nullptr);
-    // }
-//}
-
-
-
-*/
