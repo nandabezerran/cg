@@ -40,6 +40,6 @@ public:
     Vertice* CriarVertice(Ponto* p1, string id);
     Aresta* CriarAresta(Vertice* pi, Vertice* pf, string id);
     Face* CriarFace(Vertice* v1, Vertice* v2, Vertice* v3, string id);
-
+    bool ValidacaoPontoCubo(VectorXd PxPy, VectorXd PxP, VectorXd P1P2, VectorXd P1P3, int tamanho);
 };
 #endif //COMPUTACAOGRAFICA_CUBO_HPP
