@@ -163,7 +163,9 @@ int main(void){
 
     printIntersecoes(p_int1, p_int2);
 
-    // --------------- GRADE TESTE -----------------------
+
+    //------------------------------------------------
+    cout << "\n--------GRADE TESTE--------\n" << endl;
 
     H = 10;
     raio = 2;
@@ -188,6 +190,25 @@ int main(void){
     }
 
 
+	//-------------------------------------------------------------------
+    cout << "\n--------TESTES COODERNADA CAMERA/MUNDO--------\n" << endl;
+
+    Ponto* P0; Ponto* L_at; Ponto* V_up; Ponto* Pc; Ponto* Pw;
+    VectorXd Pc_vetor(tamanho); VectorXd Pw_vetor(tamanho);
+
+    P0 = biblioteca::CriarPonto(1,1,1);
+    L_at = biblioteca::CriarPonto(2,1,1);
+    V_up = biblioteca::CriarPonto(1,2,1);
+    Pc = biblioteca::CriarPonto(2,2,1);
+    Pc_vetor << 2,2,1;
+
+ 
+    //True = CameraParaMundo / False = MundoParaCamera
+    Pw = biblioteca::PontoCoordenada(P0, L_at, V_up, Pc, tamanho, 1);
+    printIntersecoes(Pw);
+
+    Pw_vetor = biblioteca::VetorCoordenada(P0, L_at, V_up, Pc_vetor, tamanho, 1);
+    cout << Pw_vetor.format(CommaInitFmt) << endl;
 
     return 0;
 }
