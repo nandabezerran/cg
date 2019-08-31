@@ -36,7 +36,7 @@ VectorXd biblioteca::EncontrarNormal(VectorXd vetor1, VectorXd vetor2, int taman
 }
 
 double biblioteca::distanciaEntrePontos(Ponto *p1, Ponto *p2) {
-    return sqrt((p2->x - p1->x) + (p2->y - p1->y) + (p2->y - p1->y));
+    return sqrt((p2->x - p1->x) + (p2->y - p1->y) + (p2->z - p1->z));
 }
 
 VectorXd biblioteca::SubtracaoPontos(Ponto* p1, Ponto* p2, int tamanho){

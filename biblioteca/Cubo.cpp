@@ -7,7 +7,7 @@
 #include "biblioteca.hpp"
 #include "Plano.hpp"
 
-Cubo::Cubo(double cAresta, Ponto* cCentro): aresta(cAresta), centro(cCentro), Objeto("Cubo"){
+Cubo::Cubo(double cAresta, Ponto* cCentro): aresta(cAresta), centro(cCentro), Objeto("Cubo", PINK, false){
     Ponto* p1 = biblioteca::CriarPonto(this->centro->x - aresta/2, this->centro->y + aresta, this->centro->z + aresta/2);
     Ponto* p2 = biblioteca::CriarPonto(this->centro->x - aresta/2, this->centro->y + aresta, this->centro->z - aresta/2);
     Ponto* p3 = biblioteca::CriarPonto(this->centro->x + aresta/2, this->centro->y + aresta, this->centro->z - aresta/2);
@@ -151,10 +151,8 @@ tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTam
 }
 
 Vertice* Cubo::CriarVertice(Ponto* ponto, string identificador){
-    Vertice* v = new Vertice;
-    v->p->x = ponto->x;
-    v->p->y = ponto->y;
-    v->p->z = ponto->z;
+    Vertice* v = new Vertice();
+    v->p = biblioteca::CriarPonto(ponto->x,ponto->y, ponto->z);
     v->id = identificador;
     return v;
 }

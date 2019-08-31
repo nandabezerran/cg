@@ -8,6 +8,7 @@
 #include "biblioteca/biblioteca.hpp"
 #include "biblioteca/Cone.hpp"
 #include "biblioteca/Esfera.hpp"
+#include "biblioteca/Cubo.hpp"
 #include "biblioteca/cores.hpp"
 #include <algorithm>
 
@@ -289,9 +290,9 @@ int main(){
 
     Vector3d normal;
     normal << 0,1,0;
-    auto *objeto1 = new Cone(4, 3, biblioteca::CriarPonto(0,0,-10), normal);
-    auto *objeto2 = new Cilindro(6, 6, biblioteca::CriarPonto(0,0,-15), normal);
-    //auto *objeto3 = new Cubo(normal, 4, biblioteca::CriarPonto(0,0,-5));
+    auto *objeto1 = new Cone(4, 4, biblioteca::CriarPonto(0,0,-10), normal);
+    auto *objeto2 = new Cilindro(5, 2, biblioteca::CriarPonto(0,-5,-10), normal);
+    auto *objeto3 = new Cubo(4, biblioteca::CriarPonto(0,0,-20));
     //auto *objeto4 = new Cubo();
     //auto *objeto5 = new Cubo();
     //auto *objeto6 = new Cone(20, 8, biblioteca::CriarPonto(0,0,-10), normal);
@@ -302,7 +303,7 @@ int main(){
 
     objetos.push_back(objeto1);
     objetos.push_back(objeto2);
-    //objects.push_back(objeto3);
+    objetos.push_back(objeto3);
     //objects.push_back(objeto4);
     //objects.push_back(objeto5);
     //objects.push_back(objeto6);
