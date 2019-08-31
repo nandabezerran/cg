@@ -96,3 +96,18 @@ Face* Cubo::CriarFace(Vertice* v1, Vertice* v2, Vertice* v3, string id){
     newFace->id = id;
 }
 
+bool Cubo::ValidacaoPontoCubo(VectorXd PxPy, VectorXd PxP, VectorXd P1P2, VectorXd P1P3, int tamanho) {
+
+     VectorXd val1 = biblioteca::ProdutoVetorial(PxPy, PxP, tamanho);
+     VectorXd val2 = biblioteca::ProdutoVetorial(P1P2, P1P3, tamanho);
+     double validacao = biblioteca::ProdutoEscalar(val1,val2,tamanho);
+
+     if(validacao > 0) {
+        return true;
+     }
+
+     else {
+        return false;
+     }
+}
+
