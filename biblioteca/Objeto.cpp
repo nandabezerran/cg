@@ -4,5 +4,6 @@
 
 #include "Objeto.hpp"
 
-Objeto::Objeto(const string& pNome) : nome(pNome){}
+Objeto::Objeto(const string& pNome, colour pCor, bool pVisibilidade) : nome(pNome), cor(pCor),
+                                                    visibilidade(pVisibilidade){}
 

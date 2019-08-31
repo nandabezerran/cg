@@ -6,9 +6,10 @@
 #include "Plano.hpp"
 
 
+
 Cone::Cone(float pAltura, float pRaio, Ponto* pCentro, VectorXd pNormal) : altura(pAltura), raio(pRaio),
                                                                           centro(pCentro), normal(pNormal),
-                                                                           Objeto("Cone") {}
+                                                                           Objeto("Cone", GREEN, false) {}
 
 tuple<Ponto*, Ponto*> Cone::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTamanho){
 
@@ -43,17 +44,17 @@ tuple<Ponto*, Ponto*> Cone::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTa
 
     //a
     double a = pow(biblioteca::ProdutoEscalar(d,this->normal,pTamanho),2) - (biblioteca::ProdutoEscalar(d,d,pTamanho)*pow(cos_alfa,2));
-    cout << "a: " << a << endl;
+    //cout << "a: " << a << endl;
 
     //b
     double b = (biblioteca::ProdutoEscalar(v,d,pTamanho) * pow(cos_alfa,2))
             - (biblioteca::ProdutoEscalar(v,this->normal,pTamanho)) * (biblioteca::ProdutoEscalar(d,this->normal,pTamanho));
-    cout << "b: " << b << endl;
+    //cout << "b: " << b << endl;
 
     //c
     double c = pow(biblioteca::ProdutoEscalar(v,this->normal,pTamanho),2)
             - (biblioteca::ProdutoEscalar(v,v,pTamanho)*pow(cos_alfa,2));
-    cout << "c: " << c << endl;
+    //cout << "c: " << c << endl;
 
     //delta
     double delta = b*b - a*c;
@@ -129,6 +130,8 @@ bool Cone::ValidacaoPontoCone(Ponto* vertice, Ponto* p_int, int tamanho){
     double escalar_tratamento = biblioteca::ProdutoEscalar(vetor_aux_tratamento,this->normal,tamanho);
     
     bool tratamento_int = 0;
+    if(escalar_tratamento < 0.00000000001 && escalar_tratamento > 0.00000000001)
+        escalar_tratamento = 0;
     if(escalar_tratamento >= 0 && escalar_tratamento <= this->altura){
         tratamento_int = 1;
     }
@@ -155,9 +158,6 @@ bool Cone::ValidacaoPontoBase(Ponto* pP0,VectorXd pVetor0, int tamanho){
     VectorXd BasePonto = biblioteca::SubtracaoPontos(p,this->centro,tamanho);
     double norma = sqrt(biblioteca::ProdutoEscalar(BasePonto,BasePonto,tamanho));
 
-    if ((0 <= norma && norma <= this->raio))
-        return true;
-    else
-        return false;
+    return 0 <= norma && norma <= this->raio;
 }
 
