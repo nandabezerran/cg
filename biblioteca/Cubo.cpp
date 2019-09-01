@@ -38,18 +38,18 @@ Cubo::Cubo(double cAresta, Ponto* cCentro): aresta(cAresta), centro(cCentro), Ob
 
     this->vertices = vertices;
 
-    Face* f1 = this->CriarFace(vertices[0], vertices[3], vertices[1], "F1");
-    Face* f2 = this->CriarFace(vertices[3], vertices[2], vertices[1], "F2");
-    Face* f3 = this->CriarFace(vertices[6], vertices[5], vertices[3], "F3");
-    Face* f4 = this->CriarFace(vertices[5], vertices[2], vertices[3], "F4");
-    Face* f5 = this->CriarFace(vertices[7], vertices[6], vertices[0], "F5");
-    Face* f6 = this->CriarFace(vertices[6], vertices[3], vertices[0], "F6");
-    Face* f7 = this->CriarFace(vertices[7], vertices[0], vertices[4], "F7");
-    Face* f8 = this->CriarFace(vertices[0], vertices[1], vertices[4], "F8");
+    Face* f1 = this->CriarFace(vertices[0], vertices[3], vertices[2], "F1");
+    Face* f2 = this->CriarFace(vertices[2], vertices[1], vertices[0], "F2");
+    Face* f3 = this->CriarFace(vertices[6], vertices[5], vertices[2], "F3");
+    Face* f4 = this->CriarFace(vertices[5], vertices[1], vertices[2], "F4");
+    Face* f5 = this->CriarFace(vertices[7], vertices[6], vertices[3], "F5");
+    Face* f6 = this->CriarFace(vertices[6], vertices[2], vertices[3], "F6");
+    Face* f7 = this->CriarFace(vertices[4], vertices[7], vertices[3], "F7");
+    Face* f8 = this->CriarFace(vertices[3], vertices[0], vertices[4], "F8");
     Face* f9 = this->CriarFace(vertices[6], vertices[7], vertices[4], "F9");
-    Face* f10 = this->CriarFace(vertices[5], vertices[6], vertices[4], "F10");
-    Face* f11 = this->CriarFace(vertices[4], vertices[2], vertices[5], "F11");
-    Face* f12 = this->CriarFace(vertices[4], vertices[1], vertices[2], "F12");
+    Face* f10 = this->CriarFace(vertices[4], vertices[5], vertices[6], "F10");
+    Face* f11 = this->CriarFace(vertices[0], vertices[4], vertices[5], "F11");
+    Face* f12 = this->CriarFace(vertices[5], vertices[1], vertices[0], "F12");
 
     vector<Face*> faces;
     faces.push_back(f1);
