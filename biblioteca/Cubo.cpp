@@ -87,7 +87,7 @@ tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTam
         }
     }
 
-    if (v.size() == 0) {
+    if (v.empty()) {
         return make_tuple(nullptr, nullptr);
     }
 
@@ -107,7 +107,7 @@ tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTam
             bool validacao2 = ValidacaoPontoCubo(p2p3, p2p, p1p2, p1p3, 3);
             bool validacao3 = ValidacaoPontoCubo(p3p1, p3p, p1p2, p1p3, 3);
 
-            if (validacao1 == true && validacao2 == true && validacao3 == true) {
+            if (validacao1 && validacao2 && validacao3) {
                 return make_tuple(v[0], nullptr);
             }
         }
@@ -144,8 +144,8 @@ tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTam
             bool validacao5 = ValidacaoPontoCubo(pp2p3, pp2p, pp1p2, pp1p3, 3);
             bool validacao6 = ValidacaoPontoCubo(pp3p1, pp3p, pp1p2, pp1p3, 3);
 
-            if (validacao1 == true && validacao2 == true && validacao3 == true) {
-                if (validacao4 == true && validacao5==true && validacao6 == true){
+            if (validacao1 && validacao2 && validacao3) {
+                if (validacao4 && validacao5 && validacao6){
                     return make_tuple(v[0], v[1]);
                 }
                 else {
@@ -153,7 +153,7 @@ tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTam
                 }
             }
 
-            if(validacao4== true && validacao5 == true && validacao6==true){
+            if(validacao4 && validacao5 && validacao6){
                 return make_tuple(v[1], nullptr);
             }
 
@@ -164,21 +164,21 @@ tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTam
 }
 
 Vertice* Cubo::CriarVertice(Ponto* ponto, string identificador){
-    Vertice* v = new Vertice();
+    auto v = new Vertice();
     v->p = biblioteca::CriarPonto(ponto->x,ponto->y, ponto->z);
     v->id = identificador;
     return v;
 }
 
 Aresta* Cubo::CriarAresta(Vertice *pi, Vertice *pf, string id) {
-    Aresta* newAresta = new Aresta;
+    auto newAresta = new Aresta;
     newAresta->id = id;
     newAresta->verticeFinal = pf;
     newAresta->verticeInicial = pi;
     return newAresta;
 }
 Face* Cubo::CriarFace(Vertice* v1, Vertice* v2, Vertice* v3, string id){
-    Face* newFace = new Face;
+    auto newFace = new Face;
     newFace->p1 = v1;
     newFace->p2 = v2;
     newFace->p3 = v3;
@@ -191,12 +191,7 @@ bool Cubo::ValidacaoPontoCubo(VectorXd PxPy, VectorXd PxP, VectorXd P1P2, Vector
      VectorXd val2 = biblioteca::ProdutoVetorial(P1P2, P1P3, tamanho);
      double validacao = biblioteca::ProdutoEscalar(val1,val2,tamanho);
 
-     if(validacao > 0) {
-        return true;
-     }
+     return validacao > 0;
 
-     else {
-        return false;
-     }
 }
 
