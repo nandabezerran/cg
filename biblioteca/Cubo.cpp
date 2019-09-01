@@ -38,7 +38,14 @@ Cubo::Cubo(double cAresta, Ponto* cCentro): aresta(cAresta), centro(cCentro), Ob
     faces.push_back(CriarFace(vertices[4], vertices[5], vertices[6], "F10"));
     faces.push_back(CriarFace(vertices[0], vertices[4], vertices[5], "F11"));
     faces.push_back(CriarFace(vertices[5], vertices[1], vertices[0], "F12"));
-    
+
+    for (auto face: faces) {
+        VectorXd p1p2 = biblioteca::SubtracaoPontos(face->p1->p, face->p2->p, 3);
+        VectorXd p1p3 = biblioteca::SubtracaoPontos(face->p1->p, face->p3->p, 3);
+        Plano *p = new Plano(face->p1->p, biblioteca::EncontrarNormal(p1p2, p1p3, 3));
+        face->p = p;
+    }
+
 }
 
 tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTamanho) {
