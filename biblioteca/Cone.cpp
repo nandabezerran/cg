@@ -154,10 +154,9 @@ bool Cone::ValidacaoPontoBase(Ponto* pP0,VectorXd pVetor0, int tamanho){
         Interseção com uma Base = 1
     */
 
-    Ponto* p = IntersecaoRetaBase(this->centro, pP0, pVetor0, tamanho);
-    VectorXd BasePonto = biblioteca::SubtracaoPontos(p,this->centro,tamanho);
-    double norma = sqrt(biblioteca::ProdutoEscalar(BasePonto,BasePonto,tamanho));
+    Ponto* p = IntersecaoRetaBase(centro, pP0, pVetor0, tamanho);
 
-    return 0 <= norma && norma <= this->raio;
+    return p && biblioteca::distanciaEntrePontos(p,centro) <= raio;
+
 }
 
