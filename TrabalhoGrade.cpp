@@ -11,33 +11,33 @@
 #include "biblioteca/Cubo.hpp"
 #include "biblioteca/cores.hpp"
 #include <algorithm>
-
-#ifdef _WIN32
-#include <windows.h>
-#endif
+#include "Bitmap/Bitmap.hpp"
 using namespace std;
+//#ifdef _WIN32
+//#include <windows.h>
+//#endif
 //Como compilar: g++ -c TrabalhoGrade.cpp -I eigen -std=c++11 ./biblioteca/*.cpp && g++ -o principal *.o
 //Como executar: ./principal
 
 //----------------------------------------- Colorir o console para windows -------------------------------------------
-struct setcolour
-{
-    colour _c;
-    HANDLE _console_handle;
-
-
-    setcolour(colour c, HANDLE console_handle)
-            : _c(c), _console_handle(0)
-    {
-        _console_handle = console_handle;
-    }
-};
-
-basic_ostream<char> &operator<<(basic_ostream<char> &s, const setcolour &ref)
-{
-    SetConsoleTextAttribute(ref._console_handle, ref._c);
-    return s;
-}
+//struct setcolour
+//{
+//    colour _c;
+//    HANDLE _console_handle;
+//
+//
+//    setcolour(colour c, HANDLE console_handle)
+//            : _c(c), _console_handle(0)
+//    {
+//        _console_handle = console_handle;
+//    }
+//};
+//
+//basic_ostream<char> &operator<<(basic_ostream<char> &s, const setcolour &ref)
+//{
+//    SetConsoleTextAttribute(ref._console_handle, ref._c);
+//    return s;
+//}
 //--------------------------------------------------------------------------------------------------------------------
 
 /// Struct para salvar os pontos de interseção, nela temos o ponto o objeto e a distancia da interseção pra origem
@@ -265,22 +265,101 @@ colour** pintarObjeto(vector<Objeto*> pObjetos, int pMatrixSize, Ponto *posObs, 
     return pintura;
 }
 
+uint8_t* getRgb(colour cor){
+
+    auto *rgb = new uint8_t[3];
+    switch (cor) {
+        case DARKBLUE:
+            rgb[0] = 0;
+            rgb[1] = 0;
+            rgb[2] = 139;
+            break;
+        case DARKGREEN:
+            rgb[0] = 0;
+            rgb[1] = 100;
+            rgb[2] = 0;
+            break;
+        case DARKTEAL:
+            rgb[0] = 0;
+            rgb[1] = 100;
+            rgb[2] = 0;
+            break;
+        case DARKRED:
+            rgb[0] = 255;
+            rgb[1] = 0;
+            rgb[2] = 0;
+            break;
+        case DARKPINK:
+            rgb[0] = 231;
+            rgb[1] = 84;
+            rgb[2] = 128;
+            break;
+        case DARKYELLOW:
+            rgb[0] = 0;
+            rgb[1] = 100;
+            rgb[2] = 0;
+            break;
+        case GRAY:
+            rgb[0] = 128;
+            rgb[1] = 128;
+            rgb[2] = 128;
+            break;
+        case DARKGRAY:
+            rgb[0] = 105;
+            rgb[1] = 105;
+            rgb[2] = 105;
+            break;
+        case BLUE:
+            rgb[0] = 0;
+            rgb[1] = 0;
+            rgb[2] = 100;
+            break;
+        case GREEN:
+            rgb[0] = 0;
+            rgb[1] = 100;
+            rgb[2] = 0;
+            break;
+        case TEAL:
+            rgb[0] = 0;
+            rgb[1] = 128;
+            rgb[2] = 128;
+            break;
+        case PINK:
+            rgb[0] = 255;
+            rgb[1] = 192;
+            rgb[2] = 203;
+            break;
+        case YELLOW:
+            rgb[0] = 100;
+            rgb[1] = 100;
+            rgb[2] = 0;
+            break;
+        case WHITE:
+            rgb[0] = 100;
+            rgb[1] = 100;
+            rgb[2] = 100;
+            break;
+    }
+    return rgb;
+}
 /// Imprime a imagem no console colorida
 /// \param matrix
 /// \param size
-void PrintPintura(colour **matrix, int size){
-    HANDLE chandle = GetStdHandle(STD_OUTPUT_HANDLE);
+void PrintPintura(colour **matrix, int size, Bitmap &imagem){
+    //HANDLE chandle = GetStdHandle(STD_OUTPUT_HANDLE);
+    uint8_t *rgb;
     for (int l = 0; l < size; ++l) {
         for (int m = 0; m < size; ++m) {
-            #ifdef _WIN32
-            cout << setcolour(matrix[m][l], chandle) << '\xDB';
-            #elif __linux__
-            cout << "█";
-            #endif
+//            #ifdef _WIN32
+//            cout << setcolour(matrix[m][l], chandle) << '\xDB';
+//            #elif __linux__
+//            cout << "█";
+//            #endif
+            rgb = getRgb(matrix[m][l]);
+            imagem.setPixel(m,(size-1)-l,rgb[2],rgb[1],rgb[0]);
+            delete[] rgb;
         }
-        cout << "\n";
     }
-    cout << "\n";
 }
 
 /// Primeira pergunta que o creto quer, dado a linha e a coluna retornar o centro do ponto;
@@ -327,7 +406,7 @@ int main(){
     Ponto *posObs = biblioteca::CriarPonto(xObs, yObs, zObs);
 
     // ------------------------------------- Infos da Grade ----------------------------------------------------------
-    int matrixSize = 10;
+    int matrixSize = 300;
     float tamGrade = 4;
     float zGrade = -4;
     Ponto** grade = createGrid(tamGrade, zGrade, matrixSize);
@@ -335,6 +414,8 @@ int main(){
     //-------------------------------------- Instanciação vetor de pontos de intersecao ------------------------------
     vector<pontoIntersecao*> pInts;
 
+    //-------------------------------------- Instanciação do Bitmap --------------------------------------------------
+    Bitmap imagem(matrixSize, matrixSize);
 
     //-------------------------------------- Inicio do programa ------------------------------------------------------
 //    int** pintura = MatrixAllocatioColour(matrixSize);
@@ -379,7 +460,7 @@ int main(){
             pInts = intersections(objetos, posObs, grade[j][i]);
             if(!pInts.empty()){
                 pInts[0]->objeto->visibilidade = true;
-                PrintPintura(pintarObjeto(objetos, matrixSize, posObs, grade), matrixSize);
+                PrintPintura(pintarObjeto(objetos, matrixSize, posObs, grade), matrixSize, imagem);
                 // Desalocando a memoria
                 for (auto p : pInts){
                     delete p;
@@ -389,7 +470,7 @@ int main(){
 
         }
     }
-
+    imagem.salvar("Cenario.bmp");
     system("pause");
 
 
