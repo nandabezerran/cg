@@ -284,10 +284,10 @@ uint8_t* getRgb(colour cor){
             rgb[1] = 100;
             rgb[2] = 0;
             break;
-        case DARKRED:
-            rgb[0] = 255;
-            rgb[1] = 0;
-            rgb[2] = 0;
+        case BROWN:
+            rgb[0] = 139;
+            rgb[1] = 69;
+            rgb[2] = 19;
             break;
         case DARKPINK:
             rgb[0] = 231;
@@ -310,14 +310,14 @@ uint8_t* getRgb(colour cor){
             rgb[2] = 105;
             break;
         case BLUE:
-            rgb[0] = 0;
-            rgb[1] = 0;
-            rgb[2] = 100;
+            rgb[0] = 135;
+            rgb[1] = 206;
+            rgb[2] = 235;
             break;
         case GREEN:
-            rgb[0] = 0;
-            rgb[1] = 100;
-            rgb[2] = 0;
+            rgb[0] = 34;
+            rgb[1] = 139;
+            rgb[2] = 34;
             break;
         case TEAL:
             rgb[0] = 0;
@@ -326,8 +326,8 @@ uint8_t* getRgb(colour cor){
             break;
         case PINK:
             rgb[0] = 255;
-            rgb[1] = 192;
-            rgb[2] = 203;
+            rgb[1] = 20;
+            rgb[2] = 147;
             break;
         case YELLOW:
             rgb[0] = 100;
@@ -382,9 +382,9 @@ int main(){
     normal << 0,1,0;
     auto *objeto1 = new Cone(4, 3, biblioteca::CriarPonto(0,-1,-10), normal);
     auto *objeto2 = new Cilindro(5, 1, biblioteca::CriarPonto(0,-6,-10), normal);
-    auto *objeto3 = new Cubo(4, biblioteca::CriarPonto(0,0,-20));
-    //auto *objeto4 = new Cubo();
-    //auto *objeto5 = new Cubo();
+    auto *objeto3 = new Cubo(5, biblioteca::CriarPonto(0,-5,-20));
+    auto *objeto4 = new Cubo(5, biblioteca::CriarPonto(0,0,-20));
+    auto *objeto5 = new Cubo(5, biblioteca::CriarPonto(0,5,-20));
     //auto *objeto6 = new Cone(20, 8, biblioteca::CriarPonto(0,0,-10), normal);
     //auto *objeto7 = new Esfera(3, biblioteca::CriarPonto(0,0,-10));
 
@@ -394,8 +394,8 @@ int main(){
     objetos.push_back(objeto1);
     objetos.push_back(objeto2);
     objetos.push_back(objeto3);
-    //objects.push_back(objeto4);
-    //objects.push_back(objeto5);
+    objetos.push_back(objeto4);
+    objetos.push_back(objeto5);
     //objects.push_back(objeto6);
     //objects.push_back(objeto7);
 
@@ -406,7 +406,7 @@ int main(){
     Ponto *posObs = biblioteca::CriarPonto(xObs, yObs, zObs);
 
     // ------------------------------------- Infos da Grade ----------------------------------------------------------
-    int matrixSize = 300;
+    int matrixSize = 100;
     float tamGrade = 4;
     float zGrade = -4;
     Ponto** grade = createGrid(tamGrade, zGrade, matrixSize);

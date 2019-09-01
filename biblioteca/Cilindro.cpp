@@ -7,7 +7,7 @@
 
 Cilindro::Cilindro(float pAltura, float pRaio, Ponto* pCentro, VectorXd pNormal) : altura(pAltura), raio(pRaio),
                                                                                    centro(pCentro), normal(pNormal),
-                                                                                   Objeto("Cilindro", DARKRED, false) {}
+                                                                                   Objeto("Cilindro", BROWN, false) {}
 
 tuple<Ponto*,Ponto*> Cilindro::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTamanho){
 
