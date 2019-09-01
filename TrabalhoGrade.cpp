@@ -19,28 +19,6 @@ using namespace std;
 //Como compilar: g++ -c TrabalhoGrade.cpp -I eigen -std=c++11 ./biblioteca/*.cpp && g++ -o principal *.o
 //Como executar: ./principal
 
-struct pontoIntersecao{
-    Ponto *p;
-    Objeto *objeto;
-    double distOrigem;
-
-};
-
-/// Função para comparar qual dos pontos de interseçao foi o primeiro.
-/// \param i
-/// \param j
-/// \return
-bool comparacaoDistancia(pontoIntersecao i,pontoIntersecao j){
-    return (i.distOrigem < j.distOrigem);
-}
-
-pontoIntersecao* criarPint(Ponto *p, Objeto *objeto, double distancia){
-    auto *pInt = new pontoIntersecao;
-    pInt->p = p;
-    pInt->objeto = objeto;
-    pInt->distOrigem = distancia;
-    return pInt;
-}
 //----------------------------------------- Colorir o console para windows -------------------------------------------
 struct setcolour
 {
@@ -59,6 +37,36 @@ basic_ostream<char> &operator<<(basic_ostream<char> &s, const setcolour &ref)
 {
     SetConsoleTextAttribute(ref._console_handle, ref._c);
     return s;
+}
+//--------------------------------------------------------------------------------------------------------------------
+
+/// Struct para salvar os pontos de interseção, nela temos o ponto o objeto e a distancia da interseção pra origem
+struct pontoIntersecao{
+    Ponto *p;
+    Objeto *objeto;
+    double distOrigem;
+
+};
+
+/// Função para comparar qual dos pontos de interseçao foi o primeiro.
+/// \param i
+/// \param j
+/// \return
+bool comparacaoDistancia(pontoIntersecao i,pontoIntersecao j){
+    return (i.distOrigem < j.distOrigem);
+}
+
+/// Construtor para o struct pontoIntersecao
+/// \param p
+/// \param objeto
+/// \param distancia
+/// \return ponteiro para pontoIntersecao
+pontoIntersecao* criarPint(Ponto *p, Objeto *objeto, double distancia){
+    auto *pInt = new pontoIntersecao;
+    pInt->p = p;
+    pInt->objeto = objeto;
+    pInt->distOrigem = distancia;
+    return pInt;
 }
 
 /// Alocação da matriz para a nossa grade de pontos
@@ -192,8 +200,8 @@ vector<pontoIntersecao> intersections(Objeto* Object, Ponto *posObs, Ponto point
     VectorXd lineObGrid = biblioteca::SubtracaoPontos(posObs, p, tamanho);
 
     vector<pontoIntersecao> pInts;
-    Ponto* p_int1;
-    Ponto* p_int2;
+    Ponto* p_int1 = nullptr;
+    Ponto* p_int2 = nullptr;
 
     tie(p_int1, p_int2) = Object->IntersecaoReta(posObs, lineObGrid, tamanho);
 
@@ -218,6 +226,7 @@ vector<pontoIntersecao> intersections(Objeto* Object, Ponto *posObs, Ponto point
     delete(p);
     return pInts;
 }
+
 /// Inicializa a matrix de cores com a cor azul, assim cada
 /// \param pintura
 /// \param tam
@@ -229,6 +238,12 @@ void iniciarPintura(colour** &pintura, int tam){
     }
 }
 
+/// Seta na matriz pintura as cores de cada celula referente a aquele objeto
+/// \param pObjetos
+/// \param pMatrixSize
+/// \param posObs
+/// \param pGrade
+/// \return matriz pintada com o objetos visiveis
 colour** pintarObjeto(vector<Objeto*> pObjetos, int pMatrixSize, Ponto *posObs, Ponto** pGrade){
     colour** pintura = MatrixAllocatioColour(pMatrixSize);
     iniciarPintura(pintura, pMatrixSize);
@@ -256,7 +271,9 @@ colour** pintarObjeto(vector<Objeto*> pObjetos, int pMatrixSize, Ponto *posObs, 
     return pintura;
 }
 
-
+/// Imprime a imagem no console colorida
+/// \param matrix
+/// \param size
 void PrintPintura(colour **matrix, int size){
     HANDLE chandle = GetStdHandle(STD_OUTPUT_HANDLE);
     for (int l = 0; l < size; ++l) {
@@ -290,8 +307,8 @@ int main(){
 
     Vector3d normal;
     normal << 0,1,0;
-    auto *objeto1 = new Cone(4, 4, biblioteca::CriarPonto(0,0,-10), normal);
-    auto *objeto2 = new Cilindro(5, 2, biblioteca::CriarPonto(0,-5,-10), normal);
+    auto *objeto1 = new Cone(4, 3, biblioteca::CriarPonto(0,-1,-10), normal);
+    auto *objeto2 = new Cilindro(5, 1, biblioteca::CriarPonto(0,-6,-10), normal);
     auto *objeto3 = new Cubo(4, biblioteca::CriarPonto(0,0,-20));
     //auto *objeto4 = new Cubo();
     //auto *objeto5 = new Cubo();
@@ -316,7 +333,7 @@ int main(){
     Ponto *posObs = biblioteca::CriarPonto(xObs, yObs, zObs);
 
     // ------------------------------------- Infos da Grade ----------------------------------------------------------
-    int matrixSize = 50;
+    int matrixSize = 10;
     float tamGrade = 4;
     float zGrade = -4;
     Ponto** grade = createGrid(tamGrade, zGrade, matrixSize);
@@ -326,7 +343,7 @@ int main(){
 
 
     //-------------------------------------- Inicio do programa ------------------------------------------------------
-//    //int** pintura = MatrixAllocatioColour(matrixSize);
+//    int** pintura = MatrixAllocatioColour(matrixSize);
 //    colour** pintura;
 //    int linha = 0;
 //    int coluna = 0;
