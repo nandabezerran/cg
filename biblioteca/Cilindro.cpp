@@ -102,10 +102,8 @@ bool Cilindro::ValidacaoPontoLateral(Ponto* p_int, int tamanho){
     VectorXd PB = biblioteca::SubtracaoPontos(this->centro,p_int,tamanho);
     double PB_u = biblioteca::ProdutoEscalar(PB, this->normal,tamanho);
 
-    if (0 <= PB_u && PB_u <= this->altura)
-        return true;
-    else
-        return false;
+    return 0 <= PB_u && PB_u <= altura;
+
 
 }
 
@@ -150,17 +148,17 @@ int Cilindro::ValidacaoPontoBase(Ponto* pP0,VectorXd pVetor0, int tamanho){
     Ponto* centroSup = biblioteca::CriarPonto(this->centro->x + H_n[0], this->centro->y + H_n[1],this->centro->z + H_n[2]);
 
     Ponto* p1 = IntersecaoRetaBase(centroInf, pP0, pVetor0, tamanho);
-    VectorXd BasePonto1 = biblioteca::SubtracaoPontos(centroInf,p1,tamanho);
-    double norma1 = sqrt(biblioteca::ProdutoEscalar(BasePonto1,BasePonto1,tamanho));
-
     Ponto* p2 = IntersecaoRetaBase(centroSup, pP0, pVetor0, tamanho);
-    VectorXd BasePonto2 = biblioteca::SubtracaoPontos(centroSup,p2,tamanho);
-    double norma2 = sqrt(biblioteca::ProdutoEscalar(BasePonto2,BasePonto2,tamanho));
+    int nInt = 0;
 
-    if ((0 <= norma1 && norma1 <= this->raio) && (0 <= norma2 && norma2 <= this->raio))
-        return 2;
-    else if ((0 <= norma1 && norma1 <= this->raio) || (0 <= norma2 && norma2 <= this->raio))
-        return 1;
-    else
-        return 0;
+    if(p1 && biblioteca::distanciaEntrePontos(p1,centroInf) <= raio){
+        nInt++;
+
+    }
+
+    if (p2 && biblioteca::distanciaEntrePontos(p2,centroInf) <= raio){
+        nInt++;
+    }
+
+    return nInt;
 }
