@@ -49,89 +49,36 @@ Cubo::Cubo(double cAresta, Ponto* cCentro): aresta(cAresta), centro(cCentro), Ob
 }
 
 tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTamanho) {
-    vector<Ponto *> v;
+
+    vector<Ponto*> intFace;
 
     for (auto face: faces) {
         Ponto *p = face->p->IntersecaoRetaPlano(pP0, pVetor0, pTamanho);
+
         if (p) {
-            v.push_back(p);
-        }
-    }
+            VectorXd p1p = biblioteca::SubtracaoPontos(face->p1->p, p, 3);
+            VectorXd p2p = biblioteca::SubtracaoPontos(face->p2->p, p, 3);
+            VectorXd p3p = biblioteca::SubtracaoPontos(face->p3->p, p, 3);
+            VectorXd p2p3 = biblioteca::SubtracaoPontos(face->p2->p, face->p3->p, 3);
+            VectorXd p3p1 = biblioteca::SubtracaoPontos(face->p3->p, face->p1->p, 3);
+            VectorXd p1p2 = biblioteca::SubtracaoPontos(face->p1->p, face->p2->p, 3);
+            VectorXd p1p3 = biblioteca::SubtracaoPontos(face->p1->p, face->p3->p, 3);
 
-    if (v.empty()) {
-        return make_tuple(nullptr, nullptr);
-    }
-
-    if (v.size() == 1) {
-        for (int i = 0; i < 12; i++) {
-
-            VectorXd p1p = biblioteca::SubtracaoPontos(this->faces[i]->p1->p, v[0], 3);
-            VectorXd p2p = biblioteca::SubtracaoPontos(this->faces[i]->p2->p, v[0], 3);
-            VectorXd p3p = biblioteca::SubtracaoPontos(this->faces[i]->p3->p, v[0], 3);
-            VectorXd p2p3 = biblioteca::SubtracaoPontos(this->faces[i]->p2->p, this->faces[i]->p3->p, 3);
-            VectorXd p3p1 = biblioteca::SubtracaoPontos(this->faces[i]->p3->p, this->faces[i]->p1->p, 3);
-            VectorXd p1p2 = biblioteca::SubtracaoPontos(this->faces[i]->p1->p, this->faces[i]->p2->p, 3);
-            VectorXd p1p3 = biblioteca::SubtracaoPontos(this->faces[i]->p1->p, this->faces[i]->p3->p, 3);
-
-
-            bool validacao1 = ValidacaoPontoCubo(p1p2, p1p, p1p2, p1p3, 3);
-            bool validacao2 = ValidacaoPontoCubo(p2p3, p2p, p1p2, p1p3, 3);
-            bool validacao3 = ValidacaoPontoCubo(p3p1, p3p, p1p2, p1p3, 3);
-
-            if (validacao1 && validacao2 && validacao3) {
-                return make_tuple(v[0], nullptr);
+            if(ValidacaoPontoCubo(p1p2, p1p, p1p2, p1p3, 3) && ValidacaoPontoCubo(p2p3, p2p, p1p2, p1p3, 3) &&
+                ValidacaoPontoCubo(p3p1, p3p, p1p2, p1p3, 3)){
+                intFace.emplace_back(p);
+            }
+            else{
+                delete p;
             }
         }
-
-        return make_tuple(nullptr, nullptr);
+    }
+    if(intFace.size() > 2){
+        cout << "Mais que 3 intersecoes" << endl;
     }
 
-    if (v.size() == 2) {
+    return make_tuple(intFace.size() > 0 ? intFace[0]: nullptr, intFace.size() > 1 ? intFace[1]: nullptr);
 
-        for (int i = 0; i < 12; i++) {
-
-            VectorXd p1p = biblioteca::SubtracaoPontos(this->faces[i]->p1->p, v[0], 3);
-            VectorXd p2p = biblioteca::SubtracaoPontos(this->faces[i]->p2->p, v[0], 3);
-            VectorXd p3p = biblioteca::SubtracaoPontos(this->faces[i]->p3->p, v[0], 3);
-            VectorXd p2p3 = biblioteca::SubtracaoPontos(this->faces[i]->p2->p, this->faces[i]->p3->p, 3);
-            VectorXd p3p1 = biblioteca::SubtracaoPontos(this->faces[i]->p3->p, this->faces[i]->p1->p, 3);
-            VectorXd p1p2 = biblioteca::SubtracaoPontos(this->faces[i]->p1->p, this->faces[i]->p2->p, 3);
-            VectorXd p1p3 = biblioteca::SubtracaoPontos(this->faces[i]->p1->p, this->faces[i]->p3->p, 3);
-
-
-            bool validacao1 = ValidacaoPontoCubo(p1p2, p1p, p1p2, p1p3, 3);
-            bool validacao2 = ValidacaoPontoCubo(p2p3, p2p, p1p2, p1p3, 3);
-            bool validacao3 = ValidacaoPontoCubo(p3p1, p3p, p1p2, p1p3, 3);
-
-            VectorXd pp1p = biblioteca::SubtracaoPontos(this->faces[i]->p1->p, v[1], 3);
-            VectorXd pp2p = biblioteca::SubtracaoPontos(this->faces[i]->p2->p, v[1], 3);
-            VectorXd pp3p = biblioteca::SubtracaoPontos(this->faces[i]->p3->p, v[1], 3);
-            VectorXd pp2p3 = biblioteca::SubtracaoPontos(this->faces[i]->p2->p, this->faces[i]->p3->p, 3);
-            VectorXd pp3p1 = biblioteca::SubtracaoPontos(this->faces[i]->p3->p, this->faces[i]->p1->p, 3);
-            VectorXd pp1p2 = biblioteca::SubtracaoPontos(this->faces[i]->p1->p, this->faces[i]->p2->p, 3);
-            VectorXd pp1p3 = biblioteca::SubtracaoPontos(this->faces[i]->p1->p, this->faces[i]->p3->p, 3);
-
-            bool validacao4 = ValidacaoPontoCubo(pp1p2, pp1p, pp1p2, pp1p3, 3);
-            bool validacao5 = ValidacaoPontoCubo(pp2p3, pp2p, pp1p2, pp1p3, 3);
-            bool validacao6 = ValidacaoPontoCubo(pp3p1, pp3p, pp1p2, pp1p3, 3);
-
-            if (validacao1 && validacao2 && validacao3) {
-                if (validacao4 && validacao5 && validacao6){
-                    return make_tuple(v[0], v[1]);
-                }
-                else {
-                    return make_tuple(v[0], nullptr);
-                }
-            }
-
-            if(validacao4 && validacao5 && validacao6){
-                return make_tuple(v[1], nullptr);
-            }
-
-        }
-        return make_tuple(nullptr,nullptr);
-
-    }
 }
 
 Vertice* Cubo::CriarVertice(Ponto* ponto, string identificador){
