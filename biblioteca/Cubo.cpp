@@ -16,13 +16,26 @@ Cubo::Cubo(double cAresta, Ponto* cCentro): aresta(cAresta), centro(cCentro), Ob
     Ponto* p6 = biblioteca::CriarPonto(this->centro->x - aresta/2, this->centro->y, this->centro->z - aresta/2);
     Ponto* p7 = biblioteca::CriarPonto(this->centro->x + aresta/2, this->centro->y, this->centro->z - aresta/2);
     Ponto* p8 = biblioteca::CriarPonto(this->centro->x + aresta/2, this->centro->y, this->centro->z + aresta/2);
-    int cont = 1;
+
     vector<Vertice*> vertices;
-    for(int i = 0; i<8; i++){
-        Vertice* v = this->CriarVertice(p1, "V" + cont);
-        vertices.push_back(v);
-        cont++;
-    }
+    Vertice* v1 = this->CriarVertice(p1, "V1");
+    Vertice* v2 = this->CriarVertice(p2, "V2");
+    Vertice* v3 = this->CriarVertice(p3, "V3");
+    Vertice* v4 = this->CriarVertice(p4, "V4");
+    Vertice* v5 = this->CriarVertice(p5, "V5");
+    Vertice* v6 = this->CriarVertice(p6, "V6");
+    Vertice* v7 = this->CriarVertice(p7, "V7");
+    Vertice* v8 = this->CriarVertice(p8, "V8");
+
+    vertices.push_back(v1);
+    vertices.push_back(v2);
+    vertices.push_back(v3);
+    vertices.push_back(v4);
+    vertices.push_back(v5);
+    vertices.push_back(v6);
+    vertices.push_back(v7);
+    vertices.push_back(v8);
+
     this->vertices = vertices;
 
     Face* f1 = this->CriarFace(vertices[0], vertices[3], vertices[1], "F1");
@@ -58,8 +71,8 @@ Cubo::Cubo(double cAresta, Ponto* cCentro): aresta(cAresta), centro(cCentro), Ob
 
 tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTamanho) {
     for (int i = 0; i < 12; i++) {
-        VectorXd p1p2 = biblioteca::SubtracaoPontos(this->faces[i]->p2->p, this->faces[i]->p1->p, 3);
-        VectorXd p1p3 = biblioteca::SubtracaoPontos(this->faces[i]->p3->p, this->faces[i]->p1->p, 3);
+        VectorXd p1p2 = biblioteca::SubtracaoPontos(this->faces[i]->p1->p, this->faces[i]->p2->p, 3);
+        VectorXd p1p3 = biblioteca::SubtracaoPontos(this->faces[i]->p1->p, this->faces[i]->p3->p, 3);
         Plano *p = new Plano(this->faces[i]->p1->p, biblioteca::EncontrarNormal(p1p2, p1p3, 3));
         faces[i]->p = p;
     }
