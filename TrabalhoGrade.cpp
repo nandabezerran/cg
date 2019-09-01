@@ -52,8 +52,8 @@ struct pontoIntersecao{
 /// \param i
 /// \param j
 /// \return
-bool comparacaoDistancia(pontoIntersecao i,pontoIntersecao j){
-    return (i.distOrigem < j.distOrigem);
+bool comparacaoDistancia(pontoIntersecao* i,pontoIntersecao* j){
+    return (i->distOrigem < j->distOrigem);
 }
 
 /// Construtor para o struct pontoIntersecao
@@ -145,7 +145,7 @@ Ponto** createGrid(float pLength, float pZGrid, int pMatrixSize){
 /// \param posObs
 /// \param pointGrid
 /// \return vector com todas interseções a objetos naquele ponto
-vector<pontoIntersecao> intersections(vector<Objeto*> Objects, Ponto *posObs, Ponto pointGrid){
+vector<pontoIntersecao*> intersections(vector<Objeto*> Objects, Ponto *posObs, Ponto pointGrid){
     int tamanho = 3;
 
     auto *p = new Ponto;
@@ -153,29 +153,21 @@ vector<pontoIntersecao> intersections(vector<Objeto*> Objects, Ponto *posObs, Po
 
     VectorXd lineObGrid = biblioteca::SubtracaoPontos(posObs, p, tamanho);
 
-    vector<pontoIntersecao> pInts;
-    Ponto* p_int1;
-    Ponto* p_int2;
+    vector<pontoIntersecao*> pInts;
+    Ponto* p_int1 = nullptr;
+    Ponto* p_int2 = nullptr;
 
     for (auto &Object : Objects) {
         if(!Object->visibilidade) {
             tie(p_int1, p_int2) = Object->IntersecaoReta(posObs, lineObGrid, tamanho);
-
-            if (p_int1 != nullptr && p_int2 != nullptr) {
-                pInts.push_back(*criarPint(p_int1, Object, biblioteca::distanciaEntrePontos(posObs, p_int1)));
-                pInts.push_back(*criarPint(p_int2, Object, biblioteca::distanciaEntrePontos(posObs, p_int2)));
-
-            } else {
-                if (p_int1 != nullptr) {
-                    pInts.push_back(*criarPint(p_int1, Object, biblioteca::distanciaEntrePontos(posObs, p_int1)));
-                } else if (p_int2 != nullptr) {
-                    pInts.push_back(*criarPint(p_int2, Object, biblioteca::distanciaEntrePontos(posObs, p_int2)));
-
-                }
+            if (p_int1 != nullptr) {
+                pInts.push_back(criarPint(p_int1, Object, biblioteca::distanciaEntrePontos(posObs, p_int1)));
+            }
+            if (p_int2 != nullptr) {
+                pInts.push_back(criarPint(p_int2, Object, biblioteca::distanciaEntrePontos(posObs, p_int2)));
             }
         }
     }
-
     if (pInts.empty()){
         return pInts;
     }
@@ -191,7 +183,7 @@ vector<pontoIntersecao> intersections(vector<Objeto*> Objects, Ponto *posObs, Po
 /// \param posObs
 /// \param pointGrid
 /// \return vector com todos os pontos de intersecao do objeto
-vector<pontoIntersecao> intersections(Objeto* Object, Ponto *posObs, Ponto pointGrid){
+vector<pontoIntersecao*> intersections(Objeto* Object, Ponto *posObs, Ponto pointGrid){
     int tamanho = 3;
 
     auto *p = new Ponto;
@@ -199,23 +191,18 @@ vector<pontoIntersecao> intersections(Objeto* Object, Ponto *posObs, Ponto point
 
     VectorXd lineObGrid = biblioteca::SubtracaoPontos(posObs, p, tamanho);
 
-    vector<pontoIntersecao> pInts;
+    vector<pontoIntersecao*> pInts;
     Ponto* p_int1 = nullptr;
     Ponto* p_int2 = nullptr;
 
     tie(p_int1, p_int2) = Object->IntersecaoReta(posObs, lineObGrid, tamanho);
 
-    if (p_int1 != nullptr && p_int2 != nullptr) {
-        pInts.push_back(*criarPint(p_int1, Object, biblioteca::distanciaEntrePontos(posObs, p_int1)));
-        pInts.push_back(*criarPint(p_int2, Object, biblioteca::distanciaEntrePontos(posObs, p_int2)));
+    if (p_int1 != nullptr) {
+        pInts.push_back(criarPint(p_int1, Object, biblioteca::distanciaEntrePontos(posObs, p_int1)));
+    }
+    if (p_int2 != nullptr) {
+        pInts.push_back(criarPint(p_int2, Object, biblioteca::distanciaEntrePontos(posObs, p_int2)));
 
-    } else {
-        if (p_int1 != nullptr) {
-            pInts.push_back(*criarPint(p_int1, Object, biblioteca::distanciaEntrePontos(posObs, p_int1)));
-        } else if (p_int2 != nullptr) {
-            pInts.push_back(*criarPint(p_int2, Object, biblioteca::distanciaEntrePontos(posObs, p_int2)));
-
-        }
     }
 
     if (pInts.empty()){
@@ -253,14 +240,21 @@ colour** pintarObjeto(vector<Objeto*> pObjetos, int pMatrixSize, Ponto *posObs, 
         for (int j = 0; j < pMatrixSize; ++j) {
             for (auto &pObjeto : pObjetos) {
                 if (pObjeto->visibilidade) {
-                    vector<pontoIntersecao> pints = intersections(pObjeto, posObs, pGrade[i][j]);
-                    if(!(pints.empty()) && (!auxDefinido || pints[0].distOrigem < aux.distOrigem)){
-                        aux.distOrigem = pints[0].distOrigem;
-                        aux.p = pints[0].p;
-                        aux.objeto = pints[0].objeto;
+                    vector<pontoIntersecao*> pints = intersections(pObjeto, posObs, pGrade[i][j]);
+                    if(!(pints.empty()) && (!auxDefinido || pints[0]->distOrigem < aux.distOrigem)){
+                        aux.distOrigem = pints[0]->distOrigem;
+                        aux.p = pints[0]->p;
+                        aux.objeto = pints[0]->objeto;
                         auxDefinido = true;
                     }
+                    // Desalocando a memoria
+                    for (auto p : pints){
+                        delete p;
+                    }
+                    pints.clear();
+
                 }
+
             }
             if (auxDefinido) {
                 pintura[i][j] = aux.objeto->cor;
@@ -339,7 +333,7 @@ int main(){
     Ponto** grade = createGrid(tamGrade, zGrade, matrixSize);
 
     //-------------------------------------- Instanciação vetor de pontos de intersecao ------------------------------
-    vector<pontoIntersecao> pInts;
+    vector<pontoIntersecao*> pInts;
 
 
     //-------------------------------------- Inicio do programa ------------------------------------------------------
@@ -384,9 +378,15 @@ int main(){
         for (int j = 0; j < matrixSize ; ++j) {
             pInts = intersections(objetos, posObs, grade[j][i]);
             if(!pInts.empty()){
-                pInts[0].objeto->visibilidade = true;
+                pInts[0]->objeto->visibilidade = true;
                 PrintPintura(pintarObjeto(objetos, matrixSize, posObs, grade), matrixSize);
+                // Desalocando a memoria
+                for (auto p : pInts){
+                    delete p;
+                }
+                pInts.clear();
             }
+
         }
     }
 
