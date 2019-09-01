@@ -107,7 +107,6 @@ bool Cilindro::ValidacaoPontoLateral(Ponto* p_int, int tamanho){
 
 }
 
-
 Ponto* Cilindro::IntersecaoRetaBase(Ponto* centro, Ponto* pP0,VectorXd pVetor0, int tamanho){
 
     Plano* base = new Plano(centro, this->normal);
