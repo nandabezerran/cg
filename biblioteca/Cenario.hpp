@@ -8,15 +8,9 @@
 #include "Objeto.hpp"
 #include <vector>
 #include "Camera.hpp"
+#include "PontoIntersecao.hpp"
 #include "../Bitmap/Bitmap.hpp"
-
-/// Struct para salvar os pontos de interseção, nela temos o ponto o objeto e a distancia da interseção pra origem
-struct pontoIntersecao{
-    Ponto *p;
-    Objeto *objeto;
-    double distOrigem;
-
-};
+#include "PontoIntersecao.hpp"
 
 class Cenario {
 public:
@@ -24,8 +18,8 @@ public:
     vector<Objeto*> objetos;
     Bitmap imagem;
 
-    Cenario(Camera* pCamera);
-    vector<pontoIntersecao*> rayCasting(VectorXd raioObGrade);
+    Cenario(Camera* pCamera, vector<Objeto*> objetos);
+    vector<PontoIntersecao*> rayCasting(Ponto* pCoordCamera, Ponto* pontoGrade);
     colour** pintarObjeto(Ponto*** pGrade);
     void addObjeto(Objeto* objeto);
     void imprimirCenario(colour **matrix);

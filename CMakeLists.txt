@@ -8,4 +8,5 @@ add_executable(ComputacaoGrafica biblioteca/biblioteca.cpp biblioteca/biblioteca
         biblioteca/Esfera.hpp biblioteca/Plano.cpp biblioteca/Plano.hpp biblioteca/Objeto.cpp biblioteca/Objeto.hpp
         biblioteca/Cubo.hpp biblioteca/Cubo.cpp TrabalhoGrade.cpp Bitmap/Bitmap.cpp Bitmap/Bitmap.hpp
         Bitmap/BitmapCabecalhoInfo.h Bitmap/BitmapCabecalhoArq.h biblioteca/Camera.hpp biblioteca/Camera.cpp
-        biblioteca/Cenario.cpp biblioteca/Cenario.hpp Teste.cpp)
+        biblioteca/Cenario.cpp biblioteca/Cenario.hpp Teste.cpp biblioteca/PontoIntersecao.cpp
+        biblioteca/PontoIntersecao.hpp)

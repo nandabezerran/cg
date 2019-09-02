@@ -10,6 +10,7 @@
 #include "biblioteca/Esfera.hpp"
 #include "biblioteca/Cubo.hpp"
 #include "biblioteca/cores.hpp"
+#include "biblioteca/PontoIntersecao.hpp"
 
 int main() {
 
@@ -20,9 +21,8 @@ int main() {
     auto *objeto3 = new Cubo(5, biblioteca::CriarPonto(0, -5, -20));
     auto *objeto4 = new Cubo(5, biblioteca::CriarPonto(0, 0, -20));
     auto *objeto5 = new Cubo(5, biblioteca::CriarPonto(0, 5, -20));
-//auto *objeto6 = new Cone(20, 8, biblioteca::CriarPonto(0,0,-10), normal);
-//auto *objeto7 = new Esfera(3, biblioteca::CriarPonto(0,0,-10));
-
+    //auto *objeto6 = new Cone(20, 8, biblioteca::CriarPonto(0,0,-10), normal);
+    //auto *objeto7 = new Esfera(3, biblioteca::CriarPonto(0,0,-10));
 
     vector<Objeto *> objetos;
 
@@ -31,11 +31,11 @@ int main() {
     objetos.push_back(objeto3);
     objetos.push_back(objeto4);
     objetos.push_back(objeto5);
-//objects.push_back(objeto6);
-//objects.push_back(objeto7);
+    //objects.push_back(objeto6);
+    //objects.push_back(objeto7);
 
 // ------------------------------------- Infos da Grade ----------------------------------------------------------
-    int matrixSize = 100;
+    int matrixSize = 40;
     float tamGrade = 4;
     float zGrade = -4;
 // ------------------------------------- Coordenadas Camera ------------------------------------------------------
@@ -43,20 +43,15 @@ int main() {
     Ponto* pLookAt = biblioteca::CriarPonto(0,0,-10);
     Ponto* pViewUp = biblioteca::CriarPonto(0,-20,-20);
     colour** pintura = nullptr;
+
     auto camera =  new Camera(pCoordCamera, pLookAt, pViewUp, tamGrade, zGrade, matrixSize);
-    auto cenario = new Cenario(camera);
-    cenario->addObjeto(objeto1);
-    cenario->addObjeto(objeto2);
-    cenario->addObjeto(objeto3);
-    cenario->addObjeto(objeto4);
-    cenario->addObjeto(objeto5);
+    auto cenario = new Cenario(camera, objetos);
     VectorXd aux(3);
-    vector<pontoIntersecao*> pInts;
+    vector<PontoIntersecao*> pInts;
     // colocar dentro do cenario imprimir completo
     for (int i = 0; i < matrixSize ; ++i) {
         for (int j = 0; j < matrixSize; ++j) {
-            aux = biblioteca::SubtracaoPontos(pCoordCamera, camera->gradeCamera[j][i], 3);
-            pInts = cenario->rayCasting(aux);
+            pInts = cenario->rayCasting(pCoordCamera, camera->gradeCamera[j][i]);
             if(!pInts.empty()){
                 pInts[0]->objeto->visibilidade = true;
                 pintura = cenario->pintarObjeto(camera->gradeCamera);
