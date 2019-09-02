@@ -7,4 +7,5 @@ add_executable(ComputacaoGrafica biblioteca/biblioteca.cpp biblioteca/biblioteca
         biblioteca/Cone.cpp biblioteca/Cone.hpp biblioteca/Cilindro.cpp biblioteca/Cilindro.hpp biblioteca/Esfera.cpp
         biblioteca/Esfera.hpp biblioteca/Plano.cpp biblioteca/Plano.hpp biblioteca/Objeto.cpp biblioteca/Objeto.hpp
         biblioteca/Cubo.hpp biblioteca/Cubo.cpp TrabalhoGrade.cpp Bitmap/Bitmap.cpp Bitmap/Bitmap.hpp
-        Bitmap/BitmapCabecalhoInfo.h Bitmap/BitmapCabecalhoArq.h)
+        Bitmap/BitmapCabecalhoInfo.h Bitmap/BitmapCabecalhoArq.h biblioteca/Camera.hpp biblioteca/Camera.cpp
+        biblioteca/Cenario.cpp biblioteca/Cenario.hpp Teste.cpp)

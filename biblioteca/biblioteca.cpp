@@ -7,6 +7,23 @@ double biblioteca::ProdutoEscalar(VectorXd vetor1, VectorXd vetor2, int tamanho)
     }
     return produto;
 }
+double biblioteca::ProdutoEscalar(Ponto* ponto, VectorXd vetor2){
+    double produto = 0;
+    produto = produto + ponto->x*vetor2[0];
+    produto = produto + ponto->y*vetor2[1];
+    produto = produto + ponto->z*vetor2[2];
+
+    return produto;
+}
+
+Ponto*** biblioteca::MatrixAllocation(int size){
+    auto ***matrix = new Ponto**[size];
+
+    for (int i = 0; i < size; i++){
+        matrix[i] = new Ponto*[size];
+    }
+    return matrix;
+}
 
 VectorXd biblioteca::ProdutoVetorial(VectorXd vetor1, VectorXd vetor2, int tamanho){
     VectorXd vetor_resultado(tamanho);
