@@ -20,6 +20,7 @@ public:
     int ValidacaoPontoBase(Ponto* pP0,VectorXd pVetor0, int tamanho);
     Ponto* IntersecaoRetaBase(Ponto* centro, Ponto* pP0,VectorXd pVetor0, int tamanho);
     Ponto* ChoseBase(Ponto* pP0,VectorXd pVetor0, int tamanho);
+
 };
 
 

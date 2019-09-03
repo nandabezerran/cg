@@ -7,7 +7,9 @@
 #include "Cenario.hpp"
 
 Cenario::Cenario(Camera *pCamera, vector<Objeto*> pObjetos) : camera(pCamera),
-imagem(camera->qtdFuros, camera->qtdFuros), objetos(pObjetos) {}
+imagem(camera->qtdFuros, camera->qtdFuros), objetos(pObjetos) {
+    iniciarPintura();
+}
 
 void Cenario::addObjeto(Objeto *objeto) {
     objetos.emplace_back(objeto);
@@ -21,10 +23,11 @@ bool comparacaoDistancia(PontoIntersecao* i,PontoIntersecao* j){
     return (i->distOrigem < j->distOrigem);
 }
 
-void iniciarPintura(colour** &pintura, int tam){
-    for (int i = 0; i < tam; ++i) {
-        for (int j = 0; j < tam ; ++j) {
-            pintura[i][j] = BLUE;
+void Cenario::iniciarPintura(){
+    for (int i = 0; i < camera->qtdFuros; ++i) {
+        for (int j = 0; j < camera->qtdFuros ; ++j) {
+            imagem.setPixel(i,j,(uint8_t)235,(uint8_t)206,
+                            (uint8_t)135);
         }
     }
 }
@@ -90,18 +93,19 @@ vector<PontoIntersecao*> interceptaObjeto(Objeto* Object, Ponto *posObs, Ponto* 
     return pInts;
 }
 
-colour** MatrixAllocatioColour(int size){
-    auto **matrix = new colour*[size];
+int*** MatrixAllocatioColour(int size){
+    auto **matrix = new int**[size];
 
     for (int i = 0; i < size; i++){
-        matrix[i] = new colour[size];
+        matrix[i] = new int*[size];
+        for (int j = 0; j < size; ++j) {
+            matrix[i][j] = new int[3];
+        }
     }
     return matrix;
 }
 
-colour** Cenario::pintarObjeto(Ponto*** pGrade){
-    colour** pintura = MatrixAllocatioColour(camera->qtdFuros);
-    iniciarPintura(pintura, camera->qtdFuros);
+void Cenario::pintarObjeto(Ponto*** pGrade){
     auto *aux = new PontoIntersecao();
     bool auxDefinido = false;
     for (int i = 0; i < camera->qtdFuros; ++i) {
@@ -125,101 +129,17 @@ colour** Cenario::pintarObjeto(Ponto*** pGrade){
 
             }
             if (auxDefinido) {
-                pintura[i][j] = aux->objeto->cor;
+                imagem.setPixel(j,i,(uint8_t)aux->objeto->rgb[2],(uint8_t)aux->objeto->rgb[1],
+                        (uint8_t)aux->objeto->rgb[0]);
             }
             auxDefinido = false;
         }
     }
-    return pintura;
 }
 
-uint8_t* getRgb(colour cor){
 
-    auto *rgb = new uint8_t[3];
-    switch (cor) {
-        case DARKBLUE:
-            rgb[0] = 0;
-            rgb[1] = 0;
-            rgb[2] = 139;
-            break;
-        case DARKGREEN:
-            rgb[0] = 0;
-            rgb[1] = 100;
-            rgb[2] = 0;
-            break;
-        case DARKTEAL:
-            rgb[0] = 0;
-            rgb[1] = 100;
-            rgb[2] = 0;
-            break;
-        case BROWN:
-            rgb[0] = 139;
-            rgb[1] = 69;
-            rgb[2] = 19;
-            break;
-        case DARKPINK:
-            rgb[0] = 231;
-            rgb[1] = 84;
-            rgb[2] = 128;
-            break;
-        case DARKYELLOW:
-            rgb[0] = 0;
-            rgb[1] = 100;
-            rgb[2] = 0;
-            break;
-        case GRAY:
-            rgb[0] = 128;
-            rgb[1] = 128;
-            rgb[2] = 128;
-            break;
-        case DARKGRAY:
-            rgb[0] = 105;
-            rgb[1] = 105;
-            rgb[2] = 105;
-            break;
-        case BLUE:
-            rgb[0] = 135;
-            rgb[1] = 206;
-            rgb[2] = 235;
-            break;
-        case GREEN:
-            rgb[0] = 34;
-            rgb[1] = 139;
-            rgb[2] = 34;
-            break;
-        case TEAL:
-            rgb[0] = 0;
-            rgb[1] = 128;
-            rgb[2] = 128;
-            break;
-        case PINK:
-            rgb[0] = 255;
-            rgb[1] = 20;
-            rgb[2] = 147;
-            break;
-        case YELLOW:
-            rgb[0] = 100;
-            rgb[1] = 100;
-            rgb[2] = 0;
-            break;
-        case WHITE:
-            rgb[0] = 100;
-            rgb[1] = 100;
-            rgb[2] = 100;
-            break;
-    }
-    return rgb;
-}
 
-void Cenario::imprimirCenario(colour **matrix) {
-    uint8_t *rgb;
-    for (int l = 0; l < camera->qtdFuros; ++l) {
-        for (int m = 0; m < camera->qtdFuros; ++m) {
-            rgb = getRgb(matrix[m][l]);
-            imagem.setPixel(l,m,rgb[2],rgb[1],rgb[0]);
-            delete[] rgb;
-        }
-    }
+void Cenario::salvarCenario() {
     imagem.salvar("TesteCamera.bmp");
 }
 

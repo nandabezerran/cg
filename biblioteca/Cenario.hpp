@@ -18,12 +18,15 @@ public:
     vector<Objeto*> objetos;
     Bitmap imagem;
 
-    Cenario(Camera* pCamera, vector<Objeto*> objetos);
-    vector<PontoIntersecao*> rayCasting(Ponto* pCoordCamera, Ponto* pontoGrade);
-    colour** pintarObjeto(Ponto*** pGrade);
-    void addObjeto(Objeto* objeto);
-    void imprimirCenario(colour **matrix);
 
+    Cenario(Camera* pCamera, vector<Objeto*> objetos);
+
+    vector<PontoIntersecao*> rayCasting(Ponto* pCoordCamera, Ponto* pontoGrade);
+    void pintarObjeto(Ponto*** pGrade);
+    void addObjeto(Objeto* objeto);
+    void salvarCenario();
+private:
+    void iniciarPintura();
 };
 
 

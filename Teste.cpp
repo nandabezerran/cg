@@ -9,7 +9,6 @@
 #include "biblioteca/Cone.hpp"
 #include "biblioteca/Esfera.hpp"
 #include "biblioteca/Cubo.hpp"
-#include "biblioteca/cores.hpp"
 #include "biblioteca/PontoIntersecao.hpp"
 
 int main() {
@@ -35,14 +34,13 @@ int main() {
     //objects.push_back(objeto7);
 
 // ------------------------------------- Infos da Grade ----------------------------------------------------------
-    int matrixSize = 40;
+    int matrixSize = 100;
     float tamGrade = 4;
     float zGrade = -4;
 // ------------------------------------- Coordenadas Camera ------------------------------------------------------
-    Ponto* pCoordCamera = biblioteca::CriarPonto(0,-20,-10);
+    Ponto* pCoordCamera = biblioteca::CriarPonto(10,2,0);
     Ponto* pLookAt = biblioteca::CriarPonto(0,0,-10);
-    Ponto* pViewUp = biblioteca::CriarPonto(0,-20,-20);
-    colour** pintura = nullptr;
+    Ponto* pViewUp = biblioteca::CriarPonto(10,3,0);
 
     auto camera =  new Camera(pCoordCamera, pLookAt, pViewUp, tamGrade, zGrade, matrixSize);
     auto cenario = new Cenario(camera, objetos);
@@ -54,13 +52,11 @@ int main() {
             pInts = cenario->rayCasting(pCoordCamera, camera->gradeCamera[j][i]);
             if(!pInts.empty()){
                 pInts[0]->objeto->visibilidade = true;
-                pintura = cenario->pintarObjeto(camera->gradeCamera);
-            }
 
+            }
         }
     }
-    if(pintura){
-        cenario->imprimirCenario(pintura);
-        cout << "Imprimiu" << endl;
-    }
+    cenario->pintarObjeto(camera->gradeCamera);
+    cenario->salvarCenario();
+
 }

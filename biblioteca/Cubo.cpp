@@ -7,7 +7,7 @@
 #include "biblioteca.hpp"
 #include "Plano.hpp"
 
-Cubo::Cubo(double cAresta, Ponto* cCentro): aresta(cAresta), centro(cCentro), Objeto("Cubo", GRAY, false){
+Cubo::Cubo(double cAresta, Ponto* cCentro): aresta(cAresta), centro(cCentro), Objeto("Cubo", 128,128,128 , false){
     Ponto* p1 = biblioteca::CriarPonto(centro->x - aresta/2, centro->y + aresta, centro->z + aresta/2);
     Ponto* p2 = biblioteca::CriarPonto(centro->x - aresta/2, centro->y + aresta, centro->z - aresta/2);
     Ponto* p3 = biblioteca::CriarPonto(centro->x + aresta/2, centro->y + aresta, centro->z - aresta/2);
