@@ -12,7 +12,7 @@
 #include "biblioteca/PontoIntersecao.hpp"
 
 int main() {
-
+//-------------------------------------------- Criação Objetos -------------------------------------------------------
     Vector3d normal;
     normal << 0, 1, 0;
     auto *objeto1 = new Cone(4, 3, biblioteca::CriarPonto(0, -1, -10), normal);
@@ -33,30 +33,21 @@ int main() {
     //objects.push_back(objeto6);
     //objects.push_back(objeto7);
 
-// ------------------------------------- Infos da Grade ----------------------------------------------------------
+// ------------------------------------- Infos da Grade --------------------------------------------------------------
     int matrixSize = 100;
     float tamGrade = 4;
     float zGrade = -4;
-// ------------------------------------- Coordenadas Camera ------------------------------------------------------
+
+// ------------------------------------- Coordenadas Camera ----------------------------------------------------------
     Ponto* pCoordCamera = biblioteca::CriarPonto(10,2,0);
     Ponto* pLookAt = biblioteca::CriarPonto(0,0,-10);
     Ponto* pViewUp = biblioteca::CriarPonto(10,3,0);
 
     auto camera =  new Camera(pCoordCamera, pLookAt, pViewUp, tamGrade, zGrade, matrixSize);
     auto cenario = new Cenario(camera, objetos);
-    VectorXd aux(3);
-    vector<PontoIntersecao*> pInts;
-    // colocar dentro do cenario imprimir completo
-    for (int i = 0; i < matrixSize ; ++i) {
-        for (int j = 0; j < matrixSize; ++j) {
-            pInts = cenario->rayCasting(pCoordCamera, camera->gradeCamera[j][i]);
-            if(!pInts.empty()){
-                pInts[0]->objeto->visibilidade = true;
-
-            }
-        }
-    }
-    cenario->pintarObjeto(camera->gradeCamera);
-    cenario->salvarCenario();
+// ------------------------------------- Funções ---------------------------------------------------------------------
+    //cenario->checarUmPonto(49,49);
+    //cenario->objetosVisiveis();
+    cenario->imprimirCenarioCompleto();
 
 }

@@ -25,6 +25,9 @@ public:
     void pintarObjeto(Ponto*** pGrade);
     void addObjeto(Objeto* objeto);
     void salvarCenario();
+    void imprimirCenarioCompleto();
+    void checarUmPonto(int linha, int coluna);
+    void objetosVisiveis();
 private:
     void iniciarPintura();
 };
