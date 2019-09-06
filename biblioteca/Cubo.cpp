@@ -176,11 +176,11 @@ void Cubo::mudaCoodCamera(Camera *camera) {
 
 void Cubo::mudaCoodMundo(Camera *camera) {
     camera->mudarCameraMundo(centro);
-    for (auto face: faces) {
-        camera->mudarCameraMundo(face->p1->p);
-        camera->mudarCameraMundo(face->p2->p);
-        camera->mudarCameraMundo(face->p3->p);
-        camera->mudarCameraMundo(face->p->normal);
-        camera->mudarCameraMundo(face->p->p_pi);
+    for (auto vertice: vertices) {
+        camera->mudarMundoCamera(vertice->p);
     }
+    for (auto face: faces) {
+        camera->mudarMundoCamera(face->p->normal);
+    }
+
 }
