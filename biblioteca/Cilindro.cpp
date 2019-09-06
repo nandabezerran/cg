@@ -123,10 +123,8 @@ Ponto* Cilindro::ChoseBase(Ponto* pP0,VectorXd pVetor0, int tamanho){
     Ponto* centroSup = biblioteca::CriarPonto(this->centro->x + H_n[0], this->centro->y + H_n[1],this->centro->z + H_n[2]);
 
     Ponto* p = IntersecaoRetaBase(centroInf, pP0, pVetor0, tamanho);
-    VectorXd BasePonto = biblioteca::SubtracaoPontos(centroInf,p,tamanho);
-    double norma = sqrt(biblioteca::ProdutoEscalar(BasePonto,BasePonto,tamanho));
 
-    if((0 <= norma && norma <= this->raio)) {
+    if(biblioteca::distanciaEntrePontos(p, centroInf) <= raio) {
         return(IntersecaoRetaBase(centroInf, pP0, pVetor0, tamanho));
     }
 
@@ -161,4 +159,14 @@ int Cilindro::ValidacaoPontoBase(Ponto* pP0,VectorXd pVetor0, int tamanho){
     }
 
     return nInt;
+}
+
+void Cilindro::mudaCoodCamera(Camera *camera) {
+    camera->mudarMundoCamera(centro);
+    camera->mudarMundoCamera(normal);
+}
+
+void Cilindro::mudaCoodMundo(Camera *camera) {
+    camera->mudarCameraMundo(centro);
+    camera->mudarCameraMundo(normal);
 }

@@ -161,3 +161,12 @@ bool Cone::ValidacaoPontoBase(Ponto* pP0,VectorXd pVetor0, int tamanho){
 
 }
 
+void Cone::mudaCoodCamera(Camera *camera) {
+    camera->mudarMundoCamera(centro);
+    camera->mudarMundoCamera(normal);
+}
+
+void Cone::mudaCoodMundo(Camera *camera) {
+    camera->mudarCameraMundo(centro);
+    camera->mudarCameraMundo(normal);
+}

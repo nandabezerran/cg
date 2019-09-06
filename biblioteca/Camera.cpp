@@ -6,6 +6,8 @@
 
 Camera::Camera(Ponto *pCoordCamera, Ponto *pLookAt, Ponto *pViewUp, double gradeTam, double distGrade, int pQtdFuros) :
 coordCamera(pCoordCamera), lookAt(pLookAt), viewUp(pViewUp), qtdFuros(pQtdFuros) {
+
+    observador = biblioteca::CriarPonto(0,0,0);
     int tamanho = 3;
     kc = biblioteca::NormalizaVetor(biblioteca::SubtracaoPontos(lookAt, coordCamera, tamanho),tamanho);
     ic = biblioteca::NormalizaVetor(biblioteca::ProdutoVetorial(biblioteca::SubtracaoPontos(coordCamera,viewUp,tamanho)
@@ -25,8 +27,6 @@ coordCamera(pCoordCamera), lookAt(pLookAt), viewUp(pViewUp), qtdFuros(pQtdFuros)
             posY = -gradeTam/2 + pointDistance + row*pointDistance;
 
             Ponto *p = biblioteca::CriarPonto(posX,posY,z);
-
-            mudarCameraMundo(p);
 
             gradeCamera[row][column] = p;
         }
@@ -85,6 +85,7 @@ VectorXd multMatrix(double matriz[4][4], VectorXd &vetor){
     }
     return aux;
 }
+
 void Camera::mudarMundoCamera(Ponto *ponto) {
     VectorXd aux(4);
     aux << ponto->x, ponto->y, ponto->z, 1;
@@ -92,6 +93,15 @@ void Camera::mudarMundoCamera(Ponto *ponto) {
     ponto->x = aux[0];
     ponto->y = aux[1];
     ponto->z = aux[2];
+}
+
+void Camera::mudarMundoCamera(VectorXd &pNormal) {
+    VectorXd aux(4);
+    aux << pNormal[0], pNormal[1], pNormal[2], 0;
+    aux = multMatrix(mundoCamera,aux);
+    pNormal[0] = aux[0];
+    pNormal[1] = aux[1];
+    pNormal[2] = aux[2];
 }
 
 void Camera::mudarCameraMundo(Ponto *ponto) {
@@ -103,3 +113,11 @@ void Camera::mudarCameraMundo(Ponto *ponto) {
     ponto->z = aux[2];
 }
 
+void Camera::mudarCameraMundo(VectorXd &pNormal) {
+    VectorXd aux(4);
+    aux << pNormal[0], pNormal[1], pNormal[2], 0;
+    aux = multMatrix(cameraMundo,aux);
+    pNormal[0] = aux[0];
+    pNormal[1] = aux[1];
+    pNormal[2] = aux[2];
+}

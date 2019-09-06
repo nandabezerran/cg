@@ -12,7 +12,6 @@ double biblioteca::ProdutoEscalar(Ponto* ponto, VectorXd vetor2){
     produto = produto + ponto->x*vetor2[0];
     produto = produto + ponto->y*vetor2[1];
     produto = produto + ponto->z*vetor2[2];
-
     return produto;
 }
 
@@ -31,7 +30,6 @@ VectorXd biblioteca::ProdutoVetorial(VectorXd vetor1, VectorXd vetor2, int taman
     vetor_resultado[0] = vetor1[1]*vetor2[2] - vetor1[2]*vetor2[1];
     vetor_resultado[1] = vetor1[2]*vetor2[0] - vetor1[0]*vetor2[2];
     vetor_resultado[2] = vetor1[0]*vetor2[1] - vetor1[1]*vetor2[0];
-
     return vetor_resultado;
 }
 
@@ -41,7 +39,6 @@ VectorXd biblioteca::NormalizaVetor(VectorXd vetor, int tamanho){
 
     norma = sqrt(ProdutoEscalar(vetor,vetor,tamanho));
     vetor_normalizado = vetor/norma;
-
     return vetor_normalizado;
 }
 
@@ -63,7 +60,6 @@ VectorXd biblioteca::SubtracaoPontos(Ponto* p1, Ponto* p2, int tamanho){
     vetor_resultante[0] = p2->x - p1->x;
     vetor_resultante[1] = p2->y - p1->y;
     vetor_resultante[2] = p2->z - p1->z;
-
     return vetor_resultante;
 }
 

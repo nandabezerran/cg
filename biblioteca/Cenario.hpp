@@ -21,15 +21,18 @@ public:
 
     Cenario(Camera* pCamera, vector<Objeto*> objetos);
 
-    vector<PontoIntersecao*> rayCasting(Ponto* pCoordCamera, Ponto* pontoGrade);
+    vector<PontoIntersecao*> rayCasting(Ponto* pCoordObs, Ponto* pontoGrade);
     void pintarObjeto(Ponto*** pGrade);
     void addObjeto(Objeto* objeto);
     void salvarCenario();
     void imprimirCenarioCompleto();
     void checarUmPonto(int linha, int coluna);
     void objetosVisiveis();
+    void mudarCamera(Camera *pCamera);
 private:
     void iniciarPintura();
+    void iniciarCenario();
+    void terminarCenario();
 };
 
 

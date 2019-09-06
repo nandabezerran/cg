@@ -11,6 +11,7 @@ public:
     Ponto* coordCamera;
     Ponto* lookAt;
     Ponto* viewUp;
+    Ponto* observador;
     VectorXd ic;
     VectorXd jc;
     VectorXd kc;
@@ -23,7 +24,8 @@ public:
     void montarMatrizCoord();
     void mudarMundoCamera(Ponto *ponto);
     void mudarCameraMundo(Ponto *ponto);
-
+    void mudarMundoCamera(VectorXd &pNormal);
+    void mudarCameraMundo(VectorXd &pNormal);
 
 };
 

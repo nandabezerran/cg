@@ -19,6 +19,8 @@ public:
     tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, VectorXd pVetor0,int pTamanho);
     Ponto* IntersecaoRetaBase(Ponto* centro, Ponto* pP0,VectorXd pVetor0, int tamanho);
     bool ValidacaoPontoBase(Ponto* pP0,VectorXd pVetor0, int tamanho);
+    void mudaCoodCamera(Camera *camera) override;
+    void mudaCoodMundo(Camera *camera) override;
 
 
 

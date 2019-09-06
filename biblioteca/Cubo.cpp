@@ -39,6 +39,7 @@ Cubo::Cubo(double cAresta, Ponto* cCentro): aresta(cAresta), centro(cCentro), Ob
     faces.push_back(CriarFace(vertices[0], vertices[4], vertices[5], "F11"));
     faces.push_back(CriarFace(vertices[5], vertices[1], vertices[0], "F12"));
 
+
     for (auto face: faces) {
         VectorXd p1p2 = biblioteca::SubtracaoPontos(face->p1->p, face->p2->p, 3);
         VectorXd p1p3 = biblioteca::SubtracaoPontos(face->p1->p, face->p3->p, 3);
@@ -65,7 +66,7 @@ tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTam
             VectorXd p1p3 = biblioteca::SubtracaoPontos(face->p1->p, face->p3->p, 3);
 
             if(ValidacaoPontoCubo(p1p2, p1p, p1p2, p1p3, 3) && ValidacaoPontoCubo(p2p3, p2p, p1p2, p1p3, 3) &&
-                ValidacaoPontoCubo(p3p1, p3p, p1p2, p1p3, 3)){
+               ValidacaoPontoCubo(p3p1, p3p, p1p2, p1p3, 3)){
                 intFace.emplace_back(p);
             }
             else{
@@ -80,6 +81,30 @@ tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTam
     return make_tuple(intFace.size() > 0 ? intFace[0]: nullptr, intFace.size() > 1 ? intFace[1]: nullptr);
 
 }
+
+//tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTamanho) {
+//
+//    vector<Ponto*> intFace;
+//
+//    for (auto face: faces) {
+//        Ponto *p = face->p->IntersecaoRetaPlano(pP0, pVetor0, pTamanho);
+//
+//        if (p) {
+//            if(ValidacaoPontoCubo(face, p)){
+//                intFace.emplace_back(p);
+//            }
+//            else{
+//                delete p;
+//            }
+//        }
+//    }
+//    if(intFace.size() > 2){
+//        cout << "Mais que 3 intersecoes" << endl;
+//    }
+//
+//    return make_tuple(intFace.size() > 0 ? intFace[0]: nullptr, intFace.size() > 1 ? intFace[1]: nullptr);
+//
+//}
 
 Vertice* Cubo::CriarVertice(Ponto* ponto, string identificador){
     auto v = new Vertice();
@@ -103,13 +128,59 @@ Face* Cubo::CriarFace(Vertice* v1, Vertice* v2, Vertice* v3, string id){
     newFace->id = id;
 }
 
+//bool Cubo::ValidacaoPontoCubo(Face *face, Ponto *p) {
+//
+//    VectorXd auxVec1 = biblioteca::SubtracaoPontos(face->p2->p, face->p1->p, 3);
+//    VectorXd auxVec2 = biblioteca::SubtracaoPontos(face->p3->p, face->p1->p, 3);
+//    VectorXd pv = biblioteca::ProdutoVetorial(auxVec1, auxVec2, 3);
+//
+//    double areaTotal = (sqrt(biblioteca::ProdutoEscalar(pv,pv,3)))/2;
+//
+//    VectorXd w1 = biblioteca::SubtracaoPontos(face->p1->p, p, 3);
+//    VectorXd w2 = biblioteca::SubtracaoPontos(face->p2->p, p, 3);
+//    VectorXd w3 = biblioteca::SubtracaoPontos(face->p3->p, p, 3);
+//
+//
+//    pv =  biblioteca::ProdutoVetorial(w1, w2, 3);
+//    double area1 = (sqrt(biblioteca::ProdutoEscalar(pv,pv,3)))/2;
+//
+//    pv =  biblioteca::ProdutoVetorial(w3, w1, 3);
+//    double area2 = (sqrt(biblioteca::ProdutoEscalar(pv,pv,3)))/2;
+//
+//    pv =  biblioteca::ProdutoVetorial(w2, w3, 3);
+//    double area3 =  (sqrt(biblioteca::ProdutoEscalar(pv,pv,3)))/2;
+//
+//    return abs(areaTotal - (area1 + area2 + area3)) < 0.000000005;
+//
+//}
 bool Cubo::ValidacaoPontoCubo(VectorXd PxPy, VectorXd PxP, VectorXd P1P2, VectorXd P1P3, int tamanho) {
 
-     VectorXd val1 = biblioteca::ProdutoVetorial(PxPy, PxP, tamanho);
-     VectorXd val2 = biblioteca::ProdutoVetorial(P1P2, P1P3, tamanho);
-     double validacao = biblioteca::ProdutoEscalar(val1,val2,tamanho);
+    VectorXd val1 = biblioteca::ProdutoVetorial(PxPy, PxP, tamanho);
+    VectorXd val2 = biblioteca::ProdutoVetorial(P1P2, P1P3, tamanho);
+    double validacao = biblioteca::ProdutoEscalar(val1,val2,tamanho);
 
-     return validacao > 0;
+    return validacao > 0;
 
 }
 
+
+void Cubo::mudaCoodCamera(Camera *camera) {
+    camera->mudarMundoCamera(centro);
+    for (auto vertice: vertices) {
+        camera->mudarMundoCamera(vertice->p);
+    }
+    for (auto face: faces) {
+        camera->mudarMundoCamera(face->p->normal);
+    }
+}
+
+void Cubo::mudaCoodMundo(Camera *camera) {
+    camera->mudarCameraMundo(centro);
+    for (auto face: faces) {
+        camera->mudarCameraMundo(face->p1->p);
+        camera->mudarCameraMundo(face->p2->p);
+        camera->mudarCameraMundo(face->p3->p);
+        camera->mudarCameraMundo(face->p->normal);
+        camera->mudarCameraMundo(face->p->p_pi);
+    }
+}

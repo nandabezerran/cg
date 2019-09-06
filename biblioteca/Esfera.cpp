@@ -59,4 +59,12 @@ tuple<Ponto*,Ponto*> Esfera::IntersecaoReta(Ponto* pP0, VectorXd pVetor0,int pTa
 
 }
 
+void Esfera::mudaCoodCamera(Camera *camera) {
+    camera->mudarMundoCamera(centro);
+}
+
+void Esfera::mudaCoodMundo(Camera *camera) {
+    camera->mudarCameraMundo(centro);
+}
+
 

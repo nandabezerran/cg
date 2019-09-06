@@ -12,3 +12,4 @@ Objeto::Objeto(const string& pNome, int r, int g, int b, bool pVisibilidade) : n
 
 }
 
+
