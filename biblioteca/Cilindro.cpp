@@ -132,6 +132,18 @@ Ponto* Cilindro::ChoseBase(Ponto* pP0,VectorXd pVetor0, int tamanho){
         return(IntersecaoRetaBase(centroSup, pP0, pVetor0, tamanho));
 
 }
+VectorXd Cilindro::calcularNormal(PontoIntersecao* pi){
+    VectorXd PImenosCB = biblioteca::SubtracaoPontos(centro, pi->p, 3);
+    double aux = biblioteca::ProdutoEscalar(PImenosCB, normal, 3);
+    VectorXd aux2 = biblioteca::MultVetorEscalar(normal, aux);
+
+    Ponto* pe = biblioteca::CriarPonto(centro->x + aux2[0], centro->y + aux2[1], centro->z + aux2[2]);
+    VectorXd PImenosPE = biblioteca::SubtracaoPontos(pe, pi->p, 3);
+
+    VectorXd normalAoPonto = biblioteca::DivisaoVetor(PImenosPE, raio);
+    delete pe;
+    return normalAoPonto;
+};
 
 int Cilindro::ValidacaoPontoBase(Ponto* pP0,VectorXd pVetor0, int tamanho){
 

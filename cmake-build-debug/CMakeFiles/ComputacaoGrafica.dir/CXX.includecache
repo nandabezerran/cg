@@ -34,9 +34,19 @@ biblioteca/Cubo.hpp
 biblioteca/PontoIntersecao.hpp
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/PontoIntersecao.hpp
 
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Camera.cpp
+Camera.hpp
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Camera.hpp
+
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Camera.hpp
 biblioteca.hpp
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.hpp
+
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cenario.cpp
+utility
+-
+Cenario.hpp
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cenario.hpp
 
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cenario.hpp
 biblioteca.hpp
@@ -54,17 +64,39 @@ PontoIntersecao.hpp
 PontoIntersecao.hpp
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/PontoIntersecao.hpp
 
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cilindro.cpp
+Cilindro.hpp
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cilindro.hpp
+Plano.hpp
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Plano.hpp
+
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cilindro.hpp
 biblioteca.hpp
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.hpp
 Objeto.hpp
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.hpp
+PontoIntersecao.hpp
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/PontoIntersecao.hpp
+
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cone.cpp
+Cone.hpp
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cone.hpp
+Plano.hpp
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Plano.hpp
 
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cone.hpp
 biblioteca.hpp
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.hpp
 Objeto.hpp
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.hpp
+
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.cpp
+Cubo.hpp
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.hpp
+biblioteca.hpp
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.hpp
+Plano.hpp
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Plano.hpp
 
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.hpp
 biblioteca.hpp
@@ -76,9 +108,17 @@ Plano.hpp
 vector
 -
 
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Esfera.cpp
+Esfera.hpp
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Esfera.hpp
+
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Esfera.hpp
 biblioteca.hpp
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.hpp
+Objeto.hpp
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.hpp
+
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.cpp
 Objeto.hpp
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.hpp
 
@@ -88,15 +128,27 @@ biblioteca.hpp
 Camera.hpp
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Camera.hpp
 
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Plano.cpp
+Plano.hpp
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Plano.hpp
+
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Plano.hpp
 biblioteca.hpp
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.hpp
+
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/PontoIntersecao.cpp
+PontoIntersecao.hpp
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/PontoIntersecao.hpp
 
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/PontoIntersecao.hpp
 biblioteca.hpp
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.hpp
 Objeto.hpp
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.hpp
+
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.cpp
+biblioteca.hpp
+/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.hpp
 
 /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.hpp
 iostream

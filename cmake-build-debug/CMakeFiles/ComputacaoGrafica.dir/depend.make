@@ -456,6 +456,7 @@ CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.o: ../biblioteca/Cilind
 CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.o: ../biblioteca/Cilindro.hpp
 CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.o: ../biblioteca/Objeto.hpp
 CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.o: ../biblioteca/Plano.hpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.o: ../biblioteca/PontoIntersecao.hpp
 CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.o: ../biblioteca/biblioteca.hpp
 CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.o: ../eigen/Eigen/Core
 CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.o: ../eigen/Eigen/src/Core/Array.h

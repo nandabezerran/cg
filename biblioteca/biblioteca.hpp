@@ -28,6 +28,8 @@ class biblioteca{
         static Ponto* CriarPonto(double x, double y, double z);
         static double distanciaEntrePontos(Ponto* p1, Ponto* p2);
         static Ponto*** MatrixAllocation(int size);
+        static VectorXd DivisaoVetor(VectorXd v, double x);
+        static VectorXd MultVetorEscalar(VectorXd v, double x);
         
         static Ponto* PontoCoordenada(Ponto* P0, Ponto* L_at, Ponto* V_up, Ponto* Pc, int tamanho, bool cord);
         static VectorXd VetorCoordenada(Ponto* P0, Ponto* L_at, Ponto* V_up, VectorXd Pc, int tamanho, bool cord);

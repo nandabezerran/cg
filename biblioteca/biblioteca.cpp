@@ -15,6 +15,14 @@ double biblioteca::ProdutoEscalar(Ponto* ponto, VectorXd vetor2){
     return produto;
 }
 
+VectorXd biblioteca::MultVetorEscalar(VectorXd v, double x){
+    VectorXd result(3);
+    result[0] = v[0] * x;
+    result[1] = v[1] * x;
+    result[2] = v[2] * x;
+    return result;
+}
+
 Ponto*** biblioteca::MatrixAllocation(int size){
     auto ***matrix = new Ponto**[size];
 
@@ -42,6 +50,13 @@ VectorXd biblioteca::NormalizaVetor(VectorXd vetor, int tamanho){
     return vetor_normalizado;
 }
 
+VectorXd biblioteca::DivisaoVetor(VectorXd v, double x){
+    VectorXd result(3);
+    result[0] = v[0] / x;
+    result[1] = v[1] / x;
+    result[2] = v[2] / x;
+    return result;
+}
 VectorXd biblioteca::EncontrarNormal(VectorXd vetor1, VectorXd vetor2, int tamanho){
     VectorXd vetor_normal(tamanho);
     vetor_normal = ProdutoVetorial(vetor1, vetor2, tamanho);
