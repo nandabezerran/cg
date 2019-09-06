@@ -84,7 +84,31 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/Bitmap/Bitmap.cpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/Bitmap/Bitmap.hpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/Bitmap/BitmapCabecalhoArq.h">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/Bitmap/BitmapCabecalhoInfo.h">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
 		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/TrabalhoGrade.cpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Camera.cpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Camera.hpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cenario.cpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cenario.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
 		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cilindro.cpp">
@@ -111,6 +135,18 @@
 		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Esfera.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Luz.cpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Luz.hpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/LuzPontual.cpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/LuzPontual.hpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
 		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
@@ -121,6 +157,12 @@
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
 		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Plano.hpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/PontoIntersecao.cpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/PontoIntersecao.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
 		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.cpp">

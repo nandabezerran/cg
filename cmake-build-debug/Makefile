@@ -123,6 +123,33 @@ ComputacaoGrafica/fast:
 	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/build
 .PHONY : ComputacaoGrafica/fast
 
+Bitmap/Bitmap.o: Bitmap/Bitmap.cpp.o
+
+.PHONY : Bitmap/Bitmap.o
+
+# target to build an object file
+Bitmap/Bitmap.cpp.o:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.cpp.o
+.PHONY : Bitmap/Bitmap.cpp.o
+
+Bitmap/Bitmap.i: Bitmap/Bitmap.cpp.i
+
+.PHONY : Bitmap/Bitmap.i
+
+# target to preprocess a source file
+Bitmap/Bitmap.cpp.i:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.cpp.i
+.PHONY : Bitmap/Bitmap.cpp.i
+
+Bitmap/Bitmap.s: Bitmap/Bitmap.cpp.s
+
+.PHONY : Bitmap/Bitmap.s
+
+# target to generate assembly for a file
+Bitmap/Bitmap.cpp.s:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.cpp.s
+.PHONY : Bitmap/Bitmap.cpp.s
+
 TrabalhoGrade.o: TrabalhoGrade.cpp.o
 
 .PHONY : TrabalhoGrade.o
@@ -149,6 +176,60 @@ TrabalhoGrade.s: TrabalhoGrade.cpp.s
 TrabalhoGrade.cpp.s:
 	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.s
 .PHONY : TrabalhoGrade.cpp.s
+
+biblioteca/Camera.o: biblioteca/Camera.cpp.o
+
+.PHONY : biblioteca/Camera.o
+
+# target to build an object file
+biblioteca/Camera.cpp.o:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.cpp.o
+.PHONY : biblioteca/Camera.cpp.o
+
+biblioteca/Camera.i: biblioteca/Camera.cpp.i
+
+.PHONY : biblioteca/Camera.i
+
+# target to preprocess a source file
+biblioteca/Camera.cpp.i:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.cpp.i
+.PHONY : biblioteca/Camera.cpp.i
+
+biblioteca/Camera.s: biblioteca/Camera.cpp.s
+
+.PHONY : biblioteca/Camera.s
+
+# target to generate assembly for a file
+biblioteca/Camera.cpp.s:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.cpp.s
+.PHONY : biblioteca/Camera.cpp.s
+
+biblioteca/Cenario.o: biblioteca/Cenario.cpp.o
+
+.PHONY : biblioteca/Cenario.o
+
+# target to build an object file
+biblioteca/Cenario.cpp.o:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.cpp.o
+.PHONY : biblioteca/Cenario.cpp.o
+
+biblioteca/Cenario.i: biblioteca/Cenario.cpp.i
+
+.PHONY : biblioteca/Cenario.i
+
+# target to preprocess a source file
+biblioteca/Cenario.cpp.i:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.cpp.i
+.PHONY : biblioteca/Cenario.cpp.i
+
+biblioteca/Cenario.s: biblioteca/Cenario.cpp.s
+
+.PHONY : biblioteca/Cenario.s
+
+# target to generate assembly for a file
+biblioteca/Cenario.cpp.s:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.cpp.s
+.PHONY : biblioteca/Cenario.cpp.s
 
 biblioteca/Cilindro.o: biblioteca/Cilindro.cpp.o
 
@@ -258,6 +339,60 @@ biblioteca/Esfera.cpp.s:
 	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.cpp.s
 .PHONY : biblioteca/Esfera.cpp.s
 
+biblioteca/Luz.o: biblioteca/Luz.cpp.o
+
+.PHONY : biblioteca/Luz.o
+
+# target to build an object file
+biblioteca/Luz.cpp.o:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.cpp.o
+.PHONY : biblioteca/Luz.cpp.o
+
+biblioteca/Luz.i: biblioteca/Luz.cpp.i
+
+.PHONY : biblioteca/Luz.i
+
+# target to preprocess a source file
+biblioteca/Luz.cpp.i:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.cpp.i
+.PHONY : biblioteca/Luz.cpp.i
+
+biblioteca/Luz.s: biblioteca/Luz.cpp.s
+
+.PHONY : biblioteca/Luz.s
+
+# target to generate assembly for a file
+biblioteca/Luz.cpp.s:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.cpp.s
+.PHONY : biblioteca/Luz.cpp.s
+
+biblioteca/LuzPontual.o: biblioteca/LuzPontual.cpp.o
+
+.PHONY : biblioteca/LuzPontual.o
+
+# target to build an object file
+biblioteca/LuzPontual.cpp.o:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.cpp.o
+.PHONY : biblioteca/LuzPontual.cpp.o
+
+biblioteca/LuzPontual.i: biblioteca/LuzPontual.cpp.i
+
+.PHONY : biblioteca/LuzPontual.i
+
+# target to preprocess a source file
+biblioteca/LuzPontual.cpp.i:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.cpp.i
+.PHONY : biblioteca/LuzPontual.cpp.i
+
+biblioteca/LuzPontual.s: biblioteca/LuzPontual.cpp.s
+
+.PHONY : biblioteca/LuzPontual.s
+
+# target to generate assembly for a file
+biblioteca/LuzPontual.cpp.s:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.cpp.s
+.PHONY : biblioteca/LuzPontual.cpp.s
+
 biblioteca/Objeto.o: biblioteca/Objeto.cpp.o
 
 .PHONY : biblioteca/Objeto.o
@@ -312,6 +447,33 @@ biblioteca/Plano.cpp.s:
 	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.cpp.s
 .PHONY : biblioteca/Plano.cpp.s
 
+biblioteca/PontoIntersecao.o: biblioteca/PontoIntersecao.cpp.o
+
+.PHONY : biblioteca/PontoIntersecao.o
+
+# target to build an object file
+biblioteca/PontoIntersecao.cpp.o:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.o
+.PHONY : biblioteca/PontoIntersecao.cpp.o
+
+biblioteca/PontoIntersecao.i: biblioteca/PontoIntersecao.cpp.i
+
+.PHONY : biblioteca/PontoIntersecao.i
+
+# target to preprocess a source file
+biblioteca/PontoIntersecao.cpp.i:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.i
+.PHONY : biblioteca/PontoIntersecao.cpp.i
+
+biblioteca/PontoIntersecao.s: biblioteca/PontoIntersecao.cpp.s
+
+.PHONY : biblioteca/PontoIntersecao.s
+
+# target to generate assembly for a file
+biblioteca/PontoIntersecao.cpp.s:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.s
+.PHONY : biblioteca/PontoIntersecao.cpp.s
+
 biblioteca/biblioteca.o: biblioteca/biblioteca.cpp.o
 
 .PHONY : biblioteca/biblioteca.o
@@ -348,9 +510,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... ComputacaoGrafica"
 	@echo "... edit_cache"
+	@echo "... Bitmap/Bitmap.o"
+	@echo "... Bitmap/Bitmap.i"
+	@echo "... Bitmap/Bitmap.s"
 	@echo "... TrabalhoGrade.o"
 	@echo "... TrabalhoGrade.i"
 	@echo "... TrabalhoGrade.s"
+	@echo "... biblioteca/Camera.o"
+	@echo "... biblioteca/Camera.i"
+	@echo "... biblioteca/Camera.s"
+	@echo "... biblioteca/Cenario.o"
+	@echo "... biblioteca/Cenario.i"
+	@echo "... biblioteca/Cenario.s"
 	@echo "... biblioteca/Cilindro.o"
 	@echo "... biblioteca/Cilindro.i"
 	@echo "... biblioteca/Cilindro.s"
@@ -363,12 +534,21 @@ help:
 	@echo "... biblioteca/Esfera.o"
 	@echo "... biblioteca/Esfera.i"
 	@echo "... biblioteca/Esfera.s"
+	@echo "... biblioteca/Luz.o"
+	@echo "... biblioteca/Luz.i"
+	@echo "... biblioteca/Luz.s"
+	@echo "... biblioteca/LuzPontual.o"
+	@echo "... biblioteca/LuzPontual.i"
+	@echo "... biblioteca/LuzPontual.s"
 	@echo "... biblioteca/Objeto.o"
 	@echo "... biblioteca/Objeto.i"
 	@echo "... biblioteca/Objeto.s"
 	@echo "... biblioteca/Plano.o"
 	@echo "... biblioteca/Plano.i"
 	@echo "... biblioteca/Plano.s"
+	@echo "... biblioteca/PontoIntersecao.o"
+	@echo "... biblioteca/PontoIntersecao.i"
+	@echo "... biblioteca/PontoIntersecao.s"
 	@echo "... biblioteca/biblioteca.o"
 	@echo "... biblioteca/biblioteca.i"
 	@echo "... biblioteca/biblioteca.s"

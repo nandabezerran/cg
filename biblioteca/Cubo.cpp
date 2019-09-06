@@ -36,8 +36,8 @@ Cubo::Cubo(double cAresta, Ponto* cCentro): aresta(cAresta), centro(cCentro), Ob
     faces.push_back(CriarFace(vertices[3], vertices[0], vertices[4], "F8"));
     faces.push_back(CriarFace(vertices[6], vertices[7], vertices[4], "F9"));
     faces.push_back(CriarFace(vertices[4], vertices[5], vertices[6], "F10"));
-    faces.push_back(CriarFace(vertices[0], vertices[4], vertices[5], "F11"));
-    faces.push_back(CriarFace(vertices[5], vertices[1], vertices[0], "F12"));
+    faces.push_back(CriarFace(vertices[0], vertices[5], vertices[4], "F11"));
+    faces.push_back(CriarFace(vertices[5], vertices[0], vertices[1], "F12"));
 
 
     for (auto face: faces) {

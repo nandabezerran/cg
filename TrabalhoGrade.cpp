@@ -39,9 +39,9 @@ int main() {
     float zGrade = -4;
 
 // ------------------------------------- Coordenadas Camera ----------------------------------------------------------
-    Ponto* pCoordCamera = biblioteca::CriarPonto(0,0,0);
-    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-10);
-    Ponto* pViewUp = biblioteca::CriarPonto(0,1,0);
+    Ponto* pCoordCamera = biblioteca::CriarPonto(0, -10, -25);
+    Ponto* pLookAt = biblioteca::CriarPonto(2,0,-10);
+    Ponto* pViewUp = biblioteca::CriarPonto(0,-9,-25);
 
     auto camera =  new Camera(pCoordCamera, pLookAt, pViewUp, tamGrade, zGrade, matrixSize);
     auto cenario = new Cenario(camera, objetos);
