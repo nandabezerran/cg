@@ -6,7 +6,6 @@
 #define COMPUTACAOGRAFICA_CONE_HPP
 #include "biblioteca.hpp"
 #include "Objeto.hpp"
-#include "PontoIntersecao.hpp"
 
 class Cone : public Objeto{
 public:
