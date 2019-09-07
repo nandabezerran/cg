@@ -68,7 +68,7 @@ void Esfera::mudaCoodMundo(Camera *camera) {
 }
 
 VectorXd Esfera::calcularNormal(Ponto* p){
-    VectorXd(3) v;
+    VectorXd v(3);
     return v;
 }
 
