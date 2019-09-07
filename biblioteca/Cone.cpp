@@ -4,7 +4,6 @@
 
 #include "Cone.hpp"
 #include "Plano.hpp"
-#include "PontoIntersecao.hpp"
 
 
 
