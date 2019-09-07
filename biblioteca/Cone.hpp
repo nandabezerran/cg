@@ -15,6 +15,8 @@ public:
     VectorXd normal;
 
     Cone(float pAltura, float pRaio, Ponto* pCentro, VectorXd pNormal);
+    VectorXd calculaNormal(VectorXd Nc, Ponto* Cb, Ponto* Pi, double H, int tamanho);
+
     bool ValidacaoPontoCone(Ponto* vertice, Ponto* p_int, int tamanho);
     tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, VectorXd pVetor0,int pTamanho);
     Ponto* IntersecaoRetaBase(Ponto* centro, Ponto* pP0,VectorXd pVetor0, int tamanho);

@@ -170,3 +170,18 @@ void Cone::mudaCoodMundo(Camera *camera) {
     camera->mudarCameraMundo(centro);
     camera->mudarCameraMundo(normal);
 }
+
+VectorXd Cone::calculaNormal(VectorXd Nc, Ponto* Cb, Ponto* Pi, double H, int tamanho) {
+    VectorXd temp = biblioteca::MultPontoVetor(Cb, Nc);
+    VectorXd V = biblioteca::SomaVetorEscalar(H,temp);
+    VectorXd piCb = biblioteca::SubtracaoPontos(Pi, Cb, tamanho);
+    VectorXd Pe = biblioteca::SomaVetorPonto(Cb,(biblioteca::ProdutoEscalar(piCb,Nc,tamanho))*Nc);
+    VectorXd PeI = biblioteca::SubtracaoPontoVetor(Pi, Pe);
+    VectorXd PiV = biblioteca::SubtracaoVetorPonto(V, Pi);
+    VectorXd T = biblioteca::ProdutoVetorial(PiV, PeI, tamanho);
+    VectorXd N = biblioteca::ProdutoVetorial(T, PiV, tamanho);
+    VectorXd normal = biblioteca::NormalizaVetor(N, tamanho);
+
+    return normal;
+
+}

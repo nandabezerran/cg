@@ -15,14 +15,6 @@ double biblioteca::ProdutoEscalar(Ponto* ponto, VectorXd vetor2){
     return produto;
 }
 
-VectorXd biblioteca::MultVetorEscalar(VectorXd v, double x){
-    VectorXd result(3);
-    result[0] = v[0] * x;
-    result[1] = v[1] * x;
-    result[2] = v[2] * x;
-    return result;
-}
-
 Ponto*** biblioteca::MatrixAllocation(int size){
     auto ***matrix = new Ponto**[size];
 
@@ -50,13 +42,6 @@ VectorXd biblioteca::NormalizaVetor(VectorXd vetor, int tamanho){
     return vetor_normalizado;
 }
 
-VectorXd biblioteca::DivisaoVetor(VectorXd v, double x){
-    VectorXd result(3);
-    result[0] = v[0] / x;
-    result[1] = v[1] / x;
-    result[2] = v[2] / x;
-    return result;
-}
 VectorXd biblioteca::EncontrarNormal(VectorXd vetor1, VectorXd vetor2, int tamanho){
     VectorXd vetor_normal(tamanho);
     vetor_normal = ProdutoVetorial(vetor1, vetor2, tamanho);
@@ -77,6 +62,47 @@ VectorXd biblioteca::SubtracaoPontos(Ponto* p1, Ponto* p2, int tamanho){
     vetor_resultante[2] = p2->z - p1->z;
     return vetor_resultante;
 }
+
+VectorXd biblioteca::SomaVetorEscalar(double x, VectorXd v){
+    VectorXd result(3);
+    result[0] = v[0] + x;
+    result[1] = v[1] + x;
+    result[2] = v[2] + x;
+    return result;
+}
+
+VectorXd biblioteca::MultPontoVetor(Ponto* ponto1, VectorXd v){
+    VectorXd result(3);
+    result[0] = ponto1->x * v[0];
+    result[1] = ponto1->y * v[1];
+    result[2] = ponto1->z * v[2];
+    return result;
+}
+
+VectorXd biblioteca::SomaVetorPonto(Ponto* ponto1, VectorXd vetor2){
+    VectorXd vetor_resultante(3);
+    vetor_resultante[0] = ponto1->x + vetor2[0];
+    vetor_resultante[1] = ponto1->y + vetor2[1];
+    vetor_resultante[2] = ponto1->z + vetor2[2];
+    return vetor_resultante;
+}
+
+VectorXd biblioteca::SubtracaoPontoVetor(Ponto* ponto1, VectorXd vetor2){
+    VectorXd vetor_resultante(3);
+    vetor_resultante[0] = ponto1->x - vetor2[0];
+    vetor_resultante[1] = ponto1->y - vetor2[1];
+    vetor_resultante[2] = ponto1->z - vetor2[2];
+    return vetor_resultante;
+}
+
+VectorXd biblioteca::SubtracaoVetorPonto(VectorXd vetor2, Ponto* ponto1){
+    VectorXd vetor_resultante(3);
+    vetor_resultante[0] = vetor2[0] - ponto1->x;
+    vetor_resultante[1] = vetor2[1] - ponto1->y;
+    vetor_resultante[2] = vetor2[2] - ponto1->z;
+    return vetor_resultante;
+}
+
 
 
 Ponto* biblioteca::EquacaoDaReta(Ponto* p, double t, VectorXd vetor){
@@ -125,9 +151,9 @@ Ponto* biblioteca::PontoCoordenada(Ponto* P0, Ponto* L_at, Ponto* V_up, Ponto* P
     VectorXd ic(tamanho); VectorXd jc(tamanho); VectorXd kc(tamanho);
     tie(ic,jc,kc) = biblioteca::DadosFotografo(P0, L_at, V_up, tamanho);
 
-    //Transforma os Pontos P0 e Pc em VectorXd e Adiciona 1 
+    //Transforma os Pontos P0 e Pc em VectorXd e Adiciona 1
     VectorXd P0_vector(tamanho+1); VectorXd Pc_vector(tamanho+1);
-    P0_vector << P0->x, P0->y, P0->z, 1; 
+    P0_vector << P0->x, P0->y, P0->z, 1;
     Pc_vector << Pc->x, Pc->y, Pc->z, 1;
 
     //Monta a Matriz
@@ -148,9 +174,9 @@ VectorXd biblioteca::VetorCoordenada(Ponto* P0, Ponto* L_at, Ponto* V_up, Vector
     VectorXd ic(tamanho); VectorXd jc(tamanho); VectorXd kc(tamanho);
     tie(ic,jc,kc) = biblioteca::DadosFotografo(P0, L_at, V_up, tamanho);
 
-    //Adiciona 0 aos VectorXd 
+    //Adiciona 0 aos VectorXd
     VectorXd P0_vector(tamanho+1); VectorXd Pc_vector(tamanho+1);
-    P0_vector << P0->x, P0->y, P0->z, 0; 
+    P0_vector << P0->x, P0->y, P0->z, 0;
     Pc_vector << Pc[0], Pc[1], Pc[2], 0;
 
     //Monta a Matriz
@@ -162,7 +188,7 @@ VectorXd biblioteca::VetorCoordenada(Ponto* P0, Ponto* L_at, Ponto* V_up, Vector
 
     VectorXd Pw(tamanho);
     Pw << Pw_vector[0], Pw_vector[1], Pw_vector[2];
-    
+
     return Pw;
 
 }
@@ -190,7 +216,7 @@ MatrixXd biblioteca::MontarMatrizCoodenadas(VectorXd ic, VectorXd jc, VectorXd k
     MatrixXd matriz(tamanho+1, tamanho+1);
 
     if (!cord){
-        P0 << 
+        P0 <<
             -(ProdutoEscalar(P0,ic,tamanho)),
             -(ProdutoEscalar(P0,jc,tamanho)),
             -(ProdutoEscalar(P0,kc,tamanho)),
@@ -202,13 +228,13 @@ MatrixXd biblioteca::MontarMatrizCoodenadas(VectorXd ic, VectorXd jc, VectorXd k
         for (int j = 0; j < tamanho; j++){
 
             if (cord){
-                
+
                 if(i == 0)          matriz(j,i) = ic[j];
                 else if(i == 1)     matriz(j,i) = jc[j];
-                else if(i == 2)     matriz(j,i) = kc[j];        
-                else if(i == 3){    
+                else if(i == 2)     matriz(j,i) = kc[j];
+                else if(i == 3){
                                     matriz(i,j) = 0;
-                                    matriz(j,i) = P0[j]; 
+                                    matriz(j,i) = P0[j];
                                     matriz(i,i) = P0[i];
                 }
             }
@@ -217,11 +243,11 @@ MatrixXd biblioteca::MontarMatrizCoodenadas(VectorXd ic, VectorXd jc, VectorXd k
 
                 if(i == 0)          matriz(i,j) = ic[j];
                 else if(i == 1)     matriz(i,j) = jc[j];
-                else if(i == 2)     matriz(i,j) = kc[j];        
-                else if(i == 3){    
+                else if(i == 2)     matriz(i,j) = kc[j];
+                else if(i == 3){
                                     matriz(i,j) = 0;
-                                    matriz(j,i) = P0[j]; 
-                                    matriz(i,i) = P0[i]; 
+                                    matriz(j,i) = P0[j];
+                                    matriz(i,i) = P0[i];
                 }
             }
 
