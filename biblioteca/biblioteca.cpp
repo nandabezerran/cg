@@ -15,6 +15,14 @@ double biblioteca::ProdutoEscalar(Ponto* ponto, VectorXd vetor2){
     return produto;
 }
 
+VectorXd biblioteca::MultVetorEscalar(VectorXd v, double x){
+    VectorXd result(3);
+    result[0] = v[0] * x;
+    result[1] = v[1] * x;
+    result[2] = v[2] * x;
+    return result;
+}
+
 Ponto*** biblioteca::MatrixAllocation(int size){
     auto ***matrix = new Ponto**[size];
 
@@ -42,6 +50,13 @@ VectorXd biblioteca::NormalizaVetor(VectorXd vetor, int tamanho){
     return vetor_normalizado;
 }
 
+VectorXd biblioteca::DivisaoVetor(VectorXd v, double x){
+    VectorXd result(3);
+    result[0] = v[0] / x;
+    result[1] = v[1] / x;
+    result[2] = v[2] / x;
+    return result;
+}
 VectorXd biblioteca::EncontrarNormal(VectorXd vetor1, VectorXd vetor2, int tamanho){
     VectorXd vetor_normal(tamanho);
     vetor_normal = ProdutoVetorial(vetor1, vetor2, tamanho);
@@ -56,53 +71,12 @@ double biblioteca::distanciaEntrePontos(Ponto *p1, Ponto *p2) {
 VectorXd biblioteca::SubtracaoPontos(Ponto* p1, Ponto* p2, int tamanho){
     //Vetor de p1 -> p2
     VectorXd vetor_resultante(tamanho);
-    
+
     vetor_resultante[0] = p2->x - p1->x;
     vetor_resultante[1] = p2->y - p1->y;
     vetor_resultante[2] = p2->z - p1->z;
     return vetor_resultante;
 }
-
-VectorXd biblioteca::SomaVetorEscalar(double x, VectorXd v){
-    VectorXd result(3);
-    result[0] = v[0] + x;
-    result[1] = v[1] + x;
-    result[2] = v[2] + x;
-    return result;
-}
-
-VectorXd biblioteca::MultPontoVetor(Ponto* ponto1, VectorXd v){
-    VectorXd result(3);
-    result[0] = ponto1->x * v[0];
-    result[1] = ponto1->y * v[1];
-    result[2] = ponto1->z * v[2];
-    return result;
-}
-
-VectorXd biblioteca::SomaVetorPonto(Ponto* ponto1, VectorXd vetor2){
-    VectorXd vetor_resultante(3);
-    vetor_resultante[0] = ponto1->x + vetor2[0];
-    vetor_resultante[1] = ponto1->y + vetor2[1];
-    vetor_resultante[2] = ponto1->z + vetor2[2];
-    return vetor_resultante;
-}
-
-VectorXd biblioteca::SubtracaoPontoVetor(Ponto* ponto1, VectorXd vetor2){
-    VectorXd vetor_resultante(3);
-    vetor_resultante[0] = ponto1->x - vetor2[0];
-    vetor_resultante[1] = ponto1->y - vetor2[1];
-    vetor_resultante[2] = ponto1->z - vetor2[2];
-    return vetor_resultante;
-}
-
-VectorXd biblioteca::SubtracaoVetorPonto(VectorXd vetor2, Ponto* ponto1){
-    VectorXd vetor_resultante(3);
-    vetor_resultante[0] = vetor2[0] - ponto1->x;
-    vetor_resultante[1] = vetor2[1] - ponto1->y;
-    vetor_resultante[2] = vetor2[2] - ponto1->z;
-    return vetor_resultante;
-}
-
 
 
 Ponto* biblioteca::EquacaoDaReta(Ponto* p, double t, VectorXd vetor){
@@ -125,7 +99,7 @@ Ponto* biblioteca::CriarPonto(double x, double y, double z) {
 }
 
 tuple<Ponto*, Ponto*> biblioteca::PontosDadoDistancia(Ponto* p_origem, const VectorXd vetor1, const VectorXd vetor2,
-                                                    double l_comprimento, int tamanho){
+                                                      double l_comprimento, int tamanho){
 
     double s, t;
     Ponto* p1;
@@ -217,10 +191,10 @@ MatrixXd biblioteca::MontarMatrizCoodenadas(VectorXd ic, VectorXd jc, VectorXd k
 
     if (!cord){
         P0 <<
-            -(ProdutoEscalar(P0,ic,tamanho)),
-            -(ProdutoEscalar(P0,jc,tamanho)),
-            -(ProdutoEscalar(P0,kc,tamanho)),
-            P0[tamanho];
+           -(ProdutoEscalar(P0,ic,tamanho)),
+                -(ProdutoEscalar(P0,jc,tamanho)),
+                -(ProdutoEscalar(P0,kc,tamanho)),
+                P0[tamanho];
     }
 
 
@@ -233,9 +207,9 @@ MatrixXd biblioteca::MontarMatrizCoodenadas(VectorXd ic, VectorXd jc, VectorXd k
                 else if(i == 1)     matriz(j,i) = jc[j];
                 else if(i == 2)     matriz(j,i) = kc[j];
                 else if(i == 3){
-                                    matriz(i,j) = 0;
-                                    matriz(j,i) = P0[j];
-                                    matriz(i,i) = P0[i];
+                    matriz(i,j) = 0;
+                    matriz(j,i) = P0[j];
+                    matriz(i,i) = P0[i];
                 }
             }
 
@@ -245,9 +219,9 @@ MatrixXd biblioteca::MontarMatrizCoodenadas(VectorXd ic, VectorXd jc, VectorXd k
                 else if(i == 1)     matriz(i,j) = jc[j];
                 else if(i == 2)     matriz(i,j) = kc[j];
                 else if(i == 3){
-                                    matriz(i,j) = 0;
-                                    matriz(j,i) = P0[j];
-                                    matriz(i,i) = P0[i];
+                    matriz(i,j) = 0;
+                    matriz(j,i) = P0[j];
+                    matriz(i,i) = P0[i];
                 }
             }
 
@@ -256,4 +230,49 @@ MatrixXd biblioteca::MontarMatrizCoodenadas(VectorXd ic, VectorXd jc, VectorXd k
 
     return matriz;
 }
+
+VectorXd biblioteca::SomaVetorEscalar(double x, VectorXd v){
+    VectorXd result(3);
+    result[0] = v[0] + x;
+    result[1] = v[1] + x;
+    result[2] = v[2] + x;
+    return result;
+}
+
+VectorXd biblioteca::MultPontoVetor(Ponto* ponto1, VectorXd v){
+    VectorXd result(3);
+    result[0] = ponto1->x * v[0];
+    result[1] = ponto1->y * v[1];
+    result[2] = ponto1->z * v[2];
+    return result;
+}
+
+VectorXd biblioteca::SomaVetorPonto(Ponto* ponto1, VectorXd vetor2){
+    VectorXd vetor_resultante(3);
+    vetor_resultante[0] = ponto1->x + vetor2[0];
+    vetor_resultante[1] = ponto1->y + vetor2[1];
+    vetor_resultante[2] = ponto1->z + vetor2[2];
+    return vetor_resultante;
+}
+
+VectorXd biblioteca::SubtracaoPontoVetor(Ponto* ponto1, VectorXd vetor2){
+    VectorXd vetor_resultante(3);
+    vetor_resultante[0] = ponto1->x - vetor2[0];
+    vetor_resultante[1] = ponto1->y - vetor2[1];
+    vetor_resultante[2] = ponto1->z - vetor2[2];
+    return vetor_resultante;
+}
+
+VectorXd biblioteca::SubtracaoVetorPonto(VectorXd vetor2, Ponto* ponto1){
+    VectorXd vetor_resultante(3);
+    vetor_resultante[0] = vetor2[0] - ponto1->x;
+    vetor_resultante[1] = vetor2[1] - ponto1->y;
+    vetor_resultante[2] = vetor2[2] - ponto1->z;
+    return vetor_resultante;
+}
+
+
+
+
+
 
