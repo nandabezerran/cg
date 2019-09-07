@@ -6,6 +6,8 @@
 #define COMPUTACAOGRAFICA_CONE_HPP
 #include "biblioteca.hpp"
 #include "Objeto.hpp"
+#include "PontoIntersecao.hpp"
+
 class Cone : public Objeto{
 public:
     string nome;
@@ -15,7 +17,7 @@ public:
     VectorXd normal;
 
     Cone(float pAltura, float pRaio, Ponto* pCentro, VectorXd pNormal);
-    VectorXd calculaNormal(VectorXd Nc, Ponto* Cb, Ponto* Pi, double H, int tamanho);
+    VectorXd calcularNormal(Ponto* pi);
 
     bool ValidacaoPontoCone(Ponto* vertice, Ponto* p_int, int tamanho);
     tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, VectorXd pVetor0,int pTamanho);

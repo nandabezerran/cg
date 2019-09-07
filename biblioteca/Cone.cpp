@@ -4,6 +4,7 @@
 
 #include "Cone.hpp"
 #include "Plano.hpp"
+#include "PontoIntersecao.hpp"
 
 
 
@@ -171,17 +172,30 @@ void Cone::mudaCoodMundo(Camera *camera) {
     camera->mudarCameraMundo(normal);
 }
 
-VectorXd Cone::calculaNormal(VectorXd Nc, Ponto* Cb, Ponto* Pi, double H, int tamanho) {
-    VectorXd temp = biblioteca::MultPontoVetor(Cb, Nc);
-    VectorXd V = biblioteca::SomaVetorEscalar(H,temp);
-    VectorXd piCb = biblioteca::SubtracaoPontos(Pi, Cb, tamanho);
-    VectorXd Pe = biblioteca::SomaVetorPonto(Cb,(biblioteca::ProdutoEscalar(piCb,Nc,tamanho))*Nc);
-    VectorXd PeI = biblioteca::SubtracaoPontoVetor(Pi, Pe);
-    VectorXd PiV = biblioteca::SubtracaoVetorPonto(V, Pi);
-    VectorXd T = biblioteca::ProdutoVetorial(PiV, PeI, tamanho);
-    VectorXd N = biblioteca::ProdutoVetorial(T, PiV, tamanho);
-    VectorXd normal = biblioteca::NormalizaVetor(N, tamanho);
+VectorXd Cone::calcularNormal(Ponto* pi) {
 
+    VectorXd vetor_aux = this->altura*this->normal;
+
+    Ponto* Vertice = biblioteca::CriarPonto(this->centro->x + vetor_aux[0], this->centro->y + vetor_aux[1],
+                                            this->centro->z + vetor_aux[2]);
+
+    VectorXd PImenosCB = biblioteca::SubtracaoPontos(centro, pi, 3);
+
+    double aux = biblioteca::ProdutoEscalar(PImenosCB, this->normal, 3);
+    VectorXd aux2 = biblioteca::MultVetorEscalar(this->normal, aux);
+
+    Ponto* pe = biblioteca::CriarPonto(centro->x + aux2[0], centro->y + aux2[1], centro->z + aux2[2]);
+    VectorXd PImenosPE = biblioteca::SubtracaoPontos(pi, pe,3);
+    VectorXd PiV = biblioteca::SubtracaoPontos(pi, Vertice, 3);
+
+    VectorXd T = biblioteca::ProdutoVetorial(PiV, PImenosPE, 3);
+    VectorXd N = biblioteca::ProdutoVetorial(T, PiV, 3);
+
+    VectorXd normal = biblioteca::NormalizaVetor(N, 3);
+
+    delete pe;
+    delete Vertice;
     return normal;
 
 }
+
