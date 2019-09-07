@@ -6,7 +6,7 @@
 
 
 Luz::Luz(int r, int g, int b) {
-    IntensidadeRgb[0] = r;
-    IntensidadeRgb[1] = g;
-    IntensidadeRgb[2] = b;
+    intensidadeRgb[0] = r;
+    intensidadeRgb[1] = g;
+    intensidadeRgb[2] = b;
 }

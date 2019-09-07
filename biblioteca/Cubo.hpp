@@ -44,5 +44,6 @@ public:
     bool ValidacaoPontoCubo(VectorXd PxPy, VectorXd PxP, VectorXd P1P2, VectorXd P1P3, int tamanho);
     void mudaCoodCamera(Camera *camera) override;
     void mudaCoodMundo(Camera *camera) override;
+    VectorXd calcularNormal(Ponto* p) override;
 };
 #endif //COMPUTACAOGRAFICA_CUBO_HPP

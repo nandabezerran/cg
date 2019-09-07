@@ -24,7 +24,7 @@ public:
     Ponto* ChoseBase(Ponto* pP0,VectorXd pVetor0, int tamanho);
     void mudaCoodCamera(Camera *camera) override;
     void mudaCoodMundo(Camera *camera) override;
-    VectorXd calcularNormal(PontoIntersecao* pi);
+    VectorXd calcularNormal(Ponto* pi);
 
 };
 

@@ -49,6 +49,11 @@ Cubo::Cubo(double cAresta, Ponto* cCentro): aresta(cAresta), centro(cCentro), Ob
 
 }
 
+VectorXd Cubo::calcularNormal(Ponto* p){
+    VectorXd v(3);
+    return v;
+}
+
 tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTamanho) {
 
     vector<Ponto*> intFace;

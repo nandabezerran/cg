@@ -4,11 +4,11 @@
 
 #ifndef COMPUTACAOGRAFICA_LUZ_HPP
 #define COMPUTACAOGRAFICA_LUZ_HPP
-
+#include "biblioteca.hpp"
 
 class Luz {
 public:
-    int IntensidadeRgb[3];
+    VectorXd intensidadeRgb;
     Luz(int r, int g, int b);
 };
 

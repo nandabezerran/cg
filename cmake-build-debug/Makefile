@@ -123,383 +123,215 @@ ComputacaoGrafica/fast:
 	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/build
 .PHONY : ComputacaoGrafica/fast
 
-Bitmap/Bitmap.o: Bitmap/Bitmap.cpp.o
-
+# target to build an object file
+Bitmap/Bitmap.o:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.o
 .PHONY : Bitmap/Bitmap.o
 
-# target to build an object file
-Bitmap/Bitmap.cpp.o:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.cpp.o
-.PHONY : Bitmap/Bitmap.cpp.o
-
-Bitmap/Bitmap.i: Bitmap/Bitmap.cpp.i
-
+# target to preprocess a source file
+Bitmap/Bitmap.i:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.i
 .PHONY : Bitmap/Bitmap.i
 
-# target to preprocess a source file
-Bitmap/Bitmap.cpp.i:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.cpp.i
-.PHONY : Bitmap/Bitmap.cpp.i
-
-Bitmap/Bitmap.s: Bitmap/Bitmap.cpp.s
-
+# target to generate assembly for a file
+Bitmap/Bitmap.s:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.s
 .PHONY : Bitmap/Bitmap.s
 
-# target to generate assembly for a file
-Bitmap/Bitmap.cpp.s:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.cpp.s
-.PHONY : Bitmap/Bitmap.cpp.s
-
-TrabalhoGrade.o: TrabalhoGrade.cpp.o
-
+# target to build an object file
+TrabalhoGrade.o:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.o
 .PHONY : TrabalhoGrade.o
 
-# target to build an object file
-TrabalhoGrade.cpp.o:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.o
-.PHONY : TrabalhoGrade.cpp.o
-
-TrabalhoGrade.i: TrabalhoGrade.cpp.i
-
+# target to preprocess a source file
+TrabalhoGrade.i:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.i
 .PHONY : TrabalhoGrade.i
 
-# target to preprocess a source file
-TrabalhoGrade.cpp.i:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.i
-.PHONY : TrabalhoGrade.cpp.i
-
-TrabalhoGrade.s: TrabalhoGrade.cpp.s
-
+# target to generate assembly for a file
+TrabalhoGrade.s:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.s
 .PHONY : TrabalhoGrade.s
 
-# target to generate assembly for a file
-TrabalhoGrade.cpp.s:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.s
-.PHONY : TrabalhoGrade.cpp.s
-
-biblioteca/Camera.o: biblioteca/Camera.cpp.o
-
+# target to build an object file
+biblioteca/Camera.o:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.o
 .PHONY : biblioteca/Camera.o
 
-# target to build an object file
-biblioteca/Camera.cpp.o:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.cpp.o
-.PHONY : biblioteca/Camera.cpp.o
-
-biblioteca/Camera.i: biblioteca/Camera.cpp.i
-
+# target to preprocess a source file
+biblioteca/Camera.i:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.i
 .PHONY : biblioteca/Camera.i
 
-# target to preprocess a source file
-biblioteca/Camera.cpp.i:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.cpp.i
-.PHONY : biblioteca/Camera.cpp.i
-
-biblioteca/Camera.s: biblioteca/Camera.cpp.s
-
+# target to generate assembly for a file
+biblioteca/Camera.s:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.s
 .PHONY : biblioteca/Camera.s
 
-# target to generate assembly for a file
-biblioteca/Camera.cpp.s:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.cpp.s
-.PHONY : biblioteca/Camera.cpp.s
-
-biblioteca/Cenario.o: biblioteca/Cenario.cpp.o
-
+# target to build an object file
+biblioteca/Cenario.o:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.o
 .PHONY : biblioteca/Cenario.o
 
-# target to build an object file
-biblioteca/Cenario.cpp.o:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.cpp.o
-.PHONY : biblioteca/Cenario.cpp.o
-
-biblioteca/Cenario.i: biblioteca/Cenario.cpp.i
-
+# target to preprocess a source file
+biblioteca/Cenario.i:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.i
 .PHONY : biblioteca/Cenario.i
 
-# target to preprocess a source file
-biblioteca/Cenario.cpp.i:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.cpp.i
-.PHONY : biblioteca/Cenario.cpp.i
-
-biblioteca/Cenario.s: biblioteca/Cenario.cpp.s
-
+# target to generate assembly for a file
+biblioteca/Cenario.s:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.s
 .PHONY : biblioteca/Cenario.s
 
-# target to generate assembly for a file
-biblioteca/Cenario.cpp.s:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.cpp.s
-.PHONY : biblioteca/Cenario.cpp.s
-
-biblioteca/Cilindro.o: biblioteca/Cilindro.cpp.o
-
+# target to build an object file
+biblioteca/Cilindro.o:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.o
 .PHONY : biblioteca/Cilindro.o
 
-# target to build an object file
-biblioteca/Cilindro.cpp.o:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.o
-.PHONY : biblioteca/Cilindro.cpp.o
-
-biblioteca/Cilindro.i: biblioteca/Cilindro.cpp.i
-
+# target to preprocess a source file
+biblioteca/Cilindro.i:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.i
 .PHONY : biblioteca/Cilindro.i
 
-# target to preprocess a source file
-biblioteca/Cilindro.cpp.i:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.i
-.PHONY : biblioteca/Cilindro.cpp.i
-
-biblioteca/Cilindro.s: biblioteca/Cilindro.cpp.s
-
+# target to generate assembly for a file
+biblioteca/Cilindro.s:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.s
 .PHONY : biblioteca/Cilindro.s
 
-# target to generate assembly for a file
-biblioteca/Cilindro.cpp.s:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.s
-.PHONY : biblioteca/Cilindro.cpp.s
-
-biblioteca/Cone.o: biblioteca/Cone.cpp.o
-
+# target to build an object file
+biblioteca/Cone.o:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.o
 .PHONY : biblioteca/Cone.o
 
-# target to build an object file
-biblioteca/Cone.cpp.o:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.cpp.o
-.PHONY : biblioteca/Cone.cpp.o
-
-biblioteca/Cone.i: biblioteca/Cone.cpp.i
-
+# target to preprocess a source file
+biblioteca/Cone.i:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.i
 .PHONY : biblioteca/Cone.i
 
-# target to preprocess a source file
-biblioteca/Cone.cpp.i:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.cpp.i
-.PHONY : biblioteca/Cone.cpp.i
-
-biblioteca/Cone.s: biblioteca/Cone.cpp.s
-
+# target to generate assembly for a file
+biblioteca/Cone.s:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.s
 .PHONY : biblioteca/Cone.s
 
-# target to generate assembly for a file
-biblioteca/Cone.cpp.s:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.cpp.s
-.PHONY : biblioteca/Cone.cpp.s
-
-biblioteca/Cubo.o: biblioteca/Cubo.cpp.o
-
+# target to build an object file
+biblioteca/Cubo.o:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.o
 .PHONY : biblioteca/Cubo.o
 
-# target to build an object file
-biblioteca/Cubo.cpp.o:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.o
-.PHONY : biblioteca/Cubo.cpp.o
-
-biblioteca/Cubo.i: biblioteca/Cubo.cpp.i
-
+# target to preprocess a source file
+biblioteca/Cubo.i:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.i
 .PHONY : biblioteca/Cubo.i
 
-# target to preprocess a source file
-biblioteca/Cubo.cpp.i:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.i
-.PHONY : biblioteca/Cubo.cpp.i
-
-biblioteca/Cubo.s: biblioteca/Cubo.cpp.s
-
+# target to generate assembly for a file
+biblioteca/Cubo.s:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.s
 .PHONY : biblioteca/Cubo.s
 
-# target to generate assembly for a file
-biblioteca/Cubo.cpp.s:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.s
-.PHONY : biblioteca/Cubo.cpp.s
-
-biblioteca/Esfera.o: biblioteca/Esfera.cpp.o
-
+# target to build an object file
+biblioteca/Esfera.o:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.o
 .PHONY : biblioteca/Esfera.o
 
-# target to build an object file
-biblioteca/Esfera.cpp.o:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.cpp.o
-.PHONY : biblioteca/Esfera.cpp.o
-
-biblioteca/Esfera.i: biblioteca/Esfera.cpp.i
-
+# target to preprocess a source file
+biblioteca/Esfera.i:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.i
 .PHONY : biblioteca/Esfera.i
 
-# target to preprocess a source file
-biblioteca/Esfera.cpp.i:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.cpp.i
-.PHONY : biblioteca/Esfera.cpp.i
-
-biblioteca/Esfera.s: biblioteca/Esfera.cpp.s
-
+# target to generate assembly for a file
+biblioteca/Esfera.s:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.s
 .PHONY : biblioteca/Esfera.s
 
-# target to generate assembly for a file
-biblioteca/Esfera.cpp.s:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.cpp.s
-.PHONY : biblioteca/Esfera.cpp.s
-
-biblioteca/Luz.o: biblioteca/Luz.cpp.o
-
+# target to build an object file
+biblioteca/Luz.o:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.o
 .PHONY : biblioteca/Luz.o
 
-# target to build an object file
-biblioteca/Luz.cpp.o:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.cpp.o
-.PHONY : biblioteca/Luz.cpp.o
-
-biblioteca/Luz.i: biblioteca/Luz.cpp.i
-
+# target to preprocess a source file
+biblioteca/Luz.i:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.i
 .PHONY : biblioteca/Luz.i
 
-# target to preprocess a source file
-biblioteca/Luz.cpp.i:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.cpp.i
-.PHONY : biblioteca/Luz.cpp.i
-
-biblioteca/Luz.s: biblioteca/Luz.cpp.s
-
+# target to generate assembly for a file
+biblioteca/Luz.s:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.s
 .PHONY : biblioteca/Luz.s
 
-# target to generate assembly for a file
-biblioteca/Luz.cpp.s:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.cpp.s
-.PHONY : biblioteca/Luz.cpp.s
-
-biblioteca/LuzPontual.o: biblioteca/LuzPontual.cpp.o
-
+# target to build an object file
+biblioteca/LuzPontual.o:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.o
 .PHONY : biblioteca/LuzPontual.o
 
-# target to build an object file
-biblioteca/LuzPontual.cpp.o:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.cpp.o
-.PHONY : biblioteca/LuzPontual.cpp.o
-
-biblioteca/LuzPontual.i: biblioteca/LuzPontual.cpp.i
-
+# target to preprocess a source file
+biblioteca/LuzPontual.i:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.i
 .PHONY : biblioteca/LuzPontual.i
 
-# target to preprocess a source file
-biblioteca/LuzPontual.cpp.i:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.cpp.i
-.PHONY : biblioteca/LuzPontual.cpp.i
-
-biblioteca/LuzPontual.s: biblioteca/LuzPontual.cpp.s
-
+# target to generate assembly for a file
+biblioteca/LuzPontual.s:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.s
 .PHONY : biblioteca/LuzPontual.s
 
-# target to generate assembly for a file
-biblioteca/LuzPontual.cpp.s:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.cpp.s
-.PHONY : biblioteca/LuzPontual.cpp.s
-
-biblioteca/Objeto.o: biblioteca/Objeto.cpp.o
-
+# target to build an object file
+biblioteca/Objeto.o:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.o
 .PHONY : biblioteca/Objeto.o
 
-# target to build an object file
-biblioteca/Objeto.cpp.o:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.o
-.PHONY : biblioteca/Objeto.cpp.o
-
-biblioteca/Objeto.i: biblioteca/Objeto.cpp.i
-
+# target to preprocess a source file
+biblioteca/Objeto.i:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.i
 .PHONY : biblioteca/Objeto.i
 
-# target to preprocess a source file
-biblioteca/Objeto.cpp.i:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.i
-.PHONY : biblioteca/Objeto.cpp.i
-
-biblioteca/Objeto.s: biblioteca/Objeto.cpp.s
-
+# target to generate assembly for a file
+biblioteca/Objeto.s:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.s
 .PHONY : biblioteca/Objeto.s
 
-# target to generate assembly for a file
-biblioteca/Objeto.cpp.s:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.s
-.PHONY : biblioteca/Objeto.cpp.s
-
-biblioteca/Plano.o: biblioteca/Plano.cpp.o
-
+# target to build an object file
+biblioteca/Plano.o:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.o
 .PHONY : biblioteca/Plano.o
 
-# target to build an object file
-biblioteca/Plano.cpp.o:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.cpp.o
-.PHONY : biblioteca/Plano.cpp.o
-
-biblioteca/Plano.i: biblioteca/Plano.cpp.i
-
+# target to preprocess a source file
+biblioteca/Plano.i:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.i
 .PHONY : biblioteca/Plano.i
 
-# target to preprocess a source file
-biblioteca/Plano.cpp.i:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.cpp.i
-.PHONY : biblioteca/Plano.cpp.i
-
-biblioteca/Plano.s: biblioteca/Plano.cpp.s
-
+# target to generate assembly for a file
+biblioteca/Plano.s:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.s
 .PHONY : biblioteca/Plano.s
 
-# target to generate assembly for a file
-biblioteca/Plano.cpp.s:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.cpp.s
-.PHONY : biblioteca/Plano.cpp.s
-
-biblioteca/PontoIntersecao.o: biblioteca/PontoIntersecao.cpp.o
-
+# target to build an object file
+biblioteca/PontoIntersecao.o:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.o
 .PHONY : biblioteca/PontoIntersecao.o
 
-# target to build an object file
-biblioteca/PontoIntersecao.cpp.o:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.o
-.PHONY : biblioteca/PontoIntersecao.cpp.o
-
-biblioteca/PontoIntersecao.i: biblioteca/PontoIntersecao.cpp.i
-
+# target to preprocess a source file
+biblioteca/PontoIntersecao.i:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.i
 .PHONY : biblioteca/PontoIntersecao.i
 
-# target to preprocess a source file
-biblioteca/PontoIntersecao.cpp.i:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.i
-.PHONY : biblioteca/PontoIntersecao.cpp.i
-
-biblioteca/PontoIntersecao.s: biblioteca/PontoIntersecao.cpp.s
-
+# target to generate assembly for a file
+biblioteca/PontoIntersecao.s:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.s
 .PHONY : biblioteca/PontoIntersecao.s
 
-# target to generate assembly for a file
-biblioteca/PontoIntersecao.cpp.s:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.s
-.PHONY : biblioteca/PontoIntersecao.cpp.s
-
-biblioteca/biblioteca.o: biblioteca/biblioteca.cpp.o
-
+# target to build an object file
+biblioteca/biblioteca.o:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.o
 .PHONY : biblioteca/biblioteca.o
 
-# target to build an object file
-biblioteca/biblioteca.cpp.o:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.cpp.o
-.PHONY : biblioteca/biblioteca.cpp.o
-
-biblioteca/biblioteca.i: biblioteca/biblioteca.cpp.i
-
+# target to preprocess a source file
+biblioteca/biblioteca.i:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.i
 .PHONY : biblioteca/biblioteca.i
 
-# target to preprocess a source file
-biblioteca/biblioteca.cpp.i:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.cpp.i
-.PHONY : biblioteca/biblioteca.cpp.i
-
-biblioteca/biblioteca.s: biblioteca/biblioteca.cpp.s
-
-.PHONY : biblioteca/biblioteca.s
-
 # target to generate assembly for a file
-biblioteca/biblioteca.cpp.s:
-	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.cpp.s
-.PHONY : biblioteca/biblioteca.cpp.s
+biblioteca/biblioteca.s:
+	$(MAKE) -f CMakeFiles/ComputacaoGrafica.dir/build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.s
+.PHONY : biblioteca/biblioteca.s
 
 # Help Target
 help:

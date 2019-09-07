@@ -57,222 +57,222 @@ include CMakeFiles/ComputacaoGrafica.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/ComputacaoGrafica.dir/flags.make
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.cpp.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.cpp.o: ../biblioteca/biblioteca.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.cpp.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.cpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.o: ../biblioteca/biblioteca.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.cpp
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.cpp.i
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.i
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.cpp.s
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.s
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.cpp.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.cpp.o: ../biblioteca/Cone.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.cpp.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cone.cpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.o: ../biblioteca/Cone.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cone.cpp
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cone.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.cpp.i
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cone.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.i
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cone.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.cpp.s
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cone.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.s
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.o: ../biblioteca/Cilindro.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cilindro.cpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.o: ../biblioteca/Cilindro.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cilindro.cpp
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cilindro.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.i
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cilindro.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.i
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cilindro.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.s
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cilindro.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.s
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.cpp.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.cpp.o: ../biblioteca/Esfera.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.cpp.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Esfera.cpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.o: ../biblioteca/Esfera.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Esfera.cpp
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Esfera.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.cpp.i
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Esfera.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.i
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Esfera.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.cpp.s
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Esfera.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.s
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.cpp.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.cpp.o: ../biblioteca/Plano.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.cpp.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Plano.cpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.o: ../biblioteca/Plano.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Plano.cpp
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Plano.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.cpp.i
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Plano.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.i
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Plano.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.cpp.s
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Plano.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.s
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.o: ../biblioteca/Objeto.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.cpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.o: ../biblioteca/Objeto.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.cpp
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.i
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.i
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.s
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.s
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.o: ../biblioteca/Cubo.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.cpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.o: ../biblioteca/Cubo.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.cpp
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.i
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.i
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.s
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.s
 
-CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.cpp.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
-CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.cpp.o: ../Bitmap/Bitmap.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.cpp.o -c /home/thais/CLionProjects/ComputacaoGrafica/Bitmap/Bitmap.cpp
+CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
+CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.o: ../Bitmap/Bitmap.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.o -c /home/thais/CLionProjects/ComputacaoGrafica/Bitmap/Bitmap.cpp
 
-CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/Bitmap/Bitmap.cpp > CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.cpp.i
+CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/Bitmap/Bitmap.cpp > CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.i
 
-CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/Bitmap/Bitmap.cpp -o CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.cpp.s
+CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/Bitmap/Bitmap.cpp -o CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.s
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.cpp.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.cpp.o: ../biblioteca/Camera.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.cpp.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Camera.cpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.o: ../biblioteca/Camera.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Camera.cpp
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Camera.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.cpp.i
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Camera.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.i
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Camera.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.cpp.s
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Camera.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.s
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.cpp.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.cpp.o: ../biblioteca/Cenario.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.cpp.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cenario.cpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.o: ../biblioteca/Cenario.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cenario.cpp
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cenario.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.cpp.i
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cenario.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.i
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cenario.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.cpp.s
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cenario.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.s
 
-CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
-CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.o: ../TrabalhoGrade.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.o -c /home/thais/CLionProjects/ComputacaoGrafica/TrabalhoGrade.cpp
+CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
+CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.o: ../TrabalhoGrade.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.o -c /home/thais/CLionProjects/ComputacaoGrafica/TrabalhoGrade.cpp
 
-CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/TrabalhoGrade.cpp > CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.i
+CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/TrabalhoGrade.cpp > CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.i
 
-CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/TrabalhoGrade.cpp -o CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.s
+CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/TrabalhoGrade.cpp -o CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.s
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.o: ../biblioteca/PontoIntersecao.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/PontoIntersecao.cpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.o: ../biblioteca/PontoIntersecao.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/PontoIntersecao.cpp
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/PontoIntersecao.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.i
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/PontoIntersecao.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.i
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/PontoIntersecao.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.s
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/PontoIntersecao.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.s
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.cpp.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.cpp.o: ../biblioteca/Luz.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.cpp.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Luz.cpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.o: ../biblioteca/Luz.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Luz.cpp
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Luz.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.cpp.i
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Luz.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.i
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Luz.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.cpp.s
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Luz.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.s
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.cpp.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.cpp.o: ../biblioteca/LuzPontual.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.cpp.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/LuzPontual.cpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.o: CMakeFiles/ComputacaoGrafica.dir/flags.make
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.o: ../biblioteca/LuzPontual.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.o -c /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/LuzPontual.cpp
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/LuzPontual.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.cpp.i
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/LuzPontual.cpp > CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.i
 
-CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/LuzPontual.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.cpp.s
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thais/CLionProjects/ComputacaoGrafica/biblioteca/LuzPontual.cpp -o CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.s
 
 # Object files for target ComputacaoGrafica
 ComputacaoGrafica_OBJECTS = \
-"CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.cpp.o" \
-"CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.cpp.o" \
-"CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.o" \
-"CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.cpp.o" \
-"CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.cpp.o" \
-"CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.o" \
-"CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.o" \
-"CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.cpp.o" \
-"CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.cpp.o" \
-"CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.cpp.o" \
-"CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.o" \
-"CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.o" \
-"CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.cpp.o" \
-"CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.cpp.o"
+"CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.o" \
+"CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.o" \
+"CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.o" \
+"CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.o" \
+"CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.o" \
+"CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.o" \
+"CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.o" \
+"CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.o" \
+"CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.o" \
+"CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.o" \
+"CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.o" \
+"CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.o" \
+"CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.o" \
+"CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.o"
 
 # External object files for target ComputacaoGrafica
 ComputacaoGrafica_EXTERNAL_OBJECTS =
 
-ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.cpp.o
-ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.cpp.o
-ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.o
-ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.cpp.o
-ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.cpp.o
-ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.o
-ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.o
-ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.cpp.o
-ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.cpp.o
-ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.cpp.o
-ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.o
-ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.o
-ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.cpp.o
-ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.cpp.o
+ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.o
+ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.o
+ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.o
+ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.o
+ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.o
+ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.o
+ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.o
+ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.o
+ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.o
+ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.o
+ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.o
+ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.o
+ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.o
+ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.o
 ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/build.make
 ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable ComputacaoGrafica"

@@ -38,8 +38,8 @@ int main() {
     float tamGrade = 4;
     float zGrade = -4;
 
-// ------------------------------------- Coordenadas Camera ----------------------------------------------------------
-    Ponto* pCoordCamera = biblioteca::CriarPonto(0, -10, -25);
+// ------------------------------------- Coordenadas Camera---------------------------------------------------------
+    Ponto* pCoordCamera = biblioteca::CriarPonto(0, -10, -40);
     Ponto* pLookAt = biblioteca::CriarPonto(2,0,-10);
     Ponto* pViewUp = biblioteca::CriarPonto(0,-9,-25);
 
