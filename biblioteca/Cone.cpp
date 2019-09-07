@@ -185,7 +185,7 @@ VectorXd Cone::calcularNormal(Ponto* pi) {
     VectorXd aux2 = biblioteca::MultVetorEscalar(this->normal, aux);
 
     Ponto* pe = biblioteca::CriarPonto(this->centro->x + aux2[0], this->centro->y + aux2[1], this->centro->z + aux2[2]);
-    VectorXd PImenosPE = biblioteca::SubtracaoPontos(pi, pe,3);
+    VectorXd PImenosPE = biblioteca::SubtracaoPontos(pe, pi, 3);
     VectorXd PiV = biblioteca::SubtracaoPontos(pi, Vertice, 3);
 
     VectorXd T = biblioteca::ProdutoVetorial(PiV, PImenosPE, 3);
