@@ -71,7 +71,7 @@ double biblioteca::distanciaEntrePontos(Ponto *p1, Ponto *p2) {
 VectorXd biblioteca::SubtracaoPontos(Ponto* p1, Ponto* p2, int tamanho){
     //Vetor de p1 -> p2
     VectorXd vetor_resultante(tamanho);
-    
+
     vetor_resultante[0] = p2->x - p1->x;
     vetor_resultante[1] = p2->y - p1->y;
     vetor_resultante[2] = p2->z - p1->z;
@@ -99,7 +99,7 @@ Ponto* biblioteca::CriarPonto(double x, double y, double z) {
 }
 
 tuple<Ponto*, Ponto*> biblioteca::PontosDadoDistancia(Ponto* p_origem, const VectorXd vetor1, const VectorXd vetor2,
-                                                    double l_comprimento, int tamanho){
+                                                      double l_comprimento, int tamanho){
 
     double s, t;
     Ponto* p1;
@@ -125,9 +125,9 @@ Ponto* biblioteca::PontoCoordenada(Ponto* P0, Ponto* L_at, Ponto* V_up, Ponto* P
     VectorXd ic(tamanho); VectorXd jc(tamanho); VectorXd kc(tamanho);
     tie(ic,jc,kc) = biblioteca::DadosFotografo(P0, L_at, V_up, tamanho);
 
-    //Transforma os Pontos P0 e Pc em VectorXd e Adiciona 1 
+    //Transforma os Pontos P0 e Pc em VectorXd e Adiciona 1
     VectorXd P0_vector(tamanho+1); VectorXd Pc_vector(tamanho+1);
-    P0_vector << P0->x, P0->y, P0->z, 1; 
+    P0_vector << P0->x, P0->y, P0->z, 1;
     Pc_vector << Pc->x, Pc->y, Pc->z, 1;
 
     //Monta a Matriz
@@ -148,9 +148,9 @@ VectorXd biblioteca::VetorCoordenada(Ponto* P0, Ponto* L_at, Ponto* V_up, Vector
     VectorXd ic(tamanho); VectorXd jc(tamanho); VectorXd kc(tamanho);
     tie(ic,jc,kc) = biblioteca::DadosFotografo(P0, L_at, V_up, tamanho);
 
-    //Adiciona 0 aos VectorXd 
+    //Adiciona 0 aos VectorXd
     VectorXd P0_vector(tamanho+1); VectorXd Pc_vector(tamanho+1);
-    P0_vector << P0->x, P0->y, P0->z, 0; 
+    P0_vector << P0->x, P0->y, P0->z, 0;
     Pc_vector << Pc[0], Pc[1], Pc[2], 0;
 
     //Monta a Matriz
@@ -162,7 +162,7 @@ VectorXd biblioteca::VetorCoordenada(Ponto* P0, Ponto* L_at, Ponto* V_up, Vector
 
     VectorXd Pw(tamanho);
     Pw << Pw_vector[0], Pw_vector[1], Pw_vector[2];
-    
+
     return Pw;
 
 }
@@ -190,11 +190,11 @@ MatrixXd biblioteca::MontarMatrizCoodenadas(VectorXd ic, VectorXd jc, VectorXd k
     MatrixXd matriz(tamanho+1, tamanho+1);
 
     if (!cord){
-        P0 << 
-            -(ProdutoEscalar(P0,ic,tamanho)),
-            -(ProdutoEscalar(P0,jc,tamanho)),
-            -(ProdutoEscalar(P0,kc,tamanho)),
-            P0[tamanho];
+        P0 <<
+           -(ProdutoEscalar(P0,ic,tamanho)),
+                -(ProdutoEscalar(P0,jc,tamanho)),
+                -(ProdutoEscalar(P0,kc,tamanho)),
+                P0[tamanho];
     }
 
 
@@ -202,14 +202,14 @@ MatrixXd biblioteca::MontarMatrizCoodenadas(VectorXd ic, VectorXd jc, VectorXd k
         for (int j = 0; j < tamanho; j++){
 
             if (cord){
-                
+
                 if(i == 0)          matriz(j,i) = ic[j];
                 else if(i == 1)     matriz(j,i) = jc[j];
-                else if(i == 2)     matriz(j,i) = kc[j];        
-                else if(i == 3){    
-                                    matriz(i,j) = 0;
-                                    matriz(j,i) = P0[j]; 
-                                    matriz(i,i) = P0[i];
+                else if(i == 2)     matriz(j,i) = kc[j];
+                else if(i == 3){
+                    matriz(i,j) = 0;
+                    matriz(j,i) = P0[j];
+                    matriz(i,i) = P0[i];
                 }
             }
 
@@ -217,11 +217,11 @@ MatrixXd biblioteca::MontarMatrizCoodenadas(VectorXd ic, VectorXd jc, VectorXd k
 
                 if(i == 0)          matriz(i,j) = ic[j];
                 else if(i == 1)     matriz(i,j) = jc[j];
-                else if(i == 2)     matriz(i,j) = kc[j];        
-                else if(i == 3){    
-                                    matriz(i,j) = 0;
-                                    matriz(j,i) = P0[j]; 
-                                    matriz(i,i) = P0[i]; 
+                else if(i == 2)     matriz(i,j) = kc[j];
+                else if(i == 3){
+                    matriz(i,j) = 0;
+                    matriz(j,i) = P0[j];
+                    matriz(i,i) = P0[i];
                 }
             }
 
