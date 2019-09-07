@@ -8,14 +8,14 @@
 #include <iostream>
 #include <fstream>
 
-Bitmap::Bitmap(int largura, int altura) : largura(largura), altura(altura), pixels(new uint8_t[altura*largura*3]()){}
+Bitmap::Bitmap(int largura, int altura) : largura(largura), altura(altura), pixels(new float[altura*largura*3]()){}
 
-void Bitmap::setPixel(int x, int y, uint8_t red, uint8_t green, uint8_t blue) {
-    uint8_t *aux = pixels;
+void Bitmap::setPixel(int x, int y, float red, float green, float blue) {
+    float *aux = pixels;
     aux+=(y*3)*largura+(x*3);
-    aux[0] = red;
+    aux[2] = red;
     aux[1] = green;
-    aux[2] = blue;
+    aux[0] = blue;
 }
 
 bool Bitmap::salvar(string nomeArquivo) {
@@ -47,4 +47,7 @@ bool Bitmap::salvar(string nomeArquivo) {
     fclose(arquivo);
 
     return true;
+}
+float* Bitmap::getPixels(){
+    return pixels;
 }

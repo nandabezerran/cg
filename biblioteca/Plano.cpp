@@ -19,15 +19,18 @@ Ponto* Plano::IntersecaoRetaPlano(Ponto* p0, VectorXd vetor0, int tamanho){
     //produto1 eh o u*n
     double produto1 = biblioteca::ProdutoEscalar(vetor0, normal, tamanho);
 
+    if(produto1 == 0){
+        return nullptr;
+    }
+
     //t_int eh o resultado de cima / resultado de baixo
     double t_int = produto0/produto1;
+
 
     //Dado um ponto p0 e um vetor vetor0 retornar a equacao da reta (P(t) = Po + t * V)
     p_t_int = biblioteca::EquacaoDaReta(p0,t_int,vetor0);
 
-    if(biblioteca::ProdutoEscalar(biblioteca::SubtracaoPontos(p_t_int, p_pi, tamanho), normal, tamanho) != 0){
-        return nullptr;
-    }
+
 
     return p_t_int;
 }
