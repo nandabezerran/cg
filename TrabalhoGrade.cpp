@@ -1,6 +1,11 @@
 //
 // Created by fbeze on 02/09/2019.
 //
+
+
+//Como compilar: g++ -c TrabalhoGrade.cpp ./biblioteca/*.cpp ./Bitmap/*.cpp && g++ -o principal *.o
+//Como executar: ./principal
+
 #include "biblioteca/Cenario.hpp"
 #include "biblioteca/biblioteca.hpp"
 #include "biblioteca/Objeto.hpp"
@@ -56,11 +61,11 @@ int main(int argc, char** argv) {
 //-------------------------------------------- Criação Objetos -------------------------------------------------------
     VectorXd normal(3);
     normal << 0, 1, 0;
-    auto *objeto1 = new Cone(4, 3, biblioteca::CriarPonto(0, -1, -10), normal);
-    auto *objeto2 = new Cilindro(5, 1, biblioteca::CriarPonto(0, -6, -10), normal);
-    auto *objeto3 = new Cubo(5, biblioteca::CriarPonto(0, -5, -20));
-    auto *objeto4 = new Cubo(5, biblioteca::CriarPonto(0, -1, -20));
-    auto *objeto5 = new Cubo(5, biblioteca::CriarPonto(0, 4, -20));
+    auto *objeto1 = new Cone(40, 30, biblioteca::CriarPonto(0, -10, -100), normal);
+    auto *objeto2 = new Cilindro(50, 10, biblioteca::CriarPonto(0, -60, -100), normal);
+    auto *objeto3 = new Cubo(50, biblioteca::CriarPonto(0, -50, -200));
+    auto *objeto4 = new Cubo(50, biblioteca::CriarPonto(0, -10, -200));
+    auto *objeto5 = new Cubo(50, biblioteca::CriarPonto(0, 40, -200));
     //auto *objeto6 = new Cone(20, 8, biblioteca::CriarPonto(0,0,-10), normal);
     //auto *objeto7 = new Esfera(3, biblioteca::CriarPonto(0,10,-10));
 

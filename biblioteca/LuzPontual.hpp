@@ -7,11 +7,15 @@
 
 
 #include "Luz.hpp"
+#include "biblioteca.hpp"
+#include "PontoIntersecao.hpp"
 
 class LuzPontual : Luz {
 public:
-    int PosicaoPontual[3];
+    Ponto* posicaoPontual;
     LuzPontual(int r, int g, int b, int x, int y, int z);
+    double calcularFatorDifuso(PontoIntersecao* p, Objeto* o);
+    VectorXd calcularIntensidadeDifusa(PontoIntersecao* p, Objeto* o);
 };
 
 
