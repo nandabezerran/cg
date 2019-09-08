@@ -6,13 +6,14 @@
 #define COMPUTACAOGRAFICA_OBJETO_HPP
 #include "biblioteca.hpp"
 #include "Camera.hpp"
-
+#include "Material.hpp"
 class Objeto {
 public:
     string nome;
     float rgb[3];
     bool visibilidade;
-    Objeto(const string& pNome, float r, float g, float b, bool visibilidade);
+    Material material;
+    Objeto(const string& pNome, float r, float g, float b, Material pMat, bool visibilidade);
     virtual std::tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTamanho) = 0;
     virtual void mudaCoodCamera(Camera *camera) = 0;
     virtual void mudaCoodMundo(Camera *camera) = 0;
