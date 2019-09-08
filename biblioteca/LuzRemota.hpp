@@ -7,7 +7,7 @@
 
 class LuzRemota : Luz {
 public:
-    LuzRemota(int r, int g, int b);
+    LuzRemota(int r, int g, int b, VectorXd Dr);
     VectorXd calcularIntensidadeRemota(PontoIntersecao* p);
 };
 
