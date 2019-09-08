@@ -8,7 +8,7 @@
 
 class LuzAmbiente : Luz {
 public:
-    Ponto* posicaoPontual;
+    Ponto* posicaoAmbiente;
     LuzAmbiente(int r, int g, int b, int x, int y, int z);
 };
 
