@@ -8,7 +8,7 @@
 
 class LuzAmbiente : Luz {
 public:
-    LuzAmbiente(int r, int g, int b);
+    LuzAmbiente(float r, float g, float b);
     VectorXd calcularIntensidadeAmbiente(PontoIntersecao* p);
 };
 

@@ -1,6 +1,6 @@
 #include "LuzAmbiente.hpp"
 
-LuzAmbiente::LuzAmbiente(int r, int g, int b): Luz(r, g, b){
+LuzAmbiente::LuzAmbiente(float r, float g, float b): Luz(r, g, b){
 }
 
 VectorXd LuzAmbiente::calcularIntensidadeAmbiente(PontoIntersecao* p){
