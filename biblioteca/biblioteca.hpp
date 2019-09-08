@@ -38,11 +38,6 @@ class biblioteca{
         static tuple<VectorXd, VectorXd, VectorXd> DadosFotografo(Ponto* P0, Ponto* L_at, Ponto* V_up, int tamanho);
         static MatrixXd MontarMatrizCoodenadas(VectorXd ic, VectorXd jc, VectorXd kc, VectorXd P0, int tamanho,bool tratamento);
 
-    static Ponto* PontoCoordenada(Ponto* P0, Ponto* L_at, Ponto* V_up, Ponto* Pc, int tamanho, bool cord);
-    static VectorXd VetorCoordenada(Ponto* P0, Ponto* L_at, Ponto* V_up, VectorXd Pc, int tamanho, bool cord);
-    static tuple<VectorXd, VectorXd, VectorXd> DadosFotografo(Ponto* P0, Ponto* L_at, Ponto* V_up, int tamanho);
-    static MatrixXd MontarMatrizCoodenadas(VectorXd ic, VectorXd jc, VectorXd kc, VectorXd P0, int tamanho,bool tratamento);
-
 
     //TODO: Encontrar nome melhor pra essa função (solução da prova 1)
     static tuple<Ponto*, Ponto*> PontosDadoDistancia(Ponto* p_origem, VectorXd vetor1, VectorXd vetor2,
