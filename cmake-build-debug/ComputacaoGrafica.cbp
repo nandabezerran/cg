@@ -8,170 +8,180 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug"/>
+				<Option working_dir="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="rebuild_cache">
-				<Option working_dir="/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="ComputacaoGrafica">
-				<Option output="/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/ComputacaoGrafica" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir=""/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/5"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
-					<Add directory="/usr/include/c++/5/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 ComputacaoGrafica"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="ComputacaoGrafica/fast">
-				<Option output="/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/ComputacaoGrafica" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir=""/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/5"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
-					<Add directory="/usr/include/c++/5/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 ComputacaoGrafica/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe -f &quot;C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe -f &quot;C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe -f &quot;C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe -f &quot;C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug"/>
+				<Option working_dir="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe -f &quot;C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe -f &quot;C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe -f &quot;C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe -f &quot;C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ComputacaoGrafica">
+				<Option output="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/ComputacaoGrafica.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe -f &quot;C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 ComputacaoGrafica"/>
+					<CompileFile command="C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe -f &quot;C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe -f &quot;C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe -f &quot;C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ComputacaoGrafica/fast">
+				<Option output="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/ComputacaoGrafica.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe -f &quot;C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 ComputacaoGrafica/fast"/>
+					<CompileFile command="C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe -f &quot;C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe -f &quot;C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe -f &quot;C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe -f &quot;C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe -f &quot;C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe -f &quot;C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe -f &quot;C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/Bitmap/Bitmap.cpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/Bitmap/Bitmap.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/Bitmap/Bitmap.hpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/Bitmap/Bitmap.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/Bitmap/BitmapCabecalhoArq.h">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/Bitmap/BitmapCabecalhoArq.h">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/Bitmap/BitmapCabecalhoInfo.h">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/Bitmap/BitmapCabecalhoInfo.h">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/TrabalhoGrade.cpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/TrabalhoGrade.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Camera.cpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Camera.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Camera.hpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Camera.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cenario.cpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cenario.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cenario.hpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cenario.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cilindro.cpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cilindro.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cilindro.hpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cilindro.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cone.cpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cone.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cone.hpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cone.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.cpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cubo.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.hpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cubo.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Esfera.cpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Esfera.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Esfera.hpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Esfera.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Luz.cpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Luz.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Luz.hpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Luz.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/LuzPontual.cpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/LuzPontual.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/LuzPontual.hpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/LuzPontual.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.cpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/LuzSpot.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.hpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/LuzSpot.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Plano.cpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Material.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Plano.hpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Material.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/PontoIntersecao.cpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Objeto.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/PontoIntersecao.hpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Objeto.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.cpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Plano.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.hpp">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Plano.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
-		<Unit filename="/home/thais/CLionProjects/ComputacaoGrafica/CMakeLists.txt">
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/PontoIntersecao.cpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/PontoIntersecao.hpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/biblioteca.cpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/biblioteca.hpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

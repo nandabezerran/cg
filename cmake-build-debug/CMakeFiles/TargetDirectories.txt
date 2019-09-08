@@ -1,3 +1,3 @@
-/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir
-/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir
+C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -4,20 +4,22 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/thais/CLionProjects/ComputacaoGrafica/Bitmap/Bitmap.cpp" "/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.o"
-  "/home/thais/CLionProjects/ComputacaoGrafica/TrabalhoGrade.cpp" "/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.o"
-  "/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Camera.cpp" "/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.o"
-  "/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cenario.cpp" "/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.o"
-  "/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cilindro.cpp" "/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.o"
-  "/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cone.cpp" "/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.o"
-  "/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Cubo.cpp" "/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.o"
-  "/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Esfera.cpp" "/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.o"
-  "/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Luz.cpp" "/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.o"
-  "/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/LuzPontual.cpp" "/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.o"
-  "/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Objeto.cpp" "/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.o"
-  "/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/Plano.cpp" "/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.o"
-  "/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/PontoIntersecao.cpp" "/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.o"
-  "/home/thais/CLionProjects/ComputacaoGrafica/biblioteca/biblioteca.cpp" "/home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.o"
+  "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/Bitmap/Bitmap.cpp" "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/Bitmap/Bitmap.cpp.obj"
+  "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/TrabalhoGrade.cpp" "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.obj"
+  "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Camera.cpp" "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.cpp.obj"
+  "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cenario.cpp" "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cenario.cpp.obj"
+  "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cilindro.cpp" "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cilindro.cpp.obj"
+  "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cone.cpp" "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cone.cpp.obj"
+  "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cubo.cpp" "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.obj"
+  "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Esfera.cpp" "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.cpp.obj"
+  "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Luz.cpp" "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.cpp.obj"
+  "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/LuzPontual.cpp" "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.cpp.obj"
+  "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/LuzSpot.cpp" "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzSpot.cpp.obj"
+  "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Material.cpp" "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Material.cpp.obj"
+  "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Objeto.cpp" "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.obj"
+  "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Plano.cpp" "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.cpp.obj"
+  "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/PontoIntersecao.cpp" "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.obj"
+  "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/biblioteca.cpp" "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

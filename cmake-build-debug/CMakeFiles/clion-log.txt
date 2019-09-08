@@ -1,4 +1,4 @@
-/home/thais/Downloads/clion-2019.2.1/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/thais/CLionProjects/ComputacaoGrafica
+"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe -G "CodeBlocks - MinGW Makefiles" C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/thais/CLionProjects/ComputacaoGrafica/cmake-build-debug
+-- Build files have been written to: C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug
