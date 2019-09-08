@@ -5,7 +5,7 @@
 #include "Luz.hpp"
 
 
-Luz::Luz(int r, int g, int b) {
+Luz::Luz(float r, float g, float b) {
     intensidadeRgb[0] = r;
     intensidadeRgb[1] = g;
     intensidadeRgb[2] = b;

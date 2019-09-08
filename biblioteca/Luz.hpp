@@ -9,7 +9,7 @@
 class Luz {
 public:
     VectorXd intensidadeRgb;
-    Luz(int r, int g, int b);
+    Luz(float r, float g, float b);
 };
 
 
