@@ -8,6 +8,7 @@ add_executable(ComputacaoGrafica biblioteca/biblioteca.cpp biblioteca/biblioteca
         biblioteca/Cubo.hpp biblioteca/Cubo.cpp Bitmap/Bitmap.cpp Bitmap/Bitmap.hpp
         Bitmap/BitmapCabecalhoInfo.h Bitmap/BitmapCabecalhoArq.h biblioteca/Camera.hpp biblioteca/Camera.cpp
         biblioteca/Cenario.cpp biblioteca/Cenario.hpp TrabalhoGrade.cpp biblioteca/PontoIntersecao.cpp
-        biblioteca/PontoIntersecao.hpp biblioteca/Luz.cpp biblioteca/Luz.hpp biblioteca/LuzPontual.cpp biblioteca/LuzPontual.hpp)
+        biblioteca/PontoIntersecao.hpp biblioteca/Luz.cpp biblioteca/Luz.hpp biblioteca/LuzPontual.cpp biblioteca/LuzPontual.hpp
+        biblioteca/Material.cpp biblioteca/Material.hpp)
 
 target_link_libraries(ComputacaoGrafica -lOpenGL32 -lfreeGLUT -lglu32)

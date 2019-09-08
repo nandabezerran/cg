@@ -28,6 +28,7 @@ public:
     void checarUmPonto(int linha, int coluna);
     void objetosVisiveis();
     void mudarCamera(Camera *pCamera);
+    void atualizarCamera();
     float* getCenarioData();
 private:
     void iniciarPintura();

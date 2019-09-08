@@ -17,34 +17,39 @@
 float* test;
 int matrixSize = 100;
 Cenario *cenario;
+
 void display(){
     glClearColor(0.0,0.0,0.0,1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     glDrawPixels(matrixSize,matrixSize,GL_RGB,GL_FLOAT,test);
     glutSwapBuffers();
+    glutPostRedisplay();
 }
 
-void onMouseButton(int button, int state, int x, int y)
-{
+void onMouseButton(int button, int state, int x, int y){
     if(button == GLUT_LEFT_BUTTON && state == GLUT_UP){
         cenario->checarUmPonto(matrixSize-y,x);
     }
 }
 
 void onKeyboard(unsigned char key, int x, int y){
-    if(key == 'w'){
-        cenario->camera->coordCamera->z -= 10;
-        cenario->mudarCamera(cenario->camera);
-        cenario->imprimirCenarioCompleto();
-        cout << cenario->camera->coordCamera->z << endl;
+    switch((char)key) {
+        case 27: //ESC
+            glutDestroyWindow(0);
+            exit(0);
+            break;
+
+        case 'w':
+            cenario->camera->andarFrente();
+            cenario->atualizarCamera();
+            break;
+
+        case 's':
+            cenario->camera->andarTras();
+            cenario->atualizarCamera();
+            break;
     }
-    if(key == 's'){
-        cenario->camera->coordCamera->z += 10;
-        cenario->mudarCamera(cenario->camera);
-        cenario->imprimirCenarioCompleto();
-        cout << cenario->camera->coordCamera->z << endl;
-    }
-    glutSwapBuffers();
+
 }
 
 int main(int argc, char** argv) {
@@ -57,7 +62,7 @@ int main(int argc, char** argv) {
     auto *objeto4 = new Cubo(5, biblioteca::CriarPonto(0, -1, -20));
     auto *objeto5 = new Cubo(5, biblioteca::CriarPonto(0, 4, -20));
     //auto *objeto6 = new Cone(20, 8, biblioteca::CriarPonto(0,0,-10), normal);
-    //auto *objeto7 = new Esfera(3, biblioteca::CriarPonto(0,0,-10));
+    //auto *objeto7 = new Esfera(3, biblioteca::CriarPonto(0,10,-10));
 
     vector<Objeto *> objetos;
 
@@ -67,30 +72,28 @@ int main(int argc, char** argv) {
     objetos.push_back(objeto4);
     objetos.push_back(objeto5);
     //objects.push_back(objeto6);
-    //objects.push_back(objeto7);
+    //objetos.push_back(objeto7);
 
 // ------------------------------------- Infos da Grade --------------------------------------------------------------
     float tamGrade = 4;
     float zGrade = -4;
 
 // ------------------------------------- Coordenadas Camera ----------------------------------------------------------
-    Ponto* pCoordCamera = biblioteca::CriarPonto(20, 0, -10);
-    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-20);
-    Ponto* pViewUp = biblioteca::CriarPonto(20,1,-10);
+    Ponto* pCoordCamera = biblioteca::CriarPonto(0, 0, 0);
+    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-10);
+    Ponto* pViewUp = biblioteca::CriarPonto(0,1,0);
 
     auto camera =  new Camera(pCoordCamera, pLookAt, pViewUp, tamGrade, zGrade, matrixSize);
     cenario = new Cenario(camera, objetos);
 
 // ------------------------------------- Funções ---------------------------------------------------------------------
-    //cenario->checarUmPonto(49,49);
-    //cenario->objetosVisiveis();
-    srand((unsigned)clock());
-    auto start = std::chrono::high_resolution_clock::now(); // Starts the clock;
-    cenario->imprimirCenarioCompleto();
-    auto stop = std::chrono::high_resolution_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-    std::cout << "Time taken by ImprimirCenarioCompleto algorithm: "
-              << duration.count() << " microseconds\n" << std::endl;
+//    srand((unsigned)clock());
+//    auto start = std::chrono::high_resolution_clock::now(); // Starts the clock;
+//    cenario->imprimirCenarioCompleto();
+//    auto stop = std::chrono::high_resolution_clock::now();
+//    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+//    std::cout << "Time taken by ImprimirCenarioCompleto algorithm: "
+//              << duration.count() << " microseconds\n" << std::endl;
 
 // ------------------------------------- Janela ----------------------------------------------------------------------
     glutInit(&argc, argv);
@@ -98,10 +101,12 @@ int main(int argc, char** argv) {
     glutInitWindowSize(matrixSize, matrixSize);
     glutInitWindowPosition((1366/2)-matrixSize/2, (768/2)-(matrixSize+50)/2);
     glutCreateWindow("Trabalhim Top");
+
     test = cenario->getCenarioData();
     glutDisplayFunc(display);
-    //glutMouseFunc(onMouseButton);
+    glutMouseFunc(onMouseButton);
     glutKeyboardFunc(onKeyboard);
+
     glutMainLoop();
     return 0;
 }

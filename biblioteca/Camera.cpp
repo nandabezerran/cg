@@ -8,11 +8,10 @@ Camera::Camera(Ponto *pCoordCamera, Ponto *pLookAt, Ponto *pViewUp, double grade
 coordCamera(pCoordCamera), lookAt(pLookAt), viewUp(pViewUp), qtdFuros(pQtdFuros) {
 
     observador = biblioteca::CriarPonto(0,0,0);
-    int tamanho = 3;
-    kc = biblioteca::NormalizaVetor(biblioteca::SubtracaoPontos(lookAt, coordCamera, tamanho),tamanho);
-    ic = biblioteca::NormalizaVetor(biblioteca::ProdutoVetorial(biblioteca::SubtracaoPontos(coordCamera,viewUp,tamanho)
-            ,kc,tamanho), tamanho);
-    jc = biblioteca::ProdutoVetorial(kc,ic,tamanho);
+    kc = biblioteca::NormalizaVetor(biblioteca::SubtracaoPontos(lookAt, coordCamera, 3),3);
+    ic = biblioteca::NormalizaVetor(biblioteca::ProdutoVetorial(biblioteca::SubtracaoPontos(coordCamera,viewUp,3)
+            ,kc,3), 3);
+    jc = biblioteca::ProdutoVetorial(kc,ic,3);
     montarMatrizCoord();
 
     double pointDistance = gradeTam/(qtdFuros);
@@ -85,6 +84,14 @@ VectorXd multMatrix(double matriz[4][4], VectorXd &vetor){
     }
     return aux;
 }
+void Camera::atualizaCamera(){
+    kc = biblioteca::NormalizaVetor(biblioteca::SubtracaoPontos(lookAt, coordCamera, 3),3);
+    ic = biblioteca::NormalizaVetor(biblioteca::ProdutoVetorial(biblioteca::SubtracaoPontos(coordCamera,viewUp,3)
+            ,kc,3), 3);
+    jc = biblioteca::ProdutoVetorial(kc,ic,3);
+    montarMatrizCoord();
+
+}
 
 void Camera::mudarMundoCamera(Ponto *ponto) {
     VectorXd aux(4);
@@ -121,3 +128,17 @@ void Camera::mudarCameraMundo(VectorXd &pNormal) {
     pNormal[1] = aux[1];
     pNormal[2] = aux[2];
 }
+
+void Camera::andarFrente() {
+    biblioteca::somaVetorPonto(biblioteca::NormalizaVetor(biblioteca::SubtracaoPontos(coordCamera, lookAt, 3), 3),
+            coordCamera);
+    atualizaCamera();
+
+}
+
+void Camera::andarTras() {
+    biblioteca::subVetorPonto(biblioteca::NormalizaVetor(biblioteca::SubtracaoPontos(coordCamera, lookAt, 3), 3),
+                               coordCamera);
+    atualizaCamera();
+}
+

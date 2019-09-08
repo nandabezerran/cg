@@ -70,16 +70,15 @@ PontoIntersecao* Cenario::rayCasting(Ponto* pCoordObs, Ponto* pontoGrade){
     return pInts[0];
 }
 
-vector<PontoIntersecao*> interceptaObjeto(Objeto* Object, Ponto *posObs, Ponto* pointGrid){
-    int tamanho = 3;
+PontoIntersecao* interceptaObjeto(Objeto* Object, Ponto *posObs, Ponto* pointGrid){
 
-    VectorXd lineObGrid = biblioteca::SubtracaoPontos(posObs, pointGrid, tamanho);
+    VectorXd lineObGrid = biblioteca::SubtracaoPontos(posObs, pointGrid, 3);
 
     vector<PontoIntersecao*> pInts;
     Ponto* p_int1 = nullptr;
     Ponto* p_int2 = nullptr;
 
-    tie(p_int1, p_int2) = Object->IntersecaoReta(posObs, lineObGrid, tamanho);
+    tie(p_int1, p_int2) = Object->IntersecaoReta(posObs, lineObGrid, 3);
 
     if (p_int1 != nullptr) {
         auto *p = new PontoIntersecao(p_int1, Object, biblioteca::distanciaEntrePontos(posObs, p_int1));
@@ -92,11 +91,11 @@ vector<PontoIntersecao*> interceptaObjeto(Objeto* Object, Ponto *posObs, Ponto* 
     }
 
     if (pInts.empty()){
-        return pInts;
+        return nullptr;
     }
     //Ordena o vetor por meio da distancia do ponto da interseção e da posição do observador
     std::sort(pInts.begin(), pInts.end(), comparacaoDistancia);
-    return pInts;
+    return pInts[0];
 }
 
 void Cenario::pintarObjeto(Ponto*** pGrade){
@@ -106,19 +105,15 @@ void Cenario::pintarObjeto(Ponto*** pGrade){
         for (int j = 0; j < camera->qtdFuros; ++j) {
             for (auto &pObjeto : objetos) {
                 if (pObjeto->visibilidade) {
-                    vector<PontoIntersecao*> pints = interceptaObjeto(pObjeto, camera->observador, pGrade[i][j]);
-                    if(!(pints.empty()) && (!auxDefinido || pints[0]->distOrigem < aux->distOrigem)){
-                        aux->distOrigem = pints[0]->distOrigem;
-                        aux->p = pints[0]->p;
-                        aux->objeto = pints[0]->objeto;
+                    PontoIntersecao* pint = interceptaObjeto(pObjeto, camera->observador, pGrade[i][j]);
+                    if(pint && (!auxDefinido || pint->distOrigem < aux->distOrigem)){
+                        aux->distOrigem = pint->distOrigem;
+                        aux->p = pint->p;
+                        aux->objeto = pint->objeto;
                         auxDefinido = true;
                     }
                     // Desalocando a memoria
-                    for (auto p : pints){
-                        delete p;
-                    }
-                    pints.clear();
-
+                    delete pint;
                 }
 
             }
@@ -134,12 +129,10 @@ void Cenario::pintarObjeto(Ponto*** pGrade){
     }
 }
 
-void Cenario::salvarCenario() {
-    imagem.salvar("TesteCamera.bmp");
-}
 float* Cenario::getCenarioData(){
     return imagem.getPixels();
 }
+
 void Cenario::imprimirCenarioCompleto() {
     PontoIntersecao* pInt;
     for (int i = 0; i < camera->qtdFuros ; ++i) {
@@ -158,16 +151,16 @@ void Cenario::checarUmPonto(int linha, int coluna) {
     cout << "----------------------------------------------------------------------" << "\n";
     cout << "Centro (" << linha << ", "<< coluna <<"): " << camera->gradeCamera[linha][coluna]->x << ", "
     << camera->gradeCamera[linha][coluna]->y<< ", "<< camera->gradeCamera[linha][coluna]->z << "\n";
-    cout << "----------------------------------------------------------------------" << "\n";
+
     pInts = rayCasting(camera->observador, camera->gradeCamera[linha][coluna]);
     if(pInts){
         pInts->objeto->visibilidade = true;
-        cout << "Primeiro objeto encontrado: " << pInts->objeto->nome << " - Ponto Interceptado: " << pInts->p->x
+        cout << "Objeto encontrado: " << pInts->objeto->nome << " - Ponto Interceptado: " << pInts->p->x
         << ", " <<pInts->p->y<< ", "<< pInts->p->z<< "\n";
         cout << "----------------------------------------------------------------------" << "\n";
+        pintarObjeto(camera->gradeCamera);
     }
-    cout << "----------------------------------------------------------------------" << endl;
-    pintarObjeto(camera->gradeCamera);
+
 }
 
 void Cenario::objetosVisiveis() {
@@ -185,5 +178,12 @@ void Cenario::mudarCamera(Camera *pCamera) {
     for (auto objeto : objetos) {
         objeto->mudaCoodCamera(camera);
     }
+}
+
+void Cenario::atualizarCamera() {
+    for (auto objeto : objetos) {
+        objeto->mudaCoodCamera(camera);
+    }
+    imprimirCenarioCompleto();
 }
 
