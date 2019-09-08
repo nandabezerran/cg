@@ -35,7 +35,7 @@ public:
     vector<Face*> faces;
     vector<Vertice*> vertices;
     vector<Aresta*> arestas;
-    Cubo(double cAresta, Ponto* cCentro);
+    Cubo(double cAresta, Ponto* cCentro, Material* material);
     tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTamanho) override;
     Vertice* CriarVertice(Ponto* p1, string id);
     Aresta* CriarAresta(Vertice* pi, Vertice* pf, string id);

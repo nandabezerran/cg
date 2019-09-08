@@ -6,9 +6,9 @@
 #include "Plano.hpp"
 
 
-Cilindro::Cilindro(float pAltura, float pRaio, Ponto* pCentro, VectorXd pNormal) : altura(pAltura), raio(pRaio),
+Cilindro::Cilindro(float pAltura, float pRaio, Ponto* pCentro, VectorXd pNormal, Material* material) : altura(pAltura), raio(pRaio),
                                                                                    centro(pCentro), normal(pNormal),
-                                                                                   Objeto("Cilindro", 0.4,0.2,0, false) {}
+                                                                                   Objeto("Cilindro", false, material) {}
 
 tuple<Ponto*,Ponto*> Cilindro::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTamanho){
 

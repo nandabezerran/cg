@@ -6,8 +6,8 @@
 
 
 
-Esfera::Esfera(float pRaio, Ponto* pCentro) : raio(pRaio), centro(pCentro),
-                                              Objeto("Esfera", 1.0,0.0,0.0, false)  {}
+Esfera::Esfera(float pRaio, Ponto* pCentro, Material* material) : raio(pRaio), centro(pCentro),
+                                              Objeto("Esfera",false, material)  {}
 
 tuple<Ponto*,Ponto*> Esfera::IntersecaoReta(Ponto* pP0, VectorXd pVetor0,int pTamanho){
     //p_t_int eh o ponto dado o t_int

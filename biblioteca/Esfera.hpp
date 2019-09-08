@@ -11,7 +11,7 @@ public:
     string nome;
     float raio;
     Ponto* centro;
-    Esfera(float pRaio, Ponto* pCentro);
+    Esfera(float pRaio, Ponto* pCentro, Material* material);
     tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTamanho) override;
     void mudaCoodCamera(Camera *camera) override;
     void mudaCoodMundo(Camera *camera) override;

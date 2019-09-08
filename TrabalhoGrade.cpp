@@ -15,6 +15,7 @@
 #include "biblioteca/Esfera.hpp"
 #include "biblioteca/Cubo.hpp"
 #include "biblioteca/PontoIntersecao.hpp"
+#include "biblioteca/Material.hpp"
 #include <GL/glut.h>
 #include <time.h>
 #include <chrono>
@@ -58,14 +59,28 @@ void onKeyboard(unsigned char key, int x, int y){
 }
 
 int main(int argc, char** argv) {
+//-------------------------------------------- Materiais -------------------------------------------------------------
+    //GreenRubber
+    float ka0[3] ={0.0,0.05,0.0};
+    float kd0[3] ={0.4,0.5,0.4};
+    auto *material0 = new Material(ka0,kd0);
+    //Polished copper
+    float ka1[3] ={0.2295, 0.08825, 0.0275 };
+    float kd1[3] ={0.5508, 0.2118, 0.066 };
+    auto *material1 = new Material(ka1,kd1);
+    //Chrome
+    float ka2[3] ={0.25, 0.25, 0.25 };
+    float kd2[3] ={0.4, 0.4, 0.4f };
+    auto *material2 = new Material(ka2,kd2);
+
 //-------------------------------------------- Criação Objetos -------------------------------------------------------
     VectorXd normal(3);
     normal << 0, 1, 0;
-    auto *objeto1 = new Cone(40, 30, biblioteca::CriarPonto(0, -10, -100), normal);
-    auto *objeto2 = new Cilindro(50, 10, biblioteca::CriarPonto(0, -60, -100), normal);
-    auto *objeto3 = new Cubo(50, biblioteca::CriarPonto(0, -50, -200));
-    auto *objeto4 = new Cubo(50, biblioteca::CriarPonto(0, -10, -200));
-    auto *objeto5 = new Cubo(50, biblioteca::CriarPonto(0, 40, -200));
+    auto *objeto1 = new Cone(40, 30, biblioteca::CriarPonto(0, -10, -100), normal, material0);
+    auto *objeto2 = new Cilindro(50, 10, biblioteca::CriarPonto(0, -60, -100), normal, material1);
+    auto *objeto3 = new Cubo(50, biblioteca::CriarPonto(0, -50, -200), material2);
+    auto *objeto4 = new Cubo(50, biblioteca::CriarPonto(0, -10, -200), material2);
+    auto *objeto5 = new Cubo(50, biblioteca::CriarPonto(0, 40, -200), material2);
     //auto *objeto6 = new Cone(20, 8, biblioteca::CriarPonto(0,0,-10), normal);
     //auto *objeto7 = new Esfera(3, biblioteca::CriarPonto(0,10,-10));
 
