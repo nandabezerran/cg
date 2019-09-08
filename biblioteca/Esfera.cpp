@@ -69,6 +69,8 @@ void Esfera::mudaCoodMundo(Camera *camera) {
 
 VectorXd Esfera::calcularNormal(Ponto* p){
     VectorXd v(3);
+    v = biblioteca::SubtracaoPontos(this->centro,p,3);
+    v = biblioteca::NormalizaVetor(v,3);
     return v;
-}
+}   
 
