@@ -25,8 +25,7 @@ void Cenario::addObjeto(Objeto *objeto) {
 void Cenario::iniciarPintura(){
     for (int i = 0; i < camera->qtdFuros; ++i) {
         for (int j = 0; j < camera->qtdFuros ; ++j) {
-            imagem.setPixel(i,j,(uint8_t)235,(uint8_t)206,
-                            (uint8_t)135);
+            imagem.setPixel(i,j,0.9,0.7,0.3);
         }
     }
 }
@@ -39,17 +38,17 @@ bool comparacaoDistancia(PontoIntersecao* i,PontoIntersecao* j){
     return (i->distOrigem < j->distOrigem);
 }
 
-vector<PontoIntersecao*> Cenario::rayCasting(Ponto* pCoordObs, Ponto* pontoGrade){
-    int tamanho = 3;
-    VectorXd vetorObGrade;
-    vetorObGrade = biblioteca::SubtracaoPontos(pCoordObs, pontoGrade, 3);
+PontoIntersecao* Cenario::rayCasting(Ponto* pCoordObs, Ponto* pontoGrade){
+    VectorXd vetorObGrade(3);
+    biblioteca::SubtracaoPontos(pCoordObs, pontoGrade, vetorObGrade);
     vector<PontoIntersecao*> pInts;
+
     Ponto* p_int1 = nullptr;
     Ponto* p_int2 = nullptr;
 
     for (auto &Object : objetos) {
         if(!Object->visibilidade) {
-            tie(p_int1, p_int2) = Object->IntersecaoReta(pCoordObs, vetorObGrade, tamanho);
+            tie(p_int1, p_int2) = Object->IntersecaoReta(pCoordObs, vetorObGrade, 3);
             if (p_int1) {
                 auto *p = new PontoIntersecao(p_int1, Object,
                         biblioteca::distanciaEntrePontos(pCoordObs, p_int1));
@@ -63,24 +62,23 @@ vector<PontoIntersecao*> Cenario::rayCasting(Ponto* pCoordObs, Ponto* pontoGrade
         }
     }
     if (pInts.empty()){
-        return pInts;
+        return nullptr;
     }
 
     //Ordena o vetor por meio da distancia do ponto da interseção e da posição do observador
     std::sort(pInts.begin(), pInts.end(), comparacaoDistancia);
-    return pInts;
+    return pInts[0];
 }
 
-vector<PontoIntersecao*> interceptaObjeto(Objeto* Object, Ponto *posObs, Ponto* pointGrid){
-    int tamanho = 3;
+PontoIntersecao* interceptaObjeto(Objeto* Object, Ponto *posObs, Ponto* pointGrid){
 
-    VectorXd lineObGrid = biblioteca::SubtracaoPontos(posObs, pointGrid, tamanho);
+    VectorXd lineObGrid = biblioteca::SubtracaoPontos(posObs, pointGrid, 3);
 
     vector<PontoIntersecao*> pInts;
     Ponto* p_int1 = nullptr;
     Ponto* p_int2 = nullptr;
 
-    tie(p_int1, p_int2) = Object->IntersecaoReta(posObs, lineObGrid, tamanho);
+    tie(p_int1, p_int2) = Object->IntersecaoReta(posObs, lineObGrid, 3);
 
     if (p_int1 != nullptr) {
         auto *p = new PontoIntersecao(p_int1, Object, biblioteca::distanciaEntrePontos(posObs, p_int1));
@@ -93,11 +91,11 @@ vector<PontoIntersecao*> interceptaObjeto(Objeto* Object, Ponto *posObs, Ponto* 
     }
 
     if (pInts.empty()){
-        return pInts;
+        return nullptr;
     }
     //Ordena o vetor por meio da distancia do ponto da interseção e da posição do observador
     std::sort(pInts.begin(), pInts.end(), comparacaoDistancia);
-    return pInts;
+    return pInts[0];
 }
 
 void Cenario::pintarObjeto(Ponto*** pGrade){
@@ -107,72 +105,62 @@ void Cenario::pintarObjeto(Ponto*** pGrade){
         for (int j = 0; j < camera->qtdFuros; ++j) {
             for (auto &pObjeto : objetos) {
                 if (pObjeto->visibilidade) {
-                    vector<PontoIntersecao*> pints = interceptaObjeto(pObjeto, camera->observador, pGrade[i][j]);
-                    if(!(pints.empty()) && (!auxDefinido || pints[0]->distOrigem < aux->distOrigem)){
-                        aux->distOrigem = pints[0]->distOrigem;
-                        aux->p = pints[0]->p;
-                        aux->objeto = pints[0]->objeto;
+                    PontoIntersecao* pint = interceptaObjeto(pObjeto, camera->observador, pGrade[i][j]);
+                    if(pint && (!auxDefinido || pint->distOrigem < aux->distOrigem)){
+                        aux->distOrigem = pint->distOrigem;
+                        aux->p = pint->p;
+                        aux->objeto = pint->objeto;
                         auxDefinido = true;
                     }
                     // Desalocando a memoria
-                    for (auto p : pints){
-                        delete p;
-                    }
-                    pints.clear();
-
+                    delete pint;
                 }
 
             }
             if (auxDefinido) {
-                imagem.setPixel(j,i,(uint8_t)aux->objeto->rgb[2],(uint8_t)aux->objeto->rgb[1],
-                        (uint8_t)aux->objeto->rgb[0]);
+                imagem.setPixel(j,i,aux->objeto->rgb[2],aux->objeto->rgb[1],
+                        aux->objeto->rgb[0]);
+            }
+            else{
+                imagem.setPixel(j,i,0.9,0.7,0.3);
             }
             auxDefinido = false;
         }
     }
 }
 
-void Cenario::salvarCenario() {
-    imagem.salvar("TesteCamera.bmp");
+float* Cenario::getCenarioData(){
+    return imagem.getPixels();
 }
 
 void Cenario::imprimirCenarioCompleto() {
-    vector<PontoIntersecao*> pInts;
+    PontoIntersecao* pInt;
     for (int i = 0; i < camera->qtdFuros ; ++i) {
         for (int j = 0; j < camera->qtdFuros; ++j) {
-            pInts = rayCasting(camera->observador, camera->gradeCamera[j][i]);
-            if(!pInts.empty()){
-                pInts[0]->objeto->visibilidade = true;
+            pInt = rayCasting(camera->observador, camera->gradeCamera[j][i]);
+            if(pInt){
+                pInt->objeto->visibilidade = true;
             }
         }
     }
     pintarObjeto(camera->gradeCamera);
-    salvarCenario();
 }
 
 void Cenario::checarUmPonto(int linha, int coluna) {
-    vector<PontoIntersecao*> pInts;
+    PontoIntersecao* pInts;
     cout << "----------------------------------------------------------------------" << "\n";
     cout << "Centro (" << linha << ", "<< coluna <<"): " << camera->gradeCamera[linha][coluna]->x << ", "
     << camera->gradeCamera[linha][coluna]->y<< ", "<< camera->gradeCamera[linha][coluna]->z << "\n";
-    cout << "----------------------------------------------------------------------" << "\n";
+
     pInts = rayCasting(camera->observador, camera->gradeCamera[linha][coluna]);
-    if(!pInts.empty()){
-        pInts[0]->objeto->visibilidade = true;
-        cout << "Primeiro objeto encontrado: " << pInts[0]->objeto->nome << " - Ponto Interceptado: " << pInts[0]->p->x
-        << ", " <<pInts[0]->p->y<< ", "<< pInts[0]->p->z<< "\n";
+    if(pInts){
+        pInts->objeto->visibilidade = true;
+        cout << "Objeto encontrado: " << pInts->objeto->nome << " - Ponto Interceptado: " << pInts->p->x
+        << ", " <<pInts->p->y<< ", "<< pInts->p->z<< "\n";
         cout << "----------------------------------------------------------------------" << "\n";
-        if(pInts.size()>1) {
-            cout << "Outros objetos atingidos (em ordem):" << "\n";
-            for (int i = 1; i < pInts.size(); ++i) {
-                cout << i+1 << "o - "<< pInts[i]->objeto->nome << "|" << "Ponto Interceptado: " << pInts[i]->p->x << ", "
-                << pInts[i]->p->y<< ", "<< pInts[i]->p->z<< "\n";
-            }
-        }
+        pintarObjeto(camera->gradeCamera);
     }
-    cout << "----------------------------------------------------------------------" << endl;
-    pintarObjeto(camera->gradeCamera);
-    salvarCenario();
+
 }
 
 void Cenario::objetosVisiveis() {
@@ -190,5 +178,12 @@ void Cenario::mudarCamera(Camera *pCamera) {
     for (auto objeto : objetos) {
         objeto->mudaCoodCamera(camera);
     }
+}
+
+void Cenario::atualizarCamera() {
+    for (auto objeto : objetos) {
+        objeto->mudaCoodCamera(camera);
+    }
+    imprimirCenarioCompleto();
 }
 

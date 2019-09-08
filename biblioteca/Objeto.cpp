@@ -4,7 +4,7 @@
 
 #include "Objeto.hpp"
 
-Objeto::Objeto(const string& pNome, int r, int g, int b, bool pVisibilidade) : nome(pNome),
+Objeto::Objeto(const string& pNome, float r, float g, float b, bool pVisibilidade) : nome(pNome),
                                                     visibilidade(pVisibilidade){
     rgb[0] = r;
     rgb[1] = g;

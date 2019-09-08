@@ -13,7 +13,7 @@
 class LuzPontual : Luz {
 public:
     Ponto* posicaoPontual;
-    LuzPontual(int r, int g, int b, int x, int y, int z);
+    LuzPontual(float r, float g, float b, double x,double y,double z);
     double calcularFatorDifuso(PontoIntersecao* p, Objeto* o);
     VectorXd calcularIntensidadeDifusa(PontoIntersecao* p, Objeto* o);
 };

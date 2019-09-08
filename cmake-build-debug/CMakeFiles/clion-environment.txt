@@ -1,3 +1,4 @@
-ToolSet: 1.0 (local)Options: 
+ToolSet: 5.0 (local)@C:\MinGW
+Options: 
 
-Options:
+Options:-DCMAKE_MAKE_PROGRAM=C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe

@@ -7,10 +7,9 @@
 
 
 
-
 Cone::Cone(float pAltura, float pRaio, Ponto* pCentro, VectorXd pNormal) : altura(pAltura), raio(pRaio),
                                                                           centro(pCentro), normal(pNormal),
-                                                                           Objeto("Cone", 34,139,34, false) {}
+                                                                           Objeto("Cone", 0.2,0.6,0, false) {}
 
 tuple<Ponto*, Ponto*> Cone::IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTamanho){
 

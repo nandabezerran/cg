@@ -10,9 +10,9 @@
 class Objeto {
 public:
     string nome;
-    int rgb[3];
+    float rgb[3];
     bool visibilidade;
-    Objeto(const string& pNome, int r, int g, int b, bool visibilidade);
+    Objeto(const string& pNome, float r, float g, float b, bool visibilidade);
     virtual std::tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTamanho) = 0;
     virtual void mudaCoodCamera(Camera *camera) = 0;
     virtual void mudaCoodMundo(Camera *camera) = 0;

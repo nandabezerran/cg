@@ -7,6 +7,7 @@ double biblioteca::ProdutoEscalar(VectorXd vetor1, VectorXd vetor2, int tamanho)
     }
     return produto;
 }
+
 double biblioteca::ProdutoEscalar(Ponto* ponto, VectorXd vetor2){
     double produto = 0;
     produto = produto + ponto->x*vetor2[0];
@@ -21,15 +22,6 @@ VectorXd biblioteca::MultVetorEscalar(VectorXd v, double x){
     result[1] = v[1] * x;
     result[2] = v[2] * x;
     return result;
-}
-
-Ponto*** biblioteca::MatrixAllocation(int size){
-    auto ***matrix = new Ponto**[size];
-
-    for (int i = 0; i < size; i++){
-        matrix[i] = new Ponto*[size];
-    }
-    return matrix;
 }
 
 VectorXd biblioteca::ProdutoVetorial(VectorXd vetor1, VectorXd vetor2, int tamanho){
@@ -77,7 +69,31 @@ VectorXd biblioteca::SubtracaoPontos(Ponto* p1, Ponto* p2, int tamanho){
     vetor_resultante[2] = p2->z - p1->z;
     return vetor_resultante;
 }
+void biblioteca::somaVetorPonto(VectorXd v, Ponto* p){
+    p->x += v[0];
+    p->y += v[1];
+    p->z += v[2];
 
+}
+
+void biblioteca::subVetorPonto(VectorXd v, Ponto* p){
+    p->x -= v[0];
+    p->y -= v[1];
+    p->z -= v[2];
+}
+Ponto*** biblioteca::MatrixAllocation(int size){
+    auto ***matrix = new Ponto**[size];
+
+    for (int i = 0; i < size; i++){
+        matrix[i] = new Ponto*[size];
+    }
+    return matrix;
+}
+void biblioteca::SubtracaoPontos(Ponto* p1, Ponto* p2, VectorXd &vector){
+    vector[0] = p2->x - p1->x;
+    vector[1] = p2->y - p1->y;
+    vector[2] = p2->z - p1->z;
+}
 
 Ponto* biblioteca::EquacaoDaReta(Ponto* p, double t, VectorXd vetor){
     Ponto* resultante = biblioteca::CriarPonto(p->x + t*vetor[0],p->y + t*vetor[1],p->z + t*vetor[2]);

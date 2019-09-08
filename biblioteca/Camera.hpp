@@ -26,6 +26,10 @@ public:
     void mudarCameraMundo(Ponto *ponto);
     void mudarMundoCamera(VectorXd &pNormal);
     void mudarCameraMundo(VectorXd &pNormal);
+    void atualizaCamera();
+    void andarFrente();
+    void andarTras();
+
 
 };
 

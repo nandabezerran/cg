@@ -4,7 +4,7 @@
 
 #include "LuzPontual.hpp"
 
-LuzPontual::LuzPontual(int r, int g, int b, int x, int y, int z): Luz(r, g, b){
+LuzPontual::LuzPontual(float r, float g, float b, double x,double y,double z): Luz(r, g, b){
     posicaoPontual = new Ponto();
     posicaoPontual->x = x;
     posicaoPontual->y = y;
