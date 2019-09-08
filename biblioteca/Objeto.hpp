@@ -13,7 +13,7 @@ public:
     float rgb[3];
     bool visibilidade;
     Material material;
-    Objeto(const string& pNome, float r, float g, float b, Material pMat, bool visibilidade);
+    Objeto(const string& pNome, float r, float g, float b, bool visibilidade, Material pMat);
     virtual std::tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTamanho) = 0;
     virtual void mudaCoodCamera(Camera *camera) = 0;
     virtual void mudaCoodMundo(Camera *camera) = 0;
