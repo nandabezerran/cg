@@ -28,7 +28,7 @@ void Cenario::addObjeto(Objeto *objeto) {
 void Cenario::iniciarPintura(){
     for (int i = 0; i < camera->qtdFuros; ++i) {
         for (int j = 0; j < camera->qtdFuros ; ++j) {
-            imagem.setPixel(i,j,0.9,0.7,0.3);
+            imagem.setPixel(i,j,0.3,0.7,0.9);
         }
     }
 }

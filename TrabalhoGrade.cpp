@@ -118,7 +118,7 @@ int main(int argc, char** argv) {
 // ------------------------------------- Funções ---------------------------------------------------------------------
 //    srand((unsigned)clock());
 //    auto start = std::chrono::high_resolution_clock::now(); // Starts the clock;
-    cenario->imprimirCenarioCompleto();
+//    cenario->imprimirCenarioCompleto();
 //    auto stop = std::chrono::high_resolution_clock::now();
 //    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
 //    std::cout << "Time taken by ImprimirCenarioCompleto algorithm: "
