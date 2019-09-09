@@ -34,10 +34,7 @@ class biblioteca{
         static void somaVetorPonto(VectorXd v, Ponto* p);
         static void subVetorPonto(VectorXd v, Ponto* p);
         static Ponto*** MatrixAllocation(int size);
-        static Ponto* PontoCoordenada(Ponto* P0, Ponto* L_at, Ponto* V_up, Ponto* Pc, int tamanho, bool cord);
-        static VectorXd VetorCoordenada(Ponto* P0, Ponto* L_at, Ponto* V_up, VectorXd Pc, int tamanho, bool cord);
-        static tuple<VectorXd, VectorXd, VectorXd> DadosFotografo(Ponto* P0, Ponto* L_at, Ponto* V_up, int tamanho);
-        static MatrixXd MontarMatrizCoodenadas(VectorXd ic, VectorXd jc, VectorXd kc, VectorXd P0, int tamanho,bool tratamento);
+
 
 
     //TODO: Encontrar nome melhor pra essa função (solução da prova 1)

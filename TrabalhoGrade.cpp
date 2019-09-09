@@ -64,19 +64,19 @@ void onKeyboard(unsigned char key, int x, int y){
 int main(int argc, char** argv) {
 //-------------------------------------------- Materiais -------------------------------------------------------------
     //Verde
-    float ka0[3] ={0.9, 0.72, 0.2};
-    float kd0[3] ={0.9, 0.72, 0.2};
+    float ka0[3] ={0.0215, 0.1745, 0.0215};
+    float kd0[3] ={0.07568, 0.61424, 0.07568};
     auto *material0 = new Material(ka0,kd0);
     //Polished copper
-    float ka1[3] ={0.6, 0.2, 0.2};
-    float kd1[3] ={0.6, 0.2, 0.2};
+    float ka1[3] ={0.19125, 0.0735, 0.0225};
+    float kd1[3] ={0.7038, 0.27048, 0.0828};
     auto *material1 = new Material(ka1,kd1);
     //Chrome
-    float ka2[3] ={0.6, 0.6, 0.6};
-    float kd2[3] ={0.6, 0.6, 0.6};
+    float ka2[3] ={0.25, 0.25, 0.25};
+    float kd2[3] ={0.4, 0.4, 0.4};
     auto *material2 = new Material(ka2,kd2);
 //-------------------------------------------- Luzes -----------------------------------------------------------------
-    auto *luzAmbiente = new LuzAmbiente(0.1,0.1,0.1);
+    auto *luzAmbiente = new LuzAmbiente(0.3,0.3,0.3);
     auto *luzPontual = new LuzPontual(1.0,1.0,1.0,0, 0, -5);
     vector<Luz *> luzes;
     luzes.emplace_back(luzPontual);
@@ -109,7 +109,9 @@ int main(int argc, char** argv) {
     Ponto* pCoordCamera = biblioteca::CriarPonto(15, 0, -5);
     Ponto* pLookAt = biblioteca::CriarPonto(0,0,-15);
     Ponto* pViewUp = biblioteca::CriarPonto(15,1,-5);
-
+//    Ponto* pCoordCamera = biblioteca::CriarPonto(0, 0, 0);
+//    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-15);
+//    Ponto* pViewUp = biblioteca::CriarPonto(0,1,0);
     auto camera =  new Camera(pCoordCamera, pLookAt, pViewUp, tamGrade, zGrade, matrixSize);
     cenario = new Cenario(camera, objetos, luzAmbiente, luzes);
 

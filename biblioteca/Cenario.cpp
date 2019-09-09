@@ -131,7 +131,7 @@ void Cenario::pintarObjeto(Ponto*** pGrade){
                                 intensidadeFuro[2]);
             }
             else{
-                imagem.setPixel(j,i,0.9,0.7,0.3);
+                imagem.setPixel(j,i,0.3,0.7,0.9);
             }
             auxDefinido = false;
         }

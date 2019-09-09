@@ -13,9 +13,9 @@ Bitmap::Bitmap(int largura, int altura) : largura(largura), altura(altura), pixe
 void Bitmap::setPixel(int x, int y, float red, float green, float blue) {
     float *aux = pixels;
     aux+=(y*3)*largura+(x*3);
-    aux[2] = red;
+    aux[0] = red;
     aux[1] = green;
-    aux[0] = blue;
+    aux[2] = blue;
 }
 
 bool Bitmap::salvar(string nomeArquivo) {
