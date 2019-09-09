@@ -88,30 +88,6 @@ tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTam
 
 }
 
-//tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTamanho) {
-//
-//    vector<Ponto*> intFace;
-//
-//    for (auto face: faces) {
-//        Ponto *p = face->p->IntersecaoRetaPlano(pP0, pVetor0, pTamanho);
-//
-//        if (p) {
-//            if(ValidacaoPontoCubo(face, p)){
-//                intFace.emplace_back(p);
-//            }
-//            else{
-//                delete p;
-//            }
-//        }
-//    }
-//    if(intFace.size() > 2){
-//        cout << "Mais que 3 intersecoes" << endl;
-//    }
-//
-//    return make_tuple(intFace.size() > 0 ? intFace[0]: nullptr, intFace.size() > 1 ? intFace[1]: nullptr);
-//
-//}
-
 Vertice* Cubo::CriarVertice(Ponto* ponto, string identificador){
     auto v = new Vertice();
     v->p = ponto;
@@ -134,31 +110,6 @@ Face* Cubo::CriarFace(Vertice* v1, Vertice* v2, Vertice* v3, string id){
     newFace->id = id;
 }
 
-//bool Cubo::ValidacaoPontoCubo(Face *face, Ponto *p) {
-//
-//    VectorXd auxVec1 = biblioteca::SubtracaoPontos(face->p2->p, face->p1->p, 3);
-//    VectorXd auxVec2 = biblioteca::SubtracaoPontos(face->p3->p, face->p1->p, 3);
-//    VectorXd pv = biblioteca::ProdutoVetorial(auxVec1, auxVec2, 3);
-//
-//    double areaTotal = (sqrt(biblioteca::ProdutoEscalar(pv,pv,3)))/2;
-//
-//    VectorXd w1 = biblioteca::SubtracaoPontos(face->p1->p, p, 3);
-//    VectorXd w2 = biblioteca::SubtracaoPontos(face->p2->p, p, 3);
-//    VectorXd w3 = biblioteca::SubtracaoPontos(face->p3->p, p, 3);
-//
-//
-//    pv =  biblioteca::ProdutoVetorial(w1, w2, 3);
-//    double area1 = (sqrt(biblioteca::ProdutoEscalar(pv,pv,3)))/2;
-//
-//    pv =  biblioteca::ProdutoVetorial(w3, w1, 3);
-//    double area2 = (sqrt(biblioteca::ProdutoEscalar(pv,pv,3)))/2;
-//
-//    pv =  biblioteca::ProdutoVetorial(w2, w3, 3);
-//    double area3 =  (sqrt(biblioteca::ProdutoEscalar(pv,pv,3)))/2;
-//
-//    return abs(areaTotal - (area1 + area2 + area3)) < 0.000000005;
-//
-//}
 bool Cubo::ValidacaoPontoCubo(VectorXd PxPy, VectorXd PxP, VectorXd P1P2, VectorXd P1P3, int tamanho) {
 
     VectorXd val1 = biblioteca::ProdutoVetorial(PxPy, PxP, tamanho);

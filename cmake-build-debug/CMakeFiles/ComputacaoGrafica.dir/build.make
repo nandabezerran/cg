@@ -264,6 +264,32 @@ CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzSpot.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzSpot.cpp.s"
 	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\biblioteca\LuzSpot.cpp -o CMakeFiles\ComputacaoGrafica.dir\biblioteca\LuzSpot.cpp.s
 
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzAmbiente.cpp.obj: CMakeFiles/ComputacaoGrafica.dir/flags.make
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzAmbiente.cpp.obj: ../biblioteca/LuzAmbiente.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzAmbiente.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\ComputacaoGrafica.dir\biblioteca\LuzAmbiente.cpp.obj -c C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\biblioteca\LuzAmbiente.cpp
+
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzAmbiente.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzAmbiente.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\biblioteca\LuzAmbiente.cpp > CMakeFiles\ComputacaoGrafica.dir\biblioteca\LuzAmbiente.cpp.i
+
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzAmbiente.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzAmbiente.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\biblioteca\LuzAmbiente.cpp -o CMakeFiles\ComputacaoGrafica.dir\biblioteca\LuzAmbiente.cpp.s
+
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzRemota.cpp.obj: CMakeFiles/ComputacaoGrafica.dir/flags.make
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzRemota.cpp.obj: ../biblioteca/LuzRemota.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzRemota.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\ComputacaoGrafica.dir\biblioteca\LuzRemota.cpp.obj -c C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\biblioteca\LuzRemota.cpp
+
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzRemota.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzRemota.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\biblioteca\LuzRemota.cpp > CMakeFiles\ComputacaoGrafica.dir\biblioteca\LuzRemota.cpp.i
+
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzRemota.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzRemota.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\biblioteca\LuzRemota.cpp -o CMakeFiles\ComputacaoGrafica.dir\biblioteca\LuzRemota.cpp.s
+
 # Object files for target ComputacaoGrafica
 ComputacaoGrafica_OBJECTS = \
 "CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.cpp.obj" \
@@ -281,7 +307,9 @@ ComputacaoGrafica_OBJECTS = \
 "CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.cpp.obj" \
 "CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.cpp.obj" \
 "CMakeFiles/ComputacaoGrafica.dir/biblioteca/Material.cpp.obj" \
-"CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzSpot.cpp.obj"
+"CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzSpot.cpp.obj" \
+"CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzAmbiente.cpp.obj" \
+"CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzRemota.cpp.obj"
 
 # External object files for target ComputacaoGrafica
 ComputacaoGrafica_EXTERNAL_OBJECTS =
@@ -302,11 +330,13 @@ ComputacaoGrafica.exe: CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.cpp.obj
 ComputacaoGrafica.exe: CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.cpp.obj
 ComputacaoGrafica.exe: CMakeFiles/ComputacaoGrafica.dir/biblioteca/Material.cpp.obj
 ComputacaoGrafica.exe: CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzSpot.cpp.obj
+ComputacaoGrafica.exe: CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzAmbiente.cpp.obj
+ComputacaoGrafica.exe: CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzRemota.cpp.obj
 ComputacaoGrafica.exe: CMakeFiles/ComputacaoGrafica.dir/build.make
 ComputacaoGrafica.exe: CMakeFiles/ComputacaoGrafica.dir/linklibs.rsp
 ComputacaoGrafica.exe: CMakeFiles/ComputacaoGrafica.dir/objects1.rsp
 ComputacaoGrafica.exe: CMakeFiles/ComputacaoGrafica.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable ComputacaoGrafica.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking CXX executable ComputacaoGrafica.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\ComputacaoGrafica.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

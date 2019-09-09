@@ -10,12 +10,14 @@
 #include "biblioteca.hpp"
 #include "PontoIntersecao.hpp"
 
-class LuzPontual : Luz {
+class LuzPontual : public Luz {
 public:
     Ponto* posicaoPontual;
     LuzPontual(float r, float g, float b, double x,double y,double z);
-    double calcularFatorDifuso(PontoIntersecao* p, Objeto* o);
-    VectorXd calcularIntensidadeDifusa(PontoIntersecao* p, Objeto* o);
+    double calcularFatorDifuso(PontoIntersecao* p);
+    VectorXd calcularIntensidadeDifusa(PontoIntersecao* p) override;
+    void mudaCoodCamera(Camera *camera);
+    void mudaCoodMundo(Camera *camera);
 };
 
 

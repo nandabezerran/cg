@@ -33,6 +33,14 @@ biblioteca/Cubo.hpp
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cubo.hpp
 biblioteca/PontoIntersecao.hpp
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/PontoIntersecao.hpp
+biblioteca/Material.hpp
+C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Material.hpp
+biblioteca/Luz.hpp
+C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Luz.hpp
+biblioteca/LuzAmbiente.hpp
+C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/LuzAmbiente.hpp
+biblioteca/LuzPontual.hpp
+C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/LuzPontual.hpp
 GL/glut.h
 -
 time.h
@@ -40,19 +48,9 @@ time.h
 chrono
 -
 
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Camera.cpp
-Camera.hpp
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Camera.hpp
-
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Camera.hpp
 biblioteca.hpp
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/biblioteca.hpp
-
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cenario.cpp
-utility
--
-Cenario.hpp
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cenario.hpp
 
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cenario.hpp
 biblioteca.hpp
@@ -69,12 +67,10 @@ C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/PontoI
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/Bitmap/Bitmap.hpp
 PontoIntersecao.hpp
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/PontoIntersecao.hpp
-
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cilindro.cpp
-Cilindro.hpp
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cilindro.hpp
-Plano.hpp
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Plano.hpp
+Luz.hpp
+C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Luz.hpp
+LuzAmbiente.hpp
+C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/LuzAmbiente.hpp
 
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cilindro.hpp
 biblioteca.hpp
@@ -84,25 +80,11 @@ C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Objeto
 PontoIntersecao.hpp
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/PontoIntersecao.hpp
 
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cone.cpp
-Cone.hpp
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cone.hpp
-Plano.hpp
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Plano.hpp
-
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cone.hpp
 biblioteca.hpp
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/biblioteca.hpp
 Objeto.hpp
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Objeto.hpp
-
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cubo.cpp
-Cubo.hpp
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cubo.hpp
-biblioteca.hpp
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/biblioteca.hpp
-Plano.hpp
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Plano.hpp
 
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cubo.hpp
 biblioteca.hpp
@@ -114,27 +96,27 @@ C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Plano.
 vector
 -
 
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Esfera.cpp
-Esfera.hpp
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Esfera.hpp
-
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Esfera.hpp
 biblioteca.hpp
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/biblioteca.hpp
 Objeto.hpp
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Objeto.hpp
 
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Luz.cpp
-Luz.hpp
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Luz.hpp
-
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Luz.hpp
 biblioteca.hpp
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/biblioteca.hpp
+PontoIntersecao.hpp
+C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/PontoIntersecao.hpp
+Camera.hpp
+C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Camera.hpp
 
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/LuzPontual.cpp
-LuzPontual.hpp
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/LuzPontual.hpp
+C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/LuzAmbiente.hpp
+Luz.hpp
+C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Luz.hpp
+biblioteca.hpp
+C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/biblioteca.hpp
+PontoIntersecao.hpp
+C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/PontoIntersecao.hpp
 
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/LuzPontual.hpp
 Luz.hpp
@@ -144,37 +126,25 @@ C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/biblio
 PontoIntersecao.hpp
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/PontoIntersecao.hpp
 
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Objeto.cpp
-Objeto.hpp
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Objeto.hpp
+C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Material.hpp
 
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Objeto.hpp
 biblioteca.hpp
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/biblioteca.hpp
 Camera.hpp
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Camera.hpp
-
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Plano.cpp
-Plano.hpp
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Plano.hpp
+Material.hpp
+C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Material.hpp
 
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Plano.hpp
 biblioteca.hpp
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/biblioteca.hpp
-
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/PontoIntersecao.cpp
-PontoIntersecao.hpp
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/PontoIntersecao.hpp
 
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/PontoIntersecao.hpp
 biblioteca.hpp
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/biblioteca.hpp
 Objeto.hpp
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Objeto.hpp
-
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/biblioteca.cpp
-biblioteca.hpp
-C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/biblioteca.hpp
 
 C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/biblioteca.hpp
 iostream

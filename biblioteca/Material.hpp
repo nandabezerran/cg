@@ -12,7 +12,6 @@ public:
     Material(float pKa[3], float pKd[3]);
     double* getKa();
     double* getKd();
-private:
     double Ka[3];
     double Kd[3];
 

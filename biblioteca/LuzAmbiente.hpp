@@ -6,8 +6,9 @@
 #include "biblioteca.hpp"
 #include "PontoIntersecao.hpp"
 
-class LuzAmbiente : Luz {
+class LuzAmbiente {
 public:
+    VectorXd intensidadeRgb;
     LuzAmbiente(float r, float g, float b);
     VectorXd calcularIntensidadeAmbiente(PontoIntersecao* p);
 };

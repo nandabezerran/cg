@@ -35,6 +35,7 @@ public:
     vector<Face*> faces;
     vector<Vertice*> vertices;
     vector<Aresta*> arestas;
+    VectorXd normal;
     Cubo(double cAresta, Ponto* cCentro, Material* material);
     tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTamanho) override;
     Vertice* CriarVertice(Ponto* p1, string id);

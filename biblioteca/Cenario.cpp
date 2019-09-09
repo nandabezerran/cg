@@ -6,8 +6,8 @@
 
 #include "Cenario.hpp"
 
-Cenario::Cenario(Camera *pCamera, vector<Objeto*> pObjetos) : camera(pCamera),
-imagem(camera->qtdFuros, camera->qtdFuros), objetos(pObjetos) {
+Cenario::Cenario(Camera *pCamera, vector<Objeto*> pObjetos, LuzAmbiente* pLuzAmb, vector<Luz*> pLuzes) : camera(pCamera),
+imagem(camera->qtdFuros, camera->qtdFuros), objetos(pObjetos), luzAmbiente(pLuzAmb), luzes(pLuzes) {
     iniciarPintura();
     iniciarCenario();
 }
@@ -15,6 +15,9 @@ imagem(camera->qtdFuros, camera->qtdFuros), objetos(pObjetos) {
 void Cenario::iniciarCenario(){
     for (auto objeto : objetos) {
         objeto->mudaCoodCamera(camera);
+    }
+    for (auto luz : luzes) {
+        luz->mudaCoodCamera(camera);
     }
 }
 
@@ -101,6 +104,7 @@ PontoIntersecao* interceptaObjeto(Objeto* Object, Ponto *posObs, Ponto* pointGri
 void Cenario::pintarObjeto(Ponto*** pGrade){
     auto *aux = new PontoIntersecao();
     bool auxDefinido = false;
+    VectorXd intensidadeFuro(3);
     for (int i = 0; i < camera->qtdFuros; ++i) {
         for (int j = 0; j < camera->qtdFuros; ++j) {
             for (auto &pObjeto : objetos) {
@@ -118,8 +122,14 @@ void Cenario::pintarObjeto(Ponto*** pGrade){
 
             }
             if (auxDefinido) {
-                imagem.setPixel(j,i,aux->objeto->rgb[2],aux->objeto->rgb[1],
-                        aux->objeto->rgb[0]);
+                intensidadeFuro = luzAmbiente->calcularIntensidadeAmbiente(aux);
+                for (auto &l : luzes) {
+                    intensidadeFuro += l->calcularIntensidadeDifusa(aux);
+
+                }
+                cout << intensidadeFuro << endl;
+                imagem.setPixel(j,i,intensidadeFuro[0],intensidadeFuro[1],
+                                intensidadeFuro[2]);
             }
             else{
                 imagem.setPixel(j,i,0.9,0.7,0.3);
@@ -183,6 +193,9 @@ void Cenario::mudarCamera(Camera *pCamera) {
 void Cenario::atualizarCamera() {
     for (auto objeto : objetos) {
         objeto->mudaCoodCamera(camera);
+    }
+    for (auto luz : luzes) {
+        luz->mudaCoodCamera(camera);
     }
     imprimirCenarioCompleto();
 }

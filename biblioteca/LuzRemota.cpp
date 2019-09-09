@@ -1,35 +1,34 @@
 #include "LuzRemota.hpp"
 # define M_PI 3.14159265358979323846  /* pi */
 
-LuzRemota::LuzRemota(int r, int g, int b, VectorXd Dr): Luz(r, g, b){
+LuzRemota::LuzRemota(int r, int g, int b, VectorXd Dr): direcao(Dr), Luz(r, g, b){
+    direcao = biblioteca::NormalizaVetor(direcao, 3);
+}
+double LuzRemota::calcularFatorDifuso(PontoIntersecao *p) {
+    VectorXd normal = p->objeto->calcularNormal(p->p);
+    double fatorDifuso = (biblioteca::ProdutoEscalar(normal, -direcao, 3));
+    if(fatorDifuso < 0){
+        return 0;
+    }
+    return fatorDifuso;
 
 }
 
-VectorXd LuzRemota::calcularIntensidadeRemota(PontoIntersecao* p){
+VectorXd LuzRemota::calcularIntensidadeDifusa(PontoIntersecao* p){
+    VectorXd Id(3);
+    Id[0] = intensidadeRgb[0] * p->objeto->material->Ka[0];
+    Id[1] = intensidadeRgb[1] * p->objeto->material->Ka[1];
+    Id[2] = intensidadeRgb[2] * p->objeto->material->Ka[2];
 
-    VectorXd Ir(3);
- 
- /*
-    VectorXd normal = p->o->calcularNormal(p);
-    normaDr = sqrt(biblioteca::ProdutoEscalar(this->Dr,this->Dr,3));
-    normaN = sqrt(biblioteca::ProdutoEscalar(normal,normal,3));
+    return Id;
 
-    angulo = (biblioteca::ProdutoEscalar(normal, this->Dr, 3))/normaDr*normaN;
+}
 
+void LuzRemota::mudaCoodCamera(Camera *camera) {
+    camera->mudarMundoCamera(direcao);
+}
 
-	Ir[0] = 0;
-  	Ir[1] = 0;
-  	Ir[2] = 0;
-
-    if (0 < angulo && angulo < M_PI){
-
-    	Ir[0] = intensidadeRgb[0] * p->o->rgb[0];
-    	Ir[1] = intensidadeRgb[1] * p->o->rgb[1];
-    	Ir[2] = intensidadeRgb[2] * p->o->rgb[2];
-
-    }
-*/   
-	return Ir; 
-
+void LuzRemota::mudaCoodMundo(Camera *camera) {
+    camera->mudarCameraMundo(direcao);
 }
 

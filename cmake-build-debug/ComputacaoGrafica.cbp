@@ -139,10 +139,22 @@
 		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Luz.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/LuzAmbiente.cpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/LuzAmbiente.hpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
 		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/LuzPontual.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
 		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/LuzPontual.hpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/LuzRemota.cpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/LuzRemota.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
 		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/LuzSpot.cpp">

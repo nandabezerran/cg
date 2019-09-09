@@ -5,10 +5,14 @@
 #include "biblioteca.hpp"
 #include "PontoIntersecao.hpp"
 
-class LuzRemota : Luz {
+class LuzRemota : public Luz {
 public:
+    VectorXd direcao;
     LuzRemota(int r, int g, int b, VectorXd Dr);
-    VectorXd calcularIntensidadeRemota(PontoIntersecao* p);
+    VectorXd calcularIntensidadeDifusa(PontoIntersecao* p) override;
+    double calcularFatorDifuso(PontoIntersecao *p);
+    void mudaCoodCamera(Camera *camera) = 0;
+    void mudaCoodMundo(Camera *camera) = 0;
 };
 
 

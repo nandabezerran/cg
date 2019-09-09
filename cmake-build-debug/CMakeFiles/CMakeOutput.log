@@ -12,6 +12,20 @@ Compilation of the C compiler identification source "CMakeCCompilerId.c" produce
 
 The C compiler identification is GNU, found in "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/3.13.2/CompilerIdC/a.exe"
 
+The system is: Windows - 10.0.18362 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: C:/MinGW/bin/gcc.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.exe"
+
+The C compiler identification is GNU, found in "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/3.13.2/CompilerIdC/a.exe"
+
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler: C:/MinGW/bin/g++.exe 
 Build flags: 
@@ -28,19 +42,19 @@ The CXX compiler identification is GNU, found in "C:/Users/fbeze/OneDrive/Docume
 Determining if the C compiler works passed with the following output:
 Change Dir: C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe" "cmTC_8a9dd/fast"
+Run Build Command:"C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe" "cmTC_5ca79/fast"
 
 jom 1.1.3 - empower your cores
 
 jom: parallel job execution disabled for Makefile
-	C:\Users\fbeze\Downloads\jom_1_1_3\jom.exe -f CMakeFiles\cmTC_8a9dd.dir\build.make CMakeFiles/cmTC_8a9dd.dir/build
-Building C object CMakeFiles/cmTC_8a9dd.dir/testCCompiler.c.obj
-	C:\MinGW\bin\gcc.exe    -o CMakeFiles\cmTC_8a9dd.dir\testCCompiler.c.obj   -c C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\cmake-build-debug\CMakeFiles\CMakeTmp\testCCompiler.c
-Linking C executable cmTC_8a9dd.exe
-	"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_8a9dd.dir\link.txt --verbose=1
-"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_8a9dd.dir/objects.a
-C:\MinGW\bin\ar.exe cr CMakeFiles\cmTC_8a9dd.dir/objects.a @CMakeFiles\cmTC_8a9dd.dir\objects1.rsp
-C:\MinGW\bin\gcc.exe      -Wl,--whole-archive CMakeFiles\cmTC_8a9dd.dir/objects.a -Wl,--no-whole-archive  -o cmTC_8a9dd.exe -Wl,--out-implib,libcmTC_8a9dd.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_8a9dd.dir\linklibs.rsp
+	C:\Users\fbeze\Downloads\jom_1_1_3\jom.exe -f CMakeFiles\cmTC_5ca79.dir\build.make CMakeFiles/cmTC_5ca79.dir/build
+Building C object CMakeFiles/cmTC_5ca79.dir/testCCompiler.c.obj
+	C:\MinGW\bin\gcc.exe    -o CMakeFiles\cmTC_5ca79.dir\testCCompiler.c.obj   -c C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\cmake-build-debug\CMakeFiles\CMakeTmp\testCCompiler.c
+Linking C executable cmTC_5ca79.exe
+	"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_5ca79.dir\link.txt --verbose=1
+"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_5ca79.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\cmTC_5ca79.dir/objects.a @CMakeFiles\cmTC_5ca79.dir\objects1.rsp
+C:\MinGW\bin\gcc.exe      -Wl,--whole-archive CMakeFiles\cmTC_5ca79.dir/objects.a -Wl,--no-whole-archive  -o cmTC_5ca79.exe -Wl,--out-implib,libcmTC_5ca79.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_5ca79.dir\linklibs.rsp
 
 
 
@@ -48,19 +62,19 @@ C:\MinGW\bin\gcc.exe      -Wl,--whole-archive CMakeFiles\cmTC_8a9dd.dir/objects.
 Detecting C [-std=c11] compiler features compiled with the following output:
 Change Dir: C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe" "cmTC_05f52/fast"
+Run Build Command:"C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe" "cmTC_a54ee/fast"
 
 jom 1.1.3 - empower your cores
 
 jom: parallel job execution disabled for Makefile
-	C:\Users\fbeze\Downloads\jom_1_1_3\jom.exe -f CMakeFiles\cmTC_05f52.dir\build.make CMakeFiles/cmTC_05f52.dir/build
-Building C object CMakeFiles/cmTC_05f52.dir/feature_tests.c.obj
-	C:\MinGW\bin\gcc.exe   -std=c11 -o CMakeFiles\cmTC_05f52.dir\feature_tests.c.obj   -c C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\cmake-build-debug\CMakeFiles\feature_tests.c
-Linking C executable cmTC_05f52.exe
-	"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_05f52.dir\link.txt --verbose=1
-"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_05f52.dir/objects.a
-C:\MinGW\bin\ar.exe cr CMakeFiles\cmTC_05f52.dir/objects.a @CMakeFiles\cmTC_05f52.dir\objects1.rsp
-C:\MinGW\bin\gcc.exe      -Wl,--whole-archive CMakeFiles\cmTC_05f52.dir/objects.a -Wl,--no-whole-archive  -o cmTC_05f52.exe -Wl,--out-implib,libcmTC_05f52.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_05f52.dir\linklibs.rsp
+	C:\Users\fbeze\Downloads\jom_1_1_3\jom.exe -f CMakeFiles\cmTC_a54ee.dir\build.make CMakeFiles/cmTC_a54ee.dir/build
+Building C object CMakeFiles/cmTC_a54ee.dir/feature_tests.c.obj
+	C:\MinGW\bin\gcc.exe   -std=c11 -o CMakeFiles\cmTC_a54ee.dir\feature_tests.c.obj   -c C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\cmake-build-debug\CMakeFiles\feature_tests.c
+Linking C executable cmTC_a54ee.exe
+	"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_a54ee.dir\link.txt --verbose=1
+"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_a54ee.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\cmTC_a54ee.dir/objects.a @CMakeFiles\cmTC_a54ee.dir\objects1.rsp
+C:\MinGW\bin\gcc.exe      -Wl,--whole-archive CMakeFiles\cmTC_a54ee.dir/objects.a -Wl,--no-whole-archive  -o cmTC_a54ee.exe -Wl,--out-implib,libcmTC_a54ee.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_a54ee.dir\linklibs.rsp
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -72,19 +86,19 @@ C:\MinGW\bin\gcc.exe      -Wl,--whole-archive CMakeFiles\cmTC_05f52.dir/objects.
 Detecting C [-std=c99] compiler features compiled with the following output:
 Change Dir: C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe" "cmTC_fb6d2/fast"
+Run Build Command:"C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe" "cmTC_850bb/fast"
 
 jom 1.1.3 - empower your cores
 
 jom: parallel job execution disabled for Makefile
-	C:\Users\fbeze\Downloads\jom_1_1_3\jom.exe -f CMakeFiles\cmTC_fb6d2.dir\build.make CMakeFiles/cmTC_fb6d2.dir/build
-Building C object CMakeFiles/cmTC_fb6d2.dir/feature_tests.c.obj
-	C:\MinGW\bin\gcc.exe   -std=c99 -o CMakeFiles\cmTC_fb6d2.dir\feature_tests.c.obj   -c C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\cmake-build-debug\CMakeFiles\feature_tests.c
-Linking C executable cmTC_fb6d2.exe
-	"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_fb6d2.dir\link.txt --verbose=1
-"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_fb6d2.dir/objects.a
-C:\MinGW\bin\ar.exe cr CMakeFiles\cmTC_fb6d2.dir/objects.a @CMakeFiles\cmTC_fb6d2.dir\objects1.rsp
-C:\MinGW\bin\gcc.exe      -Wl,--whole-archive CMakeFiles\cmTC_fb6d2.dir/objects.a -Wl,--no-whole-archive  -o cmTC_fb6d2.exe -Wl,--out-implib,libcmTC_fb6d2.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_fb6d2.dir\linklibs.rsp
+	C:\Users\fbeze\Downloads\jom_1_1_3\jom.exe -f CMakeFiles\cmTC_850bb.dir\build.make CMakeFiles/cmTC_850bb.dir/build
+Building C object CMakeFiles/cmTC_850bb.dir/feature_tests.c.obj
+	C:\MinGW\bin\gcc.exe   -std=c99 -o CMakeFiles\cmTC_850bb.dir\feature_tests.c.obj   -c C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\cmake-build-debug\CMakeFiles\feature_tests.c
+Linking C executable cmTC_850bb.exe
+	"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_850bb.dir\link.txt --verbose=1
+"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_850bb.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\cmTC_850bb.dir/objects.a @CMakeFiles\cmTC_850bb.dir\objects1.rsp
+C:\MinGW\bin\gcc.exe      -Wl,--whole-archive CMakeFiles\cmTC_850bb.dir/objects.a -Wl,--no-whole-archive  -o cmTC_850bb.exe -Wl,--out-implib,libcmTC_850bb.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_850bb.dir\linklibs.rsp
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -96,19 +110,19 @@ C:\MinGW\bin\gcc.exe      -Wl,--whole-archive CMakeFiles\cmTC_fb6d2.dir/objects.
 Detecting C [-std=c90] compiler features compiled with the following output:
 Change Dir: C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe" "cmTC_57dab/fast"
+Run Build Command:"C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe" "cmTC_3fabb/fast"
 
 jom 1.1.3 - empower your cores
 
 jom: parallel job execution disabled for Makefile
-	C:\Users\fbeze\Downloads\jom_1_1_3\jom.exe -f CMakeFiles\cmTC_57dab.dir\build.make CMakeFiles/cmTC_57dab.dir/build
-Building C object CMakeFiles/cmTC_57dab.dir/feature_tests.c.obj
-	C:\MinGW\bin\gcc.exe   -std=c90 -o CMakeFiles\cmTC_57dab.dir\feature_tests.c.obj   -c C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\cmake-build-debug\CMakeFiles\feature_tests.c
-Linking C executable cmTC_57dab.exe
-	"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_57dab.dir\link.txt --verbose=1
-"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_57dab.dir/objects.a
-C:\MinGW\bin\ar.exe cr CMakeFiles\cmTC_57dab.dir/objects.a @CMakeFiles\cmTC_57dab.dir\objects1.rsp
-C:\MinGW\bin\gcc.exe      -Wl,--whole-archive CMakeFiles\cmTC_57dab.dir/objects.a -Wl,--no-whole-archive  -o cmTC_57dab.exe -Wl,--out-implib,libcmTC_57dab.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_57dab.dir\linklibs.rsp
+	C:\Users\fbeze\Downloads\jom_1_1_3\jom.exe -f CMakeFiles\cmTC_3fabb.dir\build.make CMakeFiles/cmTC_3fabb.dir/build
+Building C object CMakeFiles/cmTC_3fabb.dir/feature_tests.c.obj
+	C:\MinGW\bin\gcc.exe   -std=c90 -o CMakeFiles\cmTC_3fabb.dir\feature_tests.c.obj   -c C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\cmake-build-debug\CMakeFiles\feature_tests.c
+Linking C executable cmTC_3fabb.exe
+	"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_3fabb.dir\link.txt --verbose=1
+"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_3fabb.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\cmTC_3fabb.dir/objects.a @CMakeFiles\cmTC_3fabb.dir\objects1.rsp
+C:\MinGW\bin\gcc.exe      -Wl,--whole-archive CMakeFiles\cmTC_3fabb.dir/objects.a -Wl,--no-whole-archive  -o cmTC_3fabb.exe -Wl,--out-implib,libcmTC_3fabb.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_3fabb.dir\linklibs.rsp
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -118,19 +132,19 @@ C:\MinGW\bin\gcc.exe      -Wl,--whole-archive CMakeFiles\cmTC_57dab.dir/objects.
 Determining if the CXX compiler works passed with the following output:
 Change Dir: C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe" "cmTC_4cabd/fast"
+Run Build Command:"C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe" "cmTC_571d9/fast"
 
 jom 1.1.3 - empower your cores
 
 jom: parallel job execution disabled for Makefile
-	C:\Users\fbeze\Downloads\jom_1_1_3\jom.exe -f CMakeFiles\cmTC_4cabd.dir\build.make CMakeFiles/cmTC_4cabd.dir/build
-Building CXX object CMakeFiles/cmTC_4cabd.dir/testCXXCompiler.cxx.obj
-	C:\MinGW\bin\g++.exe     -o CMakeFiles\cmTC_4cabd.dir\testCXXCompiler.cxx.obj -c C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\cmake-build-debug\CMakeFiles\CMakeTmp\testCXXCompiler.cxx
-Linking CXX executable cmTC_4cabd.exe
-	"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_4cabd.dir\link.txt --verbose=1
-"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_4cabd.dir/objects.a
-C:\MinGW\bin\ar.exe cr CMakeFiles\cmTC_4cabd.dir/objects.a @CMakeFiles\cmTC_4cabd.dir\objects1.rsp
-C:\MinGW\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_4cabd.dir/objects.a -Wl,--no-whole-archive  -o cmTC_4cabd.exe -Wl,--out-implib,libcmTC_4cabd.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_4cabd.dir\linklibs.rsp
+	C:\Users\fbeze\Downloads\jom_1_1_3\jom.exe -f CMakeFiles\cmTC_571d9.dir\build.make CMakeFiles/cmTC_571d9.dir/build
+Building CXX object CMakeFiles/cmTC_571d9.dir/testCXXCompiler.cxx.obj
+	C:\MinGW\bin\g++.exe     -o CMakeFiles\cmTC_571d9.dir\testCXXCompiler.cxx.obj -c C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\cmake-build-debug\CMakeFiles\CMakeTmp\testCXXCompiler.cxx
+Linking CXX executable cmTC_571d9.exe
+	"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_571d9.dir\link.txt --verbose=1
+"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_571d9.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\cmTC_571d9.dir/objects.a @CMakeFiles\cmTC_571d9.dir\objects1.rsp
+C:\MinGW\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_571d9.dir/objects.a -Wl,--no-whole-archive  -o cmTC_571d9.exe -Wl,--out-implib,libcmTC_571d9.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_571d9.dir\linklibs.rsp
 
 
 
@@ -138,19 +152,19 @@ C:\MinGW\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_4cabd.dir/objects.
 Detecting CXX [-std=c++1z] compiler features compiled with the following output:
 Change Dir: C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe" "cmTC_6c1f3/fast"
+Run Build Command:"C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe" "cmTC_139e9/fast"
 
 jom 1.1.3 - empower your cores
 
 jom: parallel job execution disabled for Makefile
-	C:\Users\fbeze\Downloads\jom_1_1_3\jom.exe -f CMakeFiles\cmTC_6c1f3.dir\build.make CMakeFiles/cmTC_6c1f3.dir/build
-Building CXX object CMakeFiles/cmTC_6c1f3.dir/feature_tests.cxx.obj
-	C:\MinGW\bin\g++.exe    -std=c++1z -o CMakeFiles\cmTC_6c1f3.dir\feature_tests.cxx.obj -c C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\cmake-build-debug\CMakeFiles\feature_tests.cxx
-Linking CXX executable cmTC_6c1f3.exe
-	"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_6c1f3.dir\link.txt --verbose=1
-"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_6c1f3.dir/objects.a
-C:\MinGW\bin\ar.exe cr CMakeFiles\cmTC_6c1f3.dir/objects.a @CMakeFiles\cmTC_6c1f3.dir\objects1.rsp
-C:\MinGW\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_6c1f3.dir/objects.a -Wl,--no-whole-archive  -o cmTC_6c1f3.exe -Wl,--out-implib,libcmTC_6c1f3.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_6c1f3.dir\linklibs.rsp
+	C:\Users\fbeze\Downloads\jom_1_1_3\jom.exe -f CMakeFiles\cmTC_139e9.dir\build.make CMakeFiles/cmTC_139e9.dir/build
+Building CXX object CMakeFiles/cmTC_139e9.dir/feature_tests.cxx.obj
+	C:\MinGW\bin\g++.exe    -std=c++1z -o CMakeFiles\cmTC_139e9.dir\feature_tests.cxx.obj -c C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\cmake-build-debug\CMakeFiles\feature_tests.cxx
+Linking CXX executable cmTC_139e9.exe
+	"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_139e9.dir\link.txt --verbose=1
+"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_139e9.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\cmTC_139e9.dir/objects.a @CMakeFiles\cmTC_139e9.dir\objects1.rsp
+C:\MinGW\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_139e9.dir/objects.a -Wl,--no-whole-archive  -o cmTC_139e9.exe -Wl,--out-implib,libcmTC_139e9.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_139e9.dir\linklibs.rsp
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -215,19 +229,19 @@ C:\MinGW\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_6c1f3.dir/objects.
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
 Change Dir: C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe" "cmTC_54f19/fast"
+Run Build Command:"C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe" "cmTC_f174d/fast"
 
 jom 1.1.3 - empower your cores
 
 jom: parallel job execution disabled for Makefile
-	C:\Users\fbeze\Downloads\jom_1_1_3\jom.exe -f CMakeFiles\cmTC_54f19.dir\build.make CMakeFiles/cmTC_54f19.dir/build
-Building CXX object CMakeFiles/cmTC_54f19.dir/feature_tests.cxx.obj
-	C:\MinGW\bin\g++.exe    -std=c++14 -o CMakeFiles\cmTC_54f19.dir\feature_tests.cxx.obj -c C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\cmake-build-debug\CMakeFiles\feature_tests.cxx
-Linking CXX executable cmTC_54f19.exe
-	"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_54f19.dir\link.txt --verbose=1
-"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_54f19.dir/objects.a
-C:\MinGW\bin\ar.exe cr CMakeFiles\cmTC_54f19.dir/objects.a @CMakeFiles\cmTC_54f19.dir\objects1.rsp
-C:\MinGW\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_54f19.dir/objects.a -Wl,--no-whole-archive  -o cmTC_54f19.exe -Wl,--out-implib,libcmTC_54f19.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_54f19.dir\linklibs.rsp
+	C:\Users\fbeze\Downloads\jom_1_1_3\jom.exe -f CMakeFiles\cmTC_f174d.dir\build.make CMakeFiles/cmTC_f174d.dir/build
+Building CXX object CMakeFiles/cmTC_f174d.dir/feature_tests.cxx.obj
+	C:\MinGW\bin\g++.exe    -std=c++14 -o CMakeFiles\cmTC_f174d.dir\feature_tests.cxx.obj -c C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\cmake-build-debug\CMakeFiles\feature_tests.cxx
+Linking CXX executable cmTC_f174d.exe
+	"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_f174d.dir\link.txt --verbose=1
+"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_f174d.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\cmTC_f174d.dir/objects.a @CMakeFiles\cmTC_f174d.dir\objects1.rsp
+C:\MinGW\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_f174d.dir/objects.a -Wl,--no-whole-archive  -o cmTC_f174d.exe -Wl,--out-implib,libcmTC_f174d.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_f174d.dir\linklibs.rsp
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -292,19 +306,19 @@ C:\MinGW\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_54f19.dir/objects.
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
 Change Dir: C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe" "cmTC_e13a8/fast"
+Run Build Command:"C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe" "cmTC_173af/fast"
 
 jom 1.1.3 - empower your cores
 
 jom: parallel job execution disabled for Makefile
-	C:\Users\fbeze\Downloads\jom_1_1_3\jom.exe -f CMakeFiles\cmTC_e13a8.dir\build.make CMakeFiles/cmTC_e13a8.dir/build
-Building CXX object CMakeFiles/cmTC_e13a8.dir/feature_tests.cxx.obj
-	C:\MinGW\bin\g++.exe    -std=c++11 -o CMakeFiles\cmTC_e13a8.dir\feature_tests.cxx.obj -c C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\cmake-build-debug\CMakeFiles\feature_tests.cxx
-Linking CXX executable cmTC_e13a8.exe
-	"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_e13a8.dir\link.txt --verbose=1
-"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_e13a8.dir/objects.a
-C:\MinGW\bin\ar.exe cr CMakeFiles\cmTC_e13a8.dir/objects.a @CMakeFiles\cmTC_e13a8.dir\objects1.rsp
-C:\MinGW\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_e13a8.dir/objects.a -Wl,--no-whole-archive  -o cmTC_e13a8.exe -Wl,--out-implib,libcmTC_e13a8.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_e13a8.dir\linklibs.rsp
+	C:\Users\fbeze\Downloads\jom_1_1_3\jom.exe -f CMakeFiles\cmTC_173af.dir\build.make CMakeFiles/cmTC_173af.dir/build
+Building CXX object CMakeFiles/cmTC_173af.dir/feature_tests.cxx.obj
+	C:\MinGW\bin\g++.exe    -std=c++11 -o CMakeFiles\cmTC_173af.dir\feature_tests.cxx.obj -c C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\cmake-build-debug\CMakeFiles\feature_tests.cxx
+Linking CXX executable cmTC_173af.exe
+	"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_173af.dir\link.txt --verbose=1
+"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_173af.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\cmTC_173af.dir/objects.a @CMakeFiles\cmTC_173af.dir\objects1.rsp
+C:\MinGW\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_173af.dir/objects.a -Wl,--no-whole-archive  -o cmTC_173af.exe -Wl,--out-implib,libcmTC_173af.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_173af.dir\linklibs.rsp
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -369,19 +383,19 @@ C:\MinGW\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_e13a8.dir/objects.
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
 Change Dir: C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe" "cmTC_4f19d/fast"
+Run Build Command:"C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe" "cmTC_67d2a/fast"
 
 jom 1.1.3 - empower your cores
 
 jom: parallel job execution disabled for Makefile
-	C:\Users\fbeze\Downloads\jom_1_1_3\jom.exe -f CMakeFiles\cmTC_4f19d.dir\build.make CMakeFiles/cmTC_4f19d.dir/build
-Building CXX object CMakeFiles/cmTC_4f19d.dir/feature_tests.cxx.obj
-	C:\MinGW\bin\g++.exe    -std=c++98 -o CMakeFiles\cmTC_4f19d.dir\feature_tests.cxx.obj -c C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\cmake-build-debug\CMakeFiles\feature_tests.cxx
-Linking CXX executable cmTC_4f19d.exe
-	"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_4f19d.dir\link.txt --verbose=1
-"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_4f19d.dir/objects.a
-C:\MinGW\bin\ar.exe cr CMakeFiles\cmTC_4f19d.dir/objects.a @CMakeFiles\cmTC_4f19d.dir\objects1.rsp
-C:\MinGW\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_4f19d.dir/objects.a -Wl,--no-whole-archive  -o cmTC_4f19d.exe -Wl,--out-implib,libcmTC_4f19d.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_4f19d.dir\linklibs.rsp
+	C:\Users\fbeze\Downloads\jom_1_1_3\jom.exe -f CMakeFiles\cmTC_67d2a.dir\build.make CMakeFiles/cmTC_67d2a.dir/build
+Building CXX object CMakeFiles/cmTC_67d2a.dir/feature_tests.cxx.obj
+	C:\MinGW\bin\g++.exe    -std=c++98 -o CMakeFiles\cmTC_67d2a.dir\feature_tests.cxx.obj -c C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica\cmake-build-debug\CMakeFiles\feature_tests.cxx
+Linking CXX executable cmTC_67d2a.exe
+	"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_67d2a.dir\link.txt --verbose=1
+"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_67d2a.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\cmTC_67d2a.dir/objects.a @CMakeFiles\cmTC_67d2a.dir\objects1.rsp
+C:\MinGW\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_67d2a.dir/objects.a -Wl,--no-whole-archive  -o cmTC_67d2a.exe -Wl,--out-implib,libcmTC_67d2a.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_67d2a.dir\linklibs.rsp
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers

@@ -365,6 +365,33 @@ biblioteca/Luz.cpp.s:
 	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Luz.cpp.s
 .PHONY : biblioteca/Luz.cpp.s
 
+biblioteca/LuzAmbiente.obj: biblioteca/LuzAmbiente.cpp.obj
+
+.PHONY : biblioteca/LuzAmbiente.obj
+
+# target to build an object file
+biblioteca/LuzAmbiente.cpp.obj:
+	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzAmbiente.cpp.obj
+.PHONY : biblioteca/LuzAmbiente.cpp.obj
+
+biblioteca/LuzAmbiente.i: biblioteca/LuzAmbiente.cpp.i
+
+.PHONY : biblioteca/LuzAmbiente.i
+
+# target to preprocess a source file
+biblioteca/LuzAmbiente.cpp.i:
+	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzAmbiente.cpp.i
+.PHONY : biblioteca/LuzAmbiente.cpp.i
+
+biblioteca/LuzAmbiente.s: biblioteca/LuzAmbiente.cpp.s
+
+.PHONY : biblioteca/LuzAmbiente.s
+
+# target to generate assembly for a file
+biblioteca/LuzAmbiente.cpp.s:
+	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzAmbiente.cpp.s
+.PHONY : biblioteca/LuzAmbiente.cpp.s
+
 biblioteca/LuzPontual.obj: biblioteca/LuzPontual.cpp.obj
 
 .PHONY : biblioteca/LuzPontual.obj
@@ -391,6 +418,33 @@ biblioteca/LuzPontual.s: biblioteca/LuzPontual.cpp.s
 biblioteca/LuzPontual.cpp.s:
 	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzPontual.cpp.s
 .PHONY : biblioteca/LuzPontual.cpp.s
+
+biblioteca/LuzRemota.obj: biblioteca/LuzRemota.cpp.obj
+
+.PHONY : biblioteca/LuzRemota.obj
+
+# target to build an object file
+biblioteca/LuzRemota.cpp.obj:
+	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzRemota.cpp.obj
+.PHONY : biblioteca/LuzRemota.cpp.obj
+
+biblioteca/LuzRemota.i: biblioteca/LuzRemota.cpp.i
+
+.PHONY : biblioteca/LuzRemota.i
+
+# target to preprocess a source file
+biblioteca/LuzRemota.cpp.i:
+	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzRemota.cpp.i
+.PHONY : biblioteca/LuzRemota.cpp.i
+
+biblioteca/LuzRemota.s: biblioteca/LuzRemota.cpp.s
+
+.PHONY : biblioteca/LuzRemota.s
+
+# target to generate assembly for a file
+biblioteca/LuzRemota.cpp.s:
+	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzRemota.cpp.s
+.PHONY : biblioteca/LuzRemota.cpp.s
 
 biblioteca/LuzSpot.obj: biblioteca/LuzSpot.cpp.obj
 
@@ -590,9 +644,15 @@ help:
 	@echo ... biblioteca/Luz.obj
 	@echo ... biblioteca/Luz.i
 	@echo ... biblioteca/Luz.s
+	@echo ... biblioteca/LuzAmbiente.obj
+	@echo ... biblioteca/LuzAmbiente.i
+	@echo ... biblioteca/LuzAmbiente.s
 	@echo ... biblioteca/LuzPontual.obj
 	@echo ... biblioteca/LuzPontual.i
 	@echo ... biblioteca/LuzPontual.s
+	@echo ... biblioteca/LuzRemota.obj
+	@echo ... biblioteca/LuzRemota.i
+	@echo ... biblioteca/LuzRemota.s
 	@echo ... biblioteca/LuzSpot.obj
 	@echo ... biblioteca/LuzSpot.i
 	@echo ... biblioteca/LuzSpot.s

@@ -16,12 +16,15 @@
 #include "biblioteca/Cubo.hpp"
 #include "biblioteca/PontoIntersecao.hpp"
 #include "biblioteca/Material.hpp"
+#include "biblioteca/Luz.hpp"
+#include "biblioteca/LuzAmbiente.hpp"
+#include "biblioteca/LuzPontual.hpp"
 #include <GL/glut.h>
 #include <time.h>
 #include <chrono>
 
 float* test;
-int matrixSize = 100;
+int matrixSize = 300;
 Cenario *cenario;
 
 void display(){
@@ -60,19 +63,23 @@ void onKeyboard(unsigned char key, int x, int y){
 
 int main(int argc, char** argv) {
 //-------------------------------------------- Materiais -------------------------------------------------------------
-    //GreenRubber
-    float ka0[3] ={0.0,0.05,0.0};
-    float kd0[3] ={0.4,0.5,0.4};
+    //Verde
+    float ka0[3] ={0.9, 0.72, 0.2};
+    float kd0[3] ={0.9, 0.72, 0.2};
     auto *material0 = new Material(ka0,kd0);
     //Polished copper
-    float ka1[3] ={0.2295, 0.08825, 0.0275 };
-    float kd1[3] ={0.5508, 0.2118, 0.066 };
+    float ka1[3] ={0.6, 0.2, 0.2};
+    float kd1[3] ={0.6, 0.2, 0.2};
     auto *material1 = new Material(ka1,kd1);
     //Chrome
-    float ka2[3] ={0.25, 0.25, 0.25 };
-    float kd2[3] ={0.4, 0.4, 0.4f };
+    float ka2[3] ={1.5, 1.5, 1.5};
+    float kd2[3] ={0.6, 0.6, 0.6};
     auto *material2 = new Material(ka2,kd2);
-
+//-------------------------------------------- Luzes -----------------------------------------------------------------
+    auto *luzAmbiente = new LuzAmbiente(0.1,0.1,0.1);
+    auto *luzPontual = new LuzPontual(1.0,1.0,1.0,0, -20, -100);
+    vector<Luz *> luzes;
+    luzes.emplace_back(luzPontual);
 //-------------------------------------------- Criação Objetos -------------------------------------------------------
     VectorXd normal(3);
     normal << 0, 1, 0;
@@ -104,7 +111,7 @@ int main(int argc, char** argv) {
     Ponto* pViewUp = biblioteca::CriarPonto(0,1,0);
 
     auto camera =  new Camera(pCoordCamera, pLookAt, pViewUp, tamGrade, zGrade, matrixSize);
-    cenario = new Cenario(camera, objetos);
+    cenario = new Cenario(camera, objetos, luzAmbiente, luzes);
 
 // ------------------------------------- Funções ---------------------------------------------------------------------
 //    srand((unsigned)clock());

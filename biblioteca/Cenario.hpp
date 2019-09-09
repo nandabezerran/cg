@@ -11,19 +11,23 @@
 #include "PontoIntersecao.hpp"
 #include "../Bitmap/Bitmap.hpp"
 #include "PontoIntersecao.hpp"
+#include "Luz.hpp"
+#include "LuzAmbiente.hpp"
+
 
 class Cenario {
 public:
     Camera* camera;
     vector<Objeto*> objetos;
     Bitmap imagem;
+    LuzAmbiente* luzAmbiente;
+    vector<Luz*> luzes;
 
-    Cenario(Camera* pCamera, vector<Objeto*> objetos);
+    Cenario(Camera* pCamera, vector<Objeto*> objetos, LuzAmbiente* pLuzAmb, vector<Luz*> pLuzes);
 
     PontoIntersecao* rayCasting(Ponto* pCoordObs, Ponto* pontoGrade);
     void pintarObjeto(Ponto*** pGrade);
     void addObjeto(Objeto* objeto);
-    void salvarCenario();
     void imprimirCenarioCompleto();
     void checarUmPonto(int linha, int coluna);
     void objetosVisiveis();
