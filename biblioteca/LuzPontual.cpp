@@ -26,9 +26,9 @@ double LuzPontual::calcularFatorDifuso(PontoIntersecao *p) {
 
 VectorXd LuzPontual::calcularIntensidadeDifusa(PontoIntersecao* p){
     VectorXd Id(3);
-    Id[0] = intensidadeRgb[0] * p->objeto->material->Ka[0];
-    Id[1] = intensidadeRgb[1] * p->objeto->material->Ka[1];
-    Id[2] = intensidadeRgb[2] * p->objeto->material->Ka[2];
+    Id[0] = intensidadeRgb[0] * p->objeto->material->Kd[0];
+    Id[1] = intensidadeRgb[1] * p->objeto->material->Kd[1];
+    Id[2] = intensidadeRgb[2] * p->objeto->material->Kd[2];
 
     Id = Id * calcularFatorDifuso(p);
     return Id;

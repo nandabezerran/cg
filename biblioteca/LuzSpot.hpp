@@ -10,14 +10,16 @@
 #include "Objeto.hpp"
 
 class LuzSpot : public Luz{
+public:
     Ponto* posicao;
     VectorXd direcao;
     float angAbertura;
-    LuzSpot(float r, float g, float b, double x, double y, double z);
+    LuzSpot(float r, float g, float b, double x, double y, double z,VectorXd pDir,
+            float pAng);
     double calcularFatorDifuso(PontoIntersecao* p);
     VectorXd calcularIntensidadeDifusa(PontoIntersecao* p) override;
-    void mudaCoodCamera(Camera *camera) = 0;
-    void mudaCoodMundo(Camera *camera) = 0;
+    void mudaCoodCamera(Camera *camera) override;
+    void mudaCoodMundo(Camera *camera) override;
 };
 
 

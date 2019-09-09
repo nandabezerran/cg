@@ -19,12 +19,13 @@
 #include "biblioteca/Luz.hpp"
 #include "biblioteca/LuzAmbiente.hpp"
 #include "biblioteca/LuzPontual.hpp"
+#include "biblioteca/LuzSpot.hpp"
 #include <GL/glut.h>
 #include <time.h>
 #include <chrono>
 
 float* test;
-int matrixSize = 300;
+int matrixSize = 50;
 Cenario *cenario;
 
 void display(){
@@ -42,21 +43,17 @@ void onMouseButton(int button, int state, int x, int y){
 }
 
 void onKeyboard(unsigned char key, int x, int y){
-    switch((char)key) {
-        case 27: //ESC
-            glutDestroyWindow(0);
-            exit(0);
-            break;
-
-        case 'w':
-            cenario->camera->andarFrente();
-            cenario->atualizarCamera();
-            break;
-
-        case 's':
-            cenario->camera->andarTras();
-            cenario->atualizarCamera();
-            break;
+    if(key == 27){
+        glutDestroyWindow(0);
+        exit(0);
+    }
+    else if(key == 'w'){
+        cenario->camera->andarFrente();
+        cenario->atualizarCamera();
+    }
+    else if(key == 's'){
+        cenario->camera->andarTras();
+        cenario->atualizarCamera();
     }
 
 }
@@ -78,7 +75,11 @@ int main(int argc, char** argv) {
 //-------------------------------------------- Luzes -----------------------------------------------------------------
     auto *luzAmbiente = new LuzAmbiente(0.3,0.3,0.3);
     auto *luzPontual = new LuzPontual(1.0,1.0,1.0,0, 0, -5);
+    VectorXd dir(3);
+    dir <<1,0.003,0;
+    auto *luzSpot = new LuzSpot(1.0,1.0,1.0,5, -1, -20, dir, 10);
     vector<Luz *> luzes;
+    luzes.emplace_back(luzSpot);
     luzes.emplace_back(luzPontual);
 //-------------------------------------------- Criação Objetos -------------------------------------------------------
     VectorXd normal(3);
@@ -106,9 +107,15 @@ int main(int argc, char** argv) {
     float zGrade = -4;
 
 // ------------------------------------- Coordenadas Camera ----------------------------------------------------------
-    Ponto* pCoordCamera = biblioteca::CriarPonto(15, 0, -5);
+//Cima
+//    Ponto* pCoordCamera = biblioteca::CriarPonto(0, 20, -15);
+//    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-15);
+//    Ponto* pViewUp = biblioteca::CriarPonto(0,20,-17);
+//Lado
+    Ponto* pCoordCamera = biblioteca::CriarPonto(20, 0, -5);
     Ponto* pLookAt = biblioteca::CriarPonto(0,0,-15);
-    Ponto* pViewUp = biblioteca::CriarPonto(15,1,-5);
+    Ponto* pViewUp = biblioteca::CriarPonto(20,1,-5);
+//Frente
 //    Ponto* pCoordCamera = biblioteca::CriarPonto(0, 0, 0);
 //    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-15);
 //    Ponto* pViewUp = biblioteca::CriarPonto(0,1,0);
@@ -116,13 +123,13 @@ int main(int argc, char** argv) {
     cenario = new Cenario(camera, objetos, luzAmbiente, luzes);
 
 // ------------------------------------- Funções ---------------------------------------------------------------------
-//    srand((unsigned)clock());
-//    auto start = std::chrono::high_resolution_clock::now(); // Starts the clock;
-//    cenario->imprimirCenarioCompleto();
-//    auto stop = std::chrono::high_resolution_clock::now();
-//    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-//    std::cout << "Time taken by ImprimirCenarioCompleto algorithm: "
-//              << duration.count() << " microseconds\n" << std::endl;
+    srand((unsigned)clock());
+    auto start = std::chrono::high_resolution_clock::now(); // Starts the clock;
+    cenario->imprimirCenarioCompleto();
+    auto stop = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+    std::cout << "Time taken by ImprimirCenarioCompleto algorithm: "
+              << duration.count() << " microseconds\n" << std::endl;
 
 // ------------------------------------- Janela ----------------------------------------------------------------------
     glutInit(&argc, argv);

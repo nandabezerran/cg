@@ -17,6 +17,7 @@ CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.obj: ../biblioteca/Esfera.hpp
 CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.obj: ../biblioteca/Luz.hpp
 CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.obj: ../biblioteca/LuzAmbiente.hpp
 CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.obj: ../biblioteca/LuzPontual.hpp
+CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.obj: ../biblioteca/LuzSpot.hpp
 CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.obj: ../biblioteca/Material.hpp
 CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.obj: ../biblioteca/Objeto.hpp
 CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.obj: ../biblioteca/Plano.hpp
