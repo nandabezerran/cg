@@ -15,6 +15,7 @@ double LuzPontual::calcularFatorDifuso(PontoIntersecao *p) {
     VectorXd PlPint = biblioteca::SubtracaoPontos(p->p, posicaoPontual, 3);
     VectorXd l = biblioteca::NormalizaVetor(PlPint, 3);
     VectorXd normal = p->objeto->calcularNormal(p->p);
+
     double fatorDifuso = biblioteca::ProdutoEscalar(normal, l, 3);
     if(fatorDifuso < 0){
         return 0;

@@ -24,7 +24,7 @@
 #include <chrono>
 
 float* test;
-int matrixSize = 300;
+int matrixSize = 200;
 Cenario *cenario;
 
 void display(){
@@ -72,22 +72,22 @@ int main(int argc, char** argv) {
     float kd1[3] ={0.6, 0.2, 0.2};
     auto *material1 = new Material(ka1,kd1);
     //Chrome
-    float ka2[3] ={1.5, 1.5, 1.5};
+    float ka2[3] ={0.6, 0.6, 0.6};
     float kd2[3] ={0.6, 0.6, 0.6};
     auto *material2 = new Material(ka2,kd2);
 //-------------------------------------------- Luzes -----------------------------------------------------------------
     auto *luzAmbiente = new LuzAmbiente(0.1,0.1,0.1);
-    auto *luzPontual = new LuzPontual(1.0,1.0,1.0,0, -20, -100);
+    auto *luzPontual = new LuzPontual(1.0,1.0,1.0,0, -10, -5);
     vector<Luz *> luzes;
     luzes.emplace_back(luzPontual);
 //-------------------------------------------- Criação Objetos -------------------------------------------------------
     VectorXd normal(3);
     normal << 0, 1, 0;
-    auto *objeto1 = new Cone(40, 30, biblioteca::CriarPonto(0, -10, -100), normal, material0);
-    auto *objeto2 = new Cilindro(50, 10, biblioteca::CriarPonto(0, -60, -100), normal, material1);
-    auto *objeto3 = new Cubo(50, biblioteca::CriarPonto(0, -50, -200), material2);
-    auto *objeto4 = new Cubo(50, biblioteca::CriarPonto(0, -10, -200), material2);
-    auto *objeto5 = new Cubo(50, biblioteca::CriarPonto(0, 40, -200), material2);
+    auto *objeto1 = new Cone(4, 3, biblioteca::CriarPonto(0, -1, -10), normal, material0);
+    auto *objeto2 = new Cilindro(5, 1, biblioteca::CriarPonto(0, -6, -10), normal, material1);
+    auto *objeto3 = new Cubo(5, biblioteca::CriarPonto(0, -5, -20), material2);
+    auto *objeto4 = new Cubo(5, biblioteca::CriarPonto(0, -1, -20), material2);
+    auto *objeto5 = new Cubo(5, biblioteca::CriarPonto(0, 4, -20), material2);
     //auto *objeto6 = new Cone(20, 8, biblioteca::CriarPonto(0,0,-10), normal);
     //auto *objeto7 = new Esfera(3, biblioteca::CriarPonto(0,10,-10));
 
@@ -106,9 +106,9 @@ int main(int argc, char** argv) {
     float zGrade = -4;
 
 // ------------------------------------- Coordenadas Camera ----------------------------------------------------------
-    Ponto* pCoordCamera = biblioteca::CriarPonto(0, 0, 0);
+    Ponto* pCoordCamera = biblioteca::CriarPonto(20, 0, -15);
     Ponto* pLookAt = biblioteca::CriarPonto(0,0,-10);
-    Ponto* pViewUp = biblioteca::CriarPonto(0,1,0);
+    Ponto* pViewUp = biblioteca::CriarPonto(0,1,-10);
 
     auto camera =  new Camera(pCoordCamera, pLookAt, pViewUp, tamGrade, zGrade, matrixSize);
     cenario = new Cenario(camera, objetos, luzAmbiente, luzes);
@@ -116,7 +116,7 @@ int main(int argc, char** argv) {
 // ------------------------------------- Funções ---------------------------------------------------------------------
 //    srand((unsigned)clock());
 //    auto start = std::chrono::high_resolution_clock::now(); // Starts the clock;
-//    cenario->imprimirCenarioCompleto();
+    cenario->imprimirCenarioCompleto();
 //    auto stop = std::chrono::high_resolution_clock::now();
 //    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
 //    std::cout << "Time taken by ImprimirCenarioCompleto algorithm: "

@@ -51,13 +51,12 @@ Objeto("Cubo", false, material){
 }
 
 VectorXd Cubo::calcularNormal(Ponto* p){
-    VectorXd v(3);
-    return v;
+    return normal;
 }
 
 tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTamanho) {
 
-    vector<Ponto*> intFace;
+    vector< pair<Ponto*, Face*> > intFace;
 
     for (auto face: faces) {
         Ponto *p = face->p->IntersecaoRetaPlano(pP0, pVetor0, pTamanho);
@@ -73,7 +72,10 @@ tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTam
 
             if(ValidacaoPontoCubo(p1p2, p1p, p1p2, p1p3, 3) && ValidacaoPontoCubo(p2p3, p2p, p1p2, p1p3, 3) &&
                ValidacaoPontoCubo(p3p1, p3p, p1p2, p1p3, 3)){
-                intFace.emplace_back(p);
+
+                intFace.emplace_back(make_pair(p, face));
+
+                normal = face->p->normal;
             }
             else{
                 delete p;
@@ -83,8 +85,20 @@ tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTam
     if(intFace.size() > 2){
         cout << "Mais que 3 intersecoes" << endl;
     }
+    
+    if(!intFace.empty()) {
+        if (intFace.size() >= 2) {
+            if (biblioteca::distanciaEntrePontos(pP0, intFace[0].first) <
+                biblioteca::distanciaEntrePontos(pP0, intFace[1].first)) {
+                normal = intFace[0].second->p->normal;
+            }
+        }
+        else {
+            normal = intFace[0].second->p->normal;
+        }
+    }
 
-    return make_tuple(intFace.size() > 0 ? intFace[0]: nullptr, intFace.size() > 1 ? intFace[1]: nullptr);
+    return make_tuple(intFace.size() > 0 ? intFace[0].first: nullptr, intFace.size() > 1 ? intFace[1].first: nullptr);
 
 }
 
