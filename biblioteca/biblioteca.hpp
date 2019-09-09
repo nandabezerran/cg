@@ -19,6 +19,7 @@ class biblioteca{
     public:
         static double ProdutoEscalar(VectorXd vetor1, VectorXd vetor2, int tamanho);
         static double ProdutoEscalar(Ponto* p1, VectorXd vetor2);
+        static double ProdutoEscalar(double ponto, VectorXd vetor2);
         static VectorXd ProdutoVetorial(VectorXd vetor1, VectorXd vetor2, int tamanho);
         static VectorXd NormalizaVetor(VectorXd vetor, int tamanho);
         static VectorXd EncontrarNormal(VectorXd vetor1, VectorXd vetor2, int tamanho);

@@ -24,7 +24,7 @@
 #include <chrono>
 
 float* test;
-int matrixSize = 200;
+int matrixSize = 300;
 Cenario *cenario;
 
 void display(){
@@ -77,7 +77,7 @@ int main(int argc, char** argv) {
     auto *material2 = new Material(ka2,kd2);
 //-------------------------------------------- Luzes -----------------------------------------------------------------
     auto *luzAmbiente = new LuzAmbiente(0.1,0.1,0.1);
-    auto *luzPontual = new LuzPontual(1.0,1.0,1.0,0, -10, -5);
+    auto *luzPontual = new LuzPontual(1.0,1.0,1.0,0, 0, -5);
     vector<Luz *> luzes;
     luzes.emplace_back(luzPontual);
 //-------------------------------------------- Criação Objetos -------------------------------------------------------
@@ -106,9 +106,9 @@ int main(int argc, char** argv) {
     float zGrade = -4;
 
 // ------------------------------------- Coordenadas Camera ----------------------------------------------------------
-    Ponto* pCoordCamera = biblioteca::CriarPonto(20, 0, -15);
-    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-10);
-    Ponto* pViewUp = biblioteca::CriarPonto(0,1,-10);
+    Ponto* pCoordCamera = biblioteca::CriarPonto(15, 0, -5);
+    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-15);
+    Ponto* pViewUp = biblioteca::CriarPonto(15,1,-5);
 
     auto camera =  new Camera(pCoordCamera, pLookAt, pViewUp, tamGrade, zGrade, matrixSize);
     cenario = new Cenario(camera, objetos, luzAmbiente, luzes);

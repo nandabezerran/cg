@@ -247,3 +247,11 @@ MatrixXd biblioteca::MontarMatrizCoodenadas(VectorXd ic, VectorXd jc, VectorXd k
     return matriz;
 }
 
+double biblioteca::ProdutoEscalar(double ponto, VectorXd vetor2) {
+    double produto = 0;
+    produto = produto + ponto*vetor2[0];
+    produto = produto + ponto*vetor2[1];
+    produto = produto + ponto*vetor2[2];
+    return produto;
+}
+
