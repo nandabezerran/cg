@@ -130,15 +130,15 @@ void Camera::mudarCameraMundo(VectorXd &pNormal) {
 }
 
 void Camera::andarFrente() {
-    biblioteca::somaVetorPonto(biblioteca::NormalizaVetor(biblioteca::SubtracaoPontos(coordCamera, lookAt, 3), 3),
-            coordCamera);
+    coordCamera = biblioteca::EquacaoDaReta(coordCamera, 1,
+            biblioteca::NormalizaVetor(biblioteca::SubtracaoPontos(coordCamera, lookAt, 3),3));
     atualizaCamera();
 
 }
 
 void Camera::andarTras() {
-    biblioteca::subVetorPonto(biblioteca::NormalizaVetor(biblioteca::SubtracaoPontos(coordCamera, lookAt, 3), 3),
-                               coordCamera);
+    coordCamera = biblioteca::EquacaoDaReta(coordCamera, -1,
+            biblioteca::NormalizaVetor(biblioteca::SubtracaoPontos(coordCamera, lookAt, 3),3));
     atualizaCamera();
 }
 

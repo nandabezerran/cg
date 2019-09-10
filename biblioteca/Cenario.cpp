@@ -125,6 +125,7 @@ void Cenario::pintarObjeto(Ponto*** pGrade){
                 intensidadeFuro = luzAmbiente->calcularIntensidadeAmbiente(aux);
                 for (auto &l : luzes) {
                     intensidadeFuro += l->calcularIntensidadeDifusa(aux);
+                    intensidadeFuro += l->calcularIntensidadeEspecular(aux);
                 }
 
                 imagem.setPixel(j,i,intensidadeFuro[0],intensidadeFuro[1],

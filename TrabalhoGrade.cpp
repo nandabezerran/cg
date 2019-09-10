@@ -25,7 +25,7 @@
 #include <chrono>
 
 float* test;
-int matrixSize = 50;
+int matrixSize = 100;
 Cenario *cenario;
 
 void display(){
@@ -55,7 +55,6 @@ void onKeyboard(unsigned char key, int x, int y){
         cenario->camera->andarTras();
         cenario->atualizarCamera();
     }
-
 }
 
 int main(int argc, char** argv) {
@@ -63,18 +62,25 @@ int main(int argc, char** argv) {
     //Verde
     float ka0[3] ={0.0215, 0.1745, 0.0215};
     float kd0[3] ={0.07568, 0.61424, 0.07568};
-    auto *material0 = new Material(ka0,kd0);
+    float ks0[3] ={0.633, 0.727811, 0.633};
+    double m0 =  12.8;
+    auto *material0 = new Material(ka0,kd0,ks0, m0);
     //Polished copper
     float ka1[3] ={0.19125, 0.0735, 0.0225};
     float kd1[3] ={0.7038, 0.27048, 0.0828};
-    auto *material1 = new Material(ka1,kd1);
+    float ks1[3] ={0.256777, 0.137622, 0.086014};
+    double m1 =  12.8;
+
+    auto *material1 = new Material(ka1,kd1, ks1, m1);
     //Chrome
     float ka2[3] ={0.25, 0.25, 0.25};
     float kd2[3] ={0.4, 0.4, 0.4};
-    auto *material2 = new Material(ka2,kd2);
+    float ks2[3] ={0.774597, 0.774597, 0.774597};
+    double m2 = 12.8;
+    auto *material2 = new Material(ka2,kd2, ks2, m2);
 //-------------------------------------------- Luzes -----------------------------------------------------------------
     auto *luzAmbiente = new LuzAmbiente(0.3,0.3,0.3);
-    auto *luzPontual = new LuzPontual(1.0,1.0,1.0,0, 0, -5);
+    auto *luzPontual = new LuzPontual(0.7,0.7,0.7,5, 5, 0);
     VectorXd dir(3);
     dir <<1,0.003,0;
     auto *luzSpot = new LuzSpot(1.0,1.0,1.0,5, -1, -20, dir, 10);
@@ -90,7 +96,7 @@ int main(int argc, char** argv) {
     auto *objeto4 = new Cubo(5, biblioteca::CriarPonto(0, -1, -20), material2);
     auto *objeto5 = new Cubo(5, biblioteca::CriarPonto(0, 4, -20), material2);
     //auto *objeto6 = new Cone(20, 8, biblioteca::CriarPonto(0,0,-10), normal);
-    //auto *objeto7 = new Esfera(3, biblioteca::CriarPonto(0,10,-10));
+    //auto *objeto7 = new Esfera(10, biblioteca::CriarPonto(0,-1,-30), material0);
 
     vector<Objeto *> objetos;
 
@@ -100,7 +106,7 @@ int main(int argc, char** argv) {
     objetos.push_back(objeto4);
     objetos.push_back(objeto5);
     //objects.push_back(objeto6);
-    //objetos.push_back(objeto7);
+//    objetos.push_back(objeto7);
 
 // ------------------------------------- Infos da Grade --------------------------------------------------------------
     float tamGrade = 4;
@@ -112,24 +118,25 @@ int main(int argc, char** argv) {
 //    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-15);
 //    Ponto* pViewUp = biblioteca::CriarPonto(0,20,-17);
 //Lado
-    Ponto* pCoordCamera = biblioteca::CriarPonto(20, 0, -5);
-    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-15);
-    Ponto* pViewUp = biblioteca::CriarPonto(20,1,-5);
-//Frente
-//    Ponto* pCoordCamera = biblioteca::CriarPonto(0, 0, 0);
+//    Ponto* pCoordCamera = biblioteca::CriarPonto(20, 0, -5);
 //    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-15);
-//    Ponto* pViewUp = biblioteca::CriarPonto(0,1,0);
+//    Ponto* pViewUp = biblioteca::CriarPonto(20,1,-5);
+//Frente Inclinado
+    Ponto* pCoordCamera = biblioteca::CriarPonto(-5, 5, 0);
+    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-15);
+    Ponto* pViewUp = biblioteca::CriarPonto(-5,6,0);
+
     auto camera =  new Camera(pCoordCamera, pLookAt, pViewUp, tamGrade, zGrade, matrixSize);
     cenario = new Cenario(camera, objetos, luzAmbiente, luzes);
 
 // ------------------------------------- Funções ---------------------------------------------------------------------
     srand((unsigned)clock());
-    auto start = std::chrono::high_resolution_clock::now(); // Starts the clock;
+//    auto start = std::chrono::high_resolution_clock::now(); // Starts the clock;
     cenario->imprimirCenarioCompleto();
-    auto stop = std::chrono::high_resolution_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-    std::cout << "Time taken by ImprimirCenarioCompleto algorithm: "
-              << duration.count() << " microseconds\n" << std::endl;
+//    auto stop = std::chrono::high_resolution_clock::now();
+//    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+//    std::cout << "Time taken by ImprimirCenarioCompleto algorithm: "
+//              << duration.count() << " microseconds\n" << std::endl;
 
 // ------------------------------------- Janela ----------------------------------------------------------------------
     glutInit(&argc, argv);

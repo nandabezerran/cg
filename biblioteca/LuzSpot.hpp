@@ -17,7 +17,9 @@ public:
     LuzSpot(float r, float g, float b, double x, double y, double z,VectorXd pDir,
             float pAng);
     double calcularFatorDifuso(PontoIntersecao* p);
+    double calcularFatorEspecular(PontoIntersecao* p);
     VectorXd calcularIntensidadeDifusa(PontoIntersecao* p) override;
+    VectorXd calcularIntensidadeEspecular(PontoIntersecao *p) override;
     void mudaCoodCamera(Camera *camera) override;
     void mudaCoodMundo(Camera *camera) override;
 };

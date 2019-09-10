@@ -44,3 +44,33 @@ void LuzSpot::mudaCoodMundo(Camera *camera) {
     camera->mudarCameraMundo(direcao);
     camera->mudarCameraMundo(posicao);
 }
+
+double LuzSpot::calcularFatorEspecular(PontoIntersecao *p) {
+    VectorXd PlPint = biblioteca::SubtracaoPontos(p->p, posicao, 3);
+    VectorXd l = biblioteca::NormalizaVetor(PlPint, 3);
+
+    VectorXd normal = p->objeto->calcularNormal(p->p);
+
+    VectorXd r = (2 * ((biblioteca::ProdutoEscalar(l, normal,3))*normal)) - l;
+    VectorXd v = biblioteca::SubtracaoPontos(p->p, biblioteca::CriarPonto(0,0,0), 3);
+
+    if(biblioteca::ProdutoEscalar(-l, direcao, 3) > cos(angAbertura)){
+        return 0 ;
+    }
+    double fatorEspecular = biblioteca::ProdutoEscalar(v, r, 3);
+    if(fatorEspecular < 0){
+        return 0;
+    }
+    return fatorEspecular;
+
+}
+
+VectorXd LuzSpot::calcularIntensidadeEspecular(PontoIntersecao *p) {
+    VectorXd Id(3);
+    Id[0] = intensidadeRgb[0] * p->objeto->material->Ks[0];
+    Id[1] = intensidadeRgb[1] * p->objeto->material->Ks[1];
+    Id[2] = intensidadeRgb[2] * p->objeto->material->Ks[2];
+
+    Id = Id * pow(calcularFatorEspecular(p), p->objeto->material->m);
+    return Id;
+}

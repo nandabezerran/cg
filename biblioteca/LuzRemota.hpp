@@ -10,6 +10,8 @@ public:
     VectorXd direcao;
     LuzRemota(int r, int g, int b, VectorXd Dr);
     VectorXd calcularIntensidadeDifusa(PontoIntersecao* p) override;
+    VectorXd calcularIntensidadeEspecular(PontoIntersecao* p) override;
+    double calcularFatorEspecular(PontoIntersecao* p);
     double calcularFatorDifuso(PontoIntersecao *p);
     void mudaCoodCamera(Camera *camera) = 0;
     void mudaCoodMundo(Camera *camera) = 0;
