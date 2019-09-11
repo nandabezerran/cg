@@ -25,7 +25,7 @@
 #include <chrono>
 
 float* test;
-int matrixSize = 100;
+int matrixSize = 300;
 Cenario *cenario;
 
 void display(){
@@ -131,12 +131,12 @@ int main(int argc, char** argv) {
 
 // ------------------------------------- Funções ---------------------------------------------------------------------
     srand((unsigned)clock());
-//    auto start = std::chrono::high_resolution_clock::now(); // Starts the clock;
+    auto start = std::chrono::high_resolution_clock::now(); // Starts the clock;
     cenario->imprimirCenarioCompleto();
-//    auto stop = std::chrono::high_resolution_clock::now();
-//    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-//    std::cout << "Time taken by ImprimirCenarioCompleto algorithm: "
-//              << duration.count() << " microseconds\n" << std::endl;
+    auto stop = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+    std::cout << "Time taken by ImprimirCenarioCompleto algorithm: "
+              << duration.count() << " microseconds\n" << std::endl;
 
 // ------------------------------------- Janela ----------------------------------------------------------------------
     glutInit(&argc, argv);

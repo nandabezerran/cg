@@ -108,7 +108,7 @@ void Cenario::pintarObjeto(Ponto*** pGrade){
     for (int i = 0; i < camera->qtdFuros; ++i) {
         for (int j = 0; j < camera->qtdFuros; ++j) {
             for (auto &pObjeto : objetos) {
-                if (pObjeto->visibilidade) {
+                if (!pObjeto->visibilidade) {
                     PontoIntersecao* pint = interceptaObjeto(pObjeto, camera->observador, pGrade[i][j]);
                     if(pint && (!auxDefinido || pint->distOrigem < aux->distOrigem)){
                         aux->distOrigem = pint->distOrigem;
@@ -145,14 +145,14 @@ float* Cenario::getCenarioData(){
 
 void Cenario::imprimirCenarioCompleto() {
     PontoIntersecao* pInt;
-    for (int i = 0; i < camera->qtdFuros ; ++i) {
-        for (int j = 0; j < camera->qtdFuros; ++j) {
-            pInt = rayCasting(camera->observador, camera->gradeCamera[j][i]);
-            if(pInt){
-                pInt->objeto->visibilidade = true;
-            }
-        }
-    }
+//    for (int i = 0; i < camera->qtdFuros ; ++i) {
+//        for (int j = 0; j < camera->qtdFuros; ++j) {
+//            pInt = rayCasting(camera->observador, camera->gradeCamera[j][i]);
+//            if(pInt){
+//                pInt->objeto->visibilidade = true;
+//            }
+//        }
+//    }
     pintarObjeto(camera->gradeCamera);
 }
 
@@ -164,7 +164,7 @@ void Cenario::checarUmPonto(int linha, int coluna) {
 
     pInts = rayCasting(camera->observador, camera->gradeCamera[linha][coluna]);
     if(pInts){
-        pInts->objeto->visibilidade = true;
+        //pInts->objeto->visibilidade = true;
         cout << "Objeto encontrado: " << pInts->objeto->nome << " - Ponto Interceptado: " << pInts->p->x
         << ", " <<pInts->p->y<< ", "<< pInts->p->z<< "\n";
         cout << "----------------------------------------------------------------------" << "\n";
