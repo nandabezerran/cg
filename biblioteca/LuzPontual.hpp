@@ -15,8 +15,8 @@ public:
     Ponto* posicaoPontual;
     LuzPontual(float r, float g, float b, double x,double y,double z);
     double calcularFatorDifuso(PontoIntersecao* p);
-    VectorXd calcularIntensidadeDifusa(PontoIntersecao* p) override;
-    VectorXd calcularIntensidadeEspecular(PontoIntersecao *p) override;
+    Vetor calcularIntensidadeDifusa(PontoIntersecao* p) override;
+    Vetor calcularIntensidadeEspecular(PontoIntersecao *p) override;
     double calcularFatorEspecular(PontoIntersecao* p);
     void mudaCoodCamera(Camera *camera);
     void mudaCoodMundo(Camera *camera);

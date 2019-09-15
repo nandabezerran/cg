@@ -35,16 +35,16 @@ public:
     vector<Face*> faces;
     vector<Vertice*> vertices;
     vector<Aresta*> arestas;
-    VectorXd normal;
+    Vetor normal;
     Cubo(double cAresta, Ponto* cCentro, Material* material);
-    tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTamanho) override;
+    tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, const Vetor &pV0) override;
+    Ponto* PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0);
     Vertice* CriarVertice(Ponto* p1, string id);
     Aresta* CriarAresta(Vertice* pi, Vertice* pf, string id);
     Face* CriarFace(Vertice* v1, Vertice* v2, Vertice* v3, string id);
-    //bool ValidacaoPontoCubo(Face *face, Ponto *p);
-    bool ValidacaoPontoCubo(VectorXd PxPy, VectorXd PxP, VectorXd P1P2, VectorXd P1P3, int tamanho);
+    bool ValidacaoPontoCubo(const Vetor &PxPy, const Vetor &PxP, const Vetor &P1P2, const Vetor &P1P3);
     void mudaCoodCamera(Camera *camera) override;
     void mudaCoodMundo(Camera *camera) override;
-    VectorXd calcularNormal(Ponto* p) override;
+    Vetor calcularNormal(Ponto* p) override;
 };
 #endif //COMPUTACAOGRAFICA_CUBO_HPP

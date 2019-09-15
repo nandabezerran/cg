@@ -1,58 +1,27 @@
+#include <c++/cmath>
 #include "biblioteca.hpp"
 
-double biblioteca::ProdutoEscalar(VectorXd vetor1, VectorXd vetor2, int tamanho){
-    double produto = 0;
-    for(int i = 0; i<tamanho; i++){
-        produto = produto + vetor1[i]*vetor2[i];
-    }
-    return produto;
+double biblioteca::ProdutoEscalar(const Vetor &v1, const Vetor &v2) {
+    return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
 }
 
-double biblioteca::ProdutoEscalar(Ponto* ponto, VectorXd vetor2){
-    double produto = 0;
-    produto = produto + ponto->x*vetor2[0];
-    produto = produto + ponto->y*vetor2[1];
-    produto = produto + ponto->z*vetor2[2];
-    return produto;
+double biblioteca::ProdutoEscalar(const Ponto &p, const Vetor &v) {
+    return p.x * v.x + p.y * v.y + p.z * v.z;
 }
 
-VectorXd biblioteca::MultVetorEscalar(VectorXd v, double x){
-    VectorXd result(3);
-    result[0] = v[0] * x;
-    result[1] = v[1] * x;
-    result[2] = v[2] * x;
-    return result;
+Vetor biblioteca::ProdutoVetorial(const Vetor &v1, const Vetor &v2)
+{
+    return {v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v1.y * v2.x};
 }
 
-VectorXd biblioteca::ProdutoVetorial(VectorXd vetor1, VectorXd vetor2, int tamanho){
-    VectorXd vetor_resultado(tamanho);
-
-    vetor_resultado[0] = vetor1[1]*vetor2[2] - vetor1[2]*vetor2[1];
-    vetor_resultado[1] = vetor1[2]*vetor2[0] - vetor1[0]*vetor2[2];
-    vetor_resultado[2] = vetor1[0]*vetor2[1] - vetor1[1]*vetor2[0];
-    return vetor_resultado;
+Vetor biblioteca::NormalizaVetor(const Vetor &vetor) {
+    return vetor/sqrt(ProdutoEscalar(vetor,vetor));
 }
 
-VectorXd biblioteca::NormalizaVetor(VectorXd vetor, int tamanho){
-    VectorXd vetor_normalizado(tamanho);
-    double norma = 0;
-
-    norma = sqrt(ProdutoEscalar(vetor,vetor,tamanho));
-    vetor_normalizado = vetor/norma;
-    return vetor_normalizado;
-}
-
-VectorXd biblioteca::DivisaoVetor(VectorXd v, double x){
-    VectorXd result(3);
-    result[0] = v[0] / x;
-    result[1] = v[1] / x;
-    result[2] = v[2] / x;
-    return result;
-}
-VectorXd biblioteca::EncontrarNormal(VectorXd vetor1, VectorXd vetor2, int tamanho){
-    VectorXd vetor_normal(tamanho);
-    vetor_normal = ProdutoVetorial(vetor1, vetor2, tamanho);
-    vetor_normal = NormalizaVetor(vetor_normal, tamanho);
+Vetor biblioteca::EncontrarNormal(const Vetor &vetor1, const Vetor &vetor2){
+    Vetor vetor_normal;
+    vetor_normal = ProdutoVetorial(vetor1, vetor2);
+    vetor_normal = NormalizaVetor(vetor_normal);
     return vetor_normal;
 }
 
@@ -60,27 +29,14 @@ double biblioteca::distanciaEntrePontos(Ponto *p1, Ponto *p2) {
     return sqrt(pow((p2->x - p1->x),2) + pow((p2->y - p1->y),2) + pow((p2->z - p1->z),2));
 }
 
-VectorXd biblioteca::SubtracaoPontos(Ponto* p1, Ponto* p2, int tamanho){
-    //Vetor de p1 -> p2
-    VectorXd vetor_resultante(tamanho);
-
-    vetor_resultante[0] = p2->x - p1->x;
-    vetor_resultante[1] = p2->y - p1->y;
-    vetor_resultante[2] = p2->z - p1->z;
-    return vetor_resultante;
-}
-void biblioteca::somaVetorPonto(VectorXd v, Ponto* p){
-    p->x += v[0];
-    p->y += v[1];
-    p->z += v[2];
-
+double biblioteca::distanciaEntrePontos(const Ponto &p1, const Ponto &p2) {
+    return sqrt(pow((p2.x - p1.x),2) + pow((p2.y - p1.y),2) + pow((p2.z - p1.z),2));
 }
 
-void biblioteca::subVetorPonto(VectorXd v, Ponto* p){
-    p->x -= v[0];
-    p->y -= v[1];
-    p->z -= v[2];
+Vetor biblioteca::SubtracaoPontos(const Ponto &p1, const Ponto &p2) {
+    return Vetor{p2.x - p1.x, p2.y - p1.y, p2.z - p1.z};
 }
+
 Ponto*** biblioteca::MatrixAllocation(int size){
     auto ***matrix = new Ponto**[size];
 
@@ -89,21 +45,9 @@ Ponto*** biblioteca::MatrixAllocation(int size){
     }
     return matrix;
 }
-void biblioteca::SubtracaoPontos(Ponto* p1, Ponto* p2, VectorXd &vector){
-    vector[0] = p2->x - p1->x;
-    vector[1] = p2->y - p1->y;
-    vector[2] = p2->z - p1->z;
-}
 
-Ponto* biblioteca::EquacaoDaReta(Ponto* p, double t, VectorXd vetor){
-    Ponto* resultante = biblioteca::CriarPonto(p->x + t*vetor[0],p->y + t*vetor[1],p->z + t*vetor[2]);
-    return resultante;
-}
-
-double biblioteca::EquacaoDoPlano(Ponto* p1, Ponto* p0, const VectorXd vetor_n_plano, int tamanho) {
-    VectorXd vetor_aux = SubtracaoPontos(p1,p0,tamanho);
-    double resultado = ProdutoEscalar(vetor_aux,vetor_n_plano,tamanho);
-    return resultado;
+Ponto* biblioteca::EquacaoDaReta(const Ponto &p, const double &t,const Vetor &vetor){
+    return new Ponto{p.x + t * vetor.x, p.y + t * vetor.y, p.z + t * vetor.z};
 }
 
 Ponto* biblioteca::CriarPonto(double x, double y, double z) {
@@ -114,33 +58,24 @@ Ponto* biblioteca::CriarPonto(double x, double y, double z) {
     return p;
 }
 
-tuple<Ponto*, Ponto*> biblioteca::PontosDadoDistancia(Ponto* p_origem, const VectorXd vetor1, const VectorXd vetor2,
-                                                      double l_comprimento, int tamanho){
-
+tuple<Ponto*, Ponto*> biblioteca::PontosDadoDistancia(Ponto* p_origem, const Vetor &v1, const Vetor &v2,
+    double l_comprimento){
     double s, t;
     Ponto* p1;
     Ponto* p2;
 
     s = pow(l_comprimento, 2);
-    s = s/((ProdutoEscalar(vetor2,vetor2,tamanho)) -
-           (pow(ProdutoEscalar(vetor1,vetor2,tamanho),2)/ProdutoEscalar(vetor1,vetor1,tamanho)));
+    s = s/((ProdutoEscalar(v2,v2)) -
+           (pow(ProdutoEscalar(v1,v2),2)/ProdutoEscalar(v1,v1)));
     s = sqrt(s);
 
-    t = ProdutoEscalar(vetor1,vetor2,tamanho)/ProdutoEscalar(vetor1,vetor1,tamanho);
+    t = ProdutoEscalar(v1,v2)/ProdutoEscalar(v1,v1);
     t = t * s;
 
-    p1 = EquacaoDaReta(p_origem, t, vetor1);
-    p2 = EquacaoDaReta(p_origem, s, vetor2);
+    p1 = EquacaoDaReta(*p_origem, t, v1);
+    p2 = EquacaoDaReta(*p_origem, s, v2);
 
     return make_tuple(p1,p2);
 
-}
-
-double biblioteca::ProdutoEscalar(double ponto, VectorXd vetor2) {
-    double produto = 0;
-    produto = produto + ponto*vetor2[0];
-    produto = produto + ponto*vetor2[1];
-    produto = produto + ponto*vetor2[2];
-    return produto;
 }
 

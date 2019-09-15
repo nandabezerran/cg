@@ -17,6 +17,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzSpot.cpp.obj"
   "CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzAmbiente.cpp.obj"
   "CMakeFiles/ComputacaoGrafica.dir/biblioteca/LuzRemota.cpp.obj"
+  "CMakeFiles/ComputacaoGrafica.dir/biblioteca/Vetor.cpp.obj"
   "ComputacaoGrafica.pdb"
   "ComputacaoGrafica.exe"
   "ComputacaoGrafica.exe.manifest"

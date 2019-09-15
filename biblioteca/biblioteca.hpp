@@ -3,43 +3,30 @@
 #include <iostream>
 #include <string>
 #include <tuple>
-#include "../eigen/Eigen/Core"
-//#include "Plano.hpp"
+#include "Vetor.hpp"
 
 using namespace std;
-using namespace Eigen;
 
-struct Ponto{
-    double x;
-    double y;
-    double z;
-};
+class Vetor;
+struct Ponto;
 
 class biblioteca{
     public:
-        static double ProdutoEscalar(VectorXd vetor1, VectorXd vetor2, int tamanho);
-        static double ProdutoEscalar(Ponto* p1, VectorXd vetor2);
-        static double ProdutoEscalar(double ponto, VectorXd vetor2);
-        static VectorXd ProdutoVetorial(VectorXd vetor1, VectorXd vetor2, int tamanho);
-        static VectorXd NormalizaVetor(VectorXd vetor, int tamanho);
-        static VectorXd EncontrarNormal(VectorXd vetor1, VectorXd vetor2, int tamanho);
-        static VectorXd SubtracaoPontos(Ponto* p1, Ponto* p2, int tamanho);
-        static Ponto* EquacaoDaReta(Ponto* p, double t, VectorXd vetor);
-        static double EquacaoDoPlano(Ponto* p1, Ponto* po, VectorXd vetor_n_plano, int tamanho);
+        static double ProdutoEscalar(const Vetor &v1, const Vetor &v2);
+        static double ProdutoEscalar(const Ponto &v1, const Vetor &v2);
+        static Vetor ProdutoVetorial(const Vetor &v1, const Vetor &v2);
+        static Vetor NormalizaVetor(const Vetor &vetor);
+        static Vetor EncontrarNormal(const Vetor &vetor1, const Vetor &vetor2);
+        static Ponto* EquacaoDaReta(const Ponto &p, const double &t, const Vetor &vetor);
         static Ponto* CriarPonto(double x, double y, double z);
         static double distanciaEntrePontos(Ponto* p1, Ponto* p2);
-        static VectorXd DivisaoVetor(VectorXd v, double x);
-        static VectorXd MultVetorEscalar(VectorXd v, double x);
-        static void SubtracaoPontos(Ponto* p1, Ponto* p2, VectorXd &vector);
-        static void somaVetorPonto(VectorXd v, Ponto* p);
-        static void subVetorPonto(VectorXd v, Ponto* p);
+        static double distanciaEntrePontos(const Ponto &p1, const Ponto &p2);
+        static Vetor SubtracaoPontos(const Ponto &p1, const Ponto &p2);
         static Ponto*** MatrixAllocation(int size);
 
-
-
     //TODO: Encontrar nome melhor pra essa função (solução da prova 1)
-    static tuple<Ponto*, Ponto*> PontosDadoDistancia(Ponto* p_origem, VectorXd vetor1, VectorXd vetor2,
-                                                     double l_comprimento, int tamanho);
+    static tuple<Ponto*, Ponto*> PontosDadoDistancia(Ponto* p_origem, const Vetor &v1, const Vetor &v2,
+                                                     double l_comprimento);
 
 };
 

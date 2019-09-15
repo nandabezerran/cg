@@ -187,6 +187,12 @@
 		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/PontoIntersecao.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Vetor.cpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Vetor.hpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
 		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/biblioteca.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>

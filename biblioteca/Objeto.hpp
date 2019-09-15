@@ -13,10 +13,11 @@ public:
     bool visibilidade;
     Material* material;
     Objeto(const string& pNome, bool visibilidade, Material* pMat);
-    virtual std::tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTamanho) = 0;
+    virtual std::tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, const Vetor &pV0) = 0;
+    virtual Ponto* PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0) = 0;
     virtual void mudaCoodCamera(Camera *camera) = 0;
     virtual void mudaCoodMundo(Camera *camera) = 0;
-    virtual VectorXd calcularNormal(Ponto* p) = 0;
+    virtual Vetor calcularNormal(Ponto* p) = 0;
 };
 
 

@@ -2,6 +2,7 @@
 // Created by fbeze on 24/08/2019.
 //
 
+#include <c++/cmath>
 #include "Esfera.hpp"
 
 
@@ -9,7 +10,7 @@
 Esfera::Esfera(float pRaio, Ponto* pCentro, Material* material) : raio(pRaio), centro(pCentro),
                                               Objeto("Esfera",false, material)  {}
 
-tuple<Ponto*,Ponto*> Esfera::IntersecaoReta(Ponto* pP0, VectorXd pVetor0,int pTamanho){
+tuple<Ponto*,Ponto*> Esfera::IntersecaoReta(Ponto* pP0, const Vetor &pV0){
     //p_t_int eh o ponto dado o t_int
     Ponto* p_t_int1 = nullptr;
     Ponto* p_t_int2 = nullptr;
@@ -17,19 +18,19 @@ tuple<Ponto*,Ponto*> Esfera::IntersecaoReta(Ponto* pP0, VectorXd pVetor0,int pTa
 
     // A*t_int² + B*t_int + C = 0
 
-    pVetor0 = biblioteca::NormalizaVetor(pVetor0,pTamanho);
+    Vetor pV0N = biblioteca::NormalizaVetor(pV0);
 
     // C0P0 eh o P0 - C0
-    VectorXd C0P0 = biblioteca::SubtracaoPontos(this->centro,pP0,pTamanho);
+    Vetor C0P0 = biblioteca::SubtracaoPontos(*this->centro, *pP0);
 
     // A = u*u
-    double produtoA = biblioteca::ProdutoEscalar(pVetor0,pVetor0,pTamanho);
+    double produtoA = biblioteca::ProdutoEscalar(pV0N,pV0N);
 
     // B = 2 * (P0 - C0) * u
-    double produtoB = biblioteca::ProdutoEscalar(C0P0,pVetor0,pTamanho);
+    double produtoB = biblioteca::ProdutoEscalar(C0P0,pV0N);
 
     // C = (P0 - C0) * (P0 - C0) - R²
-    double produtoC = biblioteca::ProdutoEscalar(C0P0,C0P0,pTamanho) - (this->raio*this->raio);
+    double produtoC = biblioteca::ProdutoEscalar(C0P0,C0P0) - (this->raio*this->raio);
 
     /*  Δ > 0 tem 2 intersecoes
         Δ = 0 tem 1 intersecao
@@ -41,19 +42,15 @@ tuple<Ponto*,Ponto*> Esfera::IntersecaoReta(Ponto* pP0, VectorXd pVetor0,int pTa
 
         t_int1 = (-produtoB + sqrt(Delta))/produtoA;
         t_int2 = (-produtoB - sqrt(Delta))/produtoA;
-        p_t_int1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
-        p_t_int2 = biblioteca::EquacaoDaReta(pP0,t_int2,pVetor0);
+        p_t_int1 = biblioteca::EquacaoDaReta(*pP0,t_int1,pV0N);
+        p_t_int2 = biblioteca::EquacaoDaReta(*pP0,t_int2,pV0N);
     }
 
     else if (Delta == 0){
 
         t_int1 = (-produtoB + sqrt(Delta))/produtoA;
-        p_t_int1 = biblioteca::EquacaoDaReta(pP0,t_int1,pVetor0);
+        p_t_int1 = biblioteca::EquacaoDaReta(*pP0,t_int1,pV0N);
     }
-
-
-
-    //cout << "Esfera  " << produtoA << " "<< produtoB  << " "<<  produtoC  << " "<<  Delta  << " "<<  t_int1  << " "<< t_int2 <<  endl; 
 
     return make_tuple(p_t_int1, p_t_int2);
 
@@ -67,10 +64,14 @@ void Esfera::mudaCoodMundo(Camera *camera) {
     camera->mudarCameraMundo(centro);
 }
 
-VectorXd Esfera::calcularNormal(Ponto* p){
-    VectorXd v(3);
-    v = biblioteca::SubtracaoPontos(this->centro,p,3);
-    v = biblioteca::NormalizaVetor(v,3);
+Vetor Esfera::calcularNormal(Ponto* p){
+    Vetor v;
+    v = biblioteca::SubtracaoPontos(*this->centro,*p);
+    v = biblioteca::NormalizaVetor(v);
     return v;
 }   
+
+Ponto *Esfera::PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0) {
+    return nullptr;
+}
 

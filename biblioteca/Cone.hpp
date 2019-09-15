@@ -13,14 +13,15 @@ public:
     float altura;
     float raio;
     Ponto* centro;
-    VectorXd normal;
+    Vetor normal;
 
-    Cone(float pAltura, float pRaio, Ponto* pCentro, VectorXd pNormal, Material* material);
-    VectorXd calcularNormal(Ponto* pi);
-    bool ValidacaoPontoCone(Ponto* vertice, Ponto* p_int, int tamanho);
-    tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, VectorXd pVetor0,int pTamanho);
-    Ponto* IntersecaoRetaBase(Ponto* centro, Ponto* pP0,VectorXd pVetor0, int tamanho);
-    bool ValidacaoPontoBase(Ponto* pP0,VectorXd pVetor0, int tamanho);
+    Cone(float pAltura, float pRaio, Ponto* pCentro, Vetor pNormal, Material* material);
+    Vetor calcularNormal(Ponto* pi);
+    bool ValidacaoPontoCone(Ponto* vertice, Ponto* p_int);
+    tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, const Vetor &pV0) override;
+    Ponto* PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0);
+    Ponto* IntersecaoRetaBase(Ponto* centro, Ponto* pP0, const Vetor &pVetor0);
+    bool ValidacaoPontoBase(Ponto* pP0, const Vetor &pVetor0);
     void mudaCoodCamera(Camera *camera) override;
     void mudaCoodMundo(Camera *camera) override;
 

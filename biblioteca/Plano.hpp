@@ -8,11 +8,12 @@
 
 class Plano {
 public:
-    Ponto* p_pi;
-    VectorXd normal;
+    Ponto *p_pi;
+    Vetor normal;
 
-    Plano(Ponto* pPi, VectorXd pNormal);
-    Ponto* IntersecaoRetaPlano(Ponto* p0, VectorXd vetor0, int tamanho);
+    Plano();
+    Plano(Ponto *pPi, Vetor pNormal);
+    Ponto* IntersecaoRetaPlano(const Ponto &p0, const Vetor &vetor0) const;
 };
 
 

@@ -8,9 +8,9 @@
 
 class LuzAmbiente {
 public:
-    VectorXd intensidadeRgb;
+    Vetor intensidadeRgb;
     LuzAmbiente(float r, float g, float b);
-    VectorXd calcularIntensidadeAmbiente(PontoIntersecao* p);
+    Vetor calcularIntensidadeAmbiente(PontoIntersecao* p);
 };
 
 

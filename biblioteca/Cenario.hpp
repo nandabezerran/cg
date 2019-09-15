@@ -25,7 +25,7 @@ public:
 
     Cenario(Camera* pCamera, vector<Objeto*> objetos, LuzAmbiente* pLuzAmb, vector<Luz*> pLuzes);
 
-    PontoIntersecao* rayCasting(Ponto* pCoordObs, Ponto* pontoGrade);
+    bool rayCasting(Ponto* pCoordObs, Ponto* pontoGrade, PontoIntersecao &intersecao);
     void pintarObjeto(Ponto*** pGrade);
     void addObjeto(Objeto* objeto);
     void imprimirCenarioCompleto();

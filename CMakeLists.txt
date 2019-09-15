@@ -14,6 +14,7 @@ add_executable(ComputacaoGrafica biblioteca/biblioteca.cpp biblioteca/biblioteca
         biblioteca/Cenario.cpp biblioteca/Cenario.hpp TrabalhoGrade.cpp biblioteca/PontoIntersecao.cpp
         biblioteca/PontoIntersecao.hpp biblioteca/Luz.cpp biblioteca/Luz.hpp biblioteca/LuzPontual.cpp biblioteca/LuzPontual.hpp
         biblioteca/Material.cpp biblioteca/Material.hpp biblioteca/LuzSpot.cpp biblioteca/LuzSpot.hpp
-        biblioteca/LuzAmbiente.cpp biblioteca/LuzAmbiente.hpp biblioteca/LuzRemota.cpp biblioteca/LuzRemota.hpp)
+        biblioteca/LuzAmbiente.cpp biblioteca/LuzAmbiente.hpp biblioteca/LuzRemota.cpp biblioteca/LuzRemota.hpp
+        biblioteca/Vetor.cpp biblioteca/Vetor.hpp)
 
 target_link_libraries(ComputacaoGrafica -lOpenGL32 -lfreeGLUT -lglu32)

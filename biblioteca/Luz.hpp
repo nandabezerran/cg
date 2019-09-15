@@ -10,9 +10,9 @@
 
 class Luz {
 public:
-    VectorXd intensidadeRgb;
-    virtual VectorXd calcularIntensidadeDifusa(PontoIntersecao* p) = 0;
-    virtual VectorXd calcularIntensidadeEspecular(PontoIntersecao *p) = 0;
+    Vetor intensidadeRgb;
+    virtual Vetor calcularIntensidadeDifusa(PontoIntersecao* p) = 0;
+    virtual Vetor calcularIntensidadeEspecular(PontoIntersecao *p) = 0;
     virtual void mudaCoodCamera(Camera *camera) = 0;
     virtual void mudaCoodMundo(Camera *camera) = 0;
     Luz(float r, float g, float b);

@@ -581,6 +581,33 @@ biblioteca/PontoIntersecao.cpp.s:
 	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.s
 .PHONY : biblioteca/PontoIntersecao.cpp.s
 
+biblioteca/Vetor.obj: biblioteca/Vetor.cpp.obj
+
+.PHONY : biblioteca/Vetor.obj
+
+# target to build an object file
+biblioteca/Vetor.cpp.obj:
+	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Vetor.cpp.obj
+.PHONY : biblioteca/Vetor.cpp.obj
+
+biblioteca/Vetor.i: biblioteca/Vetor.cpp.i
+
+.PHONY : biblioteca/Vetor.i
+
+# target to preprocess a source file
+biblioteca/Vetor.cpp.i:
+	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Vetor.cpp.i
+.PHONY : biblioteca/Vetor.cpp.i
+
+biblioteca/Vetor.s: biblioteca/Vetor.cpp.s
+
+.PHONY : biblioteca/Vetor.s
+
+# target to generate assembly for a file
+biblioteca/Vetor.cpp.s:
+	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Vetor.cpp.s
+.PHONY : biblioteca/Vetor.cpp.s
+
 biblioteca/biblioteca.obj: biblioteca/biblioteca.cpp.obj
 
 .PHONY : biblioteca/biblioteca.obj
@@ -668,6 +695,9 @@ help:
 	@echo ... biblioteca/PontoIntersecao.obj
 	@echo ... biblioteca/PontoIntersecao.i
 	@echo ... biblioteca/PontoIntersecao.s
+	@echo ... biblioteca/Vetor.obj
+	@echo ... biblioteca/Vetor.i
+	@echo ... biblioteca/Vetor.s
 	@echo ... biblioteca/biblioteca.obj
 	@echo ... biblioteca/biblioteca.i
 	@echo ... biblioteca/biblioteca.s

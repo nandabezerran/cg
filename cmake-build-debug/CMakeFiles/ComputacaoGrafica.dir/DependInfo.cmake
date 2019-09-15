@@ -21,6 +21,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Objeto.cpp" "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Objeto.cpp.obj"
   "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Plano.cpp" "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Plano.cpp.obj"
   "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/PontoIntersecao.cpp" "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.obj"
+  "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Vetor.cpp" "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/Vetor.cpp.obj"
   "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/biblioteca.cpp" "C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir/biblioteca/biblioteca.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

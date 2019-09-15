@@ -7,24 +7,25 @@
 #include "biblioteca.hpp"
 #include "Objeto.hpp"
 #include "PontoIntersecao.hpp"
+#include "Plano.hpp"
 
 class Cilindro : public Objeto{
 public:
     string nome;
     float altura;
     float raio;
-    Ponto* centro;
-    VectorXd normal;
-    Cilindro(float pAltura, float pRaio, Ponto* pCentro, VectorXd pNormal, Material* material);
-    tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTamanho);
-    bool ValidacaoPontoLateral(Ponto* p_int, int tamanho);
-
-    int ValidacaoPontoBase(Ponto* pP0,VectorXd pVetor0, int tamanho);
-    Ponto* IntersecaoRetaBase(Ponto* centro, Ponto* pP0,VectorXd pVetor0, int tamanho);
-    Ponto* ChoseBase(Ponto* pP0,VectorXd pVetor0, int tamanho);
+    Ponto centro;
+    Ponto centroSup;
+    Plano baseInf;
+    Plano baseSup;
+    Vetor normal;
+    Cilindro(float pAltura, float pRaio, Ponto pCentro, Vetor pNormal, Material *m);
+    tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, const Vetor &pV0) override;
+    Ponto* PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0) override;
+    bool ValidacaoPontoLateral(const Ponto &p_int) const;
     void mudaCoodCamera(Camera *camera) override;
     void mudaCoodMundo(Camera *camera) override;
-    VectorXd calcularNormal(Ponto* pi);
+    Vetor calcularNormal(Ponto* pi);
 
 };
 

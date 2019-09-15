@@ -1,12 +1,12 @@
 #include "LuzRemota.hpp"
 //# define M_PI 3.14159265358979323846  /* pi */
 
-LuzRemota::LuzRemota(int r, int g, int b, VectorXd Dr): direcao(Dr), Luz(r, g, b){
-    direcao = biblioteca::NormalizaVetor(direcao, 3);
+LuzRemota::LuzRemota(int r, int g, int b, Vetor Dr): direcao(Dr), Luz(r, g, b){
+    direcao = biblioteca::NormalizaVetor(direcao);
 }
 double LuzRemota::calcularFatorDifuso(PontoIntersecao *p) {
-    VectorXd normal = p->objeto->calcularNormal(p->p);
-    double fatorDifuso = (biblioteca::ProdutoEscalar(normal, -direcao, 3));
+    Vetor normal = p->objeto->calcularNormal(p->p);
+    double fatorDifuso = biblioteca::ProdutoEscalar(normal, -direcao);
     if(fatorDifuso < 0){
         return 0;
     }
@@ -14,11 +14,11 @@ double LuzRemota::calcularFatorDifuso(PontoIntersecao *p) {
 
 }
 
-VectorXd LuzRemota::calcularIntensidadeDifusa(PontoIntersecao* p){
-    VectorXd Id(3);
-    Id[0] = intensidadeRgb[0] * p->objeto->material->Kd[0];
-    Id[1] = intensidadeRgb[1] * p->objeto->material->Kd[1];
-    Id[2] = intensidadeRgb[2] * p->objeto->material->Kd[2];
+Vetor LuzRemota::calcularIntensidadeDifusa(PontoIntersecao* p){
+    Vetor Id;
+    Id.x = intensidadeRgb.x * p->objeto->material->Kd[0];
+    Id.y = intensidadeRgb.y * p->objeto->material->Kd[1];
+    Id.z = intensidadeRgb.z * p->objeto->material->Kd[2];
 
     return Id;
 
@@ -33,13 +33,14 @@ void LuzRemota::mudaCoodMundo(Camera *camera) {
 }
 
 double LuzRemota::calcularFatorEspecular(PontoIntersecao *p) {
-    VectorXd normal = p->objeto->calcularNormal(p->p);
-    VectorXd l = biblioteca::NormalizaVetor(-direcao, 3);
+    Vetor normal = p->objeto->calcularNormal(p->p);
+    Vetor l = biblioteca::NormalizaVetor(-direcao);
 
-    VectorXd r = (2 * ((biblioteca::ProdutoEscalar(l, normal,3)))*normal) - l;
-    VectorXd v = biblioteca::SubtracaoPontos(p->p, biblioteca::CriarPonto(0,0,0), 3);
-
-    double fatorEspecular = biblioteca::ProdutoEscalar(biblioteca::NormalizaVetor(v,3),biblioteca::NormalizaVetor(r,3), 3);
+    Vetor r = (2 * ((biblioteca::ProdutoEscalar(l, normal)))*normal) - l;
+    Vetor v = biblioteca::SubtracaoPontos(*p->p, Ponto{0,0,0});
+    double fatorEspecular = biblioteca::ProdutoEscalar(
+        biblioteca::NormalizaVetor(v),
+        biblioteca::NormalizaVetor(r));
 
     if(fatorEspecular < 0){
         return 0;
@@ -49,11 +50,11 @@ double LuzRemota::calcularFatorEspecular(PontoIntersecao *p) {
 
 }
 
-VectorXd LuzRemota::calcularIntensidadeEspecular(PontoIntersecao *p) {
-    VectorXd Id(3);
-    Id[0] = intensidadeRgb[0] * p->objeto->material->Ks[0];
-    Id[1] = intensidadeRgb[1] * p->objeto->material->Ks[1];
-    Id[2] = intensidadeRgb[2] * p->objeto->material->Ks[2];
+Vetor LuzRemota::calcularIntensidadeEspecular(PontoIntersecao *p) {
+    Vetor Id;
+    Id.x = intensidadeRgb.x * p->objeto->material->Ks[0];
+    Id.y = intensidadeRgb.y * p->objeto->material->Ks[1];
+    Id.z = intensidadeRgb.z * p->objeto->material->Ks[2];
 
     Id = Id * calcularFatorEspecular(p);
     return Id;

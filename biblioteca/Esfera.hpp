@@ -12,10 +12,11 @@ public:
     float raio;
     Ponto* centro;
     Esfera(float pRaio, Ponto* pCentro, Material* material);
-    tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, VectorXd pVetor0, int pTamanho) override;
+    tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, const Vetor &pV0) override;
+    Ponto* PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0);
     void mudaCoodCamera(Camera *camera) override;
     void mudaCoodMundo(Camera *camera) override;
-    VectorXd calcularNormal(Ponto* p) override;
+    Vetor calcularNormal(Ponto* p) override;
 
 
 };

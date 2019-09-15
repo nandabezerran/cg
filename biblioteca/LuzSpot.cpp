@@ -2,8 +2,9 @@
 // Created by fbeze on 08/09/2019.
 //
 
+#include <c++/cmath>
 #include "LuzSpot.hpp"
-LuzSpot::LuzSpot(float r, float g, float b, double x, double y, double z,VectorXd pDir,
+LuzSpot::LuzSpot(float r, float g, float b, double x, double y, double z, Vetor pDir,
         float pAng): direcao(pDir), angAbertura(pAng), Luz(r, g, b){
     posicao = new Ponto();
     posicao->x = x;
@@ -12,24 +13,23 @@ LuzSpot::LuzSpot(float r, float g, float b, double x, double y, double z,VectorX
 }
 
 double LuzSpot::calcularFatorDifuso(PontoIntersecao *p) {
-    VectorXd PlPint = biblioteca::SubtracaoPontos(p->p, posicao, 3);
-    VectorXd l = biblioteca::NormalizaVetor(PlPint, 3);
-    direcao = biblioteca::NormalizaVetor(direcao,3);
-    if(biblioteca::ProdutoEscalar(-l, direcao, 3) > cos(angAbertura)){
+    Vetor l = biblioteca::NormalizaVetor(biblioteca::SubtracaoPontos(*p->p, *posicao));
+    direcao = biblioteca::NormalizaVetor(direcao);
+    if(biblioteca::ProdutoEscalar(-l, direcao) > cos(angAbertura)){
         return 0 ;
     }
-    double fatorDifuso = biblioteca::ProdutoEscalar(l, p->objeto->calcularNormal(p->p), 3);
+    double fatorDifuso = biblioteca::ProdutoEscalar(l, p->objeto->calcularNormal(p->p));
     if(fatorDifuso < 0){
         return 0;
     }
     return fatorDifuso;
 }
 
-VectorXd LuzSpot::calcularIntensidadeDifusa(PontoIntersecao *p) {
-    VectorXd Id(3);
-    Id[0] = intensidadeRgb[0] * p->objeto->material->Kd[0];
-    Id[1] = intensidadeRgb[1] * p->objeto->material->Kd[1];
-    Id[2] = intensidadeRgb[2] * p->objeto->material->Kd[2];
+Vetor LuzSpot::calcularIntensidadeDifusa(PontoIntersecao *p) {
+    Vetor Id;
+    Id.x = intensidadeRgb.x * p->objeto->material->Kd[0];
+    Id.y = intensidadeRgb.y * p->objeto->material->Kd[1];
+    Id.z = intensidadeRgb.z * p->objeto->material->Kd[2];
 
     Id = Id * calcularFatorDifuso(p);
     return Id;
@@ -46,18 +46,17 @@ void LuzSpot::mudaCoodMundo(Camera *camera) {
 }
 
 double LuzSpot::calcularFatorEspecular(PontoIntersecao *p) {
-    VectorXd PlPint = biblioteca::SubtracaoPontos(p->p, posicao, 3);
-    VectorXd l = biblioteca::NormalizaVetor(PlPint, 3);
+    Vetor l = biblioteca::NormalizaVetor(biblioteca::SubtracaoPontos(*p->p, *posicao));
 
-    VectorXd normal = p->objeto->calcularNormal(p->p);
+    Vetor normal = p->objeto->calcularNormal(p->p);
 
-    VectorXd r = (2 * ((biblioteca::ProdutoEscalar(l, normal,3))*normal)) - l;
-    VectorXd v = biblioteca::SubtracaoPontos(p->p, biblioteca::CriarPonto(0,0,0), 3);
+    Vetor r = (2 * ((biblioteca::ProdutoEscalar(l, normal))*normal)) - l;
+    Vetor v = biblioteca::SubtracaoPontos(*p->p, Ponto{0,0,0});
 
-    if(biblioteca::ProdutoEscalar(-l, direcao, 3) > cos(angAbertura)){
+    if(biblioteca::ProdutoEscalar(-l, direcao) > cos(angAbertura)){
         return 0 ;
     }
-    double fatorEspecular = biblioteca::ProdutoEscalar(v, r, 3);
+    double fatorEspecular = biblioteca::ProdutoEscalar(v, r);
     if(fatorEspecular < 0){
         return 0;
     }
@@ -65,11 +64,11 @@ double LuzSpot::calcularFatorEspecular(PontoIntersecao *p) {
 
 }
 
-VectorXd LuzSpot::calcularIntensidadeEspecular(PontoIntersecao *p) {
-    VectorXd Id(3);
-    Id[0] = intensidadeRgb[0] * p->objeto->material->Ks[0];
-    Id[1] = intensidadeRgb[1] * p->objeto->material->Ks[1];
-    Id[2] = intensidadeRgb[2] * p->objeto->material->Ks[2];
+Vetor LuzSpot::calcularIntensidadeEspecular(PontoIntersecao *p) {
+    Vetor Id;
+    Id.x = intensidadeRgb.x * p->objeto->material->Ks[0];
+    Id.y = intensidadeRgb.y * p->objeto->material->Ks[1];
+    Id.z = intensidadeRgb.z * p->objeto->material->Ks[2];
 
     Id = Id * pow(calcularFatorEspecular(p), p->objeto->material->m);
     return Id;

@@ -1,4 +1,5 @@
 #include <utility>
+#include <c++/algorithm>
 
 //
 // Created by fbeze on 02/09/2019.
@@ -41,47 +42,15 @@ bool comparacaoDistancia(PontoIntersecao* i,PontoIntersecao* j){
     return (i->distOrigem < j->distOrigem);
 }
 
-PontoIntersecao* Cenario::rayCasting(Ponto* pCoordObs, Ponto* pontoGrade){
-    VectorXd vetorObGrade(3);
-    biblioteca::SubtracaoPontos(pCoordObs, pontoGrade, vetorObGrade);
-    vector<PontoIntersecao*> pInts;
-
-    Ponto* p_int1 = nullptr;
-    Ponto* p_int2 = nullptr;
-
-    for (auto &Object : objetos) {
-        if(!Object->visibilidade) {
-            tie(p_int1, p_int2) = Object->IntersecaoReta(pCoordObs, vetorObGrade, 3);
-            if (p_int1) {
-                auto *p = new PontoIntersecao(p_int1, Object,
-                        biblioteca::distanciaEntrePontos(pCoordObs, p_int1));
-                pInts.push_back(p);
-            }
-            if (p_int2) {
-                auto *p = new PontoIntersecao(p_int2, Object,
-                        biblioteca::distanciaEntrePontos(pCoordObs, p_int2));
-                pInts.push_back(p);
-            }
-        }
-    }
-    if (pInts.empty()){
-        return nullptr;
-    }
-
-    //Ordena o vetor por meio da distancia do ponto da interseção e da posição do observador
-    std::sort(pInts.begin(), pInts.end(), comparacaoDistancia);
-    return pInts[0];
-}
-
 PontoIntersecao* interceptaObjeto(Objeto* Object, Ponto *posObs, Ponto* pointGrid){
 
-    VectorXd lineObGrid = biblioteca::SubtracaoPontos(posObs, pointGrid, 3);
+    Vetor lineObGrid = biblioteca::SubtracaoPontos(*posObs, *pointGrid);
 
     vector<PontoIntersecao*> pInts;
     Ponto* p_int1 = nullptr;
     Ponto* p_int2 = nullptr;
 
-    tie(p_int1, p_int2) = Object->IntersecaoReta(posObs, lineObGrid, 3);
+    tie(p_int1, p_int2) = Object->IntersecaoReta(posObs, lineObGrid);
 
     if (p_int1 != nullptr) {
         auto *p = new PontoIntersecao(p_int1, Object, biblioteca::distanciaEntrePontos(posObs, p_int1));
@@ -104,7 +73,7 @@ PontoIntersecao* interceptaObjeto(Objeto* Object, Ponto *posObs, Ponto* pointGri
 void Cenario::pintarObjeto(Ponto*** pGrade){
     auto *aux = new PontoIntersecao();
     bool auxDefinido = false;
-    VectorXd intensidadeFuro(3);
+    Vetor intensidadeFuro;
     for (int i = 0; i < camera->qtdFuros; ++i) {
         for (int j = 0; j < camera->qtdFuros; ++j) {
             for (auto &pObjeto : objetos) {
@@ -128,8 +97,8 @@ void Cenario::pintarObjeto(Ponto*** pGrade){
                     intensidadeFuro += l->calcularIntensidadeEspecular(aux);
                 }
 
-                imagem.setPixel(j,i,intensidadeFuro[0],intensidadeFuro[1],
-                                intensidadeFuro[2]);
+                imagem.setPixel(j,i,intensidadeFuro.x,intensidadeFuro.y,
+                                intensidadeFuro.z);
             }
             else{
                 imagem.setPixel(j,i,0.3,0.7,0.9);
@@ -144,7 +113,7 @@ float* Cenario::getCenarioData(){
 }
 
 void Cenario::imprimirCenarioCompleto() {
-    PontoIntersecao* pInt;
+    PontoIntersecao intersecao;
 //    for (int i = 0; i < camera->qtdFuros ; ++i) {
 //        for (int j = 0; j < camera->qtdFuros; ++j) {
 //            pInt = rayCasting(camera->observador, camera->gradeCamera[j][i]);
@@ -157,16 +126,15 @@ void Cenario::imprimirCenarioCompleto() {
 }
 
 void Cenario::checarUmPonto(int linha, int coluna) {
-    PontoIntersecao* pInts;
+    PontoIntersecao intersecao;
     cout << "----------------------------------------------------------------------" << "\n";
     cout << "Centro (" << linha << ", "<< coluna <<"): " << camera->gradeCamera[linha][coluna]->x << ", "
     << camera->gradeCamera[linha][coluna]->y<< ", "<< camera->gradeCamera[linha][coluna]->z << "\n";
 
-    pInts = rayCasting(camera->observador, camera->gradeCamera[linha][coluna]);
-    if(pInts){
+    if(rayCasting(camera->observador, camera->gradeCamera[linha][coluna], intersecao)){
         //pInts->objeto->visibilidade = true;
-        cout << "Objeto encontrado: " << pInts->objeto->nome << " - Ponto Interceptado: " << pInts->p->x
-        << ", " <<pInts->p->y<< ", "<< pInts->p->z<< "\n";
+        cout << "Objeto encontrado: " << intersecao.objeto->nome << " - Ponto Interceptado: " << intersecao.p->x
+        << ", " <<intersecao.p->y<< ", "<< intersecao.p->z<< "\n";
         cout << "----------------------------------------------------------------------" << "\n";
         pintarObjeto(camera->gradeCamera);
     }
@@ -198,5 +166,45 @@ void Cenario::atualizarCamera() {
         luz->mudaCoodCamera(camera);
     }
     imprimirCenarioCompleto();
+}
+
+bool Cenario::rayCasting(Ponto *pCoordObs, Ponto *pontoGrade, PontoIntersecao &intersecao) {
+    Vetor vetorObGrade = biblioteca::SubtracaoPontos(*pCoordObs, *pontoGrade);
+
+    Ponto* p_int1 = nullptr;
+    Ponto* p_int2 = nullptr;
+
+    bool bateu = false;
+
+    for (auto &objeto : objetos) {
+        if(!objeto->visibilidade) {
+            tie(p_int1, p_int2) = objeto->IntersecaoReta(pCoordObs, vetorObGrade);
+            if (p_int1) {
+                if(!bateu) {
+                    intersecao = PontoIntersecao(p_int1, objeto,
+                        biblioteca::distanciaEntrePontos(pCoordObs, p_int1));
+                    bateu = true;
+                } else {
+                    auto dist = biblioteca::distanciaEntrePontos(pCoordObs, p_int1);
+                    if(dist < intersecao.distOrigem){
+                        intersecao = PontoIntersecao(p_int1, objeto, dist);
+                    }
+                }
+            }
+            if (p_int2) {
+                if(!bateu) {
+                    intersecao = PontoIntersecao(p_int1, objeto,
+                        biblioteca::distanciaEntrePontos(pCoordObs, p_int1));
+                    bateu = true;
+                } else {
+                    auto dist = biblioteca::distanciaEntrePontos(pCoordObs, p_int1);
+                    if(dist < intersecao.distOrigem){
+                        intersecao = PontoIntersecao(p_int1, objeto, dist);
+                    }
+                }
+            }
+        }
+    }
+    return bateu;
 }
 

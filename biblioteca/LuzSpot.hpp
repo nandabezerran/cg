@@ -12,14 +12,14 @@
 class LuzSpot : public Luz{
 public:
     Ponto* posicao;
-    VectorXd direcao;
+    Vetor direcao;
     float angAbertura;
-    LuzSpot(float r, float g, float b, double x, double y, double z,VectorXd pDir,
+    LuzSpot(float r, float g, float b, double x, double y, double z, Vetor pDir,
             float pAng);
     double calcularFatorDifuso(PontoIntersecao* p);
     double calcularFatorEspecular(PontoIntersecao* p);
-    VectorXd calcularIntensidadeDifusa(PontoIntersecao* p) override;
-    VectorXd calcularIntensidadeEspecular(PontoIntersecao *p) override;
+    Vetor calcularIntensidadeDifusa(PontoIntersecao* p) override;
+    Vetor calcularIntensidadeEspecular(PontoIntersecao *p) override;
     void mudaCoodCamera(Camera *camera) override;
     void mudaCoodMundo(Camera *camera) override;
 };

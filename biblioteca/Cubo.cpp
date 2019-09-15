@@ -42,81 +42,49 @@ Objeto("Cubo", false, material){
 
 
     for (auto face: faces) {
-        VectorXd p1p2 = biblioteca::SubtracaoPontos(face->p1->p, face->p2->p, 3);
-        VectorXd p1p3 = biblioteca::SubtracaoPontos(face->p1->p, face->p3->p, 3);
-        Plano *p = new Plano(face->p1->p, biblioteca::EncontrarNormal(p1p2, p1p3, 3));
-        face->p = p;
+        Vetor p1p2 = biblioteca::SubtracaoPontos(*face->p1->p, *face->p2->p);
+        Vetor p1p3 = biblioteca::SubtracaoPontos(*face->p1->p, *face->p3->p);
+        face->p = new Plano(face->p1->p, biblioteca::EncontrarNormal(p1p2, p1p3));
     }
 
 }
 
-VectorXd Cubo::calcularNormal(Ponto* p){
+Vetor Cubo::calcularNormal(Ponto* p){
     return normal;
 }
 
-//tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTamanho) {
-//
-//    vector< pair<Ponto*, Face*> > intFace;
-//
-//    for (int i = 0; i < faces.size()-1; i +=2) {
-//        Ponto *p = faces[i]->p->IntersecaoRetaPlano(pP0, pVetor0, pTamanho);
-//        if (p) {
-//            if(ValidacaoPontoCubo(faces[i], p)){
-//                intFace.emplace_back(make_pair(p, faces[i]));
-//                normal = faces[i]->p->normal;
-//            }
-//            else if(ValidacaoPontoCubo(faces[i+1], p)){
-//                intFace.emplace_back(make_pair(p, faces[i+1]));
-//                normal = faces[i+1]->p->normal;
-//
-//            }
-//            else{
-//                delete p;
-//            }
-//        }
-//        if(intFace.size() == 2){
-//            break;
-//
-//        }
-//    }
-//
-//
-//    return make_tuple(intFace.size() > 0 ? intFace[0].first: nullptr, intFace.size() > 1 ? intFace[1].first: nullptr);
-//
-//}
-
-tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, VectorXd pVetor0, int pTamanho) {
+tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, const Vetor &pV0) {
 
     vector< pair<Ponto*, Face*> > intFace;
     for (int i = 0; i < faces.size()-1; i +=2) {
-        Ponto *p = faces[i]->p->IntersecaoRetaPlano(pP0, pVetor0, pTamanho);
+        Ponto *p = faces[i]->p->IntersecaoRetaPlano(*pP0, pV0);
 
         if (p) {
-            VectorXd p1p = biblioteca::SubtracaoPontos(faces[i]->p1->p, p, 3);
-            VectorXd p2p = biblioteca::SubtracaoPontos(faces[i]->p2->p, p, 3);
-            VectorXd p3p = biblioteca::SubtracaoPontos(faces[i]->p3->p, p, 3);
-            VectorXd p2p3 = biblioteca::SubtracaoPontos(faces[i]->p2->p, faces[i]->p3->p, 3);
-            VectorXd p3p1 = biblioteca::SubtracaoPontos(faces[i]->p3->p, faces[i]->p1->p, 3);
-            VectorXd p1p2 = biblioteca::SubtracaoPontos(faces[i]->p1->p, faces[i]->p2->p, 3);
-            VectorXd p1p3 = biblioteca::SubtracaoPontos(faces[i]->p1->p, faces[i]->p3->p, 3);
+            Vetor p1p = biblioteca::SubtracaoPontos(*faces[i]->p1->p, *p);
+            Vetor p2p = biblioteca::SubtracaoPontos(*faces[i]->p2->p, *p);
+            Vetor p3p = biblioteca::SubtracaoPontos(*faces[i]->p3->p, *p);
+            Vetor p2p3 = biblioteca::SubtracaoPontos(*faces[i]->p2->p, *faces[i]->p3->p);
+            Vetor p3p1 = biblioteca::SubtracaoPontos(*faces[i]->p3->p, *faces[i]->p1->p);
+            Vetor p1p2 = biblioteca::SubtracaoPontos(*faces[i]->p1->p, *faces[i]->p2->p);
+            Vetor p1p3 = biblioteca::SubtracaoPontos(*faces[i]->p1->p, *faces[i]->p3->p);
 
-            if (ValidacaoPontoCubo(p1p2, p1p, p1p2, p1p3, 3) && ValidacaoPontoCubo(p2p3, p2p, p1p2, p1p3, 3) &&
-                ValidacaoPontoCubo(p3p1, p3p, p1p2, p1p3, 3)) {
+            if (ValidacaoPontoCubo(p1p2, p1p, p1p2, p1p3) && ValidacaoPontoCubo(p2p3, p2p, p1p2, p1p3) &&
+                ValidacaoPontoCubo(p3p1, p3p, p1p2, p1p3)) {
 
                 intFace.emplace_back(make_pair(p, faces[i]));
 
                 normal = faces[i]->p->normal;
             } else {
-                p1p = biblioteca::SubtracaoPontos(faces[i + 1]->p1->p, p, 3);
-                p2p = biblioteca::SubtracaoPontos(faces[i + 1]->p2->p, p, 3);
-                p3p = biblioteca::SubtracaoPontos(faces[i + 1]->p3->p, p, 3);
-                p2p3 = biblioteca::SubtracaoPontos(faces[i + 1]->p2->p, faces[i + 1]->p3->p, 3);
-                p3p1 = biblioteca::SubtracaoPontos(faces[i + 1]->p3->p, faces[i + 1]->p1->p, 3);
-                p1p2 = biblioteca::SubtracaoPontos(faces[i + 1]->p1->p, faces[i + 1]->p2->p, 3);
-                p1p3 = biblioteca::SubtracaoPontos(faces[i + 1]->p1->p, faces[i + 1]->p3->p, 3);
+                p1p = biblioteca::SubtracaoPontos(*faces[i + 1]->p1->p, *p);
+                p2p = biblioteca::SubtracaoPontos(*faces[i + 1]->p2->p, *p);
+                p3p = biblioteca::SubtracaoPontos(*faces[i + 1]->p3->p, *p);
+                p2p3 = biblioteca::SubtracaoPontos(*faces[i + 1]->p2->p, *faces[i + 1]->p3->p);
+                p3p1 = biblioteca::SubtracaoPontos(*faces[i + 1]->p3->p, *faces[i + 1]->p1->p);
+                p1p2 = biblioteca::SubtracaoPontos(*faces[i + 1]->p1->p, *faces[i + 1]->p2->p);
+                p1p3 = biblioteca::SubtracaoPontos(*faces[i + 1]->p1->p, *faces[i + 1]->p3->p);
 
-                if (ValidacaoPontoCubo(p1p2, p1p, p1p2, p1p3, 3) && ValidacaoPontoCubo(p2p3, p2p, p1p2, p1p3, 3) &&
-                    ValidacaoPontoCubo(p3p1, p3p, p1p2, p1p3, 3)) {
+                if (ValidacaoPontoCubo(p1p2, p1p, p1p2, p1p3) && ValidacaoPontoCubo(p2p3, p2p, p1p2, p1p3) &&
+                    ValidacaoPontoCubo(p3p1, p3p, p1p2, p1p3)) {
 
                     intFace.emplace_back(make_pair(p, faces[i + 1]));
 
@@ -162,6 +130,7 @@ Aresta* Cubo::CriarAresta(Vertice *pi, Vertice *pf, string id) {
     newAresta->verticeInicial = pi;
     return newAresta;
 }
+
 Face* Cubo::CriarFace(Vertice* v1, Vertice* v2, Vertice* v3, string id){
     auto newFace = new Face;
     newFace->p1 = v1;
@@ -170,44 +139,17 @@ Face* Cubo::CriarFace(Vertice* v1, Vertice* v2, Vertice* v3, string id){
     newFace->id = id;
 }
 
-bool Cubo::ValidacaoPontoCubo(VectorXd PxPy, VectorXd PxP, VectorXd P1P2, VectorXd P1P3, int tamanho) {
+bool Cubo::ValidacaoPontoCubo(const Vetor &PxPy, const Vetor &PxP, const Vetor &P1P2, const Vetor &P1P3) {
 
-    VectorXd val1 = biblioteca::ProdutoVetorial(PxPy, PxP, tamanho);
-    VectorXd val2 = biblioteca::ProdutoVetorial(P1P2, P1P3, tamanho);
-    double validacao = biblioteca::ProdutoEscalar(val1,val2,tamanho);
+    double validacao = biblioteca::ProdutoEscalar(biblioteca::ProdutoVetorial(PxPy, PxP),
+        biblioteca::ProdutoVetorial(P1P2, P1P3));
 
     return validacao > 0;
-
 }
-//bool Cubo::ValidacaoPontoCubo(Face *face, Ponto *p) {
-//
-//    VectorXd auxVec1 = biblioteca::SubtracaoPontos(face->p2->p, face->p1->p, 3);
-//    VectorXd auxVec2 = biblioteca::SubtracaoPontos(face->p3->p, face->p1->p, 3);
-//    VectorXd pv = biblioteca::ProdutoVetorial(auxVec1, auxVec2, 3);
-//
-//    double areaTotal = (sqrt(biblioteca::ProdutoEscalar(pv,pv,3)))/2;
-//
-//    VectorXd w1 = biblioteca::SubtracaoPontos(face->p1->p, p, 3);
-//    VectorXd w2 = biblioteca::SubtracaoPontos(face->p2->p, p, 3);
-//    VectorXd w3 = biblioteca::SubtracaoPontos(face->p3->p, p, 3);
-//
-//
-//    pv =  biblioteca::ProdutoVetorial(w1, w2, 3);
-//    double area1 = (sqrt(biblioteca::ProdutoEscalar(pv,pv,3)))/2;
-//
-//    pv =  biblioteca::ProdutoVetorial(w3, w1, 3);
-//    double area2 = (sqrt(biblioteca::ProdutoEscalar(pv,pv,3)))/2;
-//
-//    pv =  biblioteca::ProdutoVetorial(w2, w3, 3);
-//    double area3 =  (sqrt(biblioteca::ProdutoEscalar(pv,pv,3)))/2;
-//
-//    return abs(areaTotal - (area1 + area2 + area3)) < 0.000000005;
-//
-//}
-
 
 void Cubo::mudaCoodCamera(Camera *camera) {
     camera->mudarMundoCamera(centro);
+    //camera->mudarMundoCamera(normal);
     for (auto vertice: vertices) {
         camera->mudarMundoCamera(vertice->p);
     }
@@ -218,6 +160,7 @@ void Cubo::mudaCoodCamera(Camera *camera) {
 
 void Cubo::mudaCoodMundo(Camera *camera) {
     camera->mudarCameraMundo(centro);
+    //camera->mudarCameraMundo(normal);
     for (auto vertice: vertices) {
         camera->mudarMundoCamera(vertice->p);
     }
@@ -225,4 +168,8 @@ void Cubo::mudaCoodMundo(Camera *camera) {
         camera->mudarMundoCamera(face->p->normal);
     }
 
+}
+
+Ponto *Cubo::PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0) {
+    return nullptr;
 }

@@ -10,11 +10,9 @@
 #include "biblioteca/biblioteca.hpp"
 #include "biblioteca/Objeto.hpp"
 #include "biblioteca/Cilindro.hpp"
-#include "biblioteca/biblioteca.hpp"
 #include "biblioteca/Cone.hpp"
 #include "biblioteca/Esfera.hpp"
 #include "biblioteca/Cubo.hpp"
-#include "biblioteca/PontoIntersecao.hpp"
 #include "biblioteca/Material.hpp"
 #include "biblioteca/Luz.hpp"
 #include "biblioteca/LuzAmbiente.hpp"
@@ -25,7 +23,7 @@
 #include <chrono>
 
 float* test;
-int matrixSize = 300;
+int matrixSize = 200;
 Cenario *cenario;
 
 void display(){
@@ -81,17 +79,15 @@ int main(int argc, char** argv) {
 //-------------------------------------------- Luzes -----------------------------------------------------------------
     auto *luzAmbiente = new LuzAmbiente(0.3,0.3,0.3);
     auto *luzPontual = new LuzPontual(0.7,0.7,0.7,5, 5, 0);
-    VectorXd dir(3);
-    dir <<1,0.003,0;
+    Vetor dir(1, 0.003, 0);
     auto *luzSpot = new LuzSpot(1.0,1.0,1.0,5, -1, -20, dir, 10);
     vector<Luz *> luzes;
     luzes.emplace_back(luzSpot);
     luzes.emplace_back(luzPontual);
 //-------------------------------------------- Criação Objetos -------------------------------------------------------
-    VectorXd normal(3);
-    normal << 0, 1, 0;
+    Vetor normal(0, 1, 0);
     auto *objeto1 = new Cone(4, 3, biblioteca::CriarPonto(0, -1, -10), normal, material0);
-    auto *objeto2 = new Cilindro(5, 1, biblioteca::CriarPonto(0, -6, -10), normal, material1);
+    auto *objeto2 = new Cilindro(5, 1, Ponto{0, -6, -10}, normal, material1);
     auto *objeto3 = new Cubo(5, biblioteca::CriarPonto(0, -5, -20), material2);
     auto *objeto4 = new Cubo(5, biblioteca::CriarPonto(0, -1, -20), material2);
     auto *objeto5 = new Cubo(5, biblioteca::CriarPonto(0, 4, -20), material2);
@@ -122,9 +118,9 @@ int main(int argc, char** argv) {
 //    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-15);
 //    Ponto* pViewUp = biblioteca::CriarPonto(20,1,-5);
 //Frente Inclinado
-    Ponto* pCoordCamera = biblioteca::CriarPonto(-5, 5, 0);
-    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-15);
-    Ponto* pViewUp = biblioteca::CriarPonto(-5,6,0);
+    Ponto* pCoordCamera = biblioteca::CriarPonto(0, 0, 10);
+    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-10);
+    Ponto* pViewUp = biblioteca::CriarPonto(0,1,0);
 
     auto camera =  new Camera(pCoordCamera, pLookAt, pViewUp, tamGrade, zGrade, matrixSize);
     cenario = new Cenario(camera, objetos, luzAmbiente, luzes);
@@ -136,7 +132,7 @@ int main(int argc, char** argv) {
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
     std::cout << "Time taken by ImprimirCenarioCompleto algorithm: "
-              << duration.count() << " microseconds\n" << std::endl;
+              << duration.count() / 1000000.0 << " seconds\n" << std::endl;
 
 // ------------------------------------- Janela ----------------------------------------------------------------------
     glutInit(&argc, argv);
