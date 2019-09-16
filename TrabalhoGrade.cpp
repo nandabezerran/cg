@@ -23,7 +23,7 @@
 #include <chrono>
 
 float* test;
-int matrixSize = 1000;
+int matrixSize = 500;
 Cenario *cenario;
 
 void display(){

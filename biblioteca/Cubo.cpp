@@ -27,6 +27,7 @@ Objeto("Cubo", false, material){
     vertices.push_back(CriarVertice(p7, "V7"));
     vertices.push_back(CriarVertice(p8, "V8"));
 
+
     triangulos.push_back(CriarTriangulo(vertices[0], vertices[3], vertices[2], "F1"));
     triangulos.push_back(CriarTriangulo(vertices[2], vertices[1], vertices[0], "F2"));
     triangulos.push_back(CriarTriangulo(vertices[6], vertices[5], vertices[2], "F3"));
@@ -40,6 +41,14 @@ Objeto("Cubo", false, material){
     triangulos.push_back(CriarTriangulo(vertices[0], vertices[5], vertices[4], "F11"));
     triangulos.push_back(CriarTriangulo(vertices[5], vertices[0], vertices[1], "F12"));
 
+    faces.push_back(CriarFace(triangulos[0], triangulos[1]));
+    faces.push_back(CriarFace(triangulos[2], triangulos[3]));
+    faces.push_back(CriarFace(triangulos[4], triangulos[5]));
+    faces.push_back(CriarFace(triangulos[6], triangulos[7]));
+    faces.push_back(CriarFace(triangulos[8], triangulos[9]));
+    faces.push_back(CriarFace(triangulos[10], triangulos[11]));
+
+
 }
 
 Vetor Cubo::calcularNormal(Ponto* p){
@@ -49,27 +58,23 @@ Vetor Cubo::calcularNormal(Ponto* p){
 tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, const Vetor &pV0) {
 
     vector< pair<Ponto*, Triangulo*> > intTriangulo;
-    for (int i = 0; i < triangulos.size()-1; i +=2) {
-        Ponto *p = triangulos[i]->p->IntersecaoRetaPlano(*pP0, pV0);
-
-        if (p) {
-            Vetor p1p = biblioteca::SubtracaoPontos(*triangulos[i]->p1->p, *p);
-            Vetor p2p = biblioteca::SubtracaoPontos(*triangulos[i]->p2->p, *p);
-            Vetor p3p = biblioteca::SubtracaoPontos(*triangulos[i]->p3->p, *p);
-
-            if (triangulos[i]->ValidacaoPontoTriangulo(p1p,p2p,p3p)) {
-                intTriangulo.emplace_back(make_pair(p, triangulos[i]));
-                normal = triangulos[i]->p->normal;
-
-            } else {
-                p1p = biblioteca::SubtracaoPontos(*triangulos[i + 1]->p1->p, *p);
-                p2p = biblioteca::SubtracaoPontos(*triangulos[i + 1]->p2->p, *p);
-                p3p = biblioteca::SubtracaoPontos(*triangulos[i + 1]->p3->p, *p);
-
-                if (triangulos[i+1]->ValidacaoPontoTriangulo(p1p,p2p,p3p)) {
-                    intTriangulo.emplace_back(make_pair(p, triangulos[i + 1]));
-                    normal = triangulos[i + 1]->p->normal;
-                } else {
+    Ponto *p;
+    for(auto face: faces){
+        if(face->t1->p1 == vMaisProx || face->t1->p2 == vMaisProx ||
+           face->t1->p3 == vMaisProx || face->t2->p1 == vMaisProx ||
+           face->t2->p2 == vMaisProx || face->t2->p3 == vMaisProx ){
+            p = face->t1->intersecaoReta(pP0, pV0);
+            if (p) {
+                intTriangulo.emplace_back(make_pair(p, face->t1));
+                normal = face->t1->p->normal;
+            }
+            else{
+                p = face->t2->intersecaoReta(pP0, pV0);
+                if(p){
+                    intTriangulo.emplace_back(make_pair(p, face->t2));
+                    normal = face->t2->p->normal;
+                }
+                else{
                     delete p;
                 }
             }
@@ -78,7 +83,6 @@ tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, const Vetor &pV0) {
             break;
         }
     }
-
 
     if(!intTriangulo.empty()) {
         if (intTriangulo.size() >= 2) {
@@ -96,6 +100,7 @@ tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, const Vetor &pV0) {
     ? intTriangulo[1].first: nullptr);
 
 }
+
 
 Vertice* Cubo::CriarVertice(Ponto* ponto, const string& identificador){
     auto v = new Vertice();
@@ -126,6 +131,8 @@ void Cubo::mudaCoodCamera(Camera *camera) {
     for (auto triangulo: triangulos) {
         triangulo->mudaCoodCamera(camera);
     }
+
+    vMaisProxObs();
 }
 
 void Cubo::mudaCoodMundo(Camera *camera) {
@@ -136,9 +143,26 @@ void Cubo::mudaCoodMundo(Camera *camera) {
     for (auto triangulo: triangulos) {
         triangulo->mudaCoodCamera(camera);
     }
-
 }
 
 Ponto *Cubo::PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0) {
     return nullptr;
+}
+
+void Cubo::vMaisProxObs() {
+    double distancia;
+    distancia = biblioteca::distanciaEntrePontos(Ponto{0,0,0}, *vertices[0]->p);
+    for(auto vertice : vertices){
+        if(biblioteca::distanciaEntrePontos(Ponto{0,0,0}, *vertice->p) < distancia){
+            vMaisProx = vertice;
+        }
+    }
+}
+
+Face *Cubo::CriarFace(Triangulo *pT1, Triangulo *pT2) {
+    auto f = new Face();
+    f->t1 = pT1;
+    f->t2 = pT2;
+    return f;
+
 }
