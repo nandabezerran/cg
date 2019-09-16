@@ -29,3 +29,22 @@ void Triangulo::mudaCoodCamera(Camera *camera) {
     camera->mudarCameraMundo(p1p3);
 }
 
+bool Triangulo::ValidacaoPontoTriangulo(const Vetor &P1P, const Vetor &P2P, const Vetor &P3P) {
+    double validacao = biblioteca::ProdutoEscalar(biblioteca::ProdutoVetorial(p1p2, P1P),
+                                                  biblioteca::ProdutoVetorial(p1p2, p1p3));
+    if(validacao < 0){
+        return false;
+    }
+
+    validacao = biblioteca::ProdutoEscalar(biblioteca::ProdutoVetorial(p2p3, P2P),
+                                                  biblioteca::ProdutoVetorial(p1p2, p1p3));
+    if(validacao < 0){
+        return false;
+    }
+
+    validacao = biblioteca::ProdutoEscalar(biblioteca::ProdutoVetorial(p3p1, P3P),
+                                           biblioteca::ProdutoVetorial(p1p2, p1p3));
+
+    return validacao > 0;
+}
+

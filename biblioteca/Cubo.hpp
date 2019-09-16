@@ -34,10 +34,9 @@ public:
     Cubo(double cAresta, Ponto* cCentro, Material* material);
     tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, const Vetor &pV0) override;
     Ponto* PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0) override;
-    Vertice* CriarVertice(Ponto* p1, string id);
-    Aresta* CriarAresta(Vertice* pi, Vertice* pf, string id);
-    Triangulo* CriarTriangulo(Vertice *v1, Vertice *v2, Vertice *v3, string id);
-    bool ValidacaoPontoCubo(const Vetor &PxPy, const Vetor &PxP, const Vetor &P1P2, const Vetor &P1P3);
+    Vertice* CriarVertice(Ponto* p1,const string& id);
+    Aresta* CriarAresta(Vertice* pi, Vertice* pf, const string& id);
+    Triangulo* CriarTriangulo(Vertice *v1, Vertice *v2, Vertice *v3, const string& id);
     void mudaCoodCamera(Camera *camera) override;
     void mudaCoodMundo(Camera *camera) override;
     Vetor calcularNormal(Ponto* p) override;

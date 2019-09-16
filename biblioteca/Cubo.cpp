@@ -57,25 +57,17 @@ tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, const Vetor &pV0) {
             Vetor p2p = biblioteca::SubtracaoPontos(*triangulos[i]->p2->p, *p);
             Vetor p3p = biblioteca::SubtracaoPontos(*triangulos[i]->p3->p, *p);
 
-
-            if (ValidacaoPontoCubo(triangulos[i]->p1p2, p1p, triangulos[i]->p1p2, triangulos[i]->p1p3) &&
-                ValidacaoPontoCubo(triangulos[i]->p2p3, p2p, triangulos[i]->p1p2, triangulos[i]->p1p3) &&
-                ValidacaoPontoCubo(triangulos[i]->p3p1, p3p, triangulos[i]->p1p2, triangulos[i]->p1p3)) {
-
+            if (triangulos[i]->ValidacaoPontoTriangulo(p1p,p2p,p3p)) {
                 intTriangulo.emplace_back(make_pair(p, triangulos[i]));
-
                 normal = triangulos[i]->p->normal;
+
             } else {
                 p1p = biblioteca::SubtracaoPontos(*triangulos[i + 1]->p1->p, *p);
                 p2p = biblioteca::SubtracaoPontos(*triangulos[i + 1]->p2->p, *p);
                 p3p = biblioteca::SubtracaoPontos(*triangulos[i + 1]->p3->p, *p);
 
-                if (ValidacaoPontoCubo(triangulos[i+1]->p1p2, p1p, triangulos[i+1]->p1p2, triangulos[i+1]->p1p3) &&
-                    ValidacaoPontoCubo(triangulos[i+1]->p2p3, p2p, triangulos[i+1]->p1p2, triangulos[i+1]->p1p3) &&
-                    ValidacaoPontoCubo(triangulos[i+1]->p3p1, p3p, triangulos[i+1]->p1p2, triangulos[i+1]->p1p3)) {
-
+                if (triangulos[i+1]->ValidacaoPontoTriangulo(p1p,p2p,p3p)) {
                     intTriangulo.emplace_back(make_pair(p, triangulos[i + 1]));
-
                     normal = triangulos[i + 1]->p->normal;
                 } else {
                     delete p;
@@ -105,14 +97,14 @@ tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, const Vetor &pV0) {
 
 }
 
-Vertice* Cubo::CriarVertice(Ponto* ponto, string identificador){
+Vertice* Cubo::CriarVertice(Ponto* ponto, const string& identificador){
     auto v = new Vertice();
     v->p = ponto;
     v->id = identificador;
     return v;
 }
 
-Aresta* Cubo::CriarAresta(Vertice *pi, Vertice *pf, string id) {
+Aresta* Cubo::CriarAresta(Vertice *pi, Vertice *pf, const string& id) {
     auto newAresta = new Aresta;
     newAresta->id = id;
     newAresta->verticeFinal = pf;
@@ -120,18 +112,10 @@ Aresta* Cubo::CriarAresta(Vertice *pi, Vertice *pf, string id) {
     return newAresta;
 }
 
-Triangulo* Cubo::CriarTriangulo(Vertice *v1, Vertice *v2, Vertice *v3, string id){
+Triangulo* Cubo::CriarTriangulo(Vertice *v1, Vertice *v2, Vertice *v3, const string& id){
     Vetor p1p2 = biblioteca::SubtracaoPontos(*v1->p, *v2->p);
     Vetor p1p3 = biblioteca::SubtracaoPontos(*v1->p, *v3->p);
     return new Triangulo(id, v1, v2, v3, new Plano(v1->p, biblioteca::EncontrarNormal(p1p2, p1p3)));
-}
-
-bool Cubo::ValidacaoPontoCubo(const Vetor &PxPy, const Vetor &PxP, const Vetor &P1P2, const Vetor &P1P3) {
-
-    double validacao = biblioteca::ProdutoEscalar(biblioteca::ProdutoVetorial(PxPy, PxP),
-        biblioteca::ProdutoVetorial(P1P2, P1P3));
-
-    return validacao > 0;
 }
 
 void Cubo::mudaCoodCamera(Camera *camera) {
