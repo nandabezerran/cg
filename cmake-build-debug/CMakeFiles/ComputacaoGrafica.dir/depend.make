@@ -22,6 +22,7 @@ CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.obj: ../biblioteca/Material.h
 CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.obj: ../biblioteca/Objeto.hpp
 CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.obj: ../biblioteca/Plano.hpp
 CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.obj: ../biblioteca/PontoIntersecao.hpp
+CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.obj: ../biblioteca/Triangulo.hpp
 CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.obj: ../biblioteca/Vetor.hpp
 CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.obj: ../biblioteca/biblioteca.hpp
 
@@ -67,6 +68,7 @@ CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.obj: ../biblioteca/Cubo.hpp
 CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.obj: ../biblioteca/Material.hpp
 CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.obj: ../biblioteca/Objeto.hpp
 CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.obj: ../biblioteca/Plano.hpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.obj: ../biblioteca/Triangulo.hpp
 CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.obj: ../biblioteca/Vetor.hpp
 CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.obj: ../biblioteca/biblioteca.hpp
 
@@ -149,6 +151,16 @@ CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.obj: ../bibliote
 CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.obj: ../biblioteca/PontoIntersecao.hpp
 CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.obj: ../biblioteca/Vetor.hpp
 CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.obj: ../biblioteca/biblioteca.hpp
+
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Triangulo.cpp.obj: ../biblioteca/Camera.hpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Triangulo.cpp.obj: ../biblioteca/Cubo.hpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Triangulo.cpp.obj: ../biblioteca/Material.hpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Triangulo.cpp.obj: ../biblioteca/Objeto.hpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Triangulo.cpp.obj: ../biblioteca/Plano.hpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Triangulo.cpp.obj: ../biblioteca/Triangulo.cpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Triangulo.cpp.obj: ../biblioteca/Triangulo.hpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Triangulo.cpp.obj: ../biblioteca/Vetor.hpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Triangulo.cpp.obj: ../biblioteca/biblioteca.hpp
 
 CMakeFiles/ComputacaoGrafica.dir/biblioteca/Vetor.cpp.obj: ../biblioteca/Vetor.cpp
 CMakeFiles/ComputacaoGrafica.dir/biblioteca/Vetor.cpp.obj: ../biblioteca/Vetor.hpp

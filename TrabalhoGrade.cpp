@@ -23,7 +23,7 @@
 #include <chrono>
 
 float* test;
-int matrixSize = 200;
+int matrixSize = 300;
 Cenario *cenario;
 
 void display(){
@@ -118,9 +118,9 @@ int main(int argc, char** argv) {
 //    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-15);
 //    Ponto* pViewUp = biblioteca::CriarPonto(20,1,-5);
 //Frente Inclinado
-    Ponto* pCoordCamera = biblioteca::CriarPonto(0, 0, 10);
+    Ponto* pCoordCamera = biblioteca::CriarPonto(-5, 5, 0);
     Ponto* pLookAt = biblioteca::CriarPonto(0,0,-10);
-    Ponto* pViewUp = biblioteca::CriarPonto(0,1,0);
+    Ponto* pViewUp = biblioteca::CriarPonto(-5,6,0);
 
     auto camera =  new Camera(pCoordCamera, pLookAt, pViewUp, tamGrade, zGrade, matrixSize);
     cenario = new Cenario(camera, objetos, luzAmbiente, luzes);

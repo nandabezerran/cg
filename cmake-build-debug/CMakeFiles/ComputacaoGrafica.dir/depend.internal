@@ -23,6 +23,7 @@ CMakeFiles/ComputacaoGrafica.dir/TrabalhoGrade.cpp.obj
  C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Objeto.hpp
  C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Plano.hpp
  C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/PontoIntersecao.hpp
+ C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Triangulo.hpp
  C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Vetor.hpp
  C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/biblioteca.hpp
 CMakeFiles/ComputacaoGrafica.dir/biblioteca/Camera.cpp.obj
@@ -68,6 +69,7 @@ CMakeFiles/ComputacaoGrafica.dir/biblioteca/Cubo.cpp.obj
  C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Material.hpp
  C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Objeto.hpp
  C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Plano.hpp
+ C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Triangulo.hpp
  C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Vetor.hpp
  C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/biblioteca.hpp
 CMakeFiles/ComputacaoGrafica.dir/biblioteca/Esfera.cpp.obj
@@ -148,6 +150,16 @@ CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.obj
  C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Objeto.hpp
  C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/PontoIntersecao.cpp
  C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/PontoIntersecao.hpp
+ C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Vetor.hpp
+ C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/biblioteca.hpp
+CMakeFiles/ComputacaoGrafica.dir/biblioteca/Triangulo.cpp.obj
+ C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Camera.hpp
+ C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Cubo.hpp
+ C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Material.hpp
+ C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Objeto.hpp
+ C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Plano.hpp
+ C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Triangulo.cpp
+ C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Triangulo.hpp
  C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Vetor.hpp
  C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/biblioteca.hpp
 CMakeFiles/ComputacaoGrafica.dir/biblioteca/Vetor.cpp.obj

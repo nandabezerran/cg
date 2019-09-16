@@ -65,11 +65,11 @@ double LuzSpot::calcularFatorEspecular(PontoIntersecao *p) {
 }
 
 Vetor LuzSpot::calcularIntensidadeEspecular(PontoIntersecao *p) {
-    Vetor Id;
-    Id.x = intensidadeRgb.x * p->objeto->material->Ks[0];
-    Id.y = intensidadeRgb.y * p->objeto->material->Ks[1];
-    Id.z = intensidadeRgb.z * p->objeto->material->Ks[2];
+    Vetor Is;
+    Is.x = intensidadeRgb.x * p->objeto->material->Ks[0];
+    Is.y = intensidadeRgb.y * p->objeto->material->Ks[1];
+    Is.z = intensidadeRgb.z * p->objeto->material->Ks[2];
 
-    Id = Id * pow(calcularFatorEspecular(p), p->objeto->material->m);
-    return Id;
+    Is = Is * pow(calcularFatorEspecular(p), p->objeto->material->m);
+    return Is;
 }

@@ -581,6 +581,33 @@ biblioteca/PontoIntersecao.cpp.s:
 	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/PontoIntersecao.cpp.s
 .PHONY : biblioteca/PontoIntersecao.cpp.s
 
+biblioteca/Triangulo.obj: biblioteca/Triangulo.cpp.obj
+
+.PHONY : biblioteca/Triangulo.obj
+
+# target to build an object file
+biblioteca/Triangulo.cpp.obj:
+	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Triangulo.cpp.obj
+.PHONY : biblioteca/Triangulo.cpp.obj
+
+biblioteca/Triangulo.i: biblioteca/Triangulo.cpp.i
+
+.PHONY : biblioteca/Triangulo.i
+
+# target to preprocess a source file
+biblioteca/Triangulo.cpp.i:
+	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Triangulo.cpp.i
+.PHONY : biblioteca/Triangulo.cpp.i
+
+biblioteca/Triangulo.s: biblioteca/Triangulo.cpp.s
+
+.PHONY : biblioteca/Triangulo.s
+
+# target to generate assembly for a file
+biblioteca/Triangulo.cpp.s:
+	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/biblioteca/Triangulo.cpp.s
+.PHONY : biblioteca/Triangulo.cpp.s
+
 biblioteca/Vetor.obj: biblioteca/Vetor.cpp.obj
 
 .PHONY : biblioteca/Vetor.obj
@@ -695,6 +722,9 @@ help:
 	@echo ... biblioteca/PontoIntersecao.obj
 	@echo ... biblioteca/PontoIntersecao.i
 	@echo ... biblioteca/PontoIntersecao.s
+	@echo ... biblioteca/Triangulo.obj
+	@echo ... biblioteca/Triangulo.i
+	@echo ... biblioteca/Triangulo.s
 	@echo ... biblioteca/Vetor.obj
 	@echo ... biblioteca/Vetor.i
 	@echo ... biblioteca/Vetor.s
