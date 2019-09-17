@@ -6,6 +6,7 @@
 #define COMPUTACAOGRAFICA_CONE_HPP
 #include "biblioteca.hpp"
 #include "Objeto.hpp"
+#include "Plano.hpp"
 
 class Cone : public Objeto{
 public:
@@ -14,6 +15,7 @@ public:
     float raio;
     Ponto* centro;
     Vetor normal;
+    Plano* base;
 
     Cone(float pAltura, float pRaio, Ponto* pCentro, Vetor pNormal, Material* material);
     Vetor calcularNormal(Ponto* pi);
