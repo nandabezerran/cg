@@ -151,10 +151,14 @@ Ponto *Cubo::PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0) {
 
 void Cubo::vMaisProxObs() {
     double distancia;
+    double aux;
     distancia = biblioteca::distanciaEntrePontos(Ponto{0,0,0}, *vertices[0]->p);
+    vMaisProx = vertices[0];
     for(auto vertice : vertices){
-        if(biblioteca::distanciaEntrePontos(Ponto{0,0,0}, *vertice->p) < distancia){
+        aux = biblioteca::distanciaEntrePontos(Ponto{0,0,0}, *vertice->p);
+        if(aux < distancia){
             vMaisProx = vertice;
+            distancia = aux;
         }
     }
 }
