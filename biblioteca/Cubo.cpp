@@ -56,8 +56,6 @@ Vetor Cubo::calcularNormal(Ponto* p){
 }
 
 tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, const Vetor &pV0) {
-
-    vector< pair<Ponto*, Triangulo*> > intTriangulo;
     Ponto *p;
     for(auto face: faces){
         if(face->t1->p1 == vMaisProx || face->t1->p2 == vMaisProx ||
@@ -65,39 +63,24 @@ tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, const Vetor &pV0) {
            face->t2->p2 == vMaisProx || face->t2->p3 == vMaisProx ){
             p = face->t1->intersecaoReta(pP0, pV0);
             if (p) {
-                intTriangulo.emplace_back(make_pair(p, face->t1));
                 normal = face->t1->p->normal;
+                return make_pair(p, nullptr);
             }
             else{
                 p = face->t2->intersecaoReta(pP0, pV0);
                 if(p){
-                    intTriangulo.emplace_back(make_pair(p, face->t2));
                     normal = face->t2->p->normal;
+                    return make_pair(p, nullptr);
+
                 }
                 else{
                     delete p;
                 }
             }
         }
-        if(intTriangulo.size() == 2){
-            break;
-        }
     }
 
-    if(!intTriangulo.empty()) {
-        if (intTriangulo.size() >= 2) {
-            if (biblioteca::distanciaEntrePontos(pP0, intTriangulo[0].first) <
-                biblioteca::distanciaEntrePontos(pP0, intTriangulo[1].first)) {
-                normal = intTriangulo[0].second->p->normal;
-            }
-        }
-        else {
-            normal = intTriangulo[0].second->p->normal;
-        }
-    }
-
-    return make_tuple(!intTriangulo.empty() ? intTriangulo[0].first: nullptr, intTriangulo.size() > 1
-    ? intTriangulo[1].first: nullptr);
+    return make_tuple(nullptr, nullptr);
 
 }
 
