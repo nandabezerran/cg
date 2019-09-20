@@ -142,3 +142,7 @@ void Cubo::mudaCoodMundo(Camera *camera) {
 Ponto *Cubo::PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0) {
     return nullptr;
 }
+
+Objeto* Cubo::aplicarTransformacao(vector<Matriz> &pMatrizesTransf){
+    return this;
+}

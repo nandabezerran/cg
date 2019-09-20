@@ -169,6 +169,12 @@
 		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Material.hpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Matriz.cpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
+		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Matriz.hpp">
+			<Option target="ComputacaoGrafica"/>
+		</Unit>
 		<Unit filename="C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/biblioteca/Objeto.cpp">
 			<Option target="ComputacaoGrafica"/>
 		</Unit>

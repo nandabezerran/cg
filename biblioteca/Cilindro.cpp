@@ -134,3 +134,7 @@ Ponto *Cilindro::PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0) {
 
     return p_int1;
 }
+
+Objeto* Cilindro::aplicarTransformacao(vector<Matriz> &pMatrizesTransf){
+    return this;
+}

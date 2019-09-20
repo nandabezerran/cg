@@ -6,6 +6,7 @@
 //
 
 #include "Cenario.hpp"
+#include "Plano.hpp"
 
 Cenario::Cenario(Camera *pCamera, vector<Objeto*> pObjetos, LuzAmbiente* pLuzAmb, vector<Luz*> pLuzes) : camera(pCamera),
 imagem(camera->qtdFuros, camera->qtdFuros), objetos(pObjetos), luzAmbiente(pLuzAmb), luzes(pLuzes) {
@@ -206,5 +207,44 @@ bool Cenario::rayCasting(Ponto *pCoordObs, Ponto *pontoGrade, PontoIntersecao &i
         }
     }
     return bateu;
+}
+
+void Cenario::gerarEspelho(int linha, int coluna) {
+    PontoIntersecao intersecao;
+    Matriz espelhamento = Matriz(4,4, 0);
+    Matriz transposta = Matriz(4,4, 0);
+    Matriz transposta2 = Matriz(4,4, 0);
+    Vetor normal;
+    if(rayCasting(camera->observador, camera->gradeCamera[linha][coluna], intersecao)){
+        normal = intersecao.objeto->calcularNormal(intersecao.p);
+        transposta(0,3) = -intersecao.p->x;
+        transposta(1,3) = -intersecao.p->y;
+        transposta(2,3) = -intersecao.p->z;
+
+        transposta2(0,4) = intersecao.p->x;
+        transposta2(1,4) = intersecao.p->y;
+        transposta2(2,4) = intersecao.p->z;
+
+        espelhamento(0,0) = 1 - (2*normal.x*normal.x);
+        espelhamento(0,1) = -2*normal.x*normal.y;
+        espelhamento(0,2) = -2*normal.x*normal.z;
+
+        espelhamento(1,0) = -2*normal.y*normal.x;
+        espelhamento(1,1) = 1-2*normal.y*normal.y;
+        espelhamento(1,2) = -2*normal.y*normal.z;
+
+        espelhamento(2,0) = -2*normal.z*normal.x;
+        espelhamento(2,1) = -2*normal.z*normal.y;
+        espelhamento(2,2) = 1-2*normal.z*normal.z;
+    }
+    vector<Matriz> transf;
+    transf.push_back(transposta);
+    transf.push_back(espelhamento);
+    transf.push_back(transposta2);
+    int tam = objetos.size();
+    for (int i = 0; i < tam ; ++i) {
+        objetos.push_back(objetos[i]->aplicarTransformacao(transf));
+    }
+    imprimirCenarioCompleto();
 }
 

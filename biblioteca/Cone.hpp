@@ -6,7 +6,9 @@
 #define COMPUTACAOGRAFICA_CONE_HPP
 #include "biblioteca.hpp"
 #include "Objeto.hpp"
+#include "Matriz.hpp"
 
+class Objeto;
 class Cone : public Objeto{
 public:
     string nome;
@@ -24,6 +26,8 @@ public:
     bool ValidacaoPontoBase(Ponto* pP0, const Vetor &pVetor0);
     void mudaCoodCamera(Camera *camera) override;
     void mudaCoodMundo(Camera *camera) override;
+
+    Objeto* aplicarTransformacao(vector<Matriz> &pMatrizesTransf) override;
 
 
 

@@ -40,5 +40,6 @@ public:
     void mudaCoodCamera(Camera *camera) override;
     void mudaCoodMundo(Camera *camera) override;
     Vetor calcularNormal(Ponto* p) override;
+    Objeto* aplicarTransformacao(vector<Matriz> &pMatrizesTransf) override;
 };
 #endif //COMPUTACAOGRAFICA_CUBO_HPP
