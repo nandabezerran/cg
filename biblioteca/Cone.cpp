@@ -184,11 +184,8 @@ Objeto* Cone::aplicarTransformacao(vector<Matriz> &pMatrizesTransf) {
     centroAux(1,0) = centro->y;
     centroAux(2,0) = centro->z;
     centroAux(3,0) = 1;
-    centroAux.imprimir();
     for (auto &matriz : pMatrizesTransf) {
-        matriz.imprimir();
         centroAux = matriz * centroAux;
-        centroAux.imprimir();
     }
 
     return new Cone(altura, raio, new Ponto{centroAux(0,0), centroAux(1,0), centroAux(2,0)},

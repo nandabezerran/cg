@@ -93,9 +93,9 @@ int main(int argc, char** argv) {
 //-------------------------------------------- Criação Objetos -------------------------------------------------------
     Vetor normal(0, 1, 0);
     auto *objeto1 = new Cone(4, 3, biblioteca::CriarPonto(5, 0, -10), normal, material0);
-//    auto *objeto2 = new Cilindro(5, 1, Ponto{5, -5, -10}, normal, material1);
+    auto *objeto2 = new Cilindro(5, 1, Ponto{5, -5, -10}, normal, material1);
     auto *objeto6 = new Cone(4, 3, biblioteca::CriarPonto(-5, 0, -10), normal, material0);
-//    auto *objeto7 = new Cilindro(5, 1, Ponto{-5, -5, -10}, normal, material1);
+    auto *objeto7 = new Cilindro(5, 1, Ponto{-5, -5, -10}, normal, material1);
 //   auto *objeto3 = new Cubo(5, biblioteca::CriarPonto(0, -5, -20), material2);
     auto *objeto4 = new Cubo(5, biblioteca::CriarPonto(0, -1, -20), material2);
 //    auto *objeto5 = new Cubo(5, biblioteca::CriarPonto(0, 4, -20), material2);
@@ -105,12 +105,12 @@ int main(int argc, char** argv) {
     vector<Objeto *> objetos;
 
     objetos.push_back(objeto1);
-//    objetos.push_back(objeto2);
+    objetos.push_back(objeto2);
 //    objetos.push_back(objeto3);
     objetos.push_back(objeto4);
 //    objetos.push_back(objeto5);
     objetos.push_back(objeto6);
-//    objetos.push_back(objeto7);
+    objetos.push_back(objeto7);
 
 // ------------------------------------- Infos da Grade --------------------------------------------------------------
     float tamGrade = 4;

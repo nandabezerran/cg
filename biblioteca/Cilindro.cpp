@@ -136,5 +136,15 @@ Ponto *Cilindro::PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0) {
 }
 
 Objeto* Cilindro::aplicarTransformacao(vector<Matriz> &pMatrizesTransf){
-    return this;
+    Matriz centroAux = Matriz(4,1,0);
+    centroAux(0,0) = centro.x;
+    centroAux(1,0) = centro.y;
+    centroAux(2,0) = centro.z;
+    centroAux(3,0) = 1;
+    for (auto &matriz : pMatrizesTransf) {
+        centroAux = matriz * centroAux;
+    }
+
+    return new Cilindro(altura, raio, Ponto{centroAux(0,0), centroAux(1,0), centroAux(2,0)},
+                    normal, material);
 }
