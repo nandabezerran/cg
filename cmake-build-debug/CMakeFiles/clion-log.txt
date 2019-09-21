@@ -1,4 +1,0 @@
-"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=C:/Users/fbeze/Downloads/jom_1_1_3/jom.exe -G "CodeBlocks - MinGW Makefiles" C:\Users\fbeze\OneDrive\Documentos\Faculdade\ComputacaoGrafica
--- Configuring done
--- Generating done
--- Build files have been written to: C:/Users/fbeze/OneDrive/Documentos/Faculdade/ComputacaoGrafica/cmake-build-debug
