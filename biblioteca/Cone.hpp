@@ -7,6 +7,7 @@
 #include "biblioteca.hpp"
 #include "Objeto.hpp"
 #include "Matriz.hpp"
+#include "Plano.hpp"
 
 class Objeto;
 class Cone : public Objeto{
@@ -14,6 +15,7 @@ public:
     string nome;
     float altura;
     float raio;
+    Plano* base;
     Ponto* centro;
     Vetor normal;
 
