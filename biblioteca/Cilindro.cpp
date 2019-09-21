@@ -148,3 +148,7 @@ Objeto* Cilindro::aplicarTransformacao(vector<Matriz> &pMatrizesTransf){
     return new Cilindro(altura, raio, Ponto{centroAux(0,0), centroAux(1,0), centroAux(2,0)},
                     normal, material);
 }
+
+Ponto *Cilindro::getCentro() {
+    return &centro;
+}

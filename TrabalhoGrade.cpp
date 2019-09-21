@@ -86,9 +86,9 @@ int main(int argc, char** argv) {
     auto *luzAmbiente = new LuzAmbiente(0.3,0.3,0.3);
     auto *luzPontual = new LuzPontual(0.7,0.7,0.7,5, 5, 0);
     Vetor dir(1, 0.003, 0);
-    auto *luzSpot = new LuzSpot(1.0,1.0,1.0,5, -1, -20, dir, 10);
+    //auto *luzSpot = new LuzSpot(1.0,1.0,1.0,5, -1, -20, dir, 10);
     vector<Luz *> luzes;
-    luzes.emplace_back(luzSpot);
+    //luzes.emplace_back(luzSpot);
     luzes.emplace_back(luzPontual);
 //-------------------------------------------- Criação Objetos -------------------------------------------------------
     Vetor normal(0, 1, 0);
@@ -96,9 +96,9 @@ int main(int argc, char** argv) {
     auto *objeto2 = new Cilindro(5, 1, Ponto{5, -5, -10}, normal, material1);
     auto *objeto6 = new Cone(4, 3, biblioteca::CriarPonto(-5, 0, -10), normal, material0);
     auto *objeto7 = new Cilindro(5, 1, Ponto{-5, -5, -10}, normal, material1);
-//   auto *objeto3 = new Cubo(5, biblioteca::CriarPonto(0, -5, -20), material2);
+    auto *objeto3 = new Cubo(5, biblioteca::CriarPonto(0, -5, -20), material2);
     auto *objeto4 = new Cubo(5, biblioteca::CriarPonto(0, -1, -20), material2);
-//    auto *objeto5 = new Cubo(5, biblioteca::CriarPonto(0, 4, -20), material2);
+    auto *objeto5 = new Cubo(5, biblioteca::CriarPonto(0, 4, -20), material2);
     //auto *objeto6 = new Cone(20, 8, biblioteca::CriarPonto(0,0,-10), normal);
     //auto *objeto7 = new Esfera(10, biblioteca::CriarPonto(0,-1,-30), material0);
 
@@ -106,9 +106,9 @@ int main(int argc, char** argv) {
 
     objetos.push_back(objeto1);
     objetos.push_back(objeto2);
-//    objetos.push_back(objeto3);
+    objetos.push_back(objeto3);
     objetos.push_back(objeto4);
-//    objetos.push_back(objeto5);
+    objetos.push_back(objeto5);
     objetos.push_back(objeto6);
     objetos.push_back(objeto7);
 
@@ -118,17 +118,17 @@ int main(int argc, char** argv) {
 
 // ------------------------------------- Coordenadas Camera ----------------------------------------------------------
 //Cima
-    Ponto* pCoordCamera1 = biblioteca::CriarPonto(0, 20, -15);
-    Ponto* pLookAt1 = biblioteca::CriarPonto(0,0,-15);
-    Ponto* pViewUp1 = biblioteca::CriarPonto(0,20,-17);
+    Ponto* pCoordCamera1 = biblioteca::CriarPonto(0, 40, -20);
+    Ponto* pLookAt1 = biblioteca::CriarPonto(0,0,-20);
+    Ponto* pViewUp1 = biblioteca::CriarPonto(0,40,-22);
 //Lado
 //    Ponto* pCoordCamera = biblioteca::CriarPonto(20, 0, -5);
 //    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-15);
 //    Ponto* pViewUp = biblioteca::CriarPonto(20,1,-5);
-//Frente Inclinado
-    Ponto* pCoordCamera = biblioteca::CriarPonto(0, 0, 15);
+//Frente
+    Ponto* pCoordCamera = biblioteca::CriarPonto(0, 0, 0);
     Ponto* pLookAt = biblioteca::CriarPonto(0,0,-10);
-    Ponto* pViewUp = biblioteca::CriarPonto(0,1,15);
+    Ponto* pViewUp = biblioteca::CriarPonto(0,1,0);
 
     auto camera =  new Camera(pCoordCamera, pLookAt, pViewUp, tamGrade, zGrade, matrixSize);
     camera1 =  new Camera(pCoordCamera1, pLookAt1, pViewUp1, tamGrade, zGrade, matrixSize);

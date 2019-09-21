@@ -78,3 +78,7 @@ Ponto *Esfera::PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0) {
 Objeto* Esfera::aplicarTransformacao(vector<Matriz> &pMatrizesTransf){
     return this;
 }
+
+Ponto *Esfera::getCentro() {
+    return centro;
+}

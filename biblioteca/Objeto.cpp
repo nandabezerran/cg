@@ -8,3 +8,4 @@ Objeto::Objeto(const string& pNome, bool pVisibilidade, Material* pMat) : nome(p
                                                     visibilidade(pVisibilidade), material(pMat){}
 
 
+

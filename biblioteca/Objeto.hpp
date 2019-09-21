@@ -21,6 +21,7 @@ public:
     virtual void mudaCoodMundo(Camera *camera) = 0;
     virtual Vetor calcularNormal(Ponto* p) = 0;
     virtual Objeto* aplicarTransformacao(vector<Matriz> &pMatrizesTransf) = 0;
+    virtual Ponto* getCentro() = 0;
 };
 
 

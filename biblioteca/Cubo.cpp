@@ -86,6 +86,9 @@ tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, const Vetor &pV0) {
                 biblioteca::distanciaEntrePontos(pP0, intTriangulo[1].first)) {
                 normal = intTriangulo[0].second->p->normal;
             }
+            else {
+                normal = intTriangulo[1].second->p->normal;
+            }
         }
         else {
             normal = intTriangulo[0].second->p->normal;
@@ -155,4 +158,8 @@ Objeto* Cubo::aplicarTransformacao(vector<Matriz> &pMatrizesTransf){
 
     return new Cubo(aresta, new Ponto{centroAux(0,0), centroAux(1,0), centroAux(2,0)},
                         material);
+}
+
+Ponto *Cubo::getCentro() {
+    return centro;
 }

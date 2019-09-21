@@ -192,3 +192,7 @@ Objeto* Cone::aplicarTransformacao(vector<Matriz> &pMatrizesTransf) {
                     normal, material);
 }
 
+Ponto *Cone::getCentro() {
+    return centro;
+}
+
