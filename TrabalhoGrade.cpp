@@ -42,6 +42,7 @@ void onMouseButton(int button, int state, int x, int y){
     }
     if(button == GLUT_RIGHT_BUTTON && state == GLUT_UP){
         cenario->mudarCamera(camera1);
+        cenario->imprimirCenarioCompleto();
     }
 }
 
@@ -130,7 +131,7 @@ int main(int argc, char** argv) {
     Ponto* pViewUp = biblioteca::CriarPonto(0,1,15);
 
     auto camera =  new Camera(pCoordCamera, pLookAt, pViewUp, tamGrade, zGrade, matrixSize);
-    auto camera1 =  new Camera(pCoordCamera1, pLookAt1, pViewUp1, tamGrade, zGrade, matrixSize);
+    camera1 =  new Camera(pCoordCamera1, pLookAt1, pViewUp1, tamGrade, zGrade, matrixSize);
     cenario = new Cenario(camera, objetos, luzAmbiente, luzes);
 
 // ------------------------------------- Funções ---------------------------------------------------------------------

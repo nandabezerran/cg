@@ -221,9 +221,9 @@ void Cenario::gerarEspelho(int linha, int coluna) {
         transposta(1,3) = -intersecao.p->y;
         transposta(2,3) = -intersecao.p->z;
 
-        transposta2(0,4) = intersecao.p->x;
-        transposta2(1,4) = intersecao.p->y;
-        transposta2(2,4) = intersecao.p->z;
+        transposta2(0,3) = intersecao.p->x;
+        transposta2(1,3) = intersecao.p->y;
+        transposta2(2,3) = intersecao.p->z;
 
         espelhamento(0,0) = 1 - (2*normal.x*normal.x);
         espelhamento(0,1) = -2*normal.x*normal.y;

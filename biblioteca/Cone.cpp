@@ -182,7 +182,7 @@ Objeto* Cone::aplicarTransformacao(vector<Matriz> &pMatrizesTransf) {
     Matriz centroAux = Matriz(4,1,0);
     centroAux(0,0) = centro->x;
     centroAux(1,0) = centro->y;
-    centroAux(1,0) = centro->z;
+    centroAux(2,0) = centro->z;
     centroAux(3,0) = 1;
     centroAux.imprimir();
     for (auto &matriz : pMatrizesTransf) {
