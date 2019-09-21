@@ -48,3 +48,17 @@ bool Triangulo::ValidacaoPontoTriangulo(const Vetor &P1P, const Vetor &P2P, cons
     return validacao > 0;
 }
 
+Ponto *Triangulo::intersecaoReta(Ponto *pP0, const Vetor &pV0) {
+    Ponto *ponto = p->IntersecaoRetaPlano(*pP0, pV0);
+    if (ponto) {
+        Vetor p1p = biblioteca::SubtracaoPontos(*p1->p, *ponto);
+        Vetor p2p = biblioteca::SubtracaoPontos(*p2->p, *ponto);
+        Vetor p3p = biblioteca::SubtracaoPontos(*p3->p, *ponto);
+
+        if (ValidacaoPontoTriangulo(p1p,p2p,p3p)) {
+            return ponto;
+        }
+    }
+    return nullptr;
+}
+

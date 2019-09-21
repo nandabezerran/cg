@@ -10,7 +10,9 @@
 
 Cone::Cone(float pAltura, float pRaio, Ponto* pCentro, Vetor pNormal, Material *material) : altura(pAltura), raio(pRaio),
                                                                           centro(pCentro), normal(pNormal),
-                                                                           Objeto("Cone", false, material) {}
+                                                                           Objeto("Cone", false, material) {
+    base = new Plano(centro, normal);
+}
 
 tuple<Ponto*, Ponto*> Cone::IntersecaoReta(Ponto* pP0, const Vetor &pV0) {
     //Vertice do cone
@@ -123,7 +125,6 @@ bool Cone::ValidacaoPontoCone(Ponto* vertice, Ponto* p_int){
 }
 
 Ponto* Cone::IntersecaoRetaBase(Ponto* centro, Ponto* pP0, const Vetor &pVetor0){
-    Plano* base = new Plano(centro, this->normal);
     Ponto* p_int = base->IntersecaoRetaPlano(*pP0, pVetor0);
     return p_int;
 }
@@ -143,11 +144,13 @@ bool Cone::ValidacaoPontoBase(Ponto* pP0, const Vetor &pVetor0){
 void Cone::mudaCoodCamera(Camera *camera) {
     camera->mudarMundoCamera(centro);
     camera->mudarMundoCamera(normal);
+    camera->mudarMundoCamera(base->normal);
 }
 
 void Cone::mudaCoodMundo(Camera *camera) {
     camera->mudarCameraMundo(centro);
     camera->mudarCameraMundo(normal);
+    camera->mudarCameraMundo(base->normal);
 }
 
 Vetor Cone::calcularNormal(Ponto* pi) {
