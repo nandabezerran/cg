@@ -23,6 +23,7 @@ class biblioteca{
         static double distanciaEntrePontos(const Ponto &p1, const Ponto &p2);
         static Vetor SubtracaoPontos(const Ponto &p1, const Ponto &p2);
         static Ponto*** MatrixAllocation(int size);
+        static bool distanciaPontoPlano(Vetor &pNormal, Ponto &pPi, Ponto &pObj);
 
     //TODO: Encontrar nome melhor pra essa função (solução da prova 1)
     static tuple<Ponto*, Ponto*> PontosDadoDistancia(Ponto* p_origem, const Vetor &v1, const Vetor &v2,

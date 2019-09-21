@@ -79,3 +79,8 @@ tuple<Ponto*, Ponto*> biblioteca::PontosDadoDistancia(Ponto* p_origem, const Vet
 
 }
 
+bool biblioteca::distanciaPontoPlano(Vetor &pNormal, Ponto &pPi, Ponto &pObj) {
+    return biblioteca::ProdutoEscalar(pObj,pNormal) + ((- (pNormal.x*pPi.x) - (pNormal.y*pPi.y) - (pNormal.z*pPi.z))/
+           sqrt(pow(pNormal.x,2) + pow(pNormal.y,2) +pow(pNormal.z,2))) > 0;
+}
+

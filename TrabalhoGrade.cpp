@@ -23,7 +23,8 @@
 #include <chrono>
 
 float* test;
-int matrixSize = 500;
+Camera* camera1;
+int matrixSize = 300;
 Cenario *cenario;
 
 void display(){
@@ -37,6 +38,11 @@ void display(){
 void onMouseButton(int button, int state, int x, int y){
     if(button == GLUT_LEFT_BUTTON && state == GLUT_UP){
         cenario->checarUmPonto(matrixSize-y,x);
+        cenario->gerarEspelho(matrixSize-y,x);
+    }
+    if(button == GLUT_RIGHT_BUTTON && state == GLUT_UP){
+        cenario->mudarCamera(camera1);
+        cenario->imprimirCenarioCompleto();
     }
 }
 
@@ -80,14 +86,16 @@ int main(int argc, char** argv) {
     auto *luzAmbiente = new LuzAmbiente(0.3,0.3,0.3);
     auto *luzPontual = new LuzPontual(0.7,0.7,0.7,5, 5, 0);
     Vetor dir(1, 0.003, 0);
-    auto *luzSpot = new LuzSpot(1.0,1.0,1.0,5, -1, -20, dir, 10);
+    //auto *luzSpot = new LuzSpot(1.0,1.0,1.0,5, -1, -20, dir, 10);
     vector<Luz *> luzes;
-    luzes.emplace_back(luzSpot);
+    //luzes.emplace_back(luzSpot);
     luzes.emplace_back(luzPontual);
 //-------------------------------------------- Criação Objetos -------------------------------------------------------
     Vetor normal(0, 1, 0);
-    auto *objeto1 = new Cone(4, 3, biblioteca::CriarPonto(0, -1, -10), normal, material0);
-    auto *objeto2 = new Cilindro(5, 1, Ponto{0, -6, -10}, normal, material1);
+    auto *objeto1 = new Cone(4, 3, biblioteca::CriarPonto(5, 0, -10), normal, material0);
+    auto *objeto2 = new Cilindro(5, 1, Ponto{5, -5, -10}, normal, material1);
+    auto *objeto6 = new Cone(4, 3, biblioteca::CriarPonto(-5, 0, -10), normal, material0);
+    auto *objeto7 = new Cilindro(5, 1, Ponto{-5, -5, -10}, normal, material1);
     auto *objeto3 = new Cubo(5, biblioteca::CriarPonto(0, -5, -20), material2);
     auto *objeto4 = new Cubo(5, biblioteca::CriarPonto(0, -1, -20), material2);
     auto *objeto5 = new Cubo(5, biblioteca::CriarPonto(0, 4, -20), material2);
@@ -101,8 +109,8 @@ int main(int argc, char** argv) {
     objetos.push_back(objeto3);
     objetos.push_back(objeto4);
     objetos.push_back(objeto5);
-    //objects.push_back(objeto6);
-//    objetos.push_back(objeto7);
+    objetos.push_back(objeto6);
+    objetos.push_back(objeto7);
 
 // ------------------------------------- Infos da Grade --------------------------------------------------------------
     float tamGrade = 4;
@@ -110,19 +118,20 @@ int main(int argc, char** argv) {
 
 // ------------------------------------- Coordenadas Camera ----------------------------------------------------------
 //Cima
-//    Ponto* pCoordCamera = biblioteca::CriarPonto(0, 20, -15);
-//    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-15);
-//    Ponto* pViewUp = biblioteca::CriarPonto(0,20,-17);
+    Ponto* pCoordCamera1 = biblioteca::CriarPonto(0, 40, -20);
+    Ponto* pLookAt1 = biblioteca::CriarPonto(0,0,-20);
+    Ponto* pViewUp1 = biblioteca::CriarPonto(0,40,-22);
 //Lado
 //    Ponto* pCoordCamera = biblioteca::CriarPonto(20, 0, -5);
 //    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-15);
 //    Ponto* pViewUp = biblioteca::CriarPonto(20,1,-5);
-//Frente Inclinado
-    Ponto* pCoordCamera = biblioteca::CriarPonto(-5, 5, 0);
+//Frente
+    Ponto* pCoordCamera = biblioteca::CriarPonto(0, 0, 0);
     Ponto* pLookAt = biblioteca::CriarPonto(0,0,-10);
-    Ponto* pViewUp = biblioteca::CriarPonto(-5,6,0);
+    Ponto* pViewUp = biblioteca::CriarPonto(0,1,0);
 
     auto camera =  new Camera(pCoordCamera, pLookAt, pViewUp, tamGrade, zGrade, matrixSize);
+    camera1 =  new Camera(pCoordCamera1, pLookAt1, pViewUp1, tamGrade, zGrade, matrixSize);
     cenario = new Cenario(camera, objetos, luzAmbiente, luzes);
 
 // ------------------------------------- Funções ---------------------------------------------------------------------

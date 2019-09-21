@@ -13,6 +13,7 @@
 #include "PontoIntersecao.hpp"
 #include "Luz.hpp"
 #include "LuzAmbiente.hpp"
+#include "Matriz.hpp"
 
 
 class Cenario {
@@ -32,12 +33,12 @@ public:
     void checarUmPonto(int linha, int coluna);
     void objetosVisiveis();
     void mudarCamera(Camera *pCamera);
+    void gerarEspelho(int linha, int coluna);
     void atualizarCamera();
     float* getCenarioData();
 private:
     void iniciarPintura();
     void iniciarCenario();
-    void terminarCenario();
 };
 
 

@@ -26,6 +26,8 @@ public:
     void mudaCoodCamera(Camera *camera) override;
     void mudaCoodMundo(Camera *camera) override;
     Vetor calcularNormal(Ponto* pi);
+    Objeto* aplicarTransformacao(vector<Matriz> &pMatrizesTransf) override;
+    Ponto* getCentro() override;
 
 };
 
