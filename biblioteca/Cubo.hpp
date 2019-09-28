@@ -46,11 +46,12 @@ public:
     Aresta* CriarAresta(Vertice* pi, Vertice* pf, const string& id);
     Triangulo* CriarTriangulo(Vertice *v1, Vertice *v2, Vertice *v3, const string& id);
     void vMaisProxObs();
+    void aplicarTransformacao(vector<Matriz> &pMatrizesTransf) override;
 
     void mudaCoodCamera(Camera *camera) override;
     void mudaCoodMundo(Camera *camera) override;
     Vetor calcularNormal(Ponto* p) override;
-    Objeto* aplicarTransformacao(vector<Matriz> &pMatrizesTransf) override;
+    Objeto* aplicarEspelhamento(vector<Matriz> &pMatrizesTransf) override;
     Ponto* getCentro() override;
 };
 #endif //COMPUTACAOGRAFICA_CUBO_HPP

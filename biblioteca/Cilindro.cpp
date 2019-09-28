@@ -135,7 +135,7 @@ Ponto *Cilindro::PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0) {
     return p_int1;
 }
 
-Objeto* Cilindro::aplicarTransformacao(vector<Matriz> &pMatrizesTransf){
+Objeto* Cilindro::aplicarEspelhamento(vector<Matriz> &pMatrizesTransf){
     Matriz centroAux = Matriz(4,1,0);
     centroAux(0,0) = centro.x;
     centroAux(1,0) = centro.y;
@@ -151,4 +151,8 @@ Objeto* Cilindro::aplicarTransformacao(vector<Matriz> &pMatrizesTransf){
 
 Ponto *Cilindro::getCentro() {
     return &centro;
+}
+
+void Cilindro::aplicarTransformacao(vector<Matriz> &pMatrizesTransf) {
+
 }

@@ -20,7 +20,8 @@ public:
     virtual void mudaCoodCamera(Camera *camera) = 0;
     virtual void mudaCoodMundo(Camera *camera) = 0;
     virtual Vetor calcularNormal(Ponto* p) = 0;
-    virtual Objeto* aplicarTransformacao(vector<Matriz> &pMatrizesTransf) = 0;
+    virtual Objeto* aplicarEspelhamento(vector<Matriz> &pMatrizesTransf) = 0;
+    virtual void aplicarTransformacao(vector<Matriz> &pMatrizesTransf) = 0;
     virtual Ponto* getCentro() = 0;
 };
 

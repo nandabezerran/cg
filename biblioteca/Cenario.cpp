@@ -1,5 +1,6 @@
 #include <utility>
 #include <c++/algorithm>
+#include <cmath>
 
 //
 // Created by fbeze on 02/09/2019.
@@ -216,18 +217,18 @@ bool Cenario::rayCasting(Ponto *pCoordObs, Ponto *pontoGrade, PontoIntersecao &i
 void Cenario::gerarEspelho(int linha, int coluna) {
     PontoIntersecao intersecao;
     Matriz espelhamento = Matriz(4,4, 0);
-    Matriz transposta = Matriz(4,4, 0);
-    Matriz transposta2 = Matriz(4,4, 0);
+    Matriz translacao = Matriz(4, 4, 0);
+    Matriz translacao2 = Matriz(4, 4, 0);
     Vetor normal;
     if(rayCasting(camera->observador, camera->gradeCamera[linha][coluna], intersecao)) {
         normal = intersecao.objeto->calcularNormal(intersecao.p);
-        transposta(0, 3) = -intersecao.p->x;
-        transposta(1, 3) = -intersecao.p->y;
-        transposta(2, 3) = -intersecao.p->z;
+        translacao(0, 3) = -intersecao.p->x;
+        translacao(1, 3) = -intersecao.p->y;
+        translacao(2, 3) = -intersecao.p->z;
 
-        transposta2(0, 3) = intersecao.p->x;
-        transposta2(1, 3) = intersecao.p->y;
-        transposta2(2, 3) = intersecao.p->z;
+        translacao2(0, 3) = intersecao.p->x;
+        translacao2(1, 3) = intersecao.p->y;
+        translacao2(2, 3) = intersecao.p->z;
 
         espelhamento(0, 0) = 1 - (2 * normal.x * normal.x);
         espelhamento(0, 1) = -2 * normal.x * normal.y;
@@ -242,16 +243,57 @@ void Cenario::gerarEspelho(int linha, int coluna) {
         espelhamento(2, 2) = 1 - 2 * normal.z * normal.z;
 
         vector<Matriz> transf;
-        transf.push_back(transposta);
+        transf.push_back(translacao);
         transf.push_back(espelhamento);
-        transf.push_back(transposta2);
+        transf.push_back(translacao2);
         int tam = objetos.size();
         for (int i = 0; i < tam; ++i) {
             if (biblioteca::distanciaPontoPlano(normal, *intersecao.p, *objetos[i]->getCentro())) {
-                objetos.push_back(objetos[i]->aplicarTransformacao(transf));
+                objetos.push_back(objetos[i]->aplicarEspelhamento(transf));
             }
         }
     }
     imprimirCenarioCompleto();
 }
 
+void Cenario::rotacaoPlanoArbitrario(Objeto *obj, float angulo, Ponto* p1, Ponto* p2){
+    Vetor planoArbitrario = biblioteca::SubtracaoPontos(*p1,*p2);
+    Vetor vq = sin(angulo/2) * biblioteca::NormalizaVetor(planoArbitrario);
+    double wq = cos(angulo/2);
+    Matriz Mteta = Matriz(4,4,0);
+    Matriz translacao = Matriz(4, 4, 0);
+    Matriz translacao2 = Matriz(4, 4, 0);
+
+    Mteta(0,0) = pow(wq,2) + pow(vq.x,2) - pow(vq.y,2) - pow(vq.z,2);
+    Mteta(1,0) = 2*vq.x*vq.y - 2*wq*vq.z;
+    Mteta(2,0) = 2*wq*vq.y + 2*vq.x*vq.z;
+    Mteta(3,0) = 0;
+
+    Mteta(0,1) = 2*vq.x*vq.y + 2*wq*vq.z;
+    Mteta(1,1) = pow(wq,2) - pow(vq.x,2) + pow(vq.y,2) - pow(vq.z,2);
+    Mteta(2,1) = -2*wq*vq.x+2*vq.y*vq.z;
+    Mteta(3,1) = 0;
+
+    Mteta(0,2) = -2*wq*vq.y + 2*vq.x*vq.z;
+    Mteta(1,2) = 2*wq*vq.x + 2*vq.y*vq.z;
+    Mteta(2,2) = pow(wq,2) - pow(vq.x,2) - pow(vq.y,2) + pow(vq.z,2);
+    Mteta(3,2) = 0;
+
+    Mteta(0,3) = 0; Mteta(1,3) = 0; Mteta(2,3) = 0; Mteta(3,3) = 1;
+
+    translacao(0, 3) = -p1->x;
+    translacao(1, 3) = -p1->y;
+    translacao(2, 3) = -p1->z;
+
+    translacao2(0, 3) = p1->x;
+    translacao2(1, 3) = p1->y;
+    translacao2(2, 3) = p1->z;
+
+    vector<Matriz> transf;
+    transf.push_back(translacao);
+    transf.push_back(Mteta);
+    transf.push_back(translacao2);
+    obj->aplicarTransformacao(transf);
+
+
+}

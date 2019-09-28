@@ -62,3 +62,45 @@ Ponto *Triangulo::intersecaoReta(Ponto *pP0, const Vetor &pV0) {
     return nullptr;
 }
 
+void Triangulo::aplicarTransformacao(vector<Matriz> &pMatrizesTransf) {
+    Matriz normalAux = Matriz(4,1,0);
+    normalAux(0,0) = p->normal.x; normalAux(1,0) = p->normal.y; normalAux(2,0) = p->normal.z; normalAux(3,0) = 0;
+    Matriz p2p3aux = Matriz(4,1,0);
+    p2p3aux(0,0) = p2p3.x; p2p3aux(1,0) = p2p3.y; p2p3aux(2,0) = p2p3.z; p2p3aux(3,0) = 0;
+    Matriz p3p1aux = Matriz(4,1,0);
+    p3p1aux(0,0) = p3p1.x; p3p1aux(1,0) = p3p1.y; p3p1aux(2,0) = p3p1.z; p3p1aux(3,0) = 0;
+    Matriz p1p2aux = Matriz(4,1,0);
+    p1p2aux(0,0) = p1p2.x; p1p2aux(1,0) = p1p2.y; p1p2aux(2,0) = p1p2.z; p1p2aux(3,0) = 0;
+    Matriz p1p3aux = Matriz(4,1,0);
+    p1p3aux(0,0) = p1p3.x; p1p3aux(1,0) = p1p3.y; p1p3aux(2,0) = p1p3.z; p1p3aux(3,0) = 0;
+
+    for (auto matriz : pMatrizesTransf) {
+        normalAux = matriz * normalAux;
+        p2p3aux = matriz * p2p3aux;
+        p3p1aux = matriz * p3p1aux;
+        p1p2aux = matriz * p1p2aux;
+        p1p3aux = matriz * p1p3aux;
+
+    }
+
+    p->normal.x = normalAux(0,0);
+    p->normal.y = normalAux(1,0);
+    p->normal.z = normalAux(2,0);
+
+    p2p3.x = p2p3aux(0,0);
+    p2p3.y = p2p3aux(1,0);
+    p2p3.z = p2p3aux(2,0);
+
+    p3p1.x =  p3p1aux(0,0);
+    p3p1.y =  p3p1aux(1,0);
+    p3p1.z =  p3p1aux(2,0);
+
+    p1p2.x = p1p2aux(0,0);
+    p1p2.y = p1p2aux(1,0);
+    p1p2.z = p1p2aux(2,0);
+
+    p1p3.x = p1p3aux(0,0);
+    p1p3.y = p1p3aux(1,0);
+    p1p3.z = p1p3aux(2,0);
+}
+

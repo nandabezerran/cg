@@ -181,7 +181,7 @@ Ponto *Cone::PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0) {
     return nullptr;
 }
 
-Objeto* Cone::aplicarTransformacao(vector<Matriz> &pMatrizesTransf) {
+Objeto* Cone::aplicarEspelhamento(vector<Matriz> &pMatrizesTransf) {
     Matriz centroAux = Matriz(4,1,0);
     centroAux(0,0) = centro->x;
     centroAux(1,0) = centro->y;
@@ -197,5 +197,9 @@ Objeto* Cone::aplicarTransformacao(vector<Matriz> &pMatrizesTransf) {
 
 Ponto *Cone::getCentro() {
     return centro;
+}
+
+void Cone::aplicarTransformacao(vector<Matriz> &pMatrizesTransf) {
+
 }
 

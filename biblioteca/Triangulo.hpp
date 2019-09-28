@@ -26,6 +26,7 @@ public:
 
     void mudaCoodCamera(Camera *camera);
     void mudaCoodMundo(Camera *camera);
+    void aplicarTransformacao(vector<Matriz> &pMatrizesTransf);
     bool ValidacaoPontoTriangulo(const Vetor &P1P, const Vetor &P2P, const Vetor &P3P);
     Ponto* intersecaoReta(Ponto *pP0, const Vetor &pV0);
 

@@ -39,7 +39,8 @@ Objeto("Cubo", false, material){
     triangulos.push_back(CriarTriangulo(vertices[4], vertices[5], vertices[6], "F10"));
     triangulos.push_back(CriarTriangulo(vertices[0], vertices[5], vertices[4], "F11"));
     triangulos.push_back(CriarTriangulo(vertices[5], vertices[0], vertices[1], "F12"));
-
+//    cout << " "<< p2->x <<" " << p2->y << " "<< p2->z;
+//    cout << " "<< p6->x <<" " << p6->y << " "<< p6->z;
 }
 
 Vetor Cubo::calcularNormal(Ponto* p){
@@ -146,7 +147,7 @@ Ponto *Cubo::PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0) {
     return nullptr;
 }
 
-Objeto* Cubo::aplicarTransformacao(vector<Matriz> &pMatrizesTransf){
+Objeto* Cubo::aplicarEspelhamento(vector<Matriz> &pMatrizesTransf){
     Matriz centroAux = Matriz(4,1,0);
     centroAux(0,0) = centro->x;
     centroAux(1,0) = centro->y;
@@ -162,4 +163,34 @@ Objeto* Cubo::aplicarTransformacao(vector<Matriz> &pMatrizesTransf){
 
 Ponto *Cubo::getCentro() {
     return centro;
+}
+
+void Cubo::aplicarTransformacao(vector<Matriz> &pMatrizesTransf) {
+    for(auto triangulo :triangulos){
+        triangulo->aplicarTransformacao(pMatrizesTransf);
+    }
+    Matriz aux = Matriz(4,1,0);
+    for (auto vertice: vertices) {
+        aux(0,0) = vertice->p->x;
+        aux(1,0) = vertice->p->y;
+        aux(2,0) = vertice->p->z;
+        aux(3,0) = 1;
+        for (auto matriz: pMatrizesTransf) {
+            aux = matriz * aux;
+        }
+        vertice->p->x = aux(0,0);
+        vertice->p->y = aux(1,0);
+        vertice->p->z = aux(2,0);
+
+    }
+    aux(0,0) = normal.x;
+    aux(1,0) = normal.y;
+    aux(2,0) = normal.z;
+    aux(3,0) = 0;
+    for (auto matriz: pMatrizesTransf) {
+        aux = matriz * aux;
+    }
+    normal.x = aux(0,0);
+    normal.y = aux(1,0);
+    normal.z = aux(2,0);
 }

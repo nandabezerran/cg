@@ -28,9 +28,10 @@ public:
     bool ValidacaoPontoBase(Ponto* pP0, const Vetor &pVetor0);
     void mudaCoodCamera(Camera *camera) override;
     void mudaCoodMundo(Camera *camera) override;
+    void aplicarTransformacao(vector<Matriz> &pMatrizesTransf) override;
     Ponto* getCentro() override;
 
-    Objeto* aplicarTransformacao(vector<Matriz> &pMatrizesTransf) override;
+    Objeto* aplicarEspelhamento(vector<Matriz> &pMatrizesTransf) override;
 
 
 
