@@ -200,6 +200,27 @@ Ponto *Cone::getCentro() {
 }
 
 void Cone::aplicarTransformacao(vector<Matriz> &pMatrizesTransf) {
+    Matriz centroAux = Matriz(4,1,0);
+    centroAux(0,0) = centro->x;
+    centroAux(1,0) = centro->y;
+    centroAux(2,0) = centro->z;
+    centroAux(3,0) = 1;
+    Matriz normalAux = Matriz(4,1,0);
+    normalAux(0,0) = normal.x;
+    normalAux(1,0) = normal.y;
+    normalAux(2,0) = normal.z;
+    normalAux(3,0) = 0;
+    for (auto &matriz : pMatrizesTransf) {
+        centroAux = matriz * centroAux;
+        normalAux = matriz * normalAux;
+    }
+    centro->x = centroAux(0,0);
+    centro->y = centroAux(1,0);
+    centro->z = centroAux(2,0);
 
+    normal.x = normalAux(0,0);
+    normal.y = normalAux(1,0);
+    normal.z = normalAux(2,0);
+    base->normal = normal;
 }
 

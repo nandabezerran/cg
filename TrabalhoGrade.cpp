@@ -40,8 +40,8 @@ void onMouseButton(int button, int state, int x, int y){
     if(button == GLUT_LEFT_BUTTON && state == GLUT_UP){
         cenario->checarUmPonto(matrixSize-y,x);
         //cenario->gerarEspelho(matrixSize-y,x);
-        cenario->rotacaoPlanoArbitrario(obj,M_PI/3,new Ponto{-2.5,-1,-22.5} ,
-                new Ponto{-2.5,4,-22.5});
+        cenario->rotacaoPlanoArbitrario(obj,M_PI/3,new Ponto{5,0,-5} ,
+                new Ponto{5,0,-15});
         cenario->imprimirCenarioCompleto();
     }
     if(button == GLUT_RIGHT_BUTTON && state == GLUT_UP){
@@ -96,7 +96,7 @@ int main(int argc, char** argv) {
     luzes.emplace_back(luzPontual);
 //-------------------------------------------- Criação Objetos -------------------------------------------------------
     Vetor normal(0, 1, 0);
-//    auto *objeto1 = new Cone(4, 3, biblioteca::CriarPonto(5, 0, -10), normal, material0);
+    auto *objeto1 = new Cone(4, 3, biblioteca::CriarPonto(5, 0, -10), normal, material0);
 //    auto *objeto2 = new Cilindro(5, 1, Ponto{5, -5, -10}, normal, material1);
 //    auto *objeto6 = new Cone(4, 3, biblioteca::CriarPonto(-5, 0, -10), normal, material0);
 //    auto *objeto7 = new Cilindro(5, 1, Ponto{-5, -5, -10}, normal, material1);
@@ -108,14 +108,14 @@ int main(int argc, char** argv) {
 
     vector<Objeto *> objetos;
 
-//    objetos.push_back(objeto1);
+    objetos.push_back(objeto1);
 //    objetos.push_back(objeto2);
 //    objetos.push_back(objeto3);
     objetos.push_back(objeto4);
     objetos.push_back(objeto5);
 //    objetos.push_back(objeto6);
 //    objetos.push_back(objeto7);
-    obj = objeto4;
+    obj = objeto1;
 // ------------------------------------- Infos da Grade --------------------------------------------------------------
     float tamGrade = 4;
     float zGrade = -4;
