@@ -127,20 +127,21 @@ void Cenario::imprimirCenarioCompleto() {
     pintarObjeto(camera->gradeCamera);
 }
 
-void Cenario::checarUmPonto(int linha, int coluna) {
-    PontoIntersecao intersecao;
+PontoIntersecao* Cenario::checarUmPonto(int linha, int coluna) {
+    auto *intersecao = new PontoIntersecao();
     cout << "----------------------------------------------------------------------" << "\n";
     cout << "Centro (" << linha << ", "<< coluna <<"): " << camera->gradeCamera[linha][coluna]->x << ", "
     << camera->gradeCamera[linha][coluna]->y<< ", "<< camera->gradeCamera[linha][coluna]->z << "\n";
 
-    if(rayCasting(camera->observador, camera->gradeCamera[linha][coluna], intersecao)){
+    if(rayCasting(camera->observador, camera->gradeCamera[linha][coluna], *intersecao)){
         //pInts->objeto->visibilidade = true;
-        cout << "Objeto encontrado: " << intersecao.objeto->nome << " - Ponto Interceptado: " << intersecao.p->x
-        << ", " <<intersecao.p->y<< ", "<< intersecao.p->z<< "\n";
+        cout << "Objeto encontrado: " << intersecao->objeto->nome << " - Ponto Interceptado: " << intersecao->p->x
+        << ", " <<intersecao->p->y<< ", "<< intersecao->p->z<< "\n";
         cout << "----------------------------------------------------------------------" << "\n";
         pintarObjeto(camera->gradeCamera);
+        return intersecao;
     }
-
+    return nullptr;
 }
 
 void Cenario::objetosVisiveis() {

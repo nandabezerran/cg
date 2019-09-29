@@ -28,6 +28,12 @@ Camera* camera1;
 int matrixSize = 300;
 Cenario *cenario;
 Objeto* obj;
+PontoIntersecao* pontos[3];
+int menuPrincipal;
+int subMenu;
+int linha;
+int coluna;
+
 void display(){
     glClearColor(0.0,0.0,0.0,1.0);
     glClear(GL_COLOR_BUFFER_BIT);
@@ -35,18 +41,47 @@ void display(){
     glutSwapBuffers();
     glutPostRedisplay();
 }
+void funcaoMenu(int item){
+    switch(item){
+        case 1:
+            cenario->gerarEspelho(linha,coluna);
+            break;
+        case 2:
+            cenario->rotacaoPlanoArbitrario(pontos[0]->objeto,M_PI/3,pontos[1]->p, pontos[2]->p);
+    }
+    cenario->imprimirCenarioCompleto();
 
-void onMouseButton(int button, int state, int x, int y){
-    if(button == GLUT_LEFT_BUTTON && state == GLUT_UP){
-        cenario->checarUmPonto(matrixSize-y,x);
+}
+void onMouseButton(int button, int state, int x, int y) {
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
+        pontos[0] = cenario->checarUmPonto(matrixSize - y, x);
+        if (pontos[0]) {
+            subMenu = glutCreateMenu(funcaoMenu);
+            glutAddMenuEntry("Gerar espelho", 1);
+            if (pontos[1] && pontos[2]) {
+                glutAddMenuEntry("Rotacionar", 2);
+            }
+            menuPrincipal = glutCreateMenu(funcaoMenu);
+            glutAddSubMenu(pontos[0]->objeto->nome.c_str(), subMenu);
+            glutAttachMenu(GLUT_MIDDLE_BUTTON);
+            linha = matrixSize-y;
+            coluna = x;
+        }
         //cenario->gerarEspelho(matrixSize-y,x);
-        cenario->rotacaoPlanoArbitrario(obj,M_PI/3,new Ponto{5,0,-5} ,
-                new Ponto{5,0,-15});
+//        cenario->rotacaoPlanoArbitrario(obj,M_PI/3,new Ponto{5,0,-5} ,
+//                new Ponto{5,0,-15});
         cenario->imprimirCenarioCompleto();
     }
-    if(button == GLUT_RIGHT_BUTTON && state == GLUT_UP){
-        cenario->mudarCamera(camera1);
-        cenario->imprimirCenarioCompleto();
+    if (button == GLUT_RIGHT_BUTTON) {
+        if (state == GLUT_DOWN) {
+            if (cenario->checarUmPonto(matrixSize - y, x)) {
+                pontos[1] = cenario->checarUmPonto(matrixSize - y, x);
+            }
+        } else if (state == GLUT_UP) {
+            if (cenario->checarUmPonto(matrixSize - y, x)) {
+                pontos[2] = cenario->checarUmPonto(matrixSize - y, x);
+            }
+        }
     }
 }
 

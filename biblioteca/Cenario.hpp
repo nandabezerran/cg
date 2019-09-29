@@ -30,7 +30,7 @@ public:
     void pintarObjeto(Ponto*** pGrade);
     void addObjeto(Objeto* objeto);
     void imprimirCenarioCompleto();
-    void checarUmPonto(int linha, int coluna);
+    PontoIntersecao* checarUmPonto(int linha, int coluna);
     void objetosVisiveis();
     void mudarCamera(Camera *pCamera);
     void gerarEspelho(int linha, int coluna);
