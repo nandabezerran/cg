@@ -154,5 +154,46 @@ Ponto *Cilindro::getCentro() {
 }
 
 void Cilindro::aplicarTransformacao(vector<Matriz> &pMatrizesTransf) {
+    Matriz centroAux = Matriz(4,1,0);
+    centroAux(0,0) = centro.x;
+    centroAux(1,0) = centro.y;
+    centroAux(2,0) = centro.z;
+    centroAux(3,0) = 1;
+    Matriz centroSupAux = Matriz(4,1,0);
+    centroSupAux(0,0) = centroSup.x;
+    centroSupAux(1,0) = centroSup.y;
+    centroSupAux(2,0) = centroSup.z;
+    centroSupAux(3,0) = 1;
+    Matriz normalBiSAux = Matriz(4,1,0);
+    normalBiSAux(0,0) = baseSup.normal.x;
+    normalBiSAux(1,0) = baseSup.normal.y;
+    normalBiSAux(2,0) = baseSup.normal.z;
+    normalBiSAux(3,0) = 0;
+    Matriz normalAux = Matriz(4,1,0);
+    normalAux(0,0) = normal.x;
+    normalAux(1,0) = normal.y;
+    normalAux(2,0) = normal.z;
+    normalAux(3,0) = 0;
+    for (auto &matriz : pMatrizesTransf) {
+        centroAux = matriz * centroAux;
+        centroSupAux = matriz * centroSupAux;
+        normalBiSAux = matriz * normalBiSAux;
+        normalAux = matriz * normalAux;
+    }
+    centro.x = centroAux(0,0);
+    centro.y = centroAux(1,0);
+    centro.z = centroAux(2,0);
 
+    centroSup.x = centroSupAux(0,0);
+    centroSup.y = centroSupAux(1,0);
+    centroSup.z = centroSupAux(2,0);
+
+    normal.x = normalAux(0,0);
+    normal.y = normalAux(1,0);
+    normal.z = normalAux(2,0);
+    baseInf.normal = normal;
+
+    baseSup.normal.x = normalBiSAux(0,0);
+    baseSup.normal.y = normalBiSAux(1,0);
+    baseSup.normal.z = normalBiSAux(2,0);
 }
