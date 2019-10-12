@@ -16,6 +16,6 @@ add_executable(ComputacaoGrafica biblioteca/biblioteca.cpp biblioteca/biblioteca
         biblioteca/Material.cpp biblioteca/Material.hpp biblioteca/LuzSpot.cpp biblioteca/LuzSpot.hpp
         biblioteca/LuzAmbiente.cpp biblioteca/LuzAmbiente.hpp biblioteca/LuzRemota.cpp biblioteca/LuzRemota.hpp
         biblioteca/Vetor.cpp biblioteca/Vetor.hpp biblioteca/Triangulo.cpp biblioteca/Triangulo.hpp biblioteca/Matriz.cpp
-        biblioteca/Matriz.hpp)
+        biblioteca/Matriz.hpp CenarioOpenGL.cpp)
 
 target_link_libraries(ComputacaoGrafica -lOpenGL32 -lfreeGLUT -lglu32)
