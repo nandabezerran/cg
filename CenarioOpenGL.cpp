@@ -17,7 +17,7 @@ GlPonto pontos[8];
 int mode = 2;
 double alpha = -45.0;
 
-void glAxo(){
+void glObl(){
     double axoMatrix[16];
     glGetDoublev(GL_MODELVIEW_MATRIX, axoMatrix);
     double angle = (M_PI / 180.0f) * alpha;
@@ -48,7 +48,7 @@ void drawBox(void){
 
 void display(void){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glAxo();
+    glObl();
     drawBox();
     glutSwapBuffers();
 }
