@@ -179,9 +179,9 @@ int main(int argc, char** argv) {
     parede3Transf.push_back(aux23);
     parede3->aplicarTransformacao(parede3Transf);
 // ------------------------------------- Abajour ---------------------------------------------------------------------
-    auto *cabecaAb = new Cilindro(1.1, 1, *biblioteca::CriarPonto(3.75, 4, -13), normal,
+    auto *cabecaAb = new Cilindro(0.57, 0.7, *biblioteca::CriarPonto(3.75, 3, -13), normal,
             material4);
-    auto *troncoAb = new Cilindro(5, 0.1, *biblioteca::CriarPonto(3.75, -1, -13), normal,
+    auto *troncoAb = new Cilindro(4, 0.1, *biblioteca::CriarPonto(3.75, -1, -13), normal,
                                   material2);
     auto *peAb = new Cubo(1, biblioteca::CriarPonto(0, 0, -0.5), material3);
     vector<Matriz> peAbTransf;
@@ -196,8 +196,66 @@ int main(int argc, char** argv) {
     peAbTransf.push_back(auxP);
     peAbTransf.push_back(auxP1);
     peAb->aplicarTransformacao(peAbTransf);
+// ------------------------------------- Sofa ---------------------------------------------------------------------
+    auto *braco1 = new Cubo(1, biblioteca::CriarPonto(0, 0, -0.5), material3);
+    vector<Matriz> braco1Transf;
+    Matriz auxb1 = Matriz(4,4,0);
+    //aux(0,0) = 1.0/2.0;
+    auxb1(1,1) = 1.5;
+    auxb1(2,2) = 0.5;
+    Matriz auxb2 = Matriz(4,4,0);
+    auxb2(2,3) = -5.5;
+    auxb2(0,3) = 3;
+    braco1Transf.push_back(auxb1);
+    braco1Transf.push_back(auxb2);
+    braco1->aplicarTransformacao(braco1Transf);
+    auto *bracoCin = new Cilindro(1, 0.25, *biblioteca::CriarPonto(3.5, 1.5, -5.75),
+            Vetor (-1, 0, 0),material3);
 
+    auto *braco2 = new Cubo(1, biblioteca::CriarPonto(0, 0, -0.5), material3);
+    vector<Matriz> braco2Transf;
+    Matriz auxb21 = Matriz(4,4,0);
+    //aux(0,0) = 1.0/2.0;
+    auxb21(1,1) = 1.5;
+    auxb21(2,2) = 0.5;
+    Matriz auxb22 = Matriz(4,4,0);
+    auxb22(2,3) = -9;
+    auxb22(0,3) = 3;
+    braco2Transf.push_back(auxb21);
+    braco2Transf.push_back(auxb22);
+    braco2->aplicarTransformacao(braco2Transf);
+    auto *bracoCin2 = new Cilindro(1, 0.25, *biblioteca::CriarPonto(3.5, 1.5, -9.25),
+                                  Vetor (-1, 0, 0),material3);
 
+    auto *fundo = new Cubo(1, biblioteca::CriarPonto(0, 0, -0.5), material3);
+    vector<Matriz> fundoTransf;
+    Matriz fundoaux = Matriz(4,4,0);
+    fundoaux(0,0) = 1.3;
+    fundoaux(1,1) = 1;
+    fundoaux(2,2) = 3;
+    Matriz fundoaux2 = Matriz(4,4,0);
+    fundoaux2(2,3) = -6;
+    fundoaux2(0,3) = 2.8;
+    fundoTransf.push_back(fundoaux);
+    fundoTransf.push_back(fundoaux2);
+    fundo->aplicarTransformacao(fundoTransf);
+
+    auto *encosto = new Cubo(1, biblioteca::CriarPonto(0, 0, -0.5), material3);
+    vector<Matriz> encostoTransf;
+    Matriz encostoaux = Matriz(4,4,0);
+    encostoaux(0,0) = 0.2;
+    encostoaux(1,1) = 0.8;
+    encostoaux(2,2) = 3;
+    Matriz encostoaux2 = Matriz(4,4,0);
+    encostoaux2(2,3) = -5.999;
+    encostoaux2(1,3) = 1;
+    encostoaux2(0,3) = 3.4;
+    encostoTransf.push_back(encostoaux);
+    encostoTransf.push_back(encostoaux2);
+    encosto->aplicarTransformacao(encostoTransf);
+
+    auto *encostoCin = new Cilindro(3, 0.1, *biblioteca::CriarPonto(3.4, 1.8, -6),
+                                   Vetor (0, 0, -1),material3);
 // ------------------------------------- Add objeto ao vetor ---------------------------------------------------------
     objetos.push_back(parede1);
     objetos.push_back(parede2);
@@ -205,6 +263,13 @@ int main(int argc, char** argv) {
     objetos.push_back(cabecaAb);
     objetos.push_back(troncoAb);
     objetos.push_back(peAb);
+    objetos.push_back(braco1);
+    objetos.push_back(bracoCin);
+    objetos.push_back(braco2);
+    objetos.push_back(bracoCin2);
+    objetos.push_back(fundo);
+    objetos.push_back(encosto);
+    objetos.push_back(encostoCin);
 
 // ------------------------------------- Infos da Grade --------------------------------------------------------------
     float tamGrade = 4;
@@ -216,13 +281,14 @@ int main(int argc, char** argv) {
     Ponto* pLookAt1 = biblioteca::CriarPonto(0,0,-9);
     Ponto* pViewUp1 = biblioteca::CriarPonto(0,40,-10);
 //Lado
-//    Ponto* pCoordCamera = biblioteca::CriarPonto(20, 0, -5);
-//    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-15);
-//    Ponto* pViewUp = biblioteca::CriarPonto(20,1,-5);
+//    Ponto* pCoordCamera = biblioteca::CriarPonto(0, 10, 10);
+//    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-4);
+//    Ponto* pViewUp = biblioteca::CriarPonto(0,11,10);
 //Frente
-    Ponto* pCoordCamera = biblioteca::CriarPonto(-10, 10, 5);
-    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-4);
-    Ponto* pViewUp = biblioteca::CriarPonto(-10,11,5);
+    Ponto* pCoordCamera = biblioteca::CriarPonto(-10, 6, -9);
+    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-9);
+    Ponto* pViewUp = biblioteca::CriarPonto(-10,7,-9);
+
 
     auto camera =  new Camera(pCoordCamera, pLookAt, pViewUp, tamGrade, zGrade, matrixSize);
     camera1 =  new Camera(pCoordCamera1, pLookAt1, pViewUp1, tamGrade, zGrade, matrixSize);
