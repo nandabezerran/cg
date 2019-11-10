@@ -11,6 +11,7 @@
 class Luz {
 public:
     Vetor intensidadeRgb;
+    bool estado;
     virtual Vetor calcularIntensidadeDifusa(PontoIntersecao* p) = 0;
     virtual Vetor calcularIntensidadeEspecular(PontoIntersecao *p) = 0;
     virtual void mudaCoodCamera(Camera *camera) = 0;

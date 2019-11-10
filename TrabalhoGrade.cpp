@@ -34,6 +34,7 @@ int menuPrincipal;
 int subMenu;
 int linha;
 int coluna;
+vector<Luz *> luzes;
 
 void display(){
     glClearColor(0.0,0.0,0.0,1.0);
@@ -53,35 +54,44 @@ void funcaoMenu(int item){
     cenario->imprimirCenarioCompleto();
 
 }
-void onMouseButton(int button, int state, int x, int y) {
-    if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
-        pontos[0] = cenario->checarUmPonto(matrixSize - y, x);
-        if (pontos[0]) {
-            subMenu = glutCreateMenu(funcaoMenu);
-            glutAddMenuEntry("Gerar espelho", 1);
-            if (pontos[1] && pontos[2]) {
-                glutAddMenuEntry("Rotacionar", 2);
-            }
-            menuPrincipal = glutCreateMenu(funcaoMenu);
-            glutAddSubMenu(pontos[0]->objeto->nome.c_str(), subMenu);
-            glutAttachMenu(GLUT_MIDDLE_BUTTON);
-            linha = matrixSize-y;
-            coluna = x;
+
+void onMouseButton(int button, int state, int x, int y){
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_UP){
+        for(auto &luz : luzes){
+            luz->estado = !luz->estado;
         }
         cenario->imprimirCenarioCompleto();
     }
-    if (button == GLUT_RIGHT_BUTTON) {
-        if (state == GLUT_DOWN) {
-            if (cenario->checarUmPonto(matrixSize - y, x)) {
-                pontos[1] = cenario->checarUmPonto(matrixSize - y, x);
-            }
-        } else if (state == GLUT_UP) {
-            if (cenario->checarUmPonto(matrixSize - y, x)) {
-                pontos[2] = cenario->checarUmPonto(matrixSize - y, x);
-            }
-        }
-    }
 }
+//void onMouseButton(int button, int state, int x, int y) {
+//    if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
+//        pontos[0] = cenario->checarUmPonto(matrixSize - y, x);
+//        if (pontos[0]) {
+//            subMenu = glutCreateMenu(funcaoMenu);
+//            glutAddMenuEntry("Gerar espelho", 1);
+//            if (pontos[1] && pontos[2]) {
+//                glutAddMenuEntry("Rotacionar", 2);
+//            }
+//            menuPrincipal = glutCreateMenu(funcaoMenu);
+//            glutAddSubMenu(pontos[0]->objeto->nome.c_str(), subMenu);
+//            glutAttachMenu(GLUT_MIDDLE_BUTTON);
+//            linha = matrixSize-y;
+//            coluna = x;
+//        }
+//        cenario->imprimirCenarioCompleto();
+//    }
+//    if (button == GLUT_RIGHT_BUTTON) {
+//        if (state == GLUT_DOWN) {
+//            if (cenario->checarUmPonto(matrixSize - y, x)) {
+//                pontos[1] = cenario->checarUmPonto(matrixSize - y, x);
+//            }
+//        } else if (state == GLUT_UP) {
+//            if (cenario->checarUmPonto(matrixSize - y, x)) {
+//                pontos[2] = cenario->checarUmPonto(matrixSize - y, x);
+//            }
+//        }
+//    }
+//}
 
 void onKeyboard(unsigned char key, int x, int y){
     if(key == 27){
@@ -167,7 +177,6 @@ int main(int argc, char** argv) {
     auto *luzPontual = new LuzPontual(0.7,0.7,0.7,-3.75, 10, -5);
     Vetor dir(0, 1, 0);
     auto *luzSpot = new LuzSpot(1.0,1.0,1.0,3.75, 3, -13, dir, 10);
-    vector<Luz *> luzes;
     luzes.emplace_back(luzSpot);
     luzes.emplace_back(luzPontual);
 //-------------------------------------------- Criação Objetos -------------------------------------------------------
