@@ -104,7 +104,7 @@ int main(int argc, char** argv) {
     float ka0[3] ={0.0215, 0.1745, 0.0215};
     float kd0[3] ={0.07568, 0.61424, 0.07568};
     float ks0[3] ={0.633, 0.727811, 0.633};
-    double m0 = 100;
+    double m0 = 76.8;
     auto *material0 = new Material(ka0,kd0,ks0, m0);
     //Polished copper
     float ka1[3] ={0.19125, 0.0735, 0.0225};
@@ -147,16 +147,28 @@ int main(int argc, char** argv) {
     float ka7[3] ={ 0.2125, 0.1275, 0.054 };
     float kd7[3] ={ 0.714, 0.4284, 0.18144 };
     float ks7[3] ={ 0.393548, 0.271906, 0.166721 };
-    float m7 = 25.6f;
+    float m7 = 25.6;
     auto *material7 = new Material(ka7,kd7, ks7, m7);
+    //Ruby
+    float ka8[3] ={ 0.1745, 0.01175, 0.01175};
+    float kd8[3] ={0.61424, 0.04136, 0.04136 };
+    float ks8[3] ={0.727811, 0.626959, 0.626959 };
+    float m8 =76.8 ;
+    auto *material8 = new Material(ka8,kd8, ks8, m8);
+    //Gold
+    float ka9[3] ={ 0.24725, 0.1995, 0.0745};
+    float kd9[3] ={0.75164, 0.60648, 0.22648 };
+    float ks9[3] ={0.628281, 0.555802, 0.366065 };
+    float m9 =51.2 ;
+    auto *material9 = new Material(ka9,kd9, ks9, m9);
 
 //-------------------------------------------- Luzes -----------------------------------------------------------------
     auto *luzAmbiente = new LuzAmbiente(0.3,0.3,0.3);
-    auto *luzPontual = new LuzPontual(0.7,0.7,0.7,0, 7, -9);
-    Vetor dir(1, 0.003, 0);
-    //auto *luzSpot = new LuzSpot(1.0,1.0,1.0,5, -1, -20, dir, 10);
+    auto *luzPontual = new LuzPontual(0.7,0.7,0.7,-3.75, 10, -5);
+    Vetor dir(0, 1, 0);
+    auto *luzSpot = new LuzSpot(1.0,1.0,1.0,3.75, 3, -13, dir, 10);
     vector<Luz *> luzes;
-    //luzes.emplace_back(luzSpot);
+    luzes.emplace_back(luzSpot);
     luzes.emplace_back(luzPontual);
 //-------------------------------------------- Criação Objetos -------------------------------------------------------
     Vetor normal(0, 1, 0);
@@ -335,19 +347,69 @@ int main(int argc, char** argv) {
 
     auto *encostoCin2 = new Cilindro(1.5, 0.1, *biblioteca::CriarPonto(0.75, 1.8, -11),
                                     Vetor (-1, 0, 0),material6);
-// ------------------------------------- Planta ----------------------------------------------------------------------
-    auto *vaso = new Cilindro(0.749, 0.375, *biblioteca::CriarPonto(-3.75, 0.5, -5),
-                                     Vetor (0, 1, 0),material1);
-    auto *vaso2 = new Cone(0.75, 0.75, biblioteca::CriarPonto(-3.75, 1.25, -5),
-                              Vetor (0, -1, 0),material1);
-    auto *tronco = new Cilindro(1.5, 0.10, *biblioteca::CriarPonto(-3.75, 1.25, -5),
-                           Vetor (0, 1, 0),material7);
-    auto *arvore = new Esfera(0.55,biblioteca::CriarPonto(-3.76, 3.25, -5), material0);
-    auto *galho = new Cilindro(0.7, 0.05, *biblioteca::CriarPonto(-3.85, 1.9, -5),
-            biblioteca::NormalizaVetor(Vetor (-0.6,0.2,0)),material7);
-    auto *ramo = new  Esfera(0.2,biblioteca::CriarPonto(-4.6, 2.1, -5), material0);
+// ------------------------------------- Arvore redonda --------------------------------------------------------------
+//    auto *vaso = new Cilindro(0.749, 0.375, *biblioteca::CriarPonto(-3.75, 0.5, -5),
+//                                     Vetor (0, 1, 0),material1);
+//    auto *vaso2 = new Cone(0.75, 0.75, biblioteca::CriarPonto(-3.75, 1.25, -5),
+//                              Vetor (0, -1, 0),material1);
+//    auto *tronco = new Cilindro(1.5, 0.10, *biblioteca::CriarPonto(-3.75, 1.25, -5),
+//                           Vetor (0, 1, 0),material7);
+//    auto *arvore = new Esfera(0.55,biblioteca::CriarPonto(-3.76, 3.25, -5), material0);
+//    auto *galho = new Cilindro(0.7, 0.05, *biblioteca::CriarPonto(-3.85, 1.9, -5),
+//            biblioteca::NormalizaVetor(Vetor (-0.6,0.2,0)),material7);
+//    auto *ramo = new  Esfera(0.2,biblioteca::CriarPonto(-4.6, 2.1, -5), material0);
 
+// ------------------------------------- Arvore de natal -------------------------------------------------------------
+    auto *tronco = new Cilindro(0.6, 0.10, *biblioteca::CriarPonto(-3.75, 0.5, -5),
+                                Vetor (0, 1, 0),material7);
+    auto *arvore = new Cone(1, 0.75, biblioteca::CriarPonto(-3.75, 1.2, -5),
+            Vetor (0, 1, 0),material0);
+    auto *arvore2 = new Cone(1.2, 0.6, biblioteca::CriarPonto(-3.75, 1.7, -5),
+                            Vetor (0, 1, 0),material0);
+    auto *b1 = new  Esfera(0.1,biblioteca::CriarPonto(-4.3, 1.9, -5), material8);
+    auto *b2 = new  Esfera(0.1,biblioteca::CriarPonto(-3.25, 2.1, -5), material9);
+    auto *b3 = new  Esfera(0.1,biblioteca::CriarPonto(-3.75, 2.1, -5.5), material8);
+    auto *b4 = new  Esfera(0.1,biblioteca::CriarPonto(-3.75, 2.4, -4.7), material9);
+
+    auto *b5 = new  Esfera(0.1,biblioteca::CriarPonto(-4.4, 1.4, -5), material9);
+    auto *b6 = new  Esfera(0.1,biblioteca::CriarPonto(-3.1, 1.4, -5), material8);
+    auto *b7 = new  Esfera(0.1,biblioteca::CriarPonto(-3.8, 1.5, -5.7), material9);
+    auto *b8 = new  Esfera(0.1,biblioteca::CriarPonto(-3.8, 1.5, -4.4), material8);
+
+    auto *presente1 = new Cubo(0.3, biblioteca::CriarPonto(-4, 0.5, -5), material8);
+    auto *presente2 = new Cubo(0.4, biblioteca::CriarPonto(-3.5, 0.5, -4.5), material9);
+    auto *presente3 = new Cubo(0.5, biblioteca::CriarPonto(-3.75, 0.5, -5.5), material0);
+
+// ------------------------------------- Estante ---------------------------------------------------------------------
+    auto *estante1 = new Cubo(1, biblioteca::CriarPonto(0, 0, -0.5), material6);
+    vector<Matriz> estante1Transf;
+    Matriz estante1aux = Matriz(4,4,0);
+    estante1aux(2,2) = 0.5;
+    estante1aux(1,1) = 0.1;
+    estante1aux(0,0) = 2;
+    Matriz estante1aux2 = Matriz(4,4,0);
+    estante1aux2(2,3) = -13.5;
+    estante1aux2(1,3) = 4;
+    estante1aux2(0,3) = 1;
+    estante1Transf.push_back(estante1aux);
+    estante1Transf.push_back(estante1aux2);
+    estante1->aplicarTransformacao(estante1Transf);
+
+    auto *estante2 = new Cubo(1, biblioteca::CriarPonto(0, 0, -0.5), material6);
+    vector<Matriz> estante2Transf;
+    Matriz estante2aux = Matriz(4,4,0);
+    estante2aux(2,2) = 0.5;
+    estante2aux(1,1) = 0.1;
+    estante2aux(0,0) = 2;
+    Matriz estante2aux2 = Matriz(4,4,0);
+    estante2aux2(2,3) = -13.5;
+    estante2aux2(1,3) = 3.5;
+    estante2aux2(0,3) = 0;
+    estante2Transf.push_back(estante2aux);
+    estante2Transf.push_back(estante2aux2);
+    estante2->aplicarTransformacao(estante2Transf);
 // ------------------------------------- Add objeto ao vetor ---------------------------------------------------------
+
     objetos.push_back(parede1);
     objetos.push_back(parede2);
     objetos.push_back(parede3);
@@ -372,12 +434,31 @@ int main(int argc, char** argv) {
     objetos.push_back(encosto2);
     objetos.push_back(encostoCin2);
 
-    objetos.push_back(vaso);
-    objetos.push_back(vaso2);
     objetos.push_back(tronco);
     objetos.push_back(arvore);
-    objetos.push_back(galho);
-    objetos.push_back(ramo);
+    objetos.push_back(arvore2);
+    objetos.push_back(b1);
+    objetos.push_back(b2);
+    objetos.push_back(b3);
+    objetos.push_back(b4);
+
+    objetos.push_back(b5);
+    objetos.push_back(b6);
+    objetos.push_back(b7);
+    objetos.push_back(b8);
+
+    objetos.push_back(presente1);
+    objetos.push_back(presente2);
+    objetos.push_back(presente3);
+
+    objetos.push_back(estante1);
+    objetos.push_back(estante2);
+
+//    objetos.push_back(vaso);
+//    objetos.push_back(vaso2);
+
+//    objetos.push_back(galho);
+//    objetos.push_back(ramo);
 
 // ------------------------------------- Infos da Grade --------------------------------------------------------------
     float tamGrade = 4;
