@@ -43,21 +43,21 @@ RM = "C:\Program Files\JetBrains\CLion 2019.2.5\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\natal\CLionProjects\opengl
+CMAKE_SOURCE_DIR = C:\Users\natal\CLionProjects\ComputacaoGrafica
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\natal\CLionProjects\opengl\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\natal\CLionProjects\ComputacaoGrafica\cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/opengl.dir/all
+all: CMakeFiles/ComputacaoGrafica.dir/all
 
 .PHONY : all
 
 # The main recursive "clean" target.
-clean: CMakeFiles/opengl.dir/clean
+clean: CMakeFiles/ComputacaoGrafica.dir/clean
 
 .PHONY : clean
 
@@ -67,31 +67,31 @@ preinstall:
 .PHONY : preinstall
 
 #=============================================================================
-# Target rules for target CMakeFiles/opengl.dir
+# Target rules for target CMakeFiles/ComputacaoGrafica.dir
 
 # All Build rule for target.
-CMakeFiles/opengl.dir/all:
-	$(MAKE) -f CMakeFiles\opengl.dir\build.make CMakeFiles/opengl.dir/depend
-	$(MAKE) -f CMakeFiles\opengl.dir\build.make CMakeFiles/opengl.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\natal\CLionProjects\opengl\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target opengl"
-.PHONY : CMakeFiles/opengl.dir/all
+CMakeFiles/ComputacaoGrafica.dir/all:
+	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/depend
+	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\natal\CLionProjects\ComputacaoGrafica\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target ComputacaoGrafica"
+.PHONY : CMakeFiles/ComputacaoGrafica.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/opengl.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\natal\CLionProjects\opengl\cmake-build-debug\CMakeFiles 2
-	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/opengl.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\natal\CLionProjects\opengl\cmake-build-debug\CMakeFiles 0
-.PHONY : CMakeFiles/opengl.dir/rule
+CMakeFiles/ComputacaoGrafica.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\natal\CLionProjects\ComputacaoGrafica\cmake-build-debug\CMakeFiles 2
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/ComputacaoGrafica.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\natal\CLionProjects\ComputacaoGrafica\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles/ComputacaoGrafica.dir/rule
 
 # Convenience name for target.
-opengl: CMakeFiles/opengl.dir/rule
+ComputacaoGrafica: CMakeFiles/ComputacaoGrafica.dir/rule
 
-.PHONY : opengl
+.PHONY : ComputacaoGrafica
 
 # clean rule for target.
-CMakeFiles/opengl.dir/clean:
-	$(MAKE) -f CMakeFiles\opengl.dir\build.make CMakeFiles/opengl.dir/clean
-.PHONY : CMakeFiles/opengl.dir/clean
+CMakeFiles/ComputacaoGrafica.dir/clean:
+	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/clean
+.PHONY : CMakeFiles/ComputacaoGrafica.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

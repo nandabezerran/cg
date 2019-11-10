@@ -1,6 +1,69 @@
-#include<windows.h>
 #include <GL/glut.h>
-#include <GL/gl.h>
+#include <vector>
+#include <fstream>
+#include <iostream>
+
+using namespace std;
+
+#define TINYOBJLOADER_IMPLEMENTATION // define this in only *one* .cc
+#include "tiny_obj_loader.h"
+
+std::string inputfile = "table.obj";
+tinyobj::attrib_t attrib;
+std::vector<tinyobj::shape_t> shapes;
+std::vector<tinyobj::material_t> materials;
+
+std::string warn;
+std::string err;
+
+void load(void)  {
+    bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, inputfile.c_str());
+
+    if (!warn.empty()) {
+        std::cout << warn << std::endl;
+    }
+
+    if (!err.empty()) {
+        std::cerr << err << std::endl;
+    }
+
+    if (!ret) {
+        exit(1);
+    }
+
+// Loop over shapes
+    for (size_t s = 0; s < shapes.size(); s++) {
+        // Loop over faces(polygon)
+        size_t index_offset = 0;
+        for (size_t f = 0; f < shapes[s].mesh.num_face_vertices.size(); f++) {
+            int fv = shapes[s].mesh.num_face_vertices[f];
+
+            // Loop over vertices in the face.
+            for (size_t v = 0; v < fv; v++) {
+                // access to vertex
+                tinyobj::index_t idx = shapes[s].mesh.indices[index_offset + v];
+                tinyobj::real_t vx = attrib.vertices[3*idx.vertex_index+0];
+                tinyobj::real_t vy = attrib.vertices[3*idx.vertex_index+1];
+                tinyobj::real_t vz = attrib.vertices[3*idx.vertex_index+2];
+                tinyobj::real_t nx = attrib.normals[3*idx.normal_index+0];
+                tinyobj::real_t ny = attrib.normals[3*idx.normal_index+1];
+                tinyobj::real_t nz = attrib.normals[3*idx.normal_index+2];
+                tinyobj::real_t tx = attrib.texcoords[2*idx.texcoord_index+0];
+                tinyobj::real_t ty = attrib.texcoords[2*idx.texcoord_index+1];
+                // Optional: vertex colors
+                // tinyobj::real_t red = attrib.colors[3*idx.vertex_index+0];
+                // tinyobj::real_t green = attrib.colors[3*idx.vertex_index+1];
+                // tinyobj::real_t blue = attrib.colors[3*idx.vertex_index+2];
+            }
+            index_offset += fv;
+
+            // per-face material
+            shapes[s].mesh.material_ids[f];
+        }
+    }
+}
+
+
 
 void wall(double thickness)
 {
@@ -12,36 +75,9 @@ void wall(double thickness)
 }
 
 
-void tableLeg(double thick,double len)
-{
-    glPushMatrix();
-    glTranslated(0,len/2,0);
-    glScaled(thick,len,thick);
-    glutSolidCube(1.0);
-    glPopMatrix();
-}
-
-void table(double topWid,double topThick,double legThick,double legLen) {
-    glPushMatrix();
-    glTranslated(0.22, legLen, 0.22);
-    glScaled(topWid, topThick, topWid);
-    glutSolidSphere(0.25, 100, 100);
-    glPopMatrix();
-    double dist = 0.95 * topWid / 2.0 - legThick / 2.0;
-    glPushMatrix();
-    glTranslated(dist, 0, dist);
-    tableLeg(legThick, legLen);
-    glTranslated(0.0, 0.0, -0.5 * dist);
-    tableLeg(legThick, legLen);
-    glTranslated(-0.5 * dist, 0, 0.5 * dist);
-    tableLeg(legThick, legLen);
-    glTranslated(0, 0, -0.5 * dist);
-    tableLeg(legThick, legLen);
-    glPopMatrix();
-
-}
 
 void displaySolid(void) {
+
 
     GLfloat mat_ambient[]={0.7f,0.7f,0.7f,1.0f};
     GLfloat mat_diffuse[]={0.5f,0.5f,0.5f,1.0f};
@@ -67,6 +103,9 @@ void displaySolid(void) {
     glLoadIdentity();
     gluLookAt(2.3,1.3,2.0,0.0,0.25,0.0,0.0,1.0,0.0);
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    glPushMatrix();
+
+    glTranslatef ( 0.0f, -2.0f, 0.0f );
 
     glPushMatrix();
     glTranslated(0.4,0.4,0.6);
@@ -83,8 +122,8 @@ void displaySolid(void) {
     glPopMatrix();
     glPushMatrix();
     glTranslated(0.4,0,0.4);
-    table(0.6,0.02,0.02,0.15);
     glPopMatrix();
+
 
     wall(0.02);
     glPushMatrix();
@@ -105,6 +144,7 @@ int main(int argc,char **argv) {
     glutInitWindowPosition(100,100);
     glutCreateWindow("Simple shaded scene consisting of a teapot");
     glutDisplayFunc(displaySolid);
+    glutDisplayFunc(load);
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
     glShadeModel(GL_SMOOTH);//Specifies a symbolic value representing a shading technique. Accepted values are GL_FLAT and GL_SMOOTH.

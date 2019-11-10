@@ -47,10 +47,10 @@ RM = "C:\Program Files\JetBrains\CLion 2019.2.5\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\natal\CLionProjects\opengl
+CMAKE_SOURCE_DIR = C:\Users\natal\CLionProjects\ComputacaoGrafica
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\natal\CLionProjects\opengl\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\natal\CLionProjects\ComputacaoGrafica\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -79,9 +79,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\natal\CLionProjects\opengl\cmake-build-debug\CMakeFiles C:\Users\natal\CLionProjects\opengl\cmake-build-debug\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\natal\CLionProjects\ComputacaoGrafica\cmake-build-debug\CMakeFiles C:\Users\natal\CLionProjects\ComputacaoGrafica\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\natal\CLionProjects\opengl\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\natal\CLionProjects\ComputacaoGrafica\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -110,17 +110,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named opengl
+# Target rules for targets named ComputacaoGrafica
 
 # Build rule for target.
-opengl: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 opengl
-.PHONY : opengl
+ComputacaoGrafica: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 ComputacaoGrafica
+.PHONY : ComputacaoGrafica
 
 # fast build rule for target.
-opengl/fast:
-	$(MAKE) -f CMakeFiles\opengl.dir\build.make CMakeFiles/opengl.dir/build
-.PHONY : opengl/fast
+ComputacaoGrafica/fast:
+	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/build
+.PHONY : ComputacaoGrafica/fast
 
 main.obj: main.cpp.obj
 
@@ -128,7 +128,7 @@ main.obj: main.cpp.obj
 
 # target to build an object file
 main.cpp.obj:
-	$(MAKE) -f CMakeFiles\opengl.dir\build.make CMakeFiles/opengl.dir/main.cpp.obj
+	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/main.cpp.obj
 .PHONY : main.cpp.obj
 
 main.i: main.cpp.i
@@ -137,7 +137,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles\opengl.dir\build.make CMakeFiles/opengl.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -146,7 +146,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles\opengl.dir\build.make CMakeFiles/opengl.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles\ComputacaoGrafica.dir\build.make CMakeFiles/ComputacaoGrafica.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -155,8 +155,8 @@ help:
 	@echo ... all (the default if no target is provided)
 	@echo ... clean
 	@echo ... depend
-	@echo ... opengl
 	@echo ... edit_cache
+	@echo ... ComputacaoGrafica
 	@echo ... rebuild_cache
 	@echo ... main.obj
 	@echo ... main.i

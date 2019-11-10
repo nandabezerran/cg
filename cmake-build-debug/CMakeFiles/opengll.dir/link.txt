@@ -1,3 +1,0 @@
-"C:\Program Files\JetBrains\CLion 2019.2.5\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\opengll.dir/objects.a
-C:\MinGW\bin\ar.exe cr CMakeFiles\opengll.dir/objects.a @CMakeFiles\opengll.dir\objects1.rsp
-C:\MinGW\bin\g++.exe  -std=c++11 -std=c++11 -g   -Wl,--whole-archive CMakeFiles\opengll.dir/objects.a -Wl,--no-whole-archive  -o opengll.exe -Wl,--out-implib,libopengll.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\opengll.dir\linklibs.rsp
