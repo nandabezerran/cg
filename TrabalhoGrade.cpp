@@ -171,7 +171,12 @@ int main(int argc, char** argv) {
     float ks9[3] ={0.628281, 0.555802, 0.366065 };
     float m9 =51.2 ;
     auto *material9 = new Material(ka9,kd9, ks9, m9);
-
+    // Bronze
+    float ka10[3] ={ 0.2125f, 0.1275f, 0.054f };
+    float kd10[3] ={ 0.714f, 0.4284f, 0.18144f };
+    float ks10[3] ={ 0.393548f, 0.271906f, 0.166721f };
+    float m10 = 25.6f;
+    auto *material10 = new Material(ka10,kd10, ks10, m10);
 //-------------------------------------------- Luzes -----------------------------------------------------------------
     auto *luzAmbiente = new LuzAmbiente(0.3,0.3,0.3);
     auto *luzPontual = new LuzPontual(0.7,0.7,0.7,-3.75, 10, -5);
@@ -417,6 +422,70 @@ int main(int argc, char** argv) {
     estante2Transf.push_back(estante2aux);
     estante2Transf.push_back(estante2aux2);
     estante2->aplicarTransformacao(estante2Transf);
+// -------------------------------------------- Mesa -----------------------------------------------------------------
+    auto *mesa = new Cubo(1, biblioteca::CriarPonto(0, 0, -0.5), material10);
+    vector<Matriz> mesaTransf;
+    Matriz auxm1 = Matriz(4,4,0);
+    auxm1(0,0) = 3;
+    auxm1(1,1) = 1.3;
+    auxm1(2,2) = 0.5;
+    Matriz auxm2 = Matriz(4,4,0);
+    auxm2(2,3) = -13.5;
+    auxm2(0,3) = -1;
+    auxm2(1,3) = 0.5;
+    mesaTransf.push_back(auxm1);
+    mesaTransf.push_back(auxm2);
+    mesa->aplicarTransformacao(mesaTransf);
+
+    auto *armario = new Cubo(1, biblioteca::CriarPonto(0, 0, -0.5), material10);
+    vector<Matriz> armTransf;
+    Matriz auxarm1 = Matriz(4,4,0);
+    auxarm1(0,0) = 1.0;
+    auxarm1(1,1) = 0.9;
+    auxarm1(2,2) = 0.1;
+    Matriz auxarm2 = Matriz(4,4,0);
+    auxarm2(2,3) = -13.4;
+    auxarm2(0,3) = -0.2;
+    auxarm2(1,3) = 0.7;
+    armTransf.push_back(auxarm1);
+    armTransf.push_back(auxarm2);
+    armario->aplicarTransformacao(armTransf);
+    auto *puxador = new Cilindro(0.5, 0.05, *biblioteca::CriarPonto(-0.4, 0.9, -13.4),
+                                 Vetor (0, 1, 0),material5);
+
+    auto *gaveta1 = new Cubo(1, biblioteca::CriarPonto(0, 0, -0.5), material10);
+    vector<Matriz> gaveta1Transf;
+    Matriz auxgaveta11 = Matriz(4,4,0);
+    auxgaveta11(0,0) = 1.3;
+    auxgaveta11(1,1) = 0.3;
+    auxgaveta11(2,2) = 0.1;
+    Matriz auxgaveta12 = Matriz(4,4,0);
+    auxgaveta12(2,3) = -13.4;
+    auxgaveta12(0,3) = -1.6;
+    auxgaveta12(1,3) = 1.3;
+    gaveta1Transf.push_back(auxgaveta11);
+    gaveta1Transf.push_back(auxgaveta12);
+    gaveta1->aplicarTransformacao(gaveta1Transf);
+    auto *puxador1 = new Cilindro(0.5, 0.05, *biblioteca::CriarPonto(-1.3, 1.45, -13.4),
+                                 Vetor (-1, 0, 0),material5);
+
+    auto *gaveta2 = new Cubo(1, biblioteca::CriarPonto(0, 0, -0.5), material10);
+    vector<Matriz> gaveta2Transf;
+    Matriz auxgaveta21 = Matriz(4,4,0);
+    auxgaveta21(0,0) = 1.3;
+    auxgaveta21(1,1) = 0.3;
+    auxgaveta21(2,2) = 0.1;
+    Matriz auxgaveta22 = Matriz(4,4,0);
+    auxgaveta22(2,3) = -13.4;
+    auxgaveta22(0,3) = -1.6;
+    auxgaveta22(1,3) = 0.7;
+    gaveta2Transf.push_back(auxgaveta21);
+    gaveta2Transf.push_back(auxgaveta22);
+    gaveta2->aplicarTransformacao(gaveta2Transf);
+    auto *puxador2 = new Cilindro(0.5, 0.05, *biblioteca::CriarPonto(-1.3, 0.85, -13.4),
+                                  Vetor (-1, 0, 0),material5);
+
+
 // ------------------------------------- Add objeto ao vetor ---------------------------------------------------------
 
     objetos.push_back(parede1);
@@ -463,6 +532,14 @@ int main(int argc, char** argv) {
     objetos.push_back(estante1);
     objetos.push_back(estante2);
 
+
+    objetos.push_back(mesa);
+    objetos.push_back(armario);
+    objetos.push_back(puxador);
+    objetos.push_back(gaveta1);
+    objetos.push_back(puxador1);
+    objetos.push_back(gaveta2);
+    objetos.push_back(puxador2);
 //    objetos.push_back(vaso);
 //    objetos.push_back(vaso2);
 
