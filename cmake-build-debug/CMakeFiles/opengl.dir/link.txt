@@ -1,0 +1,1 @@
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/opengl.dir/main.cpp.o  -o opengl.exe -Wl,--out-implib,libopengl.dll.a -Wl,--major-image-version,0,--minor-image-version,0 -lopengl32 -lglut -lglew -lglu32 
