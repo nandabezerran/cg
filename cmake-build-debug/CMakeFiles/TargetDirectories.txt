@@ -1,3 +1,0 @@
-C:/Users/natal/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/natal/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/ComputacaoGrafica.dir
-C:/Users/natal/CLionProjects/ComputacaoGrafica/cmake-build-debug/CMakeFiles/rebuild_cache.dir
