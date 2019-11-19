@@ -26,7 +26,7 @@
 # define M_PI 3.14159265358979323846
 float *test;
 Camera *camera1;
-int matrixSize = 100;
+int matrixSize = 400;
 float tamGrade = 4;
 float zGrade = -4;
 Cenario *cenario;
@@ -516,7 +516,7 @@ int main(int argc, char **argv) {
     auxgaveta21(2, 2) = 0.1;
     Matriz auxgaveta22 = Matriz(4, 4, 0);
     auxgaveta22(2, 3) = -13.4;
-    auxgaveta22(0, 3) = -2;
+    auxgaveta22(0, 3) = -1.6;
     auxgaveta22(1, 3) = 0.7;
     gaveta2Transf.push_back(auxgaveta21);
     gaveta2Transf.push_back(auxgaveta22);
@@ -534,53 +534,53 @@ int main(int argc, char **argv) {
     objetos.push_back(cabecaAb);
     objetos.push_back(troncoAb);
     objetos.push_back(peAb);
-//
-//    objetos.push_back(braco1);
-//    objetos.push_back(bracoCin);
-//    objetos.push_back(braco2);
-//    objetos.push_back(bracoCin2);
-//    objetos.push_back(fundo);
-//    objetos.push_back(encosto);
-//    objetos.push_back(encostoCin);
-//
-//    objetos.push_back(braco12);
-//    objetos.push_back(bracoCinb2);
-//    objetos.push_back(fundob2);
-//    objetos.push_back(braco22);
-//    objetos.push_back(bracoCinb22);
-//    objetos.push_back(encosto2);
-//    objetos.push_back(encostoCin2);
-//
-//    objetos.push_back(tronco);
-//    objetos.push_back(arvore);
-//    objetos.push_back(arvore2);
-//    objetos.push_back(b1);
-//    objetos.push_back(b2);
-//    objetos.push_back(b3);
-//    objetos.push_back(b4);
-//
-//    objetos.push_back(b5);
-//    objetos.push_back(b6);
-//    objetos.push_back(b7);
-//    objetos.push_back(b8);
-//
-//    objetos.push_back(presente1);
-//    objetos.push_back(presente2);
-//    objetos.push_back(presente3);
-//
-//    objetos.push_back(estante1);
-//    objetos.push_back(estante2);
-//    objetos.push_back(livro);
-//    objetos.push_back(livro1);
-//    objetos.push_back(livro2);
-//
-//    objetos.push_back(mesa);
-//    objetos.push_back(armario);
-//    objetos.push_back(puxador);
-//    objetos.push_back(gaveta1);
-//    objetos.push_back(puxador1);
-//    objetos.push_back(gaveta2);
-//    objetos.push_back(puxador2);
+
+    objetos.push_back(braco1);
+    objetos.push_back(bracoCin);
+    objetos.push_back(braco2);
+    objetos.push_back(bracoCin2);
+    objetos.push_back(fundo);
+    objetos.push_back(encosto);
+    objetos.push_back(encostoCin);
+
+    objetos.push_back(braco12);
+    objetos.push_back(bracoCinb2);
+    objetos.push_back(fundob2);
+    objetos.push_back(braco22);
+    objetos.push_back(bracoCinb22);
+    objetos.push_back(encosto2);
+    objetos.push_back(encostoCin2);
+
+    objetos.push_back(tronco);
+    objetos.push_back(arvore);
+    objetos.push_back(arvore2);
+    objetos.push_back(b1);
+    objetos.push_back(b2);
+    objetos.push_back(b3);
+    objetos.push_back(b4);
+
+    objetos.push_back(b5);
+    objetos.push_back(b6);
+    objetos.push_back(b7);
+    objetos.push_back(b8);
+
+    objetos.push_back(presente1);
+    objetos.push_back(presente2);
+    objetos.push_back(presente3);
+
+    objetos.push_back(estante1);
+    objetos.push_back(estante2);
+    objetos.push_back(livro);
+    objetos.push_back(livro1);
+    objetos.push_back(livro2);
+
+    objetos.push_back(mesa);
+    objetos.push_back(armario);
+    objetos.push_back(puxador);
+    objetos.push_back(gaveta1);
+    objetos.push_back(puxador1);
+    objetos.push_back(gaveta2);
+    objetos.push_back(puxador2);
 
 
 
