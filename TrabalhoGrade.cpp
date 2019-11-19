@@ -26,7 +26,7 @@
 # define M_PI 3.14159265358979323846
 float *test;
 Camera *camera1;
-int matrixSize = 300;
+int matrixSize = 100;
 float tamGrade = 4;
 float zGrade = -4;
 Cenario *cenario;

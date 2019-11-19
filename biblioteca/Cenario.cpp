@@ -171,36 +171,29 @@ void Cenario::mudarCamera(Camera *pCamera) {
 
 
 void Cenario::atualizarCamera(int sentido) {
+    Camera auxCam = *camera;
     if(sentido == 1){
+        camera->andarFrente();
         for (auto objeto : objetos) {
-            objeto->mudaCoodMundo(camera);
+            objeto->mudaCoodMundo(&auxCam);
+            objeto->mudaCoodCamera(camera);
         }
 
         for (auto luz : luzes) {
-            luz->mudaCoodMundo(camera);
-        }
-        camera->andarFrente();
-        for (auto objeto : objetos) {
-            objeto->mudaCoodCamera(camera);
-        }
-        for (auto luz : luzes) {
+            luz->mudaCoodMundo(&auxCam);
             luz->mudaCoodCamera(camera);
         }
 
     }
     else if(sentido == 2){
+        camera->andarTras();
         for (auto objeto : objetos) {
-            objeto->mudaCoodMundo(camera);
+            objeto->mudaCoodMundo(&auxCam);
+            objeto->mudaCoodCamera(camera);
         }
 
         for (auto luz : luzes) {
-            luz->mudaCoodMundo(camera);
-        }
-        camera->andarTras();
-        for (auto objeto : objetos) {
-            objeto->mudaCoodCamera(camera);
-        }
-        for (auto luz : luzes) {
+            luz->mudaCoodMundo(&auxCam);
             luz->mudaCoodCamera(camera);
         }
 
