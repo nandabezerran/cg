@@ -6,7 +6,6 @@
 
 Camera::Camera(Ponto *pCoordCamera, Ponto *pLookAt, Ponto *pViewUp, double gradeTam, double distGrade, int pQtdFuros) :
 coordCamera(pCoordCamera), lookAt(pLookAt), viewUp(pViewUp), qtdFuros(pQtdFuros) {
-
     observador = biblioteca::CriarPonto(0,0,0);
     kc = biblioteca::NormalizaVetor(biblioteca::SubtracaoPontos(*lookAt, *coordCamera));
     ic = biblioteca::NormalizaVetor(biblioteca::ProdutoVetorial(
@@ -67,7 +66,7 @@ void Camera::montarMatrizCoord() {
     mundoCamera[2][0] = kc.x;
     mundoCamera[2][1] = kc.y;
     mundoCamera[2][2] = kc.z;
-    mundoCamera[2][3] =  - biblioteca::ProdutoEscalar(*coordCamera, kc);
+    mundoCamera[2][3] = - biblioteca::ProdutoEscalar(*coordCamera, kc);
 
     mundoCamera[3][0] = 0;
     mundoCamera[3][1] = 0;
@@ -91,7 +90,6 @@ void Camera::atualizaCamera(){
         biblioteca::SubtracaoPontos(*coordCamera,*viewUp), kc));
     jc = biblioteca::ProdutoVetorial(kc,ic);
     montarMatrizCoord();
-
 }
 
 void Camera::mudarMundoCamera(Ponto *ponto) {
@@ -124,7 +122,7 @@ void Camera::mudarCameraMundo(Ponto *ponto) {
 void Camera::mudarCameraMundo(Vetor &vetor) {
     double result[4];
     double vetorExt[4] = {vetor.x, vetor.y, vetor.z, 0};
-    multMatriz<4>(mundoCamera, vetorExt, result);
+    multMatriz<4>(cameraMundo, vetorExt, result);
     vetor.x = result[0];
     vetor.y = result[1];
     vetor.z = result[2];

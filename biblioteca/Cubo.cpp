@@ -128,7 +128,7 @@ void Cubo::mudaCoodCamera(Camera *camera) {
         camera->mudarMundoCamera(vertice->p);
     }
     for (auto triangulo: triangulos) {
-        triangulo->mudaCoodCamera(camera);
+        triangulo->mudaCoodMundo(camera);
     }
 }
 

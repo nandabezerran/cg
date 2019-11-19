@@ -157,23 +157,55 @@ void Cenario::objetosVisiveis() {
 }
 
 void Cenario::mudarCamera(Camera *pCamera) {
-    for (auto objeto : objetos) {
+
+    for(auto &objeto : objetos){
         objeto->mudaCoodMundo(camera);
+        objeto->mudaCoodCamera(pCamera);
+    }
+    for(auto &luz : luzes){
+        luz->mudaCoodMundo(camera);
+        luz->mudaCoodCamera(pCamera);
     }
     camera = pCamera;
-    for(auto objeto : objetos){
-        objeto->mudaCoodCamera(camera);
-    }
-
 }
 
-void Cenario::atualizarCamera() {
-    for (auto objeto : objetos) {
-        objeto->mudaCoodCamera(camera);
+
+void Cenario::atualizarCamera(int sentido) {
+    if(sentido == 1){
+        for (auto objeto : objetos) {
+            objeto->mudaCoodMundo(camera);
+        }
+
+        for (auto luz : luzes) {
+            luz->mudaCoodMundo(camera);
+        }
+        camera->andarFrente();
+        for (auto objeto : objetos) {
+            objeto->mudaCoodCamera(camera);
+        }
+        for (auto luz : luzes) {
+            luz->mudaCoodCamera(camera);
+        }
+
     }
-    for (auto luz : luzes) {
-        luz->mudaCoodCamera(camera);
+    else if(sentido == 2){
+        for (auto objeto : objetos) {
+            objeto->mudaCoodMundo(camera);
+        }
+
+        for (auto luz : luzes) {
+            luz->mudaCoodMundo(camera);
+        }
+        camera->andarTras();
+        for (auto objeto : objetos) {
+            objeto->mudaCoodCamera(camera);
+        }
+        for (auto luz : luzes) {
+            luz->mudaCoodCamera(camera);
+        }
+
     }
+
     imprimirCenarioCompleto();
 }
 

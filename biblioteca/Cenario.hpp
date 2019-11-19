@@ -34,12 +34,13 @@ public:
     void objetosVisiveis();
     void mudarCamera(Camera *pCamera);
     void gerarEspelho(int linha, int coluna);
-    void atualizarCamera();
+    void atualizarCamera(int sentido);
     float* getCenarioData();
     void rotacaoPlanoArbitrario(Objeto *obj, float angulo, Ponto* p1, Ponto* p2);
 private:
     void iniciarPintura();
     void iniciarCenario();
+
 };
 
 

@@ -26,16 +26,21 @@
 # define M_PI 3.14159265358979323846
 float *test;
 Camera *camera1;
-int matrixSize = 500;
+int matrixSize = 300;
+float tamGrade = 4;
+float zGrade = -4;
 Cenario *cenario;
 Objeto *obj;
-PontoIntersecao *pontos[3];
+PontoIntersecao *ponto;
 int menuPrincipal;
 int subMenu;
 int linha;
 int coluna;
 vector<Luz *> luzes;
-
+vector<Objeto *> objetos_apagados;
+Ponto *pCoordCamera;
+Ponto *pLookAt;
+Ponto *pViewUp;
 void display() {
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
@@ -47,10 +52,22 @@ void display() {
 void funcaoMenu(int item) {
     switch (item) {
         case 1:
-            cenario->gerarEspelho(linha, coluna);
+            objetos_apagados.push_back(ponto->objeto);
+            ponto->objeto->visibilidade = true;
             break;
         case 2:
-            cenario->rotacaoPlanoArbitrario(pontos[0]->objeto, M_PI / 3, pontos[1]->p, pontos[2]->p);
+            for (auto &luz : luzes) {
+                luz->estado = !luz->estado;
+            }
+            break;
+        case 3:
+            for (auto &ob : objetos_apagados) {
+                ob->visibilidade = false;
+            }
+            objetos_apagados.clear();
+            break;
+        case 4:
+            cenario->mudarCamera(camera1);
     }
     cenario->imprimirCenarioCompleto();
 
@@ -58,53 +75,34 @@ void funcaoMenu(int item) {
 
 void onMouseButton(int button, int state, int x, int y) {
     if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
-        for (auto &luz : luzes) {
-            luz->estado = !luz->estado;
+        ponto = cenario->checarUmPonto(matrixSize - y, x);
+        if (cenario->checarUmPonto(matrixSize - y, x)) {
+            subMenu = glutCreateMenu(funcaoMenu);
+            glutAddMenuEntry("Deletar Objeto", 1);
+            menuPrincipal = glutCreateMenu(funcaoMenu);
+            glutAddSubMenu(ponto->objeto->nome.c_str(), subMenu);
+            glutAddMenuEntry("Apagar/ Acender Luzes", 2);
+            glutAddMenuEntry("Recuperar Objetos Apagados", 3);
+            glutAddMenuEntry("Visao aerea", 4);
+            glutAttachMenu(GLUT_RIGHT_BUTTON);
+            linha = matrixSize-y;
+            coluna = x;
         }
         cenario->imprimirCenarioCompleto();
     }
+
 }
-//void onMouseButton(int button, int state, int x, int y) {
-//    if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
-//        pontos[0] = cenario->checarUmPonto(matrixSize - y, x);
-//        if (pontos[0]) {
-//            subMenu = glutCreateMenu(funcaoMenu);
-//            glutAddMenuEntry("Gerar espelho", 1);
-//            if (pontos[1] && pontos[2]) {
-//                glutAddMenuEntry("Rotacionar", 2);
-//            }
-//            menuPrincipal = glutCreateMenu(funcaoMenu);
-//            glutAddSubMenu(pontos[0]->objeto->nome.c_str(), subMenu);
-//            glutAttachMenu(GLUT_MIDDLE_BUTTON);
-//            linha = matrixSize-y;
-//            coluna = x;
-//        }
-//        cenario->imprimirCenarioCompleto();
-//    }
-//    if (button == GLUT_RIGHT_BUTTON) {
-//        if (state == GLUT_DOWN) {
-//            if (cenario->checarUmPonto(matrixSize - y, x)) {
-//                pontos[1] = cenario->checarUmPonto(matrixSize - y, x);
-//            }
-//        } else if (state == GLUT_UP) {
-//            if (cenario->checarUmPonto(matrixSize - y, x)) {
-//                pontos[2] = cenario->checarUmPonto(matrixSize - y, x);
-//            }
-//        }
-//    }
-//}
 
 void onKeyboard(unsigned char key, int x, int y) {
     if (key == 27) {
         glutDestroyWindow(0);
         exit(0);
     } else if (key == 'w') {
-        cenario->camera->andarFrente();
-        cenario->atualizarCamera();
+        cenario->atualizarCamera(1);
     } else if (key == 's') {
-        cenario->camera->andarTras();
-        cenario->atualizarCamera();
+        cenario->atualizarCamera(2);
     }
+    cenario->imprimirCenarioCompleto();
 }
 
 int main(int argc, char **argv) {
@@ -536,58 +534,55 @@ int main(int argc, char **argv) {
     objetos.push_back(cabecaAb);
     objetos.push_back(troncoAb);
     objetos.push_back(peAb);
+//
+//    objetos.push_back(braco1);
+//    objetos.push_back(bracoCin);
+//    objetos.push_back(braco2);
+//    objetos.push_back(bracoCin2);
+//    objetos.push_back(fundo);
+//    objetos.push_back(encosto);
+//    objetos.push_back(encostoCin);
+//
+//    objetos.push_back(braco12);
+//    objetos.push_back(bracoCinb2);
+//    objetos.push_back(fundob2);
+//    objetos.push_back(braco22);
+//    objetos.push_back(bracoCinb22);
+//    objetos.push_back(encosto2);
+//    objetos.push_back(encostoCin2);
+//
+//    objetos.push_back(tronco);
+//    objetos.push_back(arvore);
+//    objetos.push_back(arvore2);
+//    objetos.push_back(b1);
+//    objetos.push_back(b2);
+//    objetos.push_back(b3);
+//    objetos.push_back(b4);
+//
+//    objetos.push_back(b5);
+//    objetos.push_back(b6);
+//    objetos.push_back(b7);
+//    objetos.push_back(b8);
+//
+//    objetos.push_back(presente1);
+//    objetos.push_back(presente2);
+//    objetos.push_back(presente3);
+//
+//    objetos.push_back(estante1);
+//    objetos.push_back(estante2);
+//    objetos.push_back(livro);
+//    objetos.push_back(livro1);
+//    objetos.push_back(livro2);
+//
+//    objetos.push_back(mesa);
+//    objetos.push_back(armario);
+//    objetos.push_back(puxador);
+//    objetos.push_back(gaveta1);
+//    objetos.push_back(puxador1);
+//    objetos.push_back(gaveta2);
+//    objetos.push_back(puxador2);
 
-    objetos.push_back(braco1);
-    objetos.push_back(bracoCin);
-    objetos.push_back(braco2);
-    objetos.push_back(bracoCin2);
-    objetos.push_back(fundo);
-    objetos.push_back(encosto);
-    objetos.push_back(encostoCin);
 
-    objetos.push_back(braco12);
-    objetos.push_back(bracoCinb2);
-    objetos.push_back(fundob2);
-    objetos.push_back(braco22);
-    objetos.push_back(bracoCinb22);
-    objetos.push_back(encosto2);
-    objetos.push_back(encostoCin2);
-
-    objetos.push_back(tronco);
-    objetos.push_back(arvore);
-    objetos.push_back(arvore2);
-    objetos.push_back(b1);
-    objetos.push_back(b2);
-    objetos.push_back(b3);
-    objetos.push_back(b4);
-
-    objetos.push_back(b5);
-    objetos.push_back(b6);
-    objetos.push_back(b7);
-    objetos.push_back(b8);
-
-    objetos.push_back(presente1);
-    objetos.push_back(presente2);
-    objetos.push_back(presente3);
-
-    objetos.push_back(estante1);
-    objetos.push_back(estante2);
-    objetos.push_back(livro);
-    objetos.push_back(livro1);
-    objetos.push_back(livro2);
-
-    objetos.push_back(mesa);
-    objetos.push_back(armario);
-    objetos.push_back(puxador);
-    objetos.push_back(gaveta1);
-    objetos.push_back(puxador1);
-    objetos.push_back(gaveta2);
-    objetos.push_back(puxador2);
-
-
-// ------------------------------------- Infos da Grade --------------------------------------------------------------
-    float tamGrade = 4;
-    float zGrade = -4;
 
 // ------------------------------------- Coordenadas Camera ----------------------------------------------------------
 //Cima
@@ -595,9 +590,9 @@ int main(int argc, char **argv) {
     Ponto *pLookAt1 = biblioteca::CriarPonto(0, 0, -9);
     Ponto *pViewUp1 = biblioteca::CriarPonto(0, 40, -10);
 //Lado
-    Ponto *pCoordCamera = biblioteca::CriarPonto(0, 5, 10);
-    Ponto *pLookAt = biblioteca::CriarPonto(0, 0, -13);
-    Ponto *pViewUp = biblioteca::CriarPonto(0, 6, -10);
+    pCoordCamera = biblioteca::CriarPonto(0, 5, 10);
+    pLookAt = biblioteca::CriarPonto(0, 0, -13);
+    pViewUp = biblioteca::CriarPonto(0, 6, 10);
 //Frente
 //    Ponto* pCoordCamera = biblioteca::CriarPonto(-20, 6, -9);
 //    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-5);
