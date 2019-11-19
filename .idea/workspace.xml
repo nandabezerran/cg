@@ -3,6 +3,7 @@
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
       <config projectName="opengl" targetName="opengl" />
+      <config projectName="opengl" targetName="ComputacaoGrafica" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -33,6 +34,7 @@
   <component name="PropertiesComponent">
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ObjectiveC" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="CPPToolchains" />
   </component>
@@ -76,6 +78,9 @@
       <workItem from="1573254264454" duration="1997000" />
       <workItem from="1573264606275" duration="4992000" />
       <workItem from="1574011425573" duration="1491000" />
+      <workItem from="1574033035361" duration="8317000" />
+      <workItem from="1574119044283" duration="2702000" />
+      <workItem from="1574122956009" duration="14157000" />
     </task>
     <servers />
   </component>

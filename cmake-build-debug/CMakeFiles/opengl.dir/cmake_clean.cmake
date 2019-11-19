@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/opengl.dir/main.cpp.o"
+  "CMakeFiles/opengl.dir/main.cpp.obj"
   "libopengl.dll.a"
   "opengl.exe"
+  "opengl.exe.manifest"
   "opengl.pdb"
 )
 

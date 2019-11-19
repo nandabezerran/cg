@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/cygdrive/c/Users/natal/CLionProjects/opengl/main.cpp" "/cygdrive/c/Users/natal/CLionProjects/opengl/cmake-build-debug/CMakeFiles/opengl.dir/main.cpp.o"
+  "C:/Users/natal/CLionProjects/opengl/main.cpp" "C:/Users/natal/CLionProjects/opengl/cmake-build-debug/CMakeFiles/opengl.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

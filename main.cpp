@@ -1,70 +1,67 @@
-
-#include "GL\glew.h"
-
-#include "GL\gl.h"
-#include "GL\glu.h"
-
-#include "GL\glut.h"
+#include <GL/glew.h>
+#include <GL/gl.h>
+#include <GLFW/glfw3.h>
+#include <GL/glut.h>
 #include <vector>
 #include <fstream>
 #include <iostream>
-#include "glm\glm.hpp"
-#define TINYOBJLOADER_IMPLEMENTATION // define this in only *one* .cc
+#include "C:\MinGW\glm\glm.hpp"
 #include "tiny_obj_loader.h"
+
 using namespace std;
 
-std::string inputfile = "mesa.obj";
-tinyobj::attrib_t attrib;
-std::vector<tinyobj::shape_t> shapes;
-std::vector<tinyobj::material_t> materials;
+#define TINYOBJLOADER_IMPLEMENTATION // define this in only *one* .cc
+#include "tiny_obj_loader.h"
 
-std::string warn;
-std::string err;
+GLint attribute_v_coord = -1;
+GLint attribute_v_normal = -1;
+GLuint vbo_mesh_vertices, vbo_mesh_normals;
 
-void load(void)  {
-    bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, inputfile.c_str());
-
-    if (!warn.empty()) {
-        std::cout << warn << std::endl;
+void load_obj(const char* filename, vector<glm::vec4> &vertices, vector<glm::vec3> &normals, vector<GLushort> &elements)
+{
+    ifstream in(filename, ios::in);
+    if (!in)
+    {
+        cerr << "Cannot open " << filename << endl; exit(1);
     }
 
-    if (!err.empty()) {
-        std::cerr << err << std::endl;
-    }
-
-    if (!ret) {
-        exit(1);
-    }
-
-// Loop over shapes
-    for (size_t s = 0; s < shapes.size(); s++) {
-        // Loop over faces(polygon)
-        size_t index_offset = 0;
-        for (size_t f = 0; f < shapes[s].mesh.num_face_vertices.size(); f++) {
-            int fv = shapes[s].mesh.num_face_vertices[f];
-
-            // Loop over vertices in the face.
-            for (size_t v = 0; v < fv; v++) {
-                // access to vertex
-                tinyobj::index_t idx = shapes[s].mesh.indices[index_offset + v];
-                tinyobj::real_t vx = attrib.vertices[3*idx.vertex_index+0];
-                tinyobj::real_t vy = attrib.vertices[3*idx.vertex_index+1];
-                tinyobj::real_t vz = attrib.vertices[3*idx.vertex_index+2];
-                tinyobj::real_t nx = attrib.normals[3*idx.normal_index+0];
-                tinyobj::real_t ny = attrib.normals[3*idx.normal_index+1];
-                tinyobj::real_t nz = attrib.normals[3*idx.normal_index+2];
-                tinyobj::real_t tx = attrib.texcoords[2*idx.texcoord_index+0];
-                tinyobj::real_t ty = attrib.texcoords[2*idx.texcoord_index+1];
-                // Optional: vertex colors
-                // tinyobj::real_t red = attrib.colors[3*idx.vertex_index+0];
-                // tinyobj::real_t green = attrib.colors[3*idx.vertex_index+1];
-                // tinyobj::real_t blue = attrib.colors[3*idx.vertex_index+2];
-            }
-            index_offset += fv;
-
-            // per-face material
-            shapes[s].mesh.material_ids[f];
+    string line;
+    while (getline(in, line))
+    {
+        if (line.substr(0,2) == "v ")
+        {
+            istringstream s(line.substr(2));
+            glm::vec4 v; s >> v.x; s >> v.y; s >> v.z; v.w = 1.0f;
+            vertices.push_back(v);
         }
+        else if (line.substr(0,2) == "f ")
+        {
+            istringstream s(line.substr(2));
+            GLushort a,b,c;
+            s >> a; s >> b; s >> c;
+            a--; b--; c--;
+            elements.push_back(a); elements.push_back(b); elements.push_back(c);
+        }
+        else if (line[0] == '#')
+        {
+            /* ignoring this line */
+        }
+        else
+        {
+            /* ignoring this line */
+        }
+    }
+
+    normals.resize(vertices.size(), glm::vec3(0.0, 0.0, 0.0));
+    for (int i = 0; i < elements.size(); i+=3)
+    {
+        GLushort ia = elements[i];
+        GLushort ib = elements[i+1];
+        GLushort ic = elements[i+2];
+        glm::vec3 normal = glm::normalize(glm::cross(
+                glm::vec3(vertices[ib]) - glm::vec3(vertices[ia]),
+                glm::vec3(vertices[ic]) - glm::vec3(vertices[ia])));
+        normals[ia] = normals[ib] = normals[ic] = normal;
     }
 }
 
@@ -77,6 +74,42 @@ void wall(double thickness)
     glScaled(1.0,thickness,1.0);
     glutSolidCube(1.0);
     glPopMatrix();
+}
+
+
+void Blender(void) {
+
+    vector<glm::vec4> table_vertices;
+    vector<glm::vec3> table_normals;
+    vector<GLushort> table_elements;
+    load_obj("mesa.obj", table_vertices, table_normals, table_elements);
+    glEnableVertexAttribArray(attribute_v_coord);
+    // Describe our vertices array to OpenGL (it can't guess its format automatically)
+    glBindBuffer(GL_ARRAY_BUFFER, vbo_mesh_vertices);
+    glVertexAttribPointer(
+            attribute_v_coord,  // attribute
+            4,                  // number of elements per vertex, here (x,y,z,w)
+            GL_FLOAT,           // the type of each element
+            GL_FALSE,           // take our values as-is
+            0,                  // no extra data between each position
+            0                   // offset of first element
+    );
+
+    glEnableVertexAttribArray(attribute_v_normal);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo_mesh_normals);
+    glVertexAttribPointer(
+            attribute_v_normal, // attribute
+            3,                  // number of elements per vertex, here (x,y,z)
+            GL_FLOAT,           // the type of each element
+            GL_FALSE,           // take our values as-is
+            0,                  // no extra data between each position
+            0                   // offset of first element
+    );
+    int ibo_mesh_elements;
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo_mesh_elements);
+    int size;  glGetBufferParameteriv(GL_ELEMENT_ARRAY_BUFFER, GL_BUFFER_SIZE, &size);
+    glDrawElements(GL_TRIANGLES, size/sizeof(GLushort), GL_UNSIGNED_SHORT, 0);
+
 }
 
 
@@ -129,6 +162,17 @@ void displaySolid(void) {
     glTranslated(0.4,0,0.4);
     glPopMatrix();
 
+    glPushMatrix();
+    glTranslated(0.4,0.4,0.6);
+    glRotated(45,0,0,1);
+    glScaled(0.08,0.08,0.08);
+    glPopMatrix();
+    glPushMatrix();
+    glTranslated(0.6,0.38,0.5);
+    glRotated(30,0,1,0);
+    Blender;
+    glPopMatrix();
+
 
     wall(0.02);
     glPushMatrix();
@@ -141,11 +185,6 @@ void displaySolid(void) {
     glPopMatrix();
     glFlush();
 }
-static std::string GetBaseDir(const std::string& filepath) {
-    if (filepath.find_last_of("/\\") != std::string::npos)
-        return filepath.substr(0, filepath.find_last_of("/\\"));
-    return "";
-}
 
 int main(int argc,char **argv) {
     glutInit(&argc,argv);
@@ -154,17 +193,7 @@ int main(int argc,char **argv) {
     glutInitWindowPosition(100,100);
     glutCreateWindow("Simple shaded scene consisting of a teapot");
     glutDisplayFunc(displaySolid);
-    glutDisplayFunc(load);
     glEnable(GL_LIGHTING);
-    std::vector< glm::vec3 > vertices;
-    std::vector< glm::vec2 > uvs;
-    std::vector< glm::vec3 > normals; // Won't be used at the moment.
-    std::string base_dir = GetBaseDir("mesa.obj");
-    bool res = tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, "mesa.obj",
-                                base_dir.c_str());
-
-
-    glBufferData(GL_DRAW_BUFFER, vertices.size() * sizeof(glm::vec3), &vertices[0], GL_STATIC_DRAW);
     glEnable(GL_LIGHT0);
     glShadeModel(GL_SMOOTH);//Specifies a symbolic value representing a shading technique. Accepted values are GL_FLAT and GL_SMOOTH.
     glEnable(GL_DEPTH_TEST);
@@ -172,5 +201,4 @@ int main(int argc,char **argv) {
     glClearColor(0.1,0.1,0.1,0.0);
     glViewport(0,0,640,480);
     glutMainLoop();
-    }
-
+}
