@@ -26,7 +26,7 @@
 # define M_PI 3.14159265358979323846
 float *test;
 Camera *camera1;
-int matrixSize = 400;
+int matrixSize = 500;
 float tamGrade = 4;
 float zGrade = -4;
 Cenario *cenario;
@@ -38,9 +38,6 @@ int linha;
 int coluna;
 vector<Luz *> luzes;
 vector<Objeto *> objetos_apagados;
-Ponto *pCoordCamera;
-Ponto *pLookAt;
-Ponto *pViewUp;
 void display() {
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
@@ -523,66 +520,97 @@ int main(int argc, char **argv) {
     gaveta2->aplicarTransformacao(gaveta2Transf);
     auto *puxador2 = new Cilindro(0.5, 0.05, *biblioteca::CriarPonto(-1.3, 0.85, -13.4),
                                   Vetor(-1, 0, 0), material5);
+//-------------------------------------- Mesa -----------------------------------------------------------------------
+    auto *mesa1 = new Cilindro(0.1, 0.7 , *biblioteca::CriarPonto(-1.6, 0.7, -13.9),Vetor(0, 1, 0), material10);
 
-
+    auto *perna1 = new Cilindro(0.7, 0.05, *biblioteca::CriarPonto(-1.2, 0.0, -13.7),
+                                Vetor(0, 1, 0), material3);
+    auto *perna2 = new Cilindro(0.7, 0.05, *biblioteca::CriarPonto(-2, 0.0, -13.7),
+                                Vetor(0, 1, 0), material3);
+    auto *perna4 = new Cilindro(0.7, 0.05, *biblioteca::CriarPonto(-1.6, 0.0, -14.4),
+                                Vetor(0, 1, 0), material3);
+//-------------------------------------- Enfeites mesa --------------------------------------------------------------
+    auto *garrafa1 = new Cilindro(0.1, 0.04, *biblioteca::CriarPonto(-1.3, 0.85, -13.4),
+            Vetor(0, 1, 0), material10);
+    auto *garrafa2 = new Esfera(0.04, biblioteca::CriarPonto(-1.3, 0.95, -13.4),material10);
+    auto *garrafa3 = new Cilindro(0.1,0.015, *biblioteca::CriarPonto(-1.3, 0.95, -13.4),
+            Vetor(0, 1, 0),material10);
+// ------------------------------------ Lustre -----------------------------------------------------------------------
+    auto *cabo = new Cilindro(0.5, 0.02, *biblioteca::CriarPonto(0, 4, -9),
+            Vetor(0, 1, 0), material3);
+    auto *cone = new Cone(0.4, 0.1, biblioteca::CriarPonto(0, 3.85, -9),
+                          Vetor(0, 1, 0), material4);
+    auto *lampada = new Esfera(0.05,biblioteca::CriarPonto(0, 3.86, -9),material3);
 // ------------------------------------- Add objeto ao vetor ---------------------------------------------------------
 
-    objetos.push_back(parede1);
-    objetos.push_back(parede2);
-    objetos.push_back(parede3);
+//    objetos.push_back(parede1);
+//    objetos.push_back(parede2);
+//    objetos.push_back(parede3);
 
-    objetos.push_back(cabecaAb);
-    objetos.push_back(troncoAb);
-    objetos.push_back(peAb);
+//    objetos.push_back(cabecaAb);
+//    objetos.push_back(troncoAb);
+//    objetos.push_back(peAb);
 
-    objetos.push_back(braco1);
-    objetos.push_back(bracoCin);
-    objetos.push_back(braco2);
-    objetos.push_back(bracoCin2);
-    objetos.push_back(fundo);
-    objetos.push_back(encosto);
-    objetos.push_back(encostoCin);
+//    objetos.push_back(braco1);
+//    objetos.push_back(bracoCin);
+//    objetos.push_back(braco2);
+//    objetos.push_back(bracoCin2);
+//    objetos.push_back(fundo);
+//    objetos.push_back(encosto);
+//    objetos.push_back(encostoCin);
+//
+//    objetos.push_back(braco12);
+//    objetos.push_back(bracoCinb2);
+//    objetos.push_back(fundob2);
+//    objetos.push_back(braco22);
+//    objetos.push_back(bracoCinb22);
+//    objetos.push_back(encosto2);
+//    objetos.push_back(encostoCin2);
+//
+//    objetos.push_back(tronco);
+//    objetos.push_back(arvore);
+//    objetos.push_back(arvore2);
+//    objetos.push_back(b1);
+//    objetos.push_back(b2);
+//    objetos.push_back(b3);
+//    objetos.push_back(b4);
+//
+//    objetos.push_back(b5);
+//    objetos.push_back(b6);
+//    objetos.push_back(b7);
+//    objetos.push_back(b8);
+//
+//    objetos.push_back(presente1);
+//    objetos.push_back(presente2);
+//    objetos.push_back(presente3);
+//
+//    objetos.push_back(estante1);
+//    objetos.push_back(estante2);
+//    objetos.push_back(livro);
+//    objetos.push_back(livro1);
+//    objetos.push_back(livro2);
+//
+//    objetos.push_back(mesa);
+//    objetos.push_back(armario);
+//    objetos.push_back(puxador);
+//    objetos.push_back(gaveta1);
+//    objetos.push_back(puxador1);
+//    objetos.push_back(gaveta2);
+//    objetos.push_back(puxador2);
 
-    objetos.push_back(braco12);
-    objetos.push_back(bracoCinb2);
-    objetos.push_back(fundob2);
-    objetos.push_back(braco22);
-    objetos.push_back(bracoCinb22);
-    objetos.push_back(encosto2);
-    objetos.push_back(encostoCin2);
-
-    objetos.push_back(tronco);
-    objetos.push_back(arvore);
-    objetos.push_back(arvore2);
-    objetos.push_back(b1);
-    objetos.push_back(b2);
-    objetos.push_back(b3);
-    objetos.push_back(b4);
-
-    objetos.push_back(b5);
-    objetos.push_back(b6);
-    objetos.push_back(b7);
-    objetos.push_back(b8);
-
-    objetos.push_back(presente1);
-    objetos.push_back(presente2);
-    objetos.push_back(presente3);
-
-    objetos.push_back(estante1);
-    objetos.push_back(estante2);
-    objetos.push_back(livro);
-    objetos.push_back(livro1);
-    objetos.push_back(livro2);
-
-    objetos.push_back(mesa);
-    objetos.push_back(armario);
-    objetos.push_back(puxador);
-    objetos.push_back(gaveta1);
-    objetos.push_back(puxador1);
-    objetos.push_back(gaveta2);
-    objetos.push_back(puxador2);
+//    objetos.push_back(garrafa1);
+//    objetos.push_back(garrafa2);
+//    objetos.push_back(garrafa3);
 
 
+//    objetos.push_back(mesa1);
+//    objetos.push_back(perna1);
+//    objetos.push_back(perna2);
+//    objetos.push_back(perna4);
+
+    objetos.push_back(cabo);
+    objetos.push_back(cone);
+    objetos.push_back(lampada);
 
 // ------------------------------------- Coordenadas Camera ----------------------------------------------------------
 //Cima
@@ -590,9 +618,9 @@ int main(int argc, char **argv) {
     Ponto *pLookAt1 = biblioteca::CriarPonto(0, 0, -9);
     Ponto *pViewUp1 = biblioteca::CriarPonto(0, 40, -10);
 //Lado
-    pCoordCamera = biblioteca::CriarPonto(0, 5, 10);
-    pLookAt = biblioteca::CriarPonto(0, 0, -13);
-    pViewUp = biblioteca::CriarPonto(0, 6, 10);
+    Ponto* pCoordCamera = biblioteca::CriarPonto(4, 3, -10);
+    Ponto* pLookAt = biblioteca::CriarPonto(0, 4, -9);
+    Ponto* pViewUp = biblioteca::CriarPonto(4, 4, -10);
 //Frente
 //    Ponto* pCoordCamera = biblioteca::CriarPonto(-20, 6, -9);
 //    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-5);
