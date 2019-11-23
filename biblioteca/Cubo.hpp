@@ -39,7 +39,7 @@ public:
     Vertice* vMaisProx;
 
     Cubo(double cAresta, Ponto* cCentro, Material* material);
-    tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, const Vetor &pV0) override;
+    tuple<Ponto*,Objeto*> IntersecaoReta(Ponto* pP0, const Vetor &pV0) override;
     Ponto* PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0) override;
     Vertice* CriarVertice(Ponto* p1,const string& id);
     Face* CriarFace(Triangulo* pT1, Triangulo* pT2);
@@ -53,5 +53,6 @@ public:
     Vetor calcularNormal(Ponto* p) override;
     Objeto* aplicarEspelhamento(vector<Matriz> &pMatrizesTransf) override;
     Ponto* getCentro() override;
+    tuple<Ponto, Ponto> Limites() override;
 };
 #endif //COMPUTACAOGRAFICA_CUBO_HPP

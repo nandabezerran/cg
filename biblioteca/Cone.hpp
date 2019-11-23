@@ -22,10 +22,9 @@ public:
     Cone(float pAltura, float pRaio, Ponto* pCentro, Vetor pNormal, Material* material);
     Vetor calcularNormal(Ponto* pi);
     bool ValidacaoPontoCone(Ponto* vertice, Ponto* p_int);
-    tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, const Vetor &pV0) override;
+    tuple<Ponto*,Objeto*> IntersecaoReta(Ponto* pP0, const Vetor &pV0) override;
     Ponto* PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0);
-    Ponto* IntersecaoRetaBase(Ponto* centro, Ponto* pP0, const Vetor &pVetor0);
-    bool ValidacaoPontoBase(Ponto* pP0, const Vetor &pVetor0);
+    Ponto* IntersecaoRetaBase(Ponto* centro, const Ponto& pP0, const Vetor &pVetor0);
     void mudaCoodCamera(Camera *camera) override;
     void mudaCoodMundo(Camera *camera) override;
     void aplicarTransformacao(vector<Matriz> &pMatrizesTransf) override;
@@ -33,8 +32,7 @@ public:
 
     Objeto* aplicarEspelhamento(vector<Matriz> &pMatrizesTransf) override;
 
-
-
+    tuple<Ponto, Ponto> Limites() override;
 };
 
 

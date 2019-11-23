@@ -18,6 +18,7 @@
 #include "biblioteca/LuzAmbiente.hpp"
 #include "biblioteca/LuzPontual.hpp"
 #include "biblioteca/LuzSpot.hpp"
+#include "biblioteca/Cluster.h"
 #include <GL/glut.h>
 #include <time.h>
 #include <chrono>
@@ -26,7 +27,7 @@
 # define M_PI 3.14159265358979323846
 float *test;
 Camera *camera1;
-int matrixSize = 500;
+int matrixSize = 300;
 float tamGrade = 4;
 float zGrade = -4;
 Cenario *cenario;
@@ -235,6 +236,25 @@ int main(int argc, char **argv) {
     peAbTransf.push_back(auxP);
     peAbTransf.push_back(auxP1);
     peAb->aplicarTransformacao(peAbTransf);
+
+    auto * colisao = new Cubo(1, biblioteca::CriarPonto(0, 0, -0.5), material3);
+
+    vector<Matriz> colAbTransf;
+    Matriz auxC = Matriz(4,4,0);
+    auxC(0,0) = 1;
+    auxC(1,1) = 3.15;
+    auxC(2,2) = 1;
+    colAbTransf.push_back(auxC);
+    colAbTransf.push_back(auxP1);
+    colisao->aplicarTransformacao(colAbTransf);
+
+    auto *abajur = new Cluster(colisao);
+
+    abajur->adicionarObjeto(cabecaAb);
+    abajur->adicionarObjeto(troncoAb);
+    abajur->adicionarObjeto(peAb);
+
+    objetos.push_back(abajur);
 // ------------------------------------- Sofa ---------------------------------------------------------------------
     auto *braco1 = new Cubo(1, biblioteca::CriarPonto(0, 0, -0.5), material3);
     vector<Matriz> braco1Transf;
@@ -295,6 +315,34 @@ int main(int argc, char **argv) {
 
     auto *encostoCin = new Cilindro(3, 0.1, *biblioteca::CriarPonto(3.4, 1.8, -6),
                                     Vetor(0, 0, -1), material3);
+
+    // Z = -5.5 -9.5; Y = 0 1.9; X = 3.4 3.9
+    // X = .5; Y = 1.9; Z = 4
+    auto *sofaColisao = new Cubo(1,  biblioteca::CriarPonto(0, 0, -0.5), material8);
+    vector<Matriz> sofaColisaoTransf;
+    Matriz sofaColisao_escala = Matriz(4,4,0);
+    sofaColisao_escala(0,0) = 1;
+    sofaColisao_escala(1,1) = 1.9;
+    sofaColisao_escala(2,2) = 4;
+    Matriz sofaColisaoa_translado = Matriz(4,4,0);
+    sofaColisaoa_translado(2,3) = -5.5;
+    sofaColisaoa_translado(1,3) = 0;
+    sofaColisaoa_translado(0,3) = 3;
+    sofaColisaoTransf.push_back(sofaColisao_escala);
+    sofaColisaoTransf.push_back(sofaColisaoa_translado);
+    sofaColisao->aplicarTransformacao(sofaColisaoTransf);
+
+    auto *sofa1 = new Cluster(sofaColisao);
+
+    sofa1->adicionarObjeto(braco1);
+    sofa1->adicionarObjeto(bracoCin);
+    sofa1->adicionarObjeto(braco2);
+    sofa1->adicionarObjeto(bracoCin2);
+    sofa1->adicionarObjeto(fundo);
+    sofa1->adicionarObjeto(encosto);
+    sofa1->adicionarObjeto(encostoCin);
+    objetos.push_back(sofa1);
+
 // ------------------------------------- Sofa2 -----------------------------------------------------------------------
     auto *braco12 = new Cubo(1, biblioteca::CriarPonto(0, 0, -0.5), material6);
     vector<Matriz> braco12Transf;
@@ -355,6 +403,32 @@ int main(int argc, char **argv) {
 
     auto *encostoCin2 = new Cilindro(1.5, 0.1, *biblioteca::CriarPonto(0.75, 1.8, -11),
                                      Vetor(-1, 0, 0), material6);
+
+    auto *sofa2Colisao = new Cubo(1,  biblioteca::CriarPonto(0, 0, -0.5), material8);
+    vector<Matriz> sofa2ColisaoTransf;
+    Matriz sofa2Colisao_escala = Matriz(4,4,0);
+    sofa2Colisao_escala(0,0) = 2.5;
+    sofa2Colisao_escala(1,1) = 1.9;
+    sofa2Colisao_escala(2,2) = 1.15;
+    Matriz sofa2Colisaoa_translado = Matriz(4,4,0);
+    sofa2Colisaoa_translado(0,3) = 0;
+    sofa2Colisaoa_translado(1,3) = 0;
+    sofa2Colisaoa_translado(2,3) = -10;
+    sofa2ColisaoTransf.push_back(sofa2Colisao_escala);
+    sofa2ColisaoTransf.push_back(sofa2Colisaoa_translado);
+    sofa2Colisao->aplicarTransformacao(sofa2ColisaoTransf);
+
+    auto *sofa2 = new Cluster(sofa2Colisao);
+
+    sofa2->adicionarObjeto(braco12);
+    sofa2->adicionarObjeto(bracoCinb2);
+    sofa2->adicionarObjeto(braco22);
+    sofa2->adicionarObjeto(bracoCinb22);
+    sofa2->adicionarObjeto(fundob2);
+    sofa2->adicionarObjeto(encosto2);
+    sofa2->adicionarObjeto(encostoCin2);
+
+    objetos.push_back(sofa2);
 // ------------------------------------- Arvore redonda --------------------------------------------------------------
 //    auto *vaso = new Cilindro(0.749, 0.375, *biblioteca::CriarPonto(-3.75, 0.5, -5),
 //                                     Vetor (0, 1, 0),material1);
@@ -388,6 +462,40 @@ int main(int argc, char **argv) {
     auto *presente2 = new Cubo(0.4, biblioteca::CriarPonto(-3.5, 0.5, -4.5), material9);
     auto *presente3 = new Cubo(0.5, biblioteca::CriarPonto(-3.75, 0.5, -5.5), material0);
 
+    auto *arvColisao = new Cubo(1,  biblioteca::CriarPonto(0, 0, -0.5), material8);
+    vector<Matriz> arvColisaoTransf;
+    Matriz arvColisao_escala = Matriz(4,4,0);
+    arvColisao_escala(0,0) = 1.5;
+    arvColisao_escala(1,1) = 2.5;
+    arvColisao_escala(2,2) = 1.5;
+    Matriz arvColisao_translado = Matriz(4,4,0);
+    arvColisao_translado(0,3) = -3.78;
+    arvColisao_translado(1,3) = 0;
+    arvColisao_translado(2,3) = -4.25;
+    arvColisaoTransf.push_back(arvColisao_escala);
+    arvColisaoTransf.push_back(arvColisao_translado);
+    arvColisao->aplicarTransformacao(arvColisaoTransf);
+
+    auto *arvoreNatal = new Cluster(arvColisao);
+
+    arvoreNatal->adicionarObjeto(tronco);
+    arvoreNatal->adicionarObjeto(arvore);
+    arvoreNatal->adicionarObjeto(arvore2);
+    arvoreNatal->adicionarObjeto(b1);
+    arvoreNatal->adicionarObjeto(b2);
+    arvoreNatal->adicionarObjeto(b3);
+    arvoreNatal->adicionarObjeto(b4);
+
+    arvoreNatal->adicionarObjeto(b5);
+    arvoreNatal->adicionarObjeto(b6);
+    arvoreNatal->adicionarObjeto(b7);
+    arvoreNatal->adicionarObjeto(b8);
+
+    arvoreNatal->adicionarObjeto(presente1);
+    arvoreNatal->adicionarObjeto(presente2);
+    arvoreNatal->adicionarObjeto(presente3);
+
+    objetos.push_back(arvoreNatal);
 // ------------------------------------- Estante ---------------------------------------------------------------------
     auto *estante1 = new Cubo(1, biblioteca::CriarPonto(0, 0, -0.5), material6);
     vector<Matriz> estante1Transf;
@@ -520,6 +628,30 @@ int main(int argc, char **argv) {
     gaveta2->aplicarTransformacao(gaveta2Transf);
     auto *puxador2 = new Cilindro(0.5, 0.05, *biblioteca::CriarPonto(-1.3, 0.85, -13.4),
                                   Vetor(-1, 0, 0), material5);
+    auto *mesaColisao = new Cubo(1, biblioteca::CriarPonto(0, 0, -0.5), material10);
+    vector<Matriz> mesaColisaoTransf;
+    Matriz mesaColisao_escala = Matriz(4, 4, 0);
+    mesaColisao_escala(0, 0) = 3;
+    mesaColisao_escala(1, 1) = 1.3;
+    mesaColisao_escala(2, 2) = 0.65;
+    Matriz mesaColisao_translado = Matriz(4, 4, 0);
+    mesaColisao_translado(2, 3) = -13.5;
+    mesaColisao_translado(0, 3) = -1;
+    mesaColisao_translado(1, 3) = 0.5;
+    mesaColisaoTransf.push_back(mesaColisao_escala);
+    mesaColisaoTransf.push_back(mesaColisao_translado);
+    mesaColisao->aplicarTransformacao(mesaColisaoTransf);
+    auto *armarioMarrom = new Cluster(mesaColisao);
+
+    armarioMarrom->adicionarObjeto(mesa);
+    armarioMarrom->adicionarObjeto(armario);
+    armarioMarrom->adicionarObjeto(puxador);
+    armarioMarrom->adicionarObjeto(gaveta1);
+    armarioMarrom->adicionarObjeto(puxador1);
+    armarioMarrom->adicionarObjeto(gaveta2);
+    armarioMarrom->adicionarObjeto(puxador2);
+
+    objetos.push_back(armarioMarrom);
 //-------------------------------------- Mesa -----------------------------------------------------------------------
     auto *mesa1 = new Cilindro(0.1, 0.7 , *biblioteca::CriarPonto(-1.6, 0.7, -13.9),Vetor(0, 1, 0), material10);
 
@@ -543,74 +675,34 @@ int main(int argc, char **argv) {
     auto *lampada = new Esfera(0.05,biblioteca::CriarPonto(0, 3.86, -9),material3);
 // ------------------------------------- Add objeto ao vetor ---------------------------------------------------------
 
-//    objetos.push_back(parede1);
-//    objetos.push_back(parede2);
-//    objetos.push_back(parede3);
+    objetos.push_back(parede1);
+    objetos.push_back(parede2);
+    objetos.push_back(parede3);
 
-//    objetos.push_back(cabecaAb);
-//    objetos.push_back(troncoAb);
-//    objetos.push_back(peAb);
-
-//    objetos.push_back(braco1);
-//    objetos.push_back(bracoCin);
-//    objetos.push_back(braco2);
-//    objetos.push_back(bracoCin2);
-//    objetos.push_back(fundo);
-//    objetos.push_back(encosto);
-//    objetos.push_back(encostoCin);
-//
-//    objetos.push_back(braco12);
-//    objetos.push_back(bracoCinb2);
-//    objetos.push_back(fundob2);
-//    objetos.push_back(braco22);
-//    objetos.push_back(bracoCinb22);
-//    objetos.push_back(encosto2);
-//    objetos.push_back(encostoCin2);
-//
-//    objetos.push_back(tronco);
-//    objetos.push_back(arvore);
-//    objetos.push_back(arvore2);
-//    objetos.push_back(b1);
-//    objetos.push_back(b2);
-//    objetos.push_back(b3);
-//    objetos.push_back(b4);
-//
-//    objetos.push_back(b5);
-//    objetos.push_back(b6);
-//    objetos.push_back(b7);
-//    objetos.push_back(b8);
-//
-//    objetos.push_back(presente1);
-//    objetos.push_back(presente2);
-//    objetos.push_back(presente3);
-//
-//    objetos.push_back(estante1);
-//    objetos.push_back(estante2);
-//    objetos.push_back(livro);
-//    objetos.push_back(livro1);
-//    objetos.push_back(livro2);
-//
-//    objetos.push_back(mesa);
-//    objetos.push_back(armario);
-//    objetos.push_back(puxador);
-//    objetos.push_back(gaveta1);
-//    objetos.push_back(puxador1);
-//    objetos.push_back(gaveta2);
-//    objetos.push_back(puxador2);
+    objetos.push_back(estante1);
+    objetos.push_back(estante2);
+    objetos.push_back(livro);
+    objetos.push_back(livro1);
+    objetos.push_back(livro2);
 
 //    objetos.push_back(garrafa1);
 //    objetos.push_back(garrafa2);
 //    objetos.push_back(garrafa3);
-
 
 //    objetos.push_back(mesa1);
 //    objetos.push_back(perna1);
 //    objetos.push_back(perna2);
 //    objetos.push_back(perna4);
 
-    objetos.push_back(cabo);
-    objetos.push_back(cone);
-    objetos.push_back(lampada);
+//    objetos.push_back(cabo);
+//    objetos.push_back(cone);
+//    objetos.push_back(lampada);
+
+
+
+// ------------------------------------- Infos da Grade --------------------------------------------------------------
+    float tamGrade = 4;
+    float zGrade = -4;
 
 // ------------------------------------- Coordenadas Camera ----------------------------------------------------------
 //Cima
@@ -618,17 +710,17 @@ int main(int argc, char **argv) {
     Ponto *pLookAt1 = biblioteca::CriarPonto(0, 0, -9);
     Ponto *pViewUp1 = biblioteca::CriarPonto(0, 40, -10);
 //Lado
-    Ponto* pCoordCamera = biblioteca::CriarPonto(4, 3, -10);
-    Ponto* pLookAt = biblioteca::CriarPonto(0, 4, -9);
-    Ponto* pViewUp = biblioteca::CriarPonto(4, 4, -10);
+//    Ponto* pCoordCamera = biblioteca::CriarPonto(4, 3, -10);
+//    Ponto* pLookAt = biblioteca::CriarPonto(0, 4, -9);
+//    Ponto* pViewUp = biblioteca::CriarPonto(4, 4, -10);
 //Frente
 //    Ponto* pCoordCamera = biblioteca::CriarPonto(-20, 6, -9);
 //    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-5);
 //    Ponto* pViewUp = biblioteca::CriarPonto(-20,7,-9);
 //Lado
-//    Ponto* pCoordCamera = biblioteca::CriarPonto(-5, 10, 10);
-//    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-4);
-//    Ponto* pViewUp = biblioteca::CriarPonto(-5,11,10);
+    Ponto* pCoordCamera = biblioteca::CriarPonto(-5, 10, 10);
+    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-4);
+    Ponto* pViewUp = biblioteca::CriarPonto(-5,11,10);
 
     auto camera = new Camera(pCoordCamera, pLookAt, pViewUp, tamGrade, zGrade, matrixSize);
     camera1 = new Camera(pCoordCamera1, pLookAt1, pViewUp1, tamGrade, zGrade, matrixSize);

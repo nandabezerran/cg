@@ -15,7 +15,7 @@ public:
     bool visibilidade;
     Material* material;
     Objeto(const string& pNome, bool visibilidade, Material* pMat);
-    virtual std::tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, const Vetor &pV0) = 0;
+    virtual std::tuple<Ponto*,Objeto*> IntersecaoReta(Ponto* pP0, const Vetor &pV0) = 0;
     virtual Ponto* PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0) = 0;
     virtual void mudaCoodCamera(Camera *camera) = 0;
     virtual void mudaCoodMundo(Camera *camera) = 0;
@@ -23,6 +23,7 @@ public:
     virtual Objeto* aplicarEspelhamento(vector<Matriz> &pMatrizesTransf) = 0;
     virtual void aplicarTransformacao(vector<Matriz> &pMatrizesTransf) = 0;
     virtual Ponto* getCentro() = 0;
+    virtual std::tuple<Ponto, Ponto> Limites() = 0;
 };
 
 

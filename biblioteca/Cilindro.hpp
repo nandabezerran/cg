@@ -20,7 +20,7 @@ public:
     Plano baseSup;
     Vetor normal;
     Cilindro(float pAltura, float pRaio, Ponto pCentro, Vetor pNormal, Material *m);
-    tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, const Vetor &pV0) override;
+    tuple<Ponto*,Objeto*> IntersecaoReta(Ponto* pP0, const Vetor &pV0) override;
     Ponto* PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0) override;
     bool ValidacaoPontoLateral(const Ponto &p_int) const;
     void mudaCoodCamera(Camera *camera) override;
@@ -30,6 +30,7 @@ public:
     void aplicarTransformacao(vector<Matriz> &pMatrizesTransf) override;
     Ponto* getCentro() override;
 
+    tuple<Ponto, Ponto> Limites() override;
 };
 
 

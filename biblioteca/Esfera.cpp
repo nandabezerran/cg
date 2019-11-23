@@ -4,13 +4,13 @@
 
 #include <c++/cmath>
 #include "Esfera.hpp"
-
+#include "Cluster.h"
 
 
 Esfera::Esfera(float pRaio, Ponto* pCentro, Material* material) : raio(pRaio), centro(pCentro),
                                               Objeto("Esfera",false, material)  {}
 
-tuple<Ponto*,Ponto*> Esfera::IntersecaoReta(Ponto* pP0, const Vetor &pV0){
+tuple<Ponto*, Objeto*> Esfera::IntersecaoReta(Ponto* pP0, const Vetor &pV0){
     //p_t_int eh o ponto dado o t_int
     Ponto* p_t_int1 = nullptr;
     Ponto* p_t_int2 = nullptr;
@@ -44,6 +44,9 @@ tuple<Ponto*,Ponto*> Esfera::IntersecaoReta(Ponto* pP0, const Vetor &pV0){
         t_int2 = (-produtoB - sqrt(Delta))/produtoA;
         p_t_int1 = biblioteca::EquacaoDaReta(*pP0,t_int1,pV0N);
         p_t_int2 = biblioteca::EquacaoDaReta(*pP0,t_int2,pV0N);
+        if(biblioteca::distanciaEntrePontos(p_t_int1,pP0) > biblioteca::distanciaEntrePontos(p_t_int2,pP0)) {
+            p_t_int1 = p_t_int2;
+        }
     }
 
     else if (Delta == 0){
@@ -52,7 +55,7 @@ tuple<Ponto*,Ponto*> Esfera::IntersecaoReta(Ponto* pP0, const Vetor &pV0){
         p_t_int1 = biblioteca::EquacaoDaReta(*pP0,t_int1,pV0N);
     }
 
-    return make_tuple(p_t_int1, p_t_int2);
+    return make_tuple(p_t_int1, this);
 
 }
 
@@ -85,4 +88,11 @@ Ponto *Esfera::getCentro() {
 
 void Esfera::aplicarTransformacao(vector<Matriz> &pMatrizesTransf) {
 
+}
+
+tuple<Ponto, Ponto> Esfera::Limites()
+{
+    Ponto max{centro->x + raio, centro->y + raio, centro->z + raio};
+    Ponto min{centro->x - raio, centro->y - raio, centro->z - raio};
+    return make_tuple(max, min);
 }

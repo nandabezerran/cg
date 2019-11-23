@@ -54,4 +54,8 @@ inline Vetor operator*( const double &mult, const Vetor &v1) {
     return v1 * mult;
 }
 
+inline Ponto operator+(const Ponto &p, const Vetor &v) {
+    return Ponto{p.x + v.x, p.y + v.y, p.z + v.z};
+}
+
 #endif //COMPUTACAOGRAFICA_VETOR_H

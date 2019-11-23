@@ -8,6 +8,7 @@
 
 #include "Cenario.hpp"
 #include "Plano.hpp"
+#include "Cluster.h"
 
 Cenario::Cenario(Camera *pCamera, vector<Objeto*> pObjetos, LuzAmbiente* pLuzAmb, vector<Luz*> pLuzes) : camera(pCamera),
 imagem(camera->qtdFuros, camera->qtdFuros), objetos(pObjetos), luzAmbiente(pLuzAmb), luzes(pLuzes) {
@@ -49,26 +50,19 @@ PontoIntersecao* interceptaObjeto(Objeto* Object, Ponto *posObs, Ponto* pointGri
     Vetor lineObGrid = biblioteca::SubtracaoPontos(*posObs, *pointGrid);
 
     vector<PontoIntersecao*> pInts;
-    Ponto* p_int1 = nullptr;
-    Ponto* p_int2 = nullptr;
+    Ponto* p_int = nullptr;
+    Objeto* p_objeto = nullptr;
 
-    tie(p_int1, p_int2) = Object->IntersecaoReta(posObs, lineObGrid);
+    tie(p_int, p_objeto) = Object->IntersecaoReta(posObs, lineObGrid);
 
-    if (p_int1 != nullptr) {
-        auto *p = new PontoIntersecao(p_int1, Object, biblioteca::distanciaEntrePontos(posObs, p_int1));
+    if (p_int != nullptr) {
+        auto *p = new PontoIntersecao(p_int, p_objeto, biblioteca::distanciaEntrePontos(posObs, p_int));
         pInts.push_back(p);
-    }
-    if (p_int2 != nullptr) {
-        auto *p = new PontoIntersecao(p_int2, Object, biblioteca::distanciaEntrePontos(posObs, p_int2));
-        pInts.push_back(p);
-
     }
 
     if (pInts.empty()){
         return nullptr;
     }
-    //Ordena o vetor por meio da distancia do ponto da interseção e da posição do observador
-    std::sort(pInts.begin(), pInts.end(), comparacaoDistancia);
     return pInts[0];
 }
 
@@ -205,35 +199,23 @@ void Cenario::atualizarCamera(int sentido) {
 bool Cenario::rayCasting(Ponto *pCoordObs, Ponto *pontoGrade, PontoIntersecao &intersecao) {
     Vetor vetorObGrade = biblioteca::SubtracaoPontos(*pCoordObs, *pontoGrade);
 
-    Ponto* p_int1 = nullptr;
-    Ponto* p_int2 = nullptr;
+    Ponto* p_int = nullptr;
+    Objeto* p_objeto = nullptr;
 
     bool bateu = false;
 
     for (auto &objeto : objetos) {
         if(!objeto->visibilidade) {
-            tie(p_int1, p_int2) = objeto->IntersecaoReta(pCoordObs, vetorObGrade);
-            if (p_int1) {
+            tie(p_int, p_objeto) = objeto->IntersecaoReta(pCoordObs, vetorObGrade);
+            if (p_int) {
                 if(!bateu) {
-                    intersecao = PontoIntersecao(p_int1, objeto,
-                        biblioteca::distanciaEntrePontos(pCoordObs, p_int1));
+                    intersecao = PontoIntersecao(p_int, p_objeto,
+                        biblioteca::distanciaEntrePontos(pCoordObs, p_int));
                     bateu = true;
                 } else {
-                    auto dist = biblioteca::distanciaEntrePontos(pCoordObs, p_int1);
+                    auto dist = biblioteca::distanciaEntrePontos(pCoordObs, p_int);
                     if(dist < intersecao.distOrigem){
-                        intersecao = PontoIntersecao(p_int1, objeto, dist);
-                    }
-                }
-            }
-            if (p_int2) {
-                if(!bateu) {
-                    intersecao = PontoIntersecao(p_int2, objeto,
-                        biblioteca::distanciaEntrePontos(pCoordObs, p_int2));
-                    bateu = true;
-                } else {
-                    auto dist = biblioteca::distanciaEntrePontos(pCoordObs, p_int2);
-                    if(dist < intersecao.distOrigem){
-                        intersecao = PontoIntersecao(p_int2, objeto, dist);
+                        intersecao = PontoIntersecao(p_int, p_objeto, dist);
                     }
                 }
             }

@@ -12,7 +12,7 @@ public:
     float raio;
     Ponto* centro;
     Esfera(float pRaio, Ponto* pCentro, Material* material);
-    tuple<Ponto*,Ponto*> IntersecaoReta(Ponto* pP0, const Vetor &pV0) override;
+    tuple<Ponto*,Objeto*> IntersecaoReta(Ponto* pP0, const Vetor &pV0) override;
     Ponto* PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0);
     void mudaCoodCamera(Camera *camera) override;
     void mudaCoodMundo(Camera *camera) override;
@@ -20,7 +20,7 @@ public:
     Objeto* aplicarEspelhamento(vector<Matriz> &pMatrizesTransf) override;
     void aplicarTransformacao(vector<Matriz> &pMatrizesTransf) override;
     Ponto* getCentro() override;
-
+    tuple<Ponto, Ponto> Limites() override;
 };
 
 

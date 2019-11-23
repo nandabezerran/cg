@@ -4,6 +4,7 @@
 
 #include <c++/cmath>
 #include "LuzPontual.hpp"
+#include "Cluster.h"
 
 LuzPontual::LuzPontual(float r, float g, float b, double x,double y,double z): Luz(r, g, b){
     posicaoPontual = new Ponto();

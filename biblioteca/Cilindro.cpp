@@ -6,6 +6,7 @@
 #include <c++/cmath>
 #include "Cilindro.hpp"
 #include "Plano.hpp"
+#include "Cluster.h"
 
 
 Cilindro::Cilindro(float pAltura, float pRaio, Ponto pCentro, Vetor pNormal, Material *m) : altura(pAltura),
@@ -17,9 +18,9 @@ Cilindro::Cilindro(float pAltura, float pRaio, Ponto pCentro, Vetor pNormal, Mat
     baseSup = Plano(&centroSup, normal);
 }
 
-tuple<Ponto*,Ponto*> Cilindro::IntersecaoReta(Ponto* pP0, const Vetor &pV0){
+tuple<Ponto*,Objeto*> Cilindro::IntersecaoReta(Ponto* pP0, const Vetor &pV0){
     Ponto* p_int1 = PrimeiraIntersecao(*pP0, pV0);
-    return make_tuple(p_int1, nullptr);
+    return make_tuple(p_int1, this);
 }
 
 bool Cilindro::ValidacaoPontoLateral(const Ponto &p_int) const {
@@ -196,4 +197,58 @@ void Cilindro::aplicarTransformacao(vector<Matriz> &pMatrizesTransf) {
     baseSup.normal.x = normalBiSAux(0,0);
     baseSup.normal.y = normalBiSAux(1,0);
     baseSup.normal.z = normalBiSAux(2,0);
+}
+
+tuple<Ponto, Ponto> Cilindro::Limites()
+{
+    Ponto max = centro + (normal * altura);
+    Ponto min = centro + (normal * altura);
+    Vetor prod(1, 0, 0);
+    if(normal.y != 1) {
+        prod = biblioteca::ProdutoVetorial(normal, Vetor(0, 1, 0));
+    }
+    Vetor prod2 = biblioteca::ProdutoVetorial(prod, normal);
+    for(int i = 0; i < 4; i ++) {
+        Ponto pBase = centro + (prod * raio) + (prod2 * raio);
+        if(pBase.x > max.x){
+            max.x = pBase.x;
+        }
+        if(pBase.y > max.y){
+            max.y = pBase.y;
+        }
+        if(pBase.z > max.z){
+            max.z = pBase.z;
+        }
+        if(pBase.x < min.x){
+            min.x = pBase.x;
+        }
+        if(pBase.y < min.y){
+            min.y = pBase.y;
+        }
+        if(pBase.z < min.z){
+            min.z = pBase.z;
+        }
+        Ponto pTopo = pBase + (normal * altura);
+        if(pTopo.x > max.x){
+            max.x = pBase.x;
+        }
+        if(pTopo.y > max.y){
+            max.y = pBase.y;
+        }
+        if(pTopo.z > max.z){
+            max.z = pBase.z;
+        }
+        if(pTopo.x < min.x){
+            min.x = pBase.x;
+        }
+        if(pTopo.y < min.y){
+            min.y = pBase.y;
+        }
+        if(pTopo.z < min.z){
+            min.z = pBase.z;
+        }
+        prod = prod2;
+        prod2 = biblioteca::ProdutoVetorial(prod, normal);
+    }
+    return make_tuple(max, min);
 }

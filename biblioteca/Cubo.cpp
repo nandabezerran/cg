@@ -6,6 +6,7 @@
 #include "Cubo.hpp"
 #include "biblioteca.hpp"
 #include "Plano.hpp"
+#include "Cluster.h"
 
 Cubo::Cubo(double cAresta, Ponto* cCentro, Material* material): aresta(cAresta), centro(cCentro),
 Objeto("Cubo", false, material){
@@ -47,7 +48,7 @@ Vetor Cubo::calcularNormal(Ponto* p){
     return normal;
 }
 
-tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, const Vetor &pV0) {
+tuple<Ponto*,Objeto*> Cubo::IntersecaoReta(Ponto *pP0, const Vetor &pV0) {
 
     vector< pair<Ponto*, Triangulo*> > intTriangulo;
     for (int i = 0; i < triangulos.size()-1; i +=2) {
@@ -95,9 +96,20 @@ tuple<Ponto*,Ponto*> Cubo::IntersecaoReta(Ponto *pP0, const Vetor &pV0) {
             normal = intTriangulo[0].second->p->normal;
         }
     }
-
-    return make_tuple(!intTriangulo.empty() ? intTriangulo[0].first: nullptr, intTriangulo.size() > 1
-    ? intTriangulo[1].first: nullptr);
+    if(intTriangulo.empty()) {
+        return make_tuple(nullptr, this);
+    }
+    else if(intTriangulo.size() == 1) {
+        return make_tuple(intTriangulo[0].first, this);
+    }
+    else {
+        if(biblioteca::distanciaEntrePontos(intTriangulo[0].first, pP0) < biblioteca::distanciaEntrePontos(intTriangulo[1].first, pP0)) {
+            return make_tuple(intTriangulo[0].first, this);
+        }
+        else {
+            return make_tuple(intTriangulo[1].first, this);
+        }
+    }
 
 }
 
@@ -193,4 +205,37 @@ void Cubo::aplicarTransformacao(vector<Matriz> &pMatrizesTransf) {
     normal.x = aux(0,0);
     normal.y = aux(1,0);
     normal.z = aux(2,0);
+}
+
+tuple<Ponto, Ponto> Cubo::Limites()
+{
+    Ponto max;
+    max.x = vertices[0]->p->x;
+    max.y = vertices[0]->p->y;
+    max.z = vertices[0]->p->z;
+    Ponto min;
+    min.x = vertices[0]->p->x;
+    min.y = vertices[0]->p->y;
+    min.z = vertices[0]->p->z;
+    for(int i = 1; i < vertices.size(); i++) {
+        if(vertices[i]->p->x > max.x){
+            max.x = vertices[i]->p->x;
+        }
+        if(vertices[i]->p->y > max.y){
+            max.y = vertices[i]->p->y;
+        }
+        if(vertices[i]->p->z > max.z){
+            max.z = vertices[i]->p->z;
+        }
+        if(vertices[i]->p->x < min.x){
+            min.x = vertices[i]->p->x;
+        }
+        if(vertices[i]->p->y < min.y){
+            min.y = vertices[i]->p->y;
+        }
+        if(vertices[i]->p->z < min.z){
+            min.z = vertices[i]->p->z;
+        }
+    }
+    return make_tuple(max, min);
 }

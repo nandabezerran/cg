@@ -1,4 +1,5 @@
 #include "LuzRemota.hpp"
+#include "Cluster.h"
 //# define M_PI 3.14159265358979323846  /* pi */
 
 LuzRemota::LuzRemota(int r, int g, int b, Vetor Dr): direcao(Dr), Luz(r, g, b){

@@ -4,6 +4,7 @@
 
 #include <c++/cmath>
 #include "LuzSpot.hpp"
+
 LuzSpot::LuzSpot(float r, float g, float b, double x, double y, double z, Vetor pDir,
         float pAng): direcao(pDir), angAbertura(pAng), Luz(r, g, b){
     posicao = new Ponto();
