@@ -31,10 +31,10 @@ final.write('const int objeto_num_faces = ' + str(len(matrix)) + '\n')
 for i in range (0,len(matrix)):
     for j in range (0,3):
         matrix[i][j] -= 1 
-        
-
-        
+             
 matrix = np.array2string(matrix, separator=', ')
+
+final .write('float objeto_faces[] = { \n')
 
 matrix = matrix.replace("[[","")
 matrix = matrix.replace("[","")
@@ -42,6 +42,8 @@ matrix = matrix.replace("]","")
 matrix = matrix.replace(".","")
 
 final.write(matrix) 
+
+final.write('};\n\n')
 
 obj.close()
 arquivo.close()
