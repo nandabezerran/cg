@@ -28,8 +28,6 @@
 float *test;
 Camera *camera1;
 int matrixSize = 500;
-float tamGrade = 4;
-float zGrade = -4;
 Cenario *cenario;
 Objeto *obj;
 PontoIntersecao *ponto;
@@ -177,7 +175,9 @@ int main(int argc, char **argv) {
     auto *luzPontual = new LuzPontual(0.7, 0.7, 0.7, -3.75, 10, -5);
     Vetor dir(0, 1, 0);
     auto *luzSpot = new LuzSpot(1.0, 1.0, 1.0, 3.75, 3, -13, dir, 10);
+    auto *luzSpot1 = new LuzSpot(0.7, 0.3, 0.3, 0, 5.76, -7, dir, 9);
     luzes.emplace_back(luzSpot);
+    luzes.emplace_back(luzSpot1);
     luzes.emplace_back(luzPontual);
 //-------------------------------------------- Criação Objetos -------------------------------------------------------
     Vetor normal(0, 1, 0);
@@ -631,25 +631,27 @@ int main(int argc, char **argv) {
     mesaCentro->adicionarObjeto(garrafa3);
 
     objetos.push_back(mesaCentro);
-//-------------------------------------- Enfeites mesa --------------------------------------------------------------
-
 // ------------------------------------ Lustre -----------------------------------------------------------------------
-    auto *cabo = new Cilindro(0.5, 0.02, *biblioteca::CriarPonto(0, 4, -9),
+    auto *cabo = new Cilindro(1, 0.1, *biblioteca::CriarPonto(0, 6, -7),
             Vetor(0, 1, 0), material3);
-    auto *cone = new Cone(0.4, 0.1, biblioteca::CriarPonto(0, 3.85, -9),
+    auto *cone = new Cone(0.8, 0.35, biblioteca::CriarPonto(0, 5.75, -7),
                           Vetor(0, 1, 0), material4);
-    auto *lampada = new Esfera(0.05,biblioteca::CriarPonto(0, 3.86, -9),material3);
-// ------------------------------------- Add objeto ao vetor ---------------------------------------------------------
+    auto *lampada = new Esfera(0.1,biblioteca::CriarPonto(0, 5.76, -7),material3);
+
+    auto *lustreColisao = new Cilindro(1.3, 0.35, *biblioteca::CriarPonto(0, 5.66, -7),
+                                      Vetor(0, 1, 0), material3);
+
+    auto *lustre = new Cluster(lustreColisao);
+    lustre->adicionarObjeto(cabo);
+    lustre->adicionarObjeto(cone);
+    lustre->adicionarObjeto(lampada);
+
+    objetos.push_back(lustre);
+// ------------------------------------- Add paredes ao vetor ---------------------------------------------------------
 
     objetos.push_back(parede1);
     objetos.push_back(parede2);
     objetos.push_back(parede3);
-
-//    objetos.push_back(cabo);
-//    objetos.push_back(cone);
-//    objetos.push_back(lampada);
-
-
 
 // ------------------------------------- Infos da Grade --------------------------------------------------------------
     float tamGrade = 4;
@@ -657,9 +659,9 @@ int main(int argc, char **argv) {
 
 // ------------------------------------- Coordenadas Camera ----------------------------------------------------------
 //Cima
-    Ponto *pCoordCamera1 = biblioteca::CriarPonto(0, 40, -9);
+    Ponto *pCoordCamera1 = biblioteca::CriarPonto(0, 15, -9);
     Ponto *pLookAt1 = biblioteca::CriarPonto(0, 0, -9);
-    Ponto *pViewUp1 = biblioteca::CriarPonto(0, 40, -10);
+    Ponto *pViewUp1 = biblioteca::CriarPonto(0, 15, -10);
 //Lado
 //    Ponto* pCoordCamera = biblioteca::CriarPonto(0.4, 1, -3.5);
 //    Ponto* pLookAt = biblioteca::CriarPonto(0.4, 1.15, -6.5);

@@ -112,14 +112,6 @@ float* Cenario::getCenarioData(){
 
 void Cenario::imprimirCenarioCompleto() {
     PontoIntersecao intersecao;
-//    for (int i = 0; i < camera->qtdFuros ; ++i) {
-//        for (int j = 0; j < camera->qtdFuros; ++j) {
-//            pInt = rayCasting(camera->observador, camera->gradeCamera[j][i]);
-//            if(pInt){
-//                pInt->objeto->visibilidade = true;
-//            }
-//        }
-//    }
     pintarObjeto(camera->gradeCamera);
 }
 

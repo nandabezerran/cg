@@ -129,13 +129,13 @@ void Camera::mudarCameraMundo(Vetor &vetor) {
 }
 
 void Camera::andarFrente() {
-    coordCamera = biblioteca::EquacaoDaReta(*coordCamera, 1,
+    coordCamera = biblioteca::EquacaoDaReta(*coordCamera, 3,
             biblioteca::NormalizaVetor(biblioteca::SubtracaoPontos(*coordCamera, *lookAt)));
     atualizaCamera();
 }
 
 void Camera::andarTras() {
-    coordCamera = biblioteca::EquacaoDaReta(*coordCamera, -1,
+    coordCamera = biblioteca::EquacaoDaReta(*coordCamera, -3,
             biblioteca::NormalizaVetor(biblioteca::SubtracaoPontos(*coordCamera, *lookAt)));
     atualizaCamera();
 }

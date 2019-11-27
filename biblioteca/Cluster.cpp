@@ -34,7 +34,7 @@ tuple<Ponto *, Objeto *> Cluster::IntersecaoReta(Ponto *pP0, const Vetor &pV0)
         if (p_int_prox != nullptr) {
             return make_pair(p_int_prox, p_obj_prox);
         }
-        return make_pair(std::get<0>(pontosCol), this);
+        //return make_pair(std::get<0>(pontosCol), this);
     }
     return make_pair(nullptr, nullptr);
 }
