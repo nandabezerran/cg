@@ -88,6 +88,8 @@ Ponto *Cilindro::PrimeiraIntersecao(const Ponto &pP0, const Vetor &pVetor0) {
          Δ = 0 tem 1 intersecao
          Δ < 0 tem 0 intersecoes */
 
+    if(delta < 0) return nullptr;
+
     double t_int1,t_int2;
     auto menorDistancia = DBL_MAX;
 

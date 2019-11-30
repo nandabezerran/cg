@@ -13,9 +13,9 @@ LuzPontual::LuzPontual(float r, float g, float b, double x,double y,double z): L
     posicaoPontual->z = z;
 }
 
-double LuzPontual::calcularFatorDifuso(PontoIntersecao *p) {
-    Vetor l = biblioteca::NormalizaVetor(biblioteca::SubtracaoPontos(*p->p, *posicaoPontual));
-    Vetor normal = p->objeto->calcularNormal(p->p);
+double LuzPontual::calcularFatorDifuso(const PontoIntersecao& p) {
+    Vetor l = biblioteca::NormalizaVetor(biblioteca::SubtracaoPontos(*p.p, *posicaoPontual));
+    Vetor normal = p.objeto->calcularNormal(p.p);
 
     double fatorDifuso = biblioteca::ProdutoEscalar(normal, l);
     if(fatorDifuso < 0){
@@ -25,11 +25,11 @@ double LuzPontual::calcularFatorDifuso(PontoIntersecao *p) {
 
 }
 
-Vetor LuzPontual::calcularIntensidadeDifusa(PontoIntersecao* p){
+Vetor LuzPontual::calcularIntensidadeDifusa(const PontoIntersecao& p){
     Vetor Id;
-    Id.x = intensidadeRgb.x * p->objeto->material->Kd[0];
-    Id.y = intensidadeRgb.y * p->objeto->material->Kd[1];
-    Id.z = intensidadeRgb.z * p->objeto->material->Kd[2];
+    Id.x = intensidadeRgb.x * p.objeto->material->Kd[0];
+    Id.y = intensidadeRgb.y * p.objeto->material->Kd[1];
+    Id.z = intensidadeRgb.z * p.objeto->material->Kd[2];
 
     Id = Id * calcularFatorDifuso(p);
     return Id;
@@ -44,14 +44,14 @@ void LuzPontual::mudaCoodMundo(Camera *camera) {
 
 }
 
-double LuzPontual::calcularFatorEspecular(PontoIntersecao *p) {
-    Vetor PlPint = biblioteca::SubtracaoPontos(*p->p, *posicaoPontual);
+double LuzPontual::calcularFatorEspecular(const PontoIntersecao& p) {
+    Vetor PlPint = biblioteca::SubtracaoPontos(*p.p, *posicaoPontual);
     Vetor l = biblioteca::NormalizaVetor(PlPint);
 
-    Vetor normal = p->objeto->calcularNormal(p->p);
+    Vetor normal = p.objeto->calcularNormal(p.p);
 
     Vetor r = ((biblioteca::ProdutoEscalar(l, normal)) * 2 * normal) - l;
-    Vetor v = biblioteca::SubtracaoPontos(*p->p, Ponto{0, 0, 0});
+    Vetor v = biblioteca::SubtracaoPontos(*p.p, Ponto{0, 0, 0});
 
     double fatorEspecular = biblioteca::ProdutoEscalar(biblioteca::NormalizaVetor(v),
         biblioteca::NormalizaVetor(r));
@@ -64,12 +64,12 @@ double LuzPontual::calcularFatorEspecular(PontoIntersecao *p) {
 
 }
 
-Vetor LuzPontual::calcularIntensidadeEspecular(PontoIntersecao *p) {
+Vetor LuzPontual::calcularIntensidadeEspecular(const PontoIntersecao& p) {
     Vetor Id;
-    Id.x = intensidadeRgb.x * p->objeto->material->Ks[0];
-    Id.y = intensidadeRgb.y * p->objeto->material->Ks[1];
-    Id.z = intensidadeRgb.z * p->objeto->material->Ks[2];
+    Id.x = intensidadeRgb.x * p.objeto->material->Ks[0];
+    Id.y = intensidadeRgb.y * p.objeto->material->Ks[1];
+    Id.z = intensidadeRgb.z * p.objeto->material->Ks[2];
 
-    Id = Id * pow(calcularFatorEspecular(p), p->objeto->material->m);
+    Id = Id * pow(calcularFatorEspecular(p), p.objeto->material->m);
     return Id;
 }

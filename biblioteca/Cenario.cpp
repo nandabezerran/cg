@@ -45,44 +45,32 @@ bool comparacaoDistancia(PontoIntersecao* i,PontoIntersecao* j){
     return (i->distOrigem < j->distOrigem);
 }
 
-PontoIntersecao* interceptaObjeto(Objeto* Object, Ponto *posObs, Ponto* pointGrid){
+PontoIntersecao interceptaObjeto(Objeto* Object, Ponto *posObs, const Vetor& lineObGrid){
 
-    Vetor lineObGrid = biblioteca::SubtracaoPontos(*posObs, *pointGrid);
-
-    vector<PontoIntersecao*> pInts;
     Ponto* p_int = nullptr;
     Objeto* p_objeto = nullptr;
 
     tie(p_int, p_objeto) = Object->IntersecaoReta(posObs, lineObGrid);
 
-    if (p_int != nullptr) {
-        auto *p = new PontoIntersecao(p_int, p_objeto, biblioteca::distanciaEntrePontos(posObs, p_int));
-        pInts.push_back(p);
-    }
-
-    if (pInts.empty()){
-        return nullptr;
-    }
-    return pInts[0];
+    return PontoIntersecao(p_int, p_objeto, p_int ? biblioteca::distanciaEntrePontos(posObs, p_int) : 0);
 }
 
 void Cenario::pintarObjeto(Ponto*** pGrade){
-    auto *aux = new PontoIntersecao();
+    PontoIntersecao aux;
     bool auxDefinido = false;
     Vetor intensidadeFuro;
     for (int i = 0; i < camera->qtdFuros; ++i) {
         for (int j = 0; j < camera->qtdFuros; ++j) {
+            Vetor lineObGrid = biblioteca::SubtracaoPontos(*camera->observador, *pGrade[i][j]);
             for (auto &pObjeto : objetos) {
                 if (!pObjeto->visibilidade) {
-                    PontoIntersecao* pint = interceptaObjeto(pObjeto, camera->observador, pGrade[i][j]);
-                    if(pint && (!auxDefinido || pint->distOrigem < aux->distOrigem)){
-                        aux->distOrigem = pint->distOrigem;
-                        aux->p = pint->p;
-                        aux->objeto = pint->objeto;
+                    PontoIntersecao pint = interceptaObjeto(pObjeto, camera->observador, lineObGrid);
+                    if(pint.p && (!auxDefinido || pint.distOrigem < aux.distOrigem)){
+                        aux.distOrigem = pint.distOrigem;
+                        aux.p = pint.p;
+                        aux.objeto = pint.objeto;
                         auxDefinido = true;
                     }
-                    // Desalocando a memoria
-                    delete pint;
                 }
 
             }
@@ -126,7 +114,6 @@ PontoIntersecao* Cenario::checarUmPonto(int linha, int coluna) {
         cout << "Objeto encontrado: " << intersecao->objeto->nome << " - Ponto Interceptado: " << intersecao->p->x
         << ", " <<intersecao->p->y<< ", "<< intersecao->p->z<< "\n";
         cout << "----------------------------------------------------------------------" << "\n";
-        pintarObjeto(camera->gradeCamera);
         return intersecao;
     }
     return nullptr;

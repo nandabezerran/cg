@@ -9,10 +9,10 @@ class LuzRemota : public Luz {
 public:
     Vetor direcao;
     LuzRemota(int r, int g, int b, Vetor Dr);
-    Vetor calcularIntensidadeDifusa(PontoIntersecao* p) override;
-    Vetor calcularIntensidadeEspecular(PontoIntersecao* p) override;
-    double calcularFatorEspecular(PontoIntersecao* p);
-    double calcularFatorDifuso(PontoIntersecao *p);
+    Vetor calcularIntensidadeDifusa(const PontoIntersecao& p) override;
+    Vetor calcularIntensidadeEspecular(const PontoIntersecao& p) override;
+    double calcularFatorEspecular(const PontoIntersecao& p);
+    double calcularFatorDifuso(const PontoIntersecao& p);
     void mudaCoodCamera(Camera *camera) = 0;
     void mudaCoodMundo(Camera *camera) = 0;
 };

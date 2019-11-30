@@ -46,6 +46,10 @@ inline Vetor operator-(const Vetor &v1, const Vetor &v2) {
     return Vetor(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z);
 }
 
+inline Vetor operator+(const Vetor &v1, const Vetor &v2) {
+    return Vetor(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z);
+}
+
 inline Vetor operator*(const Vetor &v1, const double &mult) {
     return Vetor{v1.x * mult, v1.y * mult, v1.z * mult};
 }

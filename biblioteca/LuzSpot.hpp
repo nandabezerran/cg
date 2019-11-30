@@ -16,10 +16,10 @@ public:
     float angAbertura;
     LuzSpot(float r, float g, float b, double x, double y, double z, Vetor pDir,
             float pAng);
-    double calcularFatorDifuso(PontoIntersecao* p);
-    double calcularFatorEspecular(PontoIntersecao* p);
-    Vetor calcularIntensidadeDifusa(PontoIntersecao* p) override;
-    Vetor calcularIntensidadeEspecular(PontoIntersecao *p) override;
+    double calcularFatorDifuso(const PontoIntersecao& p);
+    double calcularFatorEspecular(const PontoIntersecao& p);
+    Vetor calcularIntensidadeDifusa(const PontoIntersecao& p) override;
+    Vetor calcularIntensidadeEspecular(const PontoIntersecao& p) override;
     void mudaCoodCamera(Camera *camera) override;
     void mudaCoodMundo(Camera *camera) override;
 };

@@ -10,7 +10,7 @@ class LuzAmbiente {
 public:
     Vetor intensidadeRgb;
     LuzAmbiente(float r, float g, float b);
-    Vetor calcularIntensidadeAmbiente(PontoIntersecao* p);
+    Vetor calcularIntensidadeAmbiente(const PontoIntersecao& p);
 };
 
 

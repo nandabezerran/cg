@@ -26,7 +26,10 @@
 
 # define M_PI 3.14159265358979323846
 float *test;
+Camera *camera;
 Camera *camera1;
+Camera *camera2;
+Camera *camera3;
 int matrixSize = 500;
 Cenario *cenario;
 Objeto *obj;
@@ -64,6 +67,15 @@ void funcaoMenu(int item) {
             break;
         case 4:
             cenario->mudarCamera(camera1);
+            break;
+        case 5:
+            cenario->mudarCamera(camera2);
+            break;
+        case 6:
+            cenario->mudarCamera(camera3);
+            break;
+        case 7:
+            cenario->mudarCamera(camera);
     }
     cenario->imprimirCenarioCompleto();
 
@@ -72,7 +84,7 @@ void funcaoMenu(int item) {
 void onMouseButton(int button, int state, int x, int y) {
     if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
         ponto = cenario->checarUmPonto(matrixSize - y, x);
-        if (cenario->checarUmPonto(matrixSize - y, x)) {
+        if (ponto) {
             subMenu = glutCreateMenu(funcaoMenu);
             glutAddMenuEntry("Deletar Objeto", 1);
             menuPrincipal = glutCreateMenu(funcaoMenu);
@@ -80,6 +92,9 @@ void onMouseButton(int button, int state, int x, int y) {
             glutAddMenuEntry("Apagar/ Acender Luzes", 2);
             glutAddMenuEntry("Recuperar Objetos Apagados", 3);
             glutAddMenuEntry("Visao aerea", 4);
+            glutAddMenuEntry("Visao diagonal", 5);
+            glutAddMenuEntry("Visao lateral", 6);
+            glutAddMenuEntry("Visao frontal", 7);
             glutAttachMenu(GLUT_RIGHT_BUTTON);
             linha = matrixSize-y;
             coluna = x;
@@ -180,6 +195,10 @@ int main(int argc, char **argv) {
     luzes.emplace_back(luzSpot1);
     luzes.emplace_back(luzPontual);
 //-------------------------------------------- Criação Objetos -------------------------------------------------------
+
+    auto *salaColisao = new Cilindro(7, 7.3, Ponto{ 0, 0, -9}, Vetor{0, 1, 0}, material0);
+    auto *sala = new Cluster(salaColisao);
+
     Vetor normal(0, 1, 0);
     vector<Objeto *> objetos;
     auto *parede1 = new Cubo(1, biblioteca::CriarPonto(0, 0, -0.5), material3);
@@ -218,6 +237,7 @@ int main(int argc, char **argv) {
     parede3Transf.push_back(aux13);
     parede3Transf.push_back(aux23);
     parede3->aplicarTransformacao(parede3Transf);
+
 // ------------------------------------- Abajour ---------------------------------------------------------------------
     auto *cabecaAb = new Cilindro(0.57, 0.7, *biblioteca::CriarPonto(3.75, 3, -13), normal,
                                   material4);
@@ -246,7 +266,7 @@ int main(int argc, char **argv) {
     abajur->adicionarObjeto(troncoAb);
     abajur->adicionarObjeto(peAb);
 
-    objetos.push_back(abajur);
+    sala->adicionarObjeto(abajur);
 // ------------------------------------- Sofa ---------------------------------------------------------------------
     auto *braco1 = new Cubo(1, biblioteca::CriarPonto(0, 0, -0.5), material3);
     vector<Matriz> braco1Transf;
@@ -319,7 +339,7 @@ int main(int argc, char **argv) {
     sofa1->adicionarObjeto(fundo);
     sofa1->adicionarObjeto(encosto);
     sofa1->adicionarObjeto(encostoCin);
-    objetos.push_back(sofa1);
+    sala->adicionarObjeto(sofa1);
 
 // ------------------------------------- Sofa2 -----------------------------------------------------------------------
     auto *braco12 = new Cubo(1, biblioteca::CriarPonto(0, 0, -0.5), material6);
@@ -395,7 +415,7 @@ int main(int argc, char **argv) {
     sofa2->adicionarObjeto(encosto2);
     sofa2->adicionarObjeto(encostoCin2);
 
-    objetos.push_back(sofa2);
+    sala->adicionarObjeto(sofa2);
 
 // ------------------------------------- Arvore de natal -------------------------------------------------------------
     auto *tronco = new Cilindro(0.6, 0.10, *biblioteca::CriarPonto(-3.75, 0.5, -5),
@@ -440,7 +460,7 @@ int main(int argc, char **argv) {
     arvoreNatal->adicionarObjeto(presente2);
     arvoreNatal->adicionarObjeto(presente3);
 
-    objetos.push_back(arvoreNatal);
+    sala->adicionarObjeto(arvoreNatal);
 // ------------------------------------- Estante ---------------------------------------------------------------------
     auto *estante1 = new Cubo(1, biblioteca::CriarPonto(0, 0, -0.5), material6);
     vector<Matriz> estante1Transf;
@@ -523,7 +543,7 @@ int main(int argc, char **argv) {
     estanteLivros->adicionarObjeto(livro1);
     estanteLivros->adicionarObjeto(livro2);
 
-    objetos.push_back(estanteLivros);
+    sala->adicionarObjeto(estanteLivros);
 
 // -------------------------------------------- Mesa -----------------------------------------------------------------
     auto *mesa = new Cubo(1, biblioteca::CriarPonto(0, 0, -0.5), material10);
@@ -601,7 +621,7 @@ int main(int argc, char **argv) {
     armarioMarrom->adicionarObjeto(gaveta2);
     armarioMarrom->adicionarObjeto(puxador2);
 
-    objetos.push_back(armarioMarrom);
+    sala->adicionarObjeto(armarioMarrom);
 //-------------------------------------- Mesa -----------------------------------------------------------------------
     auto *mesa1 = new Cilindro(0.1, 0.7 , *biblioteca::CriarPonto(0, 1, -7),Vetor(0, 1, 0), material10);
 
@@ -630,7 +650,7 @@ int main(int argc, char **argv) {
     mesaCentro->adicionarObjeto(garrafa2);
     mesaCentro->adicionarObjeto(garrafa3);
 
-    objetos.push_back(mesaCentro);
+    sala->adicionarObjeto(mesaCentro);
 // ------------------------------------ Lustre -----------------------------------------------------------------------
     auto *cabo = new Cilindro(1, 0.1, *biblioteca::CriarPonto(0, 6, -7),
             Vetor(0, 1, 0), material3);
@@ -646,12 +666,14 @@ int main(int argc, char **argv) {
     lustre->adicionarObjeto(cone);
     lustre->adicionarObjeto(lampada);
 
-    objetos.push_back(lustre);
+    sala->adicionarObjeto(lustre);
 // ------------------------------------- Add paredes ao vetor ---------------------------------------------------------
 
-    objetos.push_back(parede1);
-    objetos.push_back(parede2);
-    objetos.push_back(parede3);
+    sala->adicionarObjeto(parede1);
+    sala->adicionarObjeto(parede2);
+    sala->adicionarObjeto(parede3);
+
+    objetos.push_back(sala);
 
 // ------------------------------------- Infos da Grade --------------------------------------------------------------
     float tamGrade = 4;
@@ -663,20 +685,22 @@ int main(int argc, char **argv) {
     Ponto *pLookAt1 = biblioteca::CriarPonto(0, 0, -9);
     Ponto *pViewUp1 = biblioteca::CriarPonto(0, 15, -10);
 //Lado
-//    Ponto* pCoordCamera = biblioteca::CriarPonto(0.4, 1, -3.5);
-//    Ponto* pLookAt = biblioteca::CriarPonto(0.4, 1.15, -6.5);
-//    Ponto* pViewUp = biblioteca::CriarPonto(0.4, 2, -3.5);
+    Ponto* pCoordCamera3 = biblioteca::CriarPonto(0.4, 5, 5);
+    Ponto* pLookAt3 = biblioteca::CriarPonto(0.4, 1.15, -6.5);
+    Ponto* pViewUp3 = biblioteca::CriarPonto(0.4, 6, 5);
 //Frente
     Ponto* pCoordCamera = biblioteca::CriarPonto(-20, 6, -9);
-    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-5);
+    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-9);
     Ponto* pViewUp = biblioteca::CriarPonto(-20,7,-9);
-//Lado
-//    Ponto* pCoordCamera = biblioteca::CriarPonto(-5, 10, 10);
-//    Ponto* pLookAt = biblioteca::CriarPonto(0,0,-4);
-//    Ponto* pViewUp = biblioteca::CriarPonto(-5,11,10);
+//Diagonal
+    Ponto* pCoordCamera2 = biblioteca::CriarPonto(-15, 10, 4);
+    Ponto* pLookAt2 = biblioteca::CriarPonto(0,3.5,-6);
+    Ponto* pViewUp2 = biblioteca::CriarPonto(-15,11,4);
 
-    auto camera = new Camera(pCoordCamera, pLookAt, pViewUp, tamGrade, zGrade, matrixSize);
+    camera = new Camera(pCoordCamera, pLookAt, pViewUp, tamGrade, zGrade, matrixSize);
     camera1 = new Camera(pCoordCamera1, pLookAt1, pViewUp1, tamGrade, zGrade, matrixSize);
+    camera2 = new Camera(pCoordCamera2, pLookAt2, pViewUp2, tamGrade, zGrade, matrixSize);
+    camera3 = new Camera(pCoordCamera3, pLookAt3, pViewUp3, tamGrade, zGrade, matrixSize);
     cenario = new Cenario(camera, objetos, luzAmbiente, luzes);
 
 // ------------------------------------- Funções ---------------------------------------------------------------------
