@@ -4,7 +4,7 @@
 #include <GL/freeglut.h>
 #include <cmath>
 
-#include "./modelsGL.h"
+#include "./objetos/modelsGL.h"
 #include "./materiais.h"
 #include "./camera.h"
 
@@ -103,6 +103,68 @@ void almofadas_sofa_menu(int id)
 	}
 }
 
+void poltrona_menu(int id)
+{
+	if (id == 1)
+	{
+		poltrona_matAmbAndDif[0] = 0.75164f;
+   		poltrona_matAmbAndDif[1] = 0.60648f;
+   		poltrona_matAmbAndDif[2] = 0.22648f;
+   		poltrona_matAmbAndDif[3] = 1.0f;
+   	
+   		poltrona_matSpec[0] = 0.628281f;
+   		poltrona_matSpec[1] = 0.555802f;
+   		poltrona_matSpec[2] = 0.366065f;
+   		poltrona_matSpec[3] = 1.0f;
+
+   		poltrona_matShine[0] = 51.2;
+
+   		glutPostRedisplay();
+	}
+}
+
+void almofadas_poltrona_menu(int id)
+{
+	if (id == 1)
+	{
+		almofadas_poltrona_matAmbAndDif[0] = 0.75164f;
+   		almofadas_poltrona_matAmbAndDif[1] = 0.60648f;
+   		almofadas_poltrona_matAmbAndDif[2] = 0.22648f;
+   		almofadas_poltrona_matAmbAndDif[3] = 1.0f;
+   	
+   		almofadas_poltrona_matSpec[0] = 0.628281f;
+   		almofadas_poltrona_matSpec[1] = 0.555802f;
+   		almofadas_poltrona_matSpec[2] = 0.366065f;
+   		almofadas_poltrona_matSpec[3] = 1.0f;
+
+   		almofadas_poltrona_matShine[0] = 51.2;
+
+   		glutPostRedisplay();
+	}
+}
+
+void mesas_menu(int id)
+{
+	if (id == 1)
+	{
+		mesas_matAmbAndDif[0] = 0.75164f;
+   		mesas_matAmbAndDif[1] = 0.60648f;
+   		mesas_matAmbAndDif[2] = 0.22648f;
+   		mesas_matAmbAndDif[3] = 1.0f;
+   	
+   		mesas_matSpec[0] = 0.628281f;
+   		mesas_matSpec[1] = 0.555802f;
+   		mesas_matSpec[2] = 0.366065f;
+   		mesas_matSpec[3] = 1.0f;
+
+   		mesas_matShine[0] = 51.2;
+
+   		glutPostRedisplay();
+	}
+}
+
+
+
 void makeMenu(void)
 {
 	/*Sub-menus para cada objeto	*/
@@ -115,7 +177,16 @@ void makeMenu(void)
 	int sub_menuSofa = glutCreateMenu(sofa_menu);
 	glutAddMenuEntry("Ouro", 1);
 
-	int sub_menuAlmofadas_Sofa = glutCreateMenu(almofadas_sofa_menu);
+	int sub_menualmofadas_sofa = glutCreateMenu(almofadas_sofa_menu);
+	glutAddMenuEntry("Ouro", 1);
+
+	int sub_menupoltrona = glutCreateMenu(poltrona_menu);
+	glutAddMenuEntry("Ouro", 1);
+
+	int sub_menualmofadas_poltrona = glutCreateMenu(almofadas_poltrona_menu);
+	glutAddMenuEntry("Ouro", 1);
+
+	int sub_menumesas = glutCreateMenu(mesas_menu);
 	glutAddMenuEntry("Ouro", 1);
 
 	/*Cria o sub-menu que será utilizado no menu Objeto com os menus criados anteriormente*/
@@ -124,7 +195,10 @@ void makeMenu(void)
 	glutAddSubMenu("Paredes", sub_menuParedes);
 	glutAddSubMenu("Piso", sub_menuPiso);
 	glutAddSubMenu("Sofa", sub_menuSofa);
-	glutAddSubMenu("Almofadas do Sofa", sub_menuAlmofadas_Sofa);
+	glutAddSubMenu("Almofadas do Sofa", sub_menualmofadas_sofa);
+	glutAddSubMenu("Poltrona", sub_menupoltrona);
+	glutAddSubMenu("Almofadas da Poltrona", sub_menualmofadas_poltrona);
+	glutAddSubMenu("Mesas", sub_menumesas);
 
 	/*Cria menu principal com opções Objeto e Sair*/
 	glutCreateMenu(menu_principal);
@@ -272,7 +346,7 @@ void drawScene(void)
 
 	/* ---------------------------------------------------------------------- */
 
-		/*
+	/*
 		----------------------- DESENHO DO ALMOFADAS SOFA -------------------------
 	*/
 	
@@ -283,7 +357,52 @@ void drawScene(void)
 	
 	glVertexPointer(3, GL_FLOAT, 0, almofadas_sofa_vertices);
 	glNormalPointer(GL_FLOAT, 0, almofadas_sofa_normais);
-	glDrawElements(GL_TRIANGLES, almofadas_sofa_num_faces * 3, GL_UNSIGNED_INT, sofa_faces);
+	glDrawElements(GL_TRIANGLES, almofadas_sofa_num_faces * 3, GL_UNSIGNED_INT, almofadas_sofa_faces);
+
+	/* ---------------------------------------------------------------------- */
+
+	/*
+		----------------------- DESENHO DA POLTRONA -------------------------
+	*/
+	
+
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, poltrona_matAmbAndDif);
+   	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, poltrona_matSpec);
+   	glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, poltrona_matShine);
+	
+	glVertexPointer(3, GL_FLOAT, 0, poltrona_vertices);
+	glNormalPointer(GL_FLOAT, 0, poltrona_normais);
+	glDrawElements(GL_TRIANGLES, poltrona_num_faces * 3, GL_UNSIGNED_INT, poltrona_faces);
+
+	/* ---------------------------------------------------------------------- */
+
+	/*
+		----------------------- DESENHO DO ALMOFADAS DA POLTRONA -------------------------
+	*/
+	
+
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, almofadas_poltrona_matAmbAndDif);
+   	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, almofadas_poltrona_matSpec);
+   	glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, almofadas_poltrona_matShine);
+	
+	glVertexPointer(3, GL_FLOAT, 0, almofadas_poltrona_vertices);
+	glNormalPointer(GL_FLOAT, 0, almofadas_poltrona_normais);
+	glDrawElements(GL_TRIANGLES, almofadas_poltrona_num_faces * 3, GL_UNSIGNED_INT, almofadas_poltrona_faces);
+
+	/* ---------------------------------------------------------------------- */
+
+	/*
+		----------------------- DESENHO DAS MESAS -------------------------
+	*/
+	
+
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, mesas_matAmbAndDif);
+   	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, mesas_matSpec);
+   	glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, mesas_matShine);
+	
+	glVertexPointer(3, GL_FLOAT, 0, mesas_vertices);
+	glNormalPointer(GL_FLOAT, 0, mesas_normais);
+	glDrawElements(GL_TRIANGLES, mesas_num_faces * 3, GL_UNSIGNED_INT, mesas_faces);
 
 	/* ---------------------------------------------------------------------- */
 	
