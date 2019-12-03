@@ -40,4 +40,25 @@
    float mesas_matSpec[] = {0.0, 1.0, 0.0, 1.0};
    float mesas_matShine[] = {1.0};  
 
+   float abajur_matAmbAndDif[] = {1.0, 0.5, 0.31, 1.0};
+   float abajur_matSpec[] = {0.0, 1.0, 0.0, 1.0};
+   float abajur_matShine[] = {1.0};
+
+   float abajur_suporte_matAmbAndDif[] = {1.0, 0.5, 0.31, 1.0};
+   float abajur_suporte_matSpec[] = {0.0, 1.0, 0.0, 1.0};
+   float abajur_suporte_matShine[] = {1.0};
+
+   float armario_matAmbAndDif[] = {1.0, 0.5, 0.31, 1.0};
+   float armario_matSpec[] = {0.0, 1.0, 0.0, 1.0};
+   float armario_matShine[] = {1.0}; 
+
+   float armario_gavetas_matAmbAndDif[] = {1.0, 0.5, 0.31, 1.0};
+   float armario_gavetas_matSpec[] = {0.0, 1.0, 0.0, 1.0};
+   float armario_gavetas_matShine[] = {1.0}; 
+
+   float armario_puxadores_matAmbAndDif[] = {1.0, 0.5, 0.31, 1.0};
+   float armario_puxadores_matSpec[] = {0.0, 1.0, 0.0, 1.0};
+   float armario_puxadores_matShine[] = {1.0}; 
+
+
 /* ------------------------------------------------------------------------------------------ */   	

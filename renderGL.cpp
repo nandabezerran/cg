@@ -163,6 +163,105 @@ void mesas_menu(int id)
 	}
 }
 
+void abajur_menu(int id)
+{
+	if (id == 1)
+	{
+		abajur_matAmbAndDif[0] = 0.75164f;
+   		abajur_matAmbAndDif[1] = 0.60648f;
+   		abajur_matAmbAndDif[2] = 0.22648f;
+   		abajur_matAmbAndDif[3] = 1.0f;
+   	
+   		abajur_matSpec[0] = 0.628281f;
+   		abajur_matSpec[1] = 0.555802f;
+   		abajur_matSpec[2] = 0.366065f;
+   		abajur_matSpec[3] = 1.0f;
+
+   		abajur_matShine[0] = 51.2;
+
+   		glutPostRedisplay();
+	}
+}
+
+void abajur_suporte_menu(int id)
+{
+	if (id == 1)
+	{
+		abajur_suporte_matAmbAndDif[0] = 0.75164f;
+   		abajur_suporte_matAmbAndDif[1] = 0.60648f;
+   		abajur_suporte_matAmbAndDif[2] = 0.22648f;
+   		abajur_suporte_matAmbAndDif[3] = 1.0f;
+   	
+   		abajur_suporte_matSpec[0] = 0.628281f;
+   		abajur_suporte_matSpec[1] = 0.555802f;
+   		abajur_suporte_matSpec[2] = 0.366065f;
+   		abajur_suporte_matSpec[3] = 1.0f;
+
+   		abajur_suporte_matShine[0] = 51.2;
+
+   		glutPostRedisplay();
+	}
+}
+
+void armario_menu(int id)
+{
+	if (id == 1)
+	{
+		armario_matAmbAndDif[0] = 0.75164f;
+   		armario_matAmbAndDif[1] = 0.60648f;
+   		armario_matAmbAndDif[2] = 0.22648f;
+   		armario_matAmbAndDif[3] = 1.0f;
+   	
+   		armario_matSpec[0] = 0.628281f;
+   		armario_matSpec[1] = 0.555802f;
+   		armario_matSpec[2] = 0.366065f;
+   		armario_matSpec[3] = 1.0f;
+
+   		armario_matShine[0] = 51.2;
+
+   		glutPostRedisplay();
+	}
+}
+
+void armario_gavetas_menu(int id)
+{
+	if (id == 1)
+	{
+		armario_gavetas_matAmbAndDif[0] = 0.75164f;
+   		armario_gavetas_matAmbAndDif[1] = 0.60648f;
+   		armario_gavetas_matAmbAndDif[2] = 0.22648f;
+   		armario_gavetas_matAmbAndDif[3] = 1.0f;
+   	
+   		armario_gavetas_matSpec[0] = 0.628281f;
+   		armario_gavetas_matSpec[1] = 0.555802f;
+   		armario_gavetas_matSpec[2] = 0.366065f;
+   		armario_gavetas_matSpec[3] = 1.0f;
+
+   		armario_gavetas_matShine[0] = 51.2;
+
+   		glutPostRedisplay();
+	}
+}
+
+void armario_puxadores_menu(int id)
+{
+	if (id == 1)
+	{
+		armario_puxadores_matAmbAndDif[0] = 0.75164f;
+   		armario_puxadores_matAmbAndDif[1] = 0.60648f;
+   		armario_puxadores_matAmbAndDif[2] = 0.22648f;
+   		armario_puxadores_matAmbAndDif[3] = 1.0f;
+   	
+   		armario_puxadores_matSpec[0] = 0.628281f;
+   		armario_puxadores_matSpec[1] = 0.555802f;
+   		armario_puxadores_matSpec[2] = 0.366065f;
+   		armario_puxadores_matSpec[3] = 1.0f;
+
+   		armario_puxadores_matShine[0] = 51.2;
+
+   		glutPostRedisplay();
+	}
+}
 
 
 void makeMenu(void)
@@ -189,6 +288,21 @@ void makeMenu(void)
 	int sub_menumesas = glutCreateMenu(mesas_menu);
 	glutAddMenuEntry("Ouro", 1);
 
+	int sub_menuabajur = glutCreateMenu(abajur_menu);
+	glutAddMenuEntry("Ouro", 1);
+
+	int sub_menuabajur_suporte = glutCreateMenu(abajur_suporte_menu);
+	glutAddMenuEntry("Ouro", 1);
+
+	int sub_menuarmario = glutCreateMenu(armario_menu);
+	glutAddMenuEntry("Ouro", 1);
+
+	int sub_menuarmario_gavetas = glutCreateMenu(armario_gavetas_menu);
+	glutAddMenuEntry("Ouro", 1);
+
+	int sub_menuarmario_puxadores = glutCreateMenu(armario_puxadores_menu);
+	glutAddMenuEntry("Ouro", 1);
+
 	/*Cria o sub-menu que será utilizado no menu Objeto com os menus criados anteriormente*/
 	int sub_menu_objetos;
 	sub_menu_objetos = glutCreateMenu(menu_objetos);
@@ -199,6 +313,11 @@ void makeMenu(void)
 	glutAddSubMenu("Poltrona", sub_menupoltrona);
 	glutAddSubMenu("Almofadas da Poltrona", sub_menualmofadas_poltrona);
 	glutAddSubMenu("Mesas", sub_menumesas);
+	glutAddSubMenu("Abajur", sub_menuabajur);
+	glutAddSubMenu("Abajur Suporte", sub_menuabajur_suporte);
+	glutAddSubMenu("Armario", sub_menuarmario);
+	glutAddSubMenu("Armario Gavetas", sub_menuarmario_gavetas);
+	glutAddSubMenu("Armario Puxadores", sub_menuarmario_puxadores);
 
 	/*Cria menu principal com opções Objeto e Sair*/
 	glutCreateMenu(menu_principal);
@@ -241,6 +360,10 @@ void keyInput(unsigned char key, int x, int y)
 			transZ += 1.0;
 			glutPostRedisplay();
 			break;
+		case 'a':
+			transX += 1.0;
+			glutPostRedisplay();
+			break;
 		case 's':
 			transZ -= 1.0;
 			glutPostRedisplay();
@@ -249,24 +372,20 @@ void keyInput(unsigned char key, int x, int y)
 			transX -= 1.0;
 			glutPostRedisplay();
 			break;
-		case 'a':
-			transX += 1.0;
-			glutPostRedisplay();
-			break;
-		case 'z':
-			angleAlpha += pi/6;
-			glutPostRedisplay();
-			break;	
-		case 'x':
-			angleAlpha -= pi/6;
-			glutPostRedisplay();
-			break;
-		case 'Z':
+		case 'W':
 			angleBeta += pi/6;
 			glutPostRedisplay();
 			break;
-		case 'X':
+		case 'A':
+			angleAlpha += pi/6;
+			glutPostRedisplay();
+			break;
+		case 'S':
 			angleBeta -= pi/6;
+			glutPostRedisplay();
+			break;	
+		case 'D':
+			angleAlpha -= pi/6;
 			glutPostRedisplay();
 			break;
 		default:
@@ -403,6 +522,78 @@ void drawScene(void)
 	glVertexPointer(3, GL_FLOAT, 0, mesas_vertices);
 	glNormalPointer(GL_FLOAT, 0, mesas_normais);
 	glDrawElements(GL_TRIANGLES, mesas_num_faces * 3, GL_UNSIGNED_INT, mesas_faces);
+
+	/* ---------------------------------------------------------------------- */
+
+		/*
+		----------------------- DESENHO DAS ABAJUR -------------------------
+	*/
+	
+
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, abajur_matAmbAndDif);
+   	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, abajur_matSpec);
+   	glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, abajur_matShine);
+	
+	glVertexPointer(3, GL_FLOAT, 0, abajur_vertices);
+	glNormalPointer(GL_FLOAT, 0, abajur_normais);
+	glDrawElements(GL_TRIANGLES, abajur_num_faces * 3, GL_UNSIGNED_INT, abajur_faces);
+
+	/* ---------------------------------------------------------------------- */
+
+			/*
+		----------------------- DESENHO DAS ABAJUR SUPORTE -------------------------
+	*/
+	
+
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, abajur_suporte_matAmbAndDif);
+   	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, abajur_suporte_matSpec);
+   	glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, abajur_suporte_matShine);
+	
+	glVertexPointer(3, GL_FLOAT, 0, abajur_suporte_vertices);
+	glNormalPointer(GL_FLOAT, 0, abajur_suporte_normais);
+	glDrawElements(GL_TRIANGLES, abajur_suporte_num_faces * 3, GL_UNSIGNED_INT, abajur_suporte_faces);
+
+	/* ---------------------------------------------------------------------- */
+
+				/*
+		----------------------- DESENHO DO ARMARIO -------------------------
+	*/
+	
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, armario_matAmbAndDif);
+   	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, armario_matSpec);
+   	glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, armario_matShine);
+	
+	glVertexPointer(3, GL_FLOAT, 0, armario_vertices);
+	glNormalPointer(GL_FLOAT, 0, armario_normais);
+	glDrawElements(GL_TRIANGLES, armario_num_faces * 3, GL_UNSIGNED_INT, armario_faces);
+
+	/* ---------------------------------------------------------------------- */
+
+					/*
+		----------------------- DESENHO DO ARMARIO GAVETAS -------------------------
+	*/
+	
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, armario_gavetas_matAmbAndDif);
+   	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, armario_gavetas_matSpec);
+   	glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, armario_gavetas_matShine);
+	
+	glVertexPointer(3, GL_FLOAT, 0, armario_gavetas_vertices);
+	glNormalPointer(GL_FLOAT, 0, armario_gavetas_normais);
+	glDrawElements(GL_TRIANGLES, armario_gavetas_num_faces * 3, GL_UNSIGNED_INT, armario_gavetas_faces);
+
+	/* ---------------------------------------------------------------------- */
+
+					/*
+		----------------------- DESENHO DO ARMARIO PUXADORES -------------------------
+	*/
+	
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, armario_puxadores_matAmbAndDif);
+   	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, armario_puxadores_matSpec);
+   	glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, armario_puxadores_matShine);
+	
+	glVertexPointer(3, GL_FLOAT, 0, armario_puxadores_vertices);
+	glNormalPointer(GL_FLOAT, 0, armario_puxadores_normais);
+	glDrawElements(GL_TRIANGLES, armario_puxadores_num_faces * 3, GL_UNSIGNED_INT, armario_puxadores_faces);
 
 	/* ---------------------------------------------------------------------- */
 	
