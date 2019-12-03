@@ -1,10 +1,10 @@
 //
 // Created by fbeze on 02/09/2019.
 //
-
-
-//Como compilar: g++ -c TrabalhoGrade.cpp ./biblioteca/*.cpp ./Bitmap/*.cpp && g++ -o principal *.o
-//Como executar: ./principal
+//Como compilar:
+//g++ -c TrabalhoGrade.cpp ./biblioteca/*.cpp ./Bitmap/*.cpp && g++ -o principal *.o -lGL -lGLU -lglut
+//Como executar: 
+//./principal
 #include "biblioteca/Matriz.hpp"
 #include "biblioteca/Cenario.hpp"
 #include "biblioteca/biblioteca.hpp"
