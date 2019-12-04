@@ -4,10 +4,10 @@ import os
 
 #substituir o nome do objeto antigo pelo atual
 
-obj = open('./objetos/obj/travesseiro4.obj', 'r')
+obj = open('./objetos/obj/arvore_enfeites.obj', 'r')
 conteudo = obj.readlines()    
 arquivo = open('arquivo.txt', 'w')
-final = open('./objetos/travesseiro4.h','w') 
+final = open('./objetos/arvore_enfeites.h','w') 
 
 
 #CONSERTANDO FORMATAÇÃO DOS VERTICES E DAS NORMAIS
@@ -68,21 +68,21 @@ matrix = matrix.replace(".","")
 
 #ESCREVENDO NO ARQUIVO
 
-final.write('const int travesseiro4_num_vertices = ' + str(len(v)) + ';\n')
-final.write('const int travesseiro4_num_faces = ' + str(len(f)) + ';\n\n')
-final.write('float travesseiro4_vertices[] = { \n')
+final.write('const int arvore_enfeites_num_vertices = ' + str(len(v)) + ';\n')
+final.write('const int arvore_enfeites_num_faces = ' + str(len(f)) + ';\n\n')
+final.write('float arvore_enfeites_vertices[] = { \n')
 vertices.append("\n")
 for i in range(0,len(vertices)):
 	final.write(vertices[i])
 final.write('};\n\n')
 
 
-final .write('int travesseiro4_faces[] = { \n')
+final .write('int arvore_enfeites_faces[] = { \n')
 final.write(matrix) 
 final.write('\n\n};\n\n')
 
 
-final.write('float travesseiro4_normais[] = { \n')
+final.write('float arvore_enfeites_normais[] = { \n')
 normais.append("\n")
 for i in range(0,len(normais)):
 	final.write(normais[i])

@@ -9,52 +9,14 @@ void menu_objetos(int id)
 	if (id == 1) exit(0);
 }
 
-void paredes_menu(int id)
+
+void sofas(int id)
 {
 	if (id == 1)
 	{
-		paredes_matAmbAndDif[0] = 0.75164f;
-  		paredes_matAmbAndDif[1] = 0.60648f;
-  		paredes_matAmbAndDif[2] = 0.22648f;
-  		paredes_matAmbAndDif[3] = 1.0f;
-   
-  		paredes_matSpec[0] = 0.628281f;
-  		paredes_matSpec[1] = 0.555802f;
-  		paredes_matSpec[2] = 0.366065f;
-  		paredes_matSpec[3] = 1.0f;
 
-  		paredes_matShine[0] = 51.2;
+      /*------------Sofa------------*/
 
-      glutPostRedisplay();
-
-	}
-}
-
-void piso_menu(int id)
-{
-	if (id == 1)
-	{
-		piso_matAmbAndDif[0] = 0.75164f;
-  		piso_matAmbAndDif[1] = 0.60648f;
-  		piso_matAmbAndDif[2] = 0.22648f;
-  		piso_matAmbAndDif[3] = 1.0f;
-   
-  		piso_matSpec[0] = 0.628281f;
-  		piso_matSpec[1] = 0.555802f;
-  		piso_matSpec[2] = 0.366065f;
-  		piso_matSpec[3] = 1.0f;
-
-  		piso_matShine[0] = 51.2;
-
-      glutPostRedisplay();
-
-	}
-}
-
-void sofa_menu(int id)
-{
-	if (id == 1)
-	{
 		sofa_matAmbAndDif[0] = 0.75164f;
       sofa_matAmbAndDif[1] = 0.60648f;
       sofa_matAmbAndDif[2] = 0.22648f;
@@ -67,35 +29,9 @@ void sofa_menu(int id)
 
       sofa_matShine[0] = 51.2;
 
-      glutPostRedisplay();
-	}
-}
+      /*------------Poltrona------------*/
 
-void almofadas_sofa_menu(int id)
-{
-	if (id == 1)
-	{
-		almofadas_sofa_matAmbAndDif[0] = 0.75164f;
-      almofadas_sofa_matAmbAndDif[1] = 0.60648f;
-      almofadas_sofa_matAmbAndDif[2] = 0.22648f;
-      almofadas_sofa_matAmbAndDif[3] = 1.0f;
-   
-      almofadas_sofa_matSpec[0] = 0.628281f;
-      almofadas_sofa_matSpec[1] = 0.555802f;
-      almofadas_sofa_matSpec[2] = 0.366065f;
-      almofadas_sofa_matSpec[3] = 1.0f;
-
-      almofadas_sofa_matShine[0] = 51.2;
-
-      glutPostRedisplay();
-	}
-}
-
-void poltrona_menu(int id)
-{
-	if (id == 1)
-	{
-		poltrona_matAmbAndDif[0] = 0.75164f;
+      poltrona_matAmbAndDif[0] = 0.75164f;
       poltrona_matAmbAndDif[1] = 0.60648f;
       poltrona_matAmbAndDif[2] = 0.22648f;
       poltrona_matAmbAndDif[3] = 1.0f;
@@ -111,11 +47,28 @@ void poltrona_menu(int id)
 	}
 }
 
-void almofadas_poltrona_menu(int id)
+void almofadas_menu(int id)
 {
-	if (id == 1)
-	{
-		almofadas_poltrona_matAmbAndDif[0] = 0.75164f;
+   if (id == 1)
+   {
+      
+      /*------------Almofadas Sofa------------*/
+
+      almofadas_sofa_matAmbAndDif[0] = 0.75164f;
+      almofadas_sofa_matAmbAndDif[1] = 0.60648f;
+      almofadas_sofa_matAmbAndDif[2] = 0.22648f;
+      almofadas_sofa_matAmbAndDif[3] = 1.0f;
+   
+      almofadas_sofa_matSpec[0] = 0.628281f;
+      almofadas_sofa_matSpec[1] = 0.555802f;
+      almofadas_sofa_matSpec[2] = 0.366065f;
+      almofadas_sofa_matSpec[3] = 1.0f;
+
+      almofadas_sofa_matShine[0] = 51.2;
+
+      /*------------Almofadas Poltrona------------*/
+
+      almofadas_poltrona_matAmbAndDif[0] = 0.75164f;
       almofadas_poltrona_matAmbAndDif[1] = 0.60648f;
       almofadas_poltrona_matAmbAndDif[2] = 0.22648f;
       almofadas_poltrona_matAmbAndDif[3] = 1.0f;
@@ -127,8 +80,74 @@ void almofadas_poltrona_menu(int id)
 
       almofadas_poltrona_matShine[0] = 51.2;
 
+
       glutPostRedisplay();
-	}
+   }
+}
+
+void travesseiros_menu(int id)
+{
+   if (id == 1)
+   {
+      /*------------Travesseiro 1------------*/
+
+      travesseiro1_matAmbAndDif[0] = 0.75164f;
+      travesseiro1_matAmbAndDif[1] = 0.60648f;
+      travesseiro1_matAmbAndDif[2] = 0.22648f;
+      travesseiro1_matAmbAndDif[3] = 1.0f;
+   
+      travesseiro1_matSpec[0] = 0.628281f;
+      travesseiro1_matSpec[1] = 0.555802f;
+      travesseiro1_matSpec[2] = 0.366065f;
+      travesseiro1_matSpec[3] = 1.0f;
+
+      travesseiro1_matShine[0] = 51.2;
+
+      /*------------Travesseiro 2------------*/
+
+      travesseiro2_matAmbAndDif[0] = 0.75164f;
+      travesseiro2_matAmbAndDif[1] = 0.60648f;
+      travesseiro2_matAmbAndDif[2] = 0.22648f;
+      travesseiro2_matAmbAndDif[3] = 1.0f;
+   
+      travesseiro2_matSpec[0] = 0.628281f;
+      travesseiro2_matSpec[1] = 0.555802f;
+      travesseiro2_matSpec[2] = 0.366065f;
+      travesseiro2_matSpec[3] = 1.0f;
+
+      travesseiro2_matShine[0] = 51.2;
+
+      /*------------Travesseiro 3------------*/
+
+      travesseiro3_matAmbAndDif[0] = 0.75164f;
+      travesseiro3_matAmbAndDif[1] = 0.60648f;
+      travesseiro3_matAmbAndDif[2] = 0.22648f;
+      travesseiro3_matAmbAndDif[3] = 1.0f;
+   
+      travesseiro3_matSpec[0] = 0.628281f;
+      travesseiro3_matSpec[1] = 0.555802f;
+      travesseiro3_matSpec[2] = 0.366065f;
+      travesseiro3_matSpec[3] = 1.0f;
+
+      travesseiro3_matShine[0] = 51.2;
+
+      /*------------Travesseiro 4------------*/
+
+      travesseiro4_matAmbAndDif[0] = 0.75164f;
+      travesseiro4_matAmbAndDif[1] = 0.60648f;
+      travesseiro4_matAmbAndDif[2] = 0.22648f;
+      travesseiro4_matAmbAndDif[3] = 1.0f;
+   
+      travesseiro4_matSpec[0] = 0.628281f;
+      travesseiro4_matSpec[1] = 0.555802f;
+      travesseiro4_matSpec[2] = 0.366065f;
+      travesseiro4_matSpec[3] = 1.0f;
+
+      travesseiro4_matShine[0] = 51.2;
+
+
+      glutPostRedisplay();
+   }
 }
 
 void mesas_menu(int id)
@@ -195,6 +214,9 @@ void armario_menu(int id)
 {
 	if (id == 1)
 	{
+
+      /*------------Armario------------*/
+
 		armario_matAmbAndDif[0] = 0.75164f;
       armario_matAmbAndDif[1] = 0.60648f;
       armario_matAmbAndDif[2] = 0.22648f;
@@ -206,6 +228,20 @@ void armario_menu(int id)
       armario_matSpec[3] = 1.0f;
 
       armario_matShine[0] = 51.2;
+
+      /*------------Armario Puxadores------------*/
+
+      armario_puxadores_matAmbAndDif[0] = 0.75164f;
+      armario_puxadores_matAmbAndDif[1] = 0.60648f;
+      armario_puxadores_matAmbAndDif[2] = 0.22648f;
+      armario_puxadores_matAmbAndDif[3] = 1.0f;
+   
+      armario_puxadores_matSpec[0] = 0.628281f;
+      armario_puxadores_matSpec[1] = 0.555802f;
+      armario_puxadores_matSpec[2] = 0.366065f;
+      armario_puxadores_matSpec[3] = 1.0f;
+
+      armario_puxadores_matShine[0] = 51.2;
 
       glutPostRedisplay();
 	}
@@ -231,126 +267,251 @@ void armario_gavetas_menu(int id)
 	}
 }
 
-void armario_puxadores_menu(int id)
-{
-	if (id == 1)
-	{
-		armario_puxadores_matAmbAndDif[0] = 0.75164f;
-      armario_puxadores_matAmbAndDif[1] = 0.60648f;
-      armario_puxadores_matAmbAndDif[2] = 0.22648f;
-      armario_puxadores_matAmbAndDif[3] = 1.0f;
-   
-      armario_puxadores_matSpec[0] = 0.628281f;
-      armario_puxadores_matSpec[1] = 0.555802f;
-      armario_puxadores_matSpec[2] = 0.366065f;
-      armario_puxadores_matSpec[3] = 1.0f;
-
-      armario_puxadores_matShine[0] = 51.2;
-
-      glutPostRedisplay();
-	}
-}
-
-void travesseiro1_menu(int id)
+void arvore_menu(int id)
 {
    if (id == 1)
    {
-      travesseiro1_matAmbAndDif[0] = 0.75164f;
-      travesseiro1_matAmbAndDif[1] = 0.60648f;
-      travesseiro1_matAmbAndDif[2] = 0.22648f;
-      travesseiro1_matAmbAndDif[3] = 1.0f;
+      arvore_matAmbAndDif[0] = 0.75164f;
+      arvore_matAmbAndDif[1] = 0.60648f;
+      arvore_matAmbAndDif[2] = 0.22648f;
+      arvore_matAmbAndDif[3] = 1.0f;
    
-      travesseiro1_matSpec[0] = 0.628281f;
-      travesseiro1_matSpec[1] = 0.555802f;
-      travesseiro1_matSpec[2] = 0.366065f;
-      travesseiro1_matSpec[3] = 1.0f;
+      arvore_matSpec[0] = 0.628281f;
+      arvore_matSpec[1] = 0.555802f;
+      arvore_matSpec[2] = 0.366065f;
+      arvore_matSpec[3] = 1.0f;
 
-      travesseiro1_matShine[0] = 51.2;
+      arvore_matShine[0] = 51.2;
 
       glutPostRedisplay();
    }
 }
 
-void travesseiro2_menu(int id)
+void arvore_vaso_menu(int id)
 {
    if (id == 1)
    {
-      travesseiro2_matAmbAndDif[0] = 0.75164f;
-      travesseiro2_matAmbAndDif[1] = 0.60648f;
-      travesseiro2_matAmbAndDif[2] = 0.22648f;
-      travesseiro2_matAmbAndDif[3] = 1.0f;
+      arvore_vaso_matAmbAndDif[0] = 0.75164f;
+      arvore_vaso_matAmbAndDif[1] = 0.60648f;
+      arvore_vaso_matAmbAndDif[2] = 0.22648f;
+      arvore_vaso_matAmbAndDif[3] = 1.0f;
    
-      travesseiro2_matSpec[0] = 0.628281f;
-      travesseiro2_matSpec[1] = 0.555802f;
-      travesseiro2_matSpec[2] = 0.366065f;
-      travesseiro2_matSpec[3] = 1.0f;
+      arvore_vaso_matSpec[0] = 0.628281f;
+      arvore_vaso_matSpec[1] = 0.555802f;
+      arvore_vaso_matSpec[2] = 0.366065f;
+      arvore_vaso_matSpec[3] = 1.0f;
 
-      travesseiro2_matShine[0] = 51.2;
+      arvore_vaso_matShine[0] = 51.2;
 
       glutPostRedisplay();
    }
 }
 
-void travesseiro3_menu(int id)
+void estantes_menu(int id)
 {
    if (id == 1)
    {
-      travesseiro3_matAmbAndDif[0] = 0.75164f;
-      travesseiro3_matAmbAndDif[1] = 0.60648f;
-      travesseiro3_matAmbAndDif[2] = 0.22648f;
-      travesseiro3_matAmbAndDif[3] = 1.0f;
+      estantes_matAmbAndDif[0] = 0.75164f;
+      estantes_matAmbAndDif[1] = 0.60648f;
+      estantes_matAmbAndDif[2] = 0.22648f;
+      estantes_matAmbAndDif[3] = 1.0f;
    
-      travesseiro3_matSpec[0] = 0.628281f;
-      travesseiro3_matSpec[1] = 0.555802f;
-      travesseiro3_matSpec[2] = 0.366065f;
-      travesseiro3_matSpec[3] = 1.0f;
+      estantes_matSpec[0] = 0.628281f;
+      estantes_matSpec[1] = 0.555802f;
+      estantes_matSpec[2] = 0.366065f;
+      estantes_matSpec[3] = 1.0f;
 
-      travesseiro3_matShine[0] = 51.2;
+      estantes_matShine[0] = 51.2;
 
       glutPostRedisplay();
    }
 }
 
-void travesseiro4_menu(int id)
+void livros_menu(int id)
 {
    if (id == 1)
    {
-      travesseiro4_matAmbAndDif[0] = 0.75164f;
-      travesseiro4_matAmbAndDif[1] = 0.60648f;
-      travesseiro4_matAmbAndDif[2] = 0.22648f;
-      travesseiro4_matAmbAndDif[3] = 1.0f;
-   
-      travesseiro4_matSpec[0] = 0.628281f;
-      travesseiro4_matSpec[1] = 0.555802f;
-      travesseiro4_matSpec[2] = 0.366065f;
-      travesseiro4_matSpec[3] = 1.0f;
 
-      travesseiro4_matShine[0] = 51.2;
+      /*------------Livro1------------*/
+
+      livro1_matAmbAndDif[0] = 0.75164f;
+      livro1_matAmbAndDif[1] = 0.60648f;
+      livro1_matAmbAndDif[2] = 0.22648f;
+      livro1_matAmbAndDif[3] = 1.0f;
+   
+      livro1_matSpec[0] = 0.628281f;
+      livro1_matSpec[1] = 0.555802f;
+      livro1_matSpec[2] = 0.366065f;
+      livro1_matSpec[3] = 1.0f;
+
+      livro1_matShine[0] = 51.2;
+
+      /*------------Livro2------------*/
+
+      livro2_matAmbAndDif[0] = 0.75164f;
+      livro2_matAmbAndDif[1] = 0.60648f;
+      livro2_matAmbAndDif[2] = 0.22648f;
+      livro2_matAmbAndDif[3] = 1.0f;
+   
+      livro2_matSpec[0] = 0.628281f;
+      livro2_matSpec[1] = 0.555802f;
+      livro2_matSpec[2] = 0.366065f;
+      livro2_matSpec[3] = 1.0f;
+
+      livro2_matShine[0] = 51.2;
+
+      /*------------Livro3------------*/
+
+      livro3_matAmbAndDif[0] = 0.75164f;
+      livro3_matAmbAndDif[1] = 0.60648f;
+      livro3_matAmbAndDif[2] = 0.22648f;
+      livro3_matAmbAndDif[3] = 1.0f;
+   
+      livro3_matSpec[0] = 0.628281f;
+      livro3_matSpec[1] = 0.555802f;
+      livro3_matSpec[2] = 0.366065f;
+      livro3_matSpec[3] = 1.0f;
+
+      livro3_matShine[0] = 51.2;
 
       glutPostRedisplay();
+   }
+}
+
+void relogio_menu(int id)
+{
+   if (id == 1)
+   {
+
+      relogio_matAmbAndDif[0] = 0.75164f;
+      relogio_matAmbAndDif[1] = 0.60648f;
+      relogio_matAmbAndDif[2] = 0.22648f;
+      relogio_matAmbAndDif[3] = 1.0f;
+   
+      relogio_matSpec[0] = 0.628281f;
+      relogio_matSpec[1] = 0.555802f;
+      relogio_matSpec[2] = 0.366065f;
+      relogio_matSpec[3] = 1.0f;
+
+      relogio_matShine[0] = 51.2;
+
+      glutPostRedisplay();
+   }
+}
+
+void quadros_menu(int id)
+{
+   if (id == 1)
+   {
+
+      /*------------Quadros 1------------*/
+
+      quadros1_matAmbAndDif[0] = 0.75164f;
+      quadros1_matAmbAndDif[1] = 0.60648f;
+      quadros1_matAmbAndDif[2] = 0.22648f;
+      quadros1_matAmbAndDif[3] = 1.0f;
+   
+      quadros1_matSpec[0] = 0.628281f;
+      quadros1_matSpec[1] = 0.555802f;
+      quadros1_matSpec[2] = 0.366065f;
+      quadros1_matSpec[3] = 1.0f;
+
+      quadros1_matShine[0] = 51.2;
+
+      /*------------Quadros 2------------*/
+
+      quadros2_matAmbAndDif[0] = 0.75164f;
+      quadros2_matAmbAndDif[1] = 0.60648f;
+      quadros2_matAmbAndDif[2] = 0.22648f;
+      quadros2_matAmbAndDif[3] = 1.0f;
+   
+      quadros2_matSpec[0] = 0.628281f;
+      quadros2_matSpec[1] = 0.555802f;
+      quadros2_matSpec[2] = 0.366065f;
+      quadros2_matSpec[3] = 1.0f;
+
+      quadros2_matShine[0] = 51.2;
+
+      glutPostRedisplay();
+   }
+}
+
+void quadros_molduras_menu(int id)
+{
+   if (id == 1)
+   {
+
+      quadros_molduras_matAmbAndDif[0] = 0.75164f;
+      quadros_molduras_matAmbAndDif[1] = 0.60648f;
+      quadros_molduras_matAmbAndDif[2] = 0.22648f;
+      quadros_molduras_matAmbAndDif[3] = 1.0f;
+   
+      quadros_molduras_matSpec[0] = 0.628281f;
+      quadros_molduras_matSpec[1] = 0.555802f;
+      quadros_molduras_matSpec[2] = 0.366065f;
+      quadros_molduras_matSpec[3] = 1.0f;
+
+      quadros_molduras_matShine[0] = 51.2;
+
+      glutPostRedisplay();
+   }
+}
+
+
+void paredes_menu(int id)
+{
+   if (id == 1)
+   {
+      paredes_matAmbAndDif[0] = 0.75164f;
+      paredes_matAmbAndDif[1] = 0.60648f;
+      paredes_matAmbAndDif[2] = 0.22648f;
+      paredes_matAmbAndDif[3] = 1.0f;
+   
+      paredes_matSpec[0] = 0.628281f;
+      paredes_matSpec[1] = 0.555802f;
+      paredes_matSpec[2] = 0.366065f;
+      paredes_matSpec[3] = 1.0f;
+
+      paredes_matShine[0] = 51.2;
+
+      glutPostRedisplay();
+
+   }
+}
+
+void piso_menu(int id)
+{
+   if (id == 1)
+   {
+      piso_matAmbAndDif[0] = 0.75164f;
+      piso_matAmbAndDif[1] = 0.60648f;
+      piso_matAmbAndDif[2] = 0.22648f;
+      piso_matAmbAndDif[3] = 1.0f;
+   
+      piso_matSpec[0] = 0.628281f;
+      piso_matSpec[1] = 0.555802f;
+      piso_matSpec[2] = 0.366065f;
+      piso_matSpec[3] = 1.0f;
+
+      piso_matShine[0] = 51.2;
+
+      glutPostRedisplay();
+
    }
 }
 
 void makeMenu(void)
 {
 	/*Sub-menus para cada objeto	*/
-	int sub_menuParedes = glutCreateMenu(paredes_menu);
+
+	int sub_sofas = glutCreateMenu(sofas);
 	glutAddMenuEntry("Ouro", 1);
 
-	int sub_menuPiso = glutCreateMenu(piso_menu);
-	glutAddMenuEntry("Ouro", 1);
+	int sub_menualmofadas = glutCreateMenu(almofadas_menu);
+   glutAddMenuEntry("Ouro", 1);
 
-	int sub_menuSofa = glutCreateMenu(sofa_menu);
-	glutAddMenuEntry("Ouro", 1);
-
-	int sub_menualmofadas_sofa = glutCreateMenu(almofadas_sofa_menu);
-	glutAddMenuEntry("Ouro", 1);
-
-	int sub_menupoltrona = glutCreateMenu(poltrona_menu);
-	glutAddMenuEntry("Ouro", 1);
-
-	int sub_menualmofadas_poltrona = glutCreateMenu(almofadas_poltrona_menu);
-	glutAddMenuEntry("Ouro", 1);
+   int sub_menutravesseiros = glutCreateMenu(travesseiros_menu);
+   glutAddMenuEntry("Ouro", 1);
 
 	int sub_menumesas = glutCreateMenu(mesas_menu);
 	glutAddMenuEntry("Ouro", 1);
@@ -367,40 +528,53 @@ void makeMenu(void)
 	int sub_menuarmario_gavetas = glutCreateMenu(armario_gavetas_menu);
 	glutAddMenuEntry("Ouro", 1);
 
-	int sub_menuarmario_puxadores = glutCreateMenu(armario_puxadores_menu);
-	glutAddMenuEntry("Ouro", 1);
-
-   int sub_menutravesseiro1 = glutCreateMenu(travesseiro1_menu);
+   int sub_menuarvore = glutCreateMenu(arvore_menu);
    glutAddMenuEntry("Ouro", 1);
 
-   int sub_menutravesseiro2 = glutCreateMenu(travesseiro2_menu);
+   int sub_menuarvore_vaso = glutCreateMenu(arvore_vaso_menu);
    glutAddMenuEntry("Ouro", 1);
 
-   int sub_menutravesseiro3 = glutCreateMenu(travesseiro3_menu);
+   int sub_menuestantes = glutCreateMenu(estantes_menu);
    glutAddMenuEntry("Ouro", 1);
 
-   int sub_menutravesseiro4 = glutCreateMenu(travesseiro4_menu);
+   int sub_menulivros = glutCreateMenu(livros_menu);
+   glutAddMenuEntry("Ouro", 1);
+
+   int sub_menurelogio = glutCreateMenu(relogio_menu);
+   glutAddMenuEntry("Ouro", 1);
+
+   int sub_menuquadros = glutCreateMenu(quadros_menu);
+   glutAddMenuEntry("Ouro", 1);
+
+   int sub_menuquadros_molduras = glutCreateMenu(quadros_molduras_menu);
+   glutAddMenuEntry("Ouro", 1);
+
+   int sub_menupiso = glutCreateMenu(piso_menu);
+   glutAddMenuEntry("Ouro", 1);
+
+   int sub_menuparedes = glutCreateMenu(paredes_menu);
    glutAddMenuEntry("Ouro", 1);
 
 	/*Cria o sub-menu que será utilizado no menu Objeto com os menus criados anteriormente*/
 	int sub_menu_objetos;
 	sub_menu_objetos = glutCreateMenu(menu_objetos);
-	glutAddSubMenu("Paredes", sub_menuParedes);
-	glutAddSubMenu("Piso", sub_menuPiso);
-	glutAddSubMenu("Sofa", sub_menuSofa);
-	glutAddSubMenu("Almofadas do Sofa", sub_menualmofadas_sofa);
-	glutAddSubMenu("Poltrona", sub_menupoltrona);
-	glutAddSubMenu("Almofadas da Poltrona", sub_menualmofadas_poltrona);
+	glutAddSubMenu("Sofas", sub_sofas);
+	glutAddSubMenu("Almofadas", sub_menualmofadas);
+   glutAddSubMenu("Travesseiros", sub_menutravesseiros);
 	glutAddSubMenu("Mesas", sub_menumesas);
 	glutAddSubMenu("Abajur", sub_menuabajur);
-	glutAddSubMenu("Abajur Suporte", sub_menuabajur_suporte);
+	glutAddSubMenu("Suporte", sub_menuabajur_suporte);
 	glutAddSubMenu("Armario", sub_menuarmario);
-	glutAddSubMenu("Armario Gavetas", sub_menuarmario_gavetas);
-	glutAddSubMenu("Armario Puxadores", sub_menuarmario_puxadores);
-   glutAddSubMenu("Travesseiro 1", sub_menutravesseiro1);
-   glutAddSubMenu("Travesseiro 2", sub_menutravesseiro2);
-   glutAddSubMenu("Travesseiro 3", sub_menutravesseiro3);
-   glutAddSubMenu("Travesseiro 4", sub_menutravesseiro4);
+	glutAddSubMenu("Gavetas", sub_menuarmario_gavetas);
+   glutAddSubMenu("Arvore", sub_menuarvore);
+   glutAddSubMenu("Vaso", sub_menuarvore_vaso);
+   glutAddSubMenu("Estantes", sub_menuestantes);
+   glutAddSubMenu("Livros", sub_menulivros);
+   glutAddSubMenu("Relogio", sub_menurelogio);
+   glutAddSubMenu("Quadros", sub_menuquadros);
+   glutAddSubMenu("Molduras", sub_menuquadros_molduras);
+   glutAddSubMenu("Piso", sub_menupiso);
+   glutAddSubMenu("Paredes", sub_menuparedes);
 
 	/*Cria menu principal com opções Objeto e Sair*/
 	glutCreateMenu(menu_principal);
