@@ -29,7 +29,6 @@ void sofas(int id)
 
       sofa_matShine[0] = 76.8f;	
 
-
       /*------------Poltrona------------*/
 
       poltrona_matAmbAndDif[0] = 0.25f;
@@ -48,14 +47,20 @@ void sofas(int id)
 
       glutPostRedisplay();
 	}
+
+   else if(id == 2){
+
+      show_sofas = !show_sofas;
+      glutPostRedisplay();
+
+   }
 }
 
 void almofadas_menu(int id)
 {
    if (id == 1)
    {
-      
-      /*------------Almofadas Sofa------------*/
+ /*------------Almofadas Sofa------------*/
 
       almofadas_sofa_matAmbAndDif[0] = 0.25f;
       almofadas_sofa_matAmbAndDif[1] = 0.148f;
@@ -83,8 +88,14 @@ void almofadas_menu(int id)
 
       almofadas_poltrona_matShine[0] = 76.8f;
 
-
       glutPostRedisplay();
+   }
+
+   else if(id == 2){
+
+      show_almofadas = !show_almofadas;
+      glutPostRedisplay();
+
    }
 }
 
@@ -106,7 +117,6 @@ void travesseiros_menu(int id)
 
       travesseiro1_matShine[0] = 10.0f;
 
-   
       /*------------Travesseiro 2------------*/
 
       travesseiro2_matAmbAndDif[0] = 0.05f;
@@ -137,7 +147,6 @@ void travesseiros_menu(int id)
 
       /*------------Travesseiro 4------------*/
 
-
       travesseiro4_matAmbAndDif[0] = 0.05f;
       travesseiro4_matAmbAndDif[1] = 0.4f;
       travesseiro4_matAmbAndDif[2] = 0.4f;
@@ -151,6 +160,13 @@ void travesseiros_menu(int id)
       travesseiro4_matShine[0] = 10.0f;
 
       glutPostRedisplay();
+   }
+
+   else if(id == 2){
+
+      show_travesseiros = !show_travesseiros;
+      glutPostRedisplay();
+
    }
 }
 
@@ -170,10 +186,16 @@ void mesas_menu(int id)
       mesas_matSpec[3] = 1.0f;
 
       mesas_matShine[0] = 76.8f;
-     
 
       glutPostRedisplay();
 	}
+
+   else if(id == 2){
+
+      show_mesas = !show_mesas;
+      glutPostRedisplay();
+
+   }
 }
 
 void abajur_menu(int id)
@@ -195,6 +217,13 @@ void abajur_menu(int id)
 
       glutPostRedisplay();
 	}
+
+   else if(id == 2){
+
+      show_abajur = !show_abajur;
+      glutPostRedisplay();
+
+   }
 }
 
 void abajur_suporte_menu(int id)
@@ -216,6 +245,13 @@ void abajur_suporte_menu(int id)
 
       glutPostRedisplay();
 	}
+
+   else if(id == 2){
+
+      show_suporte = !show_suporte;
+      glutPostRedisplay();
+
+   }
 }
 
 void armario_menu(int id)
@@ -253,6 +289,13 @@ void armario_menu(int id)
 
       glutPostRedisplay();
 	}
+
+   else if(id == 2){
+
+      show_armario = !show_armario;
+      glutPostRedisplay();
+
+   }
 }
 
 void armario_gavetas_menu(int id)
@@ -271,6 +314,13 @@ void armario_gavetas_menu(int id)
 
       glutPostRedisplay();
 	}
+
+   else if(id == 2){
+
+      show_gavetas = !show_gavetas;
+      glutPostRedisplay();
+
+   }
 }
 
 void arvore_menu(int id)
@@ -291,14 +341,20 @@ void arvore_menu(int id)
 
       glutPostRedisplay();
    }
+
+   else if(id == 2){
+
+      show_arvore = !show_arvore;
+      glutPostRedisplay();
+
+   }
 }
 
 void arvore_vaso_menu(int id)
 {
    if (id == 1)
    {
-          
-      arvore_vaso_matAmbAndDif[0] = 0.05f;
+     arvore_vaso_matAmbAndDif[0] = 0.05f;
       arvore_vaso_matAmbAndDif[1] = 0.05f;
       arvore_vaso_matAmbAndDif[2] = 0.06625f;
       arvore_vaso_matAmbAndDif[3] = 0.82f;
@@ -311,6 +367,13 @@ void arvore_vaso_menu(int id)
       arvore_vaso_matShine[0] = 38.4f;
 
       glutPostRedisplay();
+   }
+
+   else if(id == 2){
+
+      show_vaso = !show_vaso;
+      glutPostRedisplay();
+
    }
 }
 
@@ -333,6 +396,13 @@ void estantes_menu(int id)
      
 
       glutPostRedisplay();
+   }
+
+   else if(id == 2){
+
+      show_estantes = !show_estantes;
+      glutPostRedisplay();
+
    }
 }
 
@@ -384,6 +454,13 @@ void livros_menu(int id)
 
       glutPostRedisplay();
    }
+
+   else if(id == 2){
+
+      show_livros = !show_livros;
+      glutPostRedisplay();
+
+   }
 }
 
 void relogio_menu(int id)
@@ -403,6 +480,13 @@ void relogio_menu(int id)
       relogio_matShine[0] = 76.8f;
 
       glutPostRedisplay();
+   }
+
+   else if(id == 2){
+
+      show_relogio = !show_relogio;
+      glutPostRedisplay();
+
    }
 }
 
@@ -441,6 +525,13 @@ void quadros_menu(int id)
 
       glutPostRedisplay();
    }
+
+   else if(id == 2){
+
+      show_quadros = !show_quadros;
+      glutPostRedisplay();
+
+   }
 }
 
 void quadros_molduras_menu(int id)
@@ -461,24 +552,10 @@ void quadros_molduras_menu(int id)
 
       glutPostRedisplay();
    }
-}
 
+   else if(id == 2){
 
-void paredes_menu(int id)
-{
-   if (id == 1)
-   {
-      paredes_matAmbAndDif[0] = 0.55f;
-      paredes_matAmbAndDif[1] = 0.55f;
-      paredes_matAmbAndDif[2] = 0.55f;
-      paredes_matAmbAndDif[3] = 1.0f;
-   
-      paredes_matSpec[0] = 0.70f;
-      paredes_matSpec[1] = 0.70f;
-      paredes_matSpec[2] = 0.70f;
-      paredes_matSpec[3] = 1.0f;
-
-      paredes_matShine[0] = 32.0f;
+      show_molduras = !show_molduras;
       glutPostRedisplay();
 
    }
@@ -503,62 +580,116 @@ void piso_menu(int id)
 
    }
 
+   else if(id == 2){
+
+      show_piso = !show_piso;
+      glutPostRedisplay();
+
+   }
+
+}
+
+void paredes_menu(int id)
+{
+   if (id == 1)
+   {
+      paredes_matAmbAndDif[0] = 0.55f;
+      paredes_matAmbAndDif[1] = 0.55f;
+      paredes_matAmbAndDif[2] = 0.55f;
+      paredes_matAmbAndDif[3] = 1.0f;
+   
+      paredes_matSpec[0] = 0.70f;
+      paredes_matSpec[1] = 0.70f;
+      paredes_matSpec[2] = 0.70f;
+      paredes_matSpec[3] = 1.0f;
+
+      paredes_matShine[0] = 32.0f;
+      glutPostRedisplay();
+
+   }
+
+   else if(id == 2){
+
+      show_paredes = !show_paredes;
+      glutPostRedisplay();
+
+   }
 }
 
 void makeMenu(void)
 {
-	/*Sub-menus para cada objeto	*/
+	/*Sub-menus de cores pra cada objeto	*/
 
 	int sub_sofas = glutCreateMenu(sofas);
 	glutAddMenuEntry("Bronze", 1);
+   glutAddMenuEntry("Deletar/Adicionar", 2);
 
 	int sub_menualmofadas = glutCreateMenu(almofadas_menu);
    glutAddMenuEntry("Bronze", 1);
+   glutAddMenuEntry("Deletar/Adicionar", 2);
 
    int sub_menutravesseiros = glutCreateMenu(travesseiros_menu);
    glutAddMenuEntry("Ciano", 1);
+   glutAddMenuEntry("Deletar/Adicionar", 2);
 
 	int sub_menumesas = glutCreateMenu(mesas_menu);
 	glutAddMenuEntry("Cobre", 1);
+   glutAddMenuEntry("Deletar/Adicionar", 2);
 
 	int sub_menuabajur = glutCreateMenu(abajur_menu);
 	glutAddMenuEntry("Ouro", 1);
+   glutAddMenuEntry("Deletar/Adicionar", 2);
 
 	int sub_menuabajur_suporte = glutCreateMenu(abajur_suporte_menu);
 	glutAddMenuEntry("Perola", 1);
+   glutAddMenuEntry("Deletar/Adicionar", 2);
 
 	int sub_menuarmario = glutCreateMenu(armario_menu);
 	glutAddMenuEntry("Cobre", 1);
+   glutAddMenuEntry("Deletar/Adicionar", 2);
 
 	int sub_menuarmario_gavetas = glutCreateMenu(armario_gavetas_menu);
 	glutAddMenuEntry("Cobre", 1);
+   glutAddMenuEntry("Deletar/Adicionar", 2);
 
    int sub_menuarvore = glutCreateMenu(arvore_menu);
    glutAddMenuEntry("Verde", 1);
+   glutAddMenuEntry("Deletar/Adicionar", 2);
 
    int sub_menuarvore_vaso = glutCreateMenu(arvore_vaso_menu);
    glutAddMenuEntry("Preto", 1);
+   glutAddMenuEntry("Deletar/Adicionar", 2);
 
    int sub_menuestantes = glutCreateMenu(estantes_menu);
    glutAddMenuEntry("Bronze", 1);
+   glutAddMenuEntry("Deletar/Adicionar", 2);
 
    int sub_menulivros = glutCreateMenu(livros_menu);
    glutAddMenuEntry("Ciano, vermelho", 1);
+   glutAddMenuEntry("Deletar/Adicionar", 2);
 
    int sub_menurelogio = glutCreateMenu(relogio_menu);
    glutAddMenuEntry("Bronze", 1);
+   glutAddMenuEntry("Deletar/Adicionar", 2);
 
    int sub_menuquadros = glutCreateMenu(quadros_menu);
    glutAddMenuEntry("Ciano", 1);
+   glutAddMenuEntry("Deletar/Adicionar", 2);
 
    int sub_menuquadros_molduras = glutCreateMenu(quadros_molduras_menu);
    glutAddMenuEntry("Vermelho", 1);
+   glutAddMenuEntry("Deletar/Adicionar", 2);
 
    int sub_menupiso = glutCreateMenu(piso_menu);
    glutAddMenuEntry("Obsidiana", 1);
+   glutAddMenuEntry("Deletar/Adicionar", 2);
 
    int sub_menuparedes = glutCreateMenu(paredes_menu);
    glutAddMenuEntry("Prata", 1);
+   glutAddMenuEntry("Deletar/Adicionar", 2);
+
+   /*Sub-menus de vizualização para cada objeto */
+
 
 	/*Cria o sub-menu que será utilizado no menu Objeto com os menus criados anteriormente*/
 	int sub_menu_objetos;
@@ -604,7 +735,6 @@ void setup(void)
 	glEnableClientState(GL_NORMAL_ARRAY);
 	glEnable(GL_NORMALIZE);
 	
- 
    /* ------------------ Parâmetros da fonte luminosa 1 ----------------------- */
 	
 	float lightAmb[] = {0.0, 0.0, 0.0, 1.0};
@@ -616,16 +746,13 @@ void setup(void)
 
    float lightPos[] = {40.0, 100.0, 400.0 , 1.0};
 
-
    glLightfv(GL_LIGHT0, GL_POSITION, lightPos);
 	glEnable(GL_LIGHT0);
      
-
    /* ------------------ Parâmetros luz ambiente ------------------------------- */
 
    float globAmb[] = {0.4, 0.4, 0.4, 1.0};   
    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globAmb); // Global ambient light.
-
 
    /* ------------------ Características gerais da iluminação ----------------- */
 

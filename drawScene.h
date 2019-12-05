@@ -10,13 +10,15 @@ void drawScene(void)
    glTranslatef(0.0 + transX , -50.0, 0.0 + transZ );
    glScalef(20.0, 20.0, 1.0); 
    
-
    /* ------------------------------------ DEFINIÇÃO DO OBSERVADOR ------------------------------------ */
 
    gluLookAt( 0.33 * cos(angleBeta) * cos(angleAlpha), 0.33 * sin(angleBeta), 0.33 * cos(angleBeta) * sin(angleAlpha), 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 
 
    /* --------------------------------------    OBJETOS:  ------------------------------------------ */
+   
+
+   if(show_sofas){
 
    /* ------------------------------------------------------------
                   DESENHO SOFA     
@@ -42,6 +44,10 @@ void drawScene(void)
    glNormalPointer(GL_FLOAT, 0, poltrona_normais);
    glDrawElements(GL_TRIANGLES, poltrona_num_faces * 3, GL_UNSIGNED_INT, poltrona_faces);
 
+   }
+
+   if(show_almofadas){
+
    /* ------------------------------------------------------------
                   DESENHO ALMOFADAS SOFA    
    --------------------------------------------------------------*/
@@ -66,6 +72,9 @@ void drawScene(void)
    glNormalPointer(GL_FLOAT, 0, almofadas_poltrona_normais);
    glDrawElements(GL_TRIANGLES, almofadas_poltrona_num_faces * 3, GL_UNSIGNED_INT, almofadas_poltrona_faces);
 
+   }
+
+   if(show_travesseiros){
    /* ------------------------------------------------------------
                   DESENHO TRAVESSEIRO 1  
    --------------------------------------------------------------*/
@@ -114,6 +123,10 @@ void drawScene(void)
    glNormalPointer(GL_FLOAT, 0, travesseiro4_normais);
    glDrawElements(GL_TRIANGLES, travesseiro4_num_faces * 3, GL_UNSIGNED_INT, travesseiro4_faces);
 
+   }
+
+   if(show_mesas){
+
    /* ------------------------------------------------------------
                   DESENHO MESAS   
    --------------------------------------------------------------*/
@@ -125,6 +138,10 @@ void drawScene(void)
    glVertexPointer(3, GL_FLOAT, 0, mesas_vertices);
    glNormalPointer(GL_FLOAT, 0, mesas_normais);
    glDrawElements(GL_TRIANGLES, mesas_num_faces * 3, GL_UNSIGNED_INT, mesas_faces);
+
+   }
+
+   if(show_abajur){
 
    /* ------------------------------------------------------------
                   DESENHO ABAJUR   
@@ -138,6 +155,10 @@ void drawScene(void)
    glNormalPointer(GL_FLOAT, 0, abajur_normais);
    glDrawElements(GL_TRIANGLES, abajur_num_faces * 3, GL_UNSIGNED_INT, abajur_faces);
 
+   }
+
+   if(show_suporte){
+
    /* ------------------------------------------------------------
                   DESENHO ABAJUR SUPORTE   
    --------------------------------------------------------------*/
@@ -150,6 +171,10 @@ void drawScene(void)
    glNormalPointer(GL_FLOAT, 0, abajur_suporte_normais);
    glDrawElements(GL_TRIANGLES, abajur_suporte_num_faces * 3, GL_UNSIGNED_INT, abajur_suporte_faces);
 
+   }
+
+   if(show_armario){
+
    /* ------------------------------------------------------------
                   DESENHO ARMARIO   
    --------------------------------------------------------------*/
@@ -161,6 +186,10 @@ void drawScene(void)
    glVertexPointer(3, GL_FLOAT, 0, armario_vertices);
    glNormalPointer(GL_FLOAT, 0, armario_normais);
    glDrawElements(GL_TRIANGLES, armario_num_faces * 3, GL_UNSIGNED_INT, armario_faces);
+
+   }
+
+   if(show_gavetas){
 
    /* ------------------------------------------------------------
                   DESENHO ARMARIO GAVETAS   
@@ -185,6 +214,10 @@ void drawScene(void)
    glVertexPointer(3, GL_FLOAT, 0, armario_puxadores_vertices);
    glNormalPointer(GL_FLOAT, 0, armario_puxadores_normais);
    glDrawElements(GL_TRIANGLES, armario_puxadores_num_faces * 3, GL_UNSIGNED_INT, armario_puxadores_faces);
+
+   }
+
+   if(show_arvore){
 
    /* ------------------------------------------------------------
                   DESENHO ARVORE   
@@ -222,6 +255,10 @@ void drawScene(void)
    glNormalPointer(GL_FLOAT, 0, arvore_tronco_normais);
    glDrawElements(GL_TRIANGLES, arvore_tronco_num_faces * 3, GL_UNSIGNED_INT, arvore_tronco_faces);
 
+   }
+
+   if(show_vaso){
+
    /* ------------------------------------------------------------
                   DESENHO ARVORE VASO   
    --------------------------------------------------------------*/
@@ -234,6 +271,10 @@ void drawScene(void)
    glNormalPointer(GL_FLOAT, 0, arvore_vaso_normais);
    glDrawElements(GL_TRIANGLES, arvore_vaso_num_faces * 3, GL_UNSIGNED_INT, arvore_vaso_faces);
 
+   }
+
+   if(show_estantes){
+
    /* ------------------------------------------------------------
                   DESENHO ESTANTES  
    --------------------------------------------------------------*/
@@ -245,6 +286,10 @@ void drawScene(void)
    glVertexPointer(3, GL_FLOAT, 0, estantes_vertices);
    glNormalPointer(GL_FLOAT, 0, estantes_normais);
    glDrawElements(GL_TRIANGLES, estantes_num_faces * 3, GL_UNSIGNED_INT, estantes_faces);
+
+   }
+
+   if(show_livros){
 
    /* ------------------------------------------------------------
                   DESENHO LIVRO 1  
@@ -294,6 +339,10 @@ void drawScene(void)
    glNormalPointer(GL_FLOAT, 0, folhas_normais);
    glDrawElements(GL_TRIANGLES, folhas_num_faces * 3, GL_UNSIGNED_INT, folhas_faces);
 
+   }
+
+   if(show_relogio){
+
    /* ------------------------------------------------------------
                   DESENHO RELOGIO  
    --------------------------------------------------------------*/
@@ -317,6 +366,10 @@ void drawScene(void)
    glVertexPointer(3, GL_FLOAT, 0, relogio_fundo_vertices);
    glNormalPointer(GL_FLOAT, 0, relogio_fundo_normais);
    glDrawElements(GL_TRIANGLES, relogio_fundo_num_faces * 3, GL_UNSIGNED_INT, relogio_fundo_faces);
+
+   }
+
+   if(show_quadros){
 
    /* ------------------------------------------------------------
                   DESENHO QUADROS 1 
@@ -342,6 +395,10 @@ void drawScene(void)
    glNormalPointer(GL_FLOAT, 0, quadros2_normais);
    glDrawElements(GL_TRIANGLES, quadros2_num_faces * 3, GL_UNSIGNED_INT, quadros2_faces);
 
+   }
+
+   if(show_molduras){
+
    /* ------------------------------------------------------------
                   DESENHO QUADROS FUNDOS 
    --------------------------------------------------------------*/
@@ -353,6 +410,7 @@ void drawScene(void)
    glVertexPointer(3, GL_FLOAT, 0, quadros_fundos_vertices);
    glNormalPointer(GL_FLOAT, 0, quadros_fundos_normais);
    glDrawElements(GL_TRIANGLES, quadros_fundos_num_faces * 3, GL_UNSIGNED_INT, quadros_fundos_faces);
+
 
    /* ------------------------------------------------------------
                   DESENHO QUADROS MOLDURAS 
@@ -366,6 +424,10 @@ void drawScene(void)
    glNormalPointer(GL_FLOAT, 0, quadros_molduras_normais);
    glDrawElements(GL_TRIANGLES, quadros_molduras_num_faces * 3, GL_UNSIGNED_INT, quadros_molduras_faces);
 
+   }
+
+   if(show_piso){
+
    /* ------------------------------------------------------------
                   DESENHO PISO     
    --------------------------------------------------------------*/
@@ -378,6 +440,10 @@ void drawScene(void)
    glVertexPointer(3, GL_FLOAT, 0,  piso_vertices);
    glDrawElements(GL_TRIANGLES, piso_num_faces * 3, GL_UNSIGNED_INT, piso_faces);
 
+   }
+
+   if(show_paredes){
+
    /* ------------------------------------------------------------
                   DESENHO PAREDES     
    --------------------------------------------------------------*/
@@ -389,6 +455,8 @@ void drawScene(void)
    glNormalPointer(GL_FLOAT, 0, paredes_normais);
    glVertexPointer(3, GL_FLOAT, 0,  paredes_vertices);
    glDrawElements(GL_TRIANGLES, paredes_num_faces * 3, GL_UNSIGNED_INT, paredes_faces);
+
+   }
 
    /* ---------------------------------------------------------------------- */
 

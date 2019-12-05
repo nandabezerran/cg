@@ -89,7 +89,6 @@
    float estantes_matSpec[] = {0.77459f, 0.458561f, 0.200621f, 1.0f};
    float estantes_matShine[] = {76.8f};  
 
-
    float livro1_matAmbAndDif[] = {0.1f, 0.35f, 0.1f, 1.0f};
    float livro1_matSpec[] = {0.45f, 0.55f, 0.45f, 1.0f};
    float livro1_matShine[] = {32.f};
