@@ -1,6 +1,3 @@
-//
-// Created by Celito on 2019-11-16.
-//
 
 #include "Cluster.h"
 

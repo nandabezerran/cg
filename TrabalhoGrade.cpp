@@ -40,6 +40,7 @@ int linha;
 int coluna;
 vector<Luz *> luzes;
 vector<Objeto *> objetos_apagados;
+
 void display() {
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
@@ -186,14 +187,20 @@ int main(int argc, char **argv) {
     float m10 = 25.6f;
     auto *material10 = new Material(ka10, kd10, ks10, m10);
 //-------------------------------------------- Luzes -----------------------------------------------------------------
+
     auto *luzAmbiente = new LuzAmbiente(0.3, 0.3, 0.3);
+
     auto *luzPontual = new LuzPontual(0.7, 0.7, 0.7, -3.75, 10, -5);
+
     Vetor dir(0, 1, 0);
+
     auto *luzSpot = new LuzSpot(1.0, 1.0, 1.0, 3.75, 3, -13, dir, 10);
     auto *luzSpot1 = new LuzSpot(0.7, 0.3, 0.3, 0, 5.76, -7, dir, 9);
+
     luzes.emplace_back(luzSpot);
     luzes.emplace_back(luzSpot1);
     luzes.emplace_back(luzPontual);
+
 //-------------------------------------------- Criação Objetos -------------------------------------------------------
 
     auto *salaColisao = new Cilindro(7, 7.3, Ponto{ 0, 0, -9}, Vetor{0, 1, 0}, material0);
@@ -339,6 +346,7 @@ int main(int argc, char **argv) {
     sofa1->adicionarObjeto(fundo);
     sofa1->adicionarObjeto(encosto);
     sofa1->adicionarObjeto(encostoCin);
+
     sala->adicionarObjeto(sofa1);
 
 // ------------------------------------- Sofa2 -----------------------------------------------------------------------
@@ -388,13 +396,13 @@ int main(int argc, char **argv) {
     auto *encosto2 = new Cubo(1, biblioteca::CriarPonto(0, 0, -0.5), material6);
     vector<Matriz> encosto2Transf;
     Matriz encosto2aux = Matriz(4, 4, 0);
-    encosto2aux(2, 2) = 0.2;
-    encosto2aux(1, 1) = 0.8;
-    encosto2aux(0, 0) = 1.5;
+    encosto2aux(2, 2) = 0.2; //z
+    encosto2aux(1, 1) = 0.8; //y
+    encosto2aux(0, 0) = 1.5; //x
     Matriz encosto2aux2 = Matriz(4, 4, 0);
-    encosto2aux2(2, 3) = -10.9;
-    encosto2aux2(1, 3) = 1;
-    encosto2aux2(0, 3) = 0;
+    encosto2aux2(2, 3) = -10.9; //z
+    encosto2aux2(1, 3) = 1; //y
+    encosto2aux2(0, 3) = 0; //x
     encosto2Transf.push_back(encosto2aux);
     encosto2Transf.push_back(encosto2aux2);
     encosto2->aplicarTransformacao(encosto2Transf);
@@ -680,19 +688,19 @@ int main(int argc, char **argv) {
     float zGrade = -4;
 
 // ------------------------------------- Coordenadas Camera ----------------------------------------------------------
-//Cima
+//Cima -> y
     Ponto *pCoordCamera1 = biblioteca::CriarPonto(0, 15, -9);
     Ponto *pLookAt1 = biblioteca::CriarPonto(0, 0, -9);
     Ponto *pViewUp1 = biblioteca::CriarPonto(0, 15, -10);
-//Lado
+//Lado -> z
     Ponto* pCoordCamera3 = biblioteca::CriarPonto(0.4, 5, 5);
     Ponto* pLookAt3 = biblioteca::CriarPonto(0.4, 1.15, -6.5);
     Ponto* pViewUp3 = biblioteca::CriarPonto(0.4, 6, 5);
-//Frente
+//Frente -> x
     Ponto* pCoordCamera = biblioteca::CriarPonto(-20, 6, -9);
     Ponto* pLookAt = biblioteca::CriarPonto(0,0,-9);
     Ponto* pViewUp = biblioteca::CriarPonto(-20,7,-9);
-//Diagonal
+//Diagonal -> x e z
     Ponto* pCoordCamera2 = biblioteca::CriarPonto(-15, 10, 4);
     Ponto* pLookAt2 = biblioteca::CriarPonto(0,3.5,-6);
     Ponto* pViewUp2 = biblioteca::CriarPonto(-15,11,4);

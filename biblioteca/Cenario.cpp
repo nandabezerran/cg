@@ -110,7 +110,6 @@ PontoIntersecao* Cenario::checarUmPonto(int linha, int coluna) {
     << camera->gradeCamera[linha][coluna]->y<< ", "<< camera->gradeCamera[linha][coluna]->z << "\n";
 
     if(rayCasting(camera->observador, camera->gradeCamera[linha][coluna], *intersecao)){
-        //pInts->objeto->visibilidade = true;
         cout << "Objeto encontrado: " << intersecao->objeto->nome << " - Ponto Interceptado: " << intersecao->p->x
         << ", " <<intersecao->p->y<< ", "<< intersecao->p->z<< "\n";
         cout << "----------------------------------------------------------------------" << "\n";
