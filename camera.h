@@ -6,8 +6,8 @@ float rot2 = 0.0f;
 float transZ = 0.0f;
 float transX = 0.0f;
 
-float angleAlpha = 0.0f;
-float angleBeta = 0.0f;
+float angleAlpha = 45.0f;
+float angleBeta = -6.0f;
 float pi = 3.14159265359;
 
 /* PARÂMETROS DE VIZUALIZAÇÃO DOS OBJETOS */
@@ -29,6 +29,13 @@ bool show_quadros = true;
 bool show_molduras = true;
 bool show_piso = true;
 bool show_paredes = true;
+
+/* PARÂMETROS DE VIZUALIZAÇÃO DAS LUZES */
+
+bool show_ambiente = true;
+bool show_difusa = true;
+bool show_especular = true;
+
 
 
 /*Função do mouse*/
@@ -76,19 +83,19 @@ void keyInput(unsigned char key, int x, int y)
 			glutPostRedisplay();
 			break;
 		case 'W':
-			angleBeta += pi/6;
+			angleBeta += pi/9;
 			glutPostRedisplay();
 			break;
 		case 'A':
-			angleAlpha += pi/6;
+			angleAlpha += pi/9;
 			glutPostRedisplay();
 			break;
 		case 'S':
-			angleBeta -= pi/6;
+			angleBeta -= pi/9;
 			glutPostRedisplay();
 			break;	
 		case 'D':
-			angleAlpha -= pi/6;
+			angleAlpha -= pi/9;
 			glutPostRedisplay();
 			break;
 		default:

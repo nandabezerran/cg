@@ -9,6 +9,11 @@ void menu_objetos(int id)
 	if (id == 1) exit(0);
 }
 
+void menu_luzes(int id)
+{
+   if (id == 1) exit(0);
+}
+
 
 void sofas(int id)
 {
@@ -616,9 +621,45 @@ void paredes_menu(int id)
    }
 }
 
+/* SUB MENU LUZ AMBIENTE*/
+
+void ambiente_menu(int id)
+{
+
+   if(id == 1){
+
+      show_ambiente = !show_ambiente;
+      glutPostRedisplay();
+
+   }
+}
+
+void difusa_menu(int id)
+{
+
+   if(id == 1){
+
+      show_difusa = !show_difusa;
+      glutPostRedisplay();
+
+   }
+}
+
+void especular_menu(int id)
+{
+
+   if(id == 1){
+
+      show_especular = !show_especular;
+      glutPostRedisplay();
+
+   }
+}
+
+
 void makeMenu(void)
 {
-	/*Sub-menus de cores pra cada objeto	*/
+	/*Sub-menus pra cada objeto */
 
 	int sub_sofas = glutCreateMenu(sofas);
 	glutAddMenuEntry("Bronze", 1);
@@ -688,6 +729,18 @@ void makeMenu(void)
    glutAddMenuEntry("Prata", 1);
    glutAddMenuEntry("Deletar/Adicionar", 2);
 
+   /*Sub-menus pra cada luz */
+
+   int sub_menuambiente = glutCreateMenu(ambiente_menu);
+   glutAddMenuEntry("Apagar/Acender", 1);
+
+   int sub_menudifusa = glutCreateMenu(difusa_menu);
+   glutAddMenuEntry("Apagar/Acender", 1);
+
+   int sub_menuespecular = glutCreateMenu(especular_menu);
+   glutAddMenuEntry("Apagar/Acender", 1);
+
+
    /*Sub-menus de vizualização para cada objeto */
 
 
@@ -712,9 +765,17 @@ void makeMenu(void)
    glutAddSubMenu("Piso", sub_menupiso);
    glutAddSubMenu("Paredes", sub_menuparedes);
 
+   int sub_menu_luzes;
+   sub_menu_luzes = glutCreateMenu(menu_luzes);
+   glutAddSubMenu("Ambiente", sub_menuambiente);
+   glutAddSubMenu("Difusa", sub_menudifusa);
+   glutAddSubMenu("Especular", sub_menuespecular);
+
+
 	/*Cria menu principal com opções Objeto e Sair*/
 	glutCreateMenu(menu_principal);
 	glutAddSubMenu("Objetos", sub_menu_objetos);
+   glutAddSubMenu("Luzes", sub_menu_luzes);
 	glutAddMenuEntry("Sair", 1);
 
 	/*Configura para o menu abrir com o botão direito do mouse*/
@@ -722,54 +783,3 @@ void makeMenu(void)
 }
 
 
-void setup(void)
-{
-
-	glClearColor(0.0, 0.0, 0.0, 0.0);
-
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_LIGHTING);
-	glEnable(GL_CULL_FACE);
-
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_NORMAL_ARRAY);
-	glEnable(GL_NORMALIZE);
-	
-   /* ------------------ Parâmetros da fonte luminosa 1 ----------------------- */
-	
-	float lightAmb[] = {0.0, 0.0, 0.0, 1.0};
-   float lightDifAndSpec[] = {0.3, 0.3, 0.3, 1.0};
-
-   glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmb);
-   glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDifAndSpec);
-   glLightfv(GL_LIGHT0, GL_SPECULAR, lightDifAndSpec);
-
-   float lightPos[] = {40.0, 100.0, 400.0 , 1.0};
-
-   glLightfv(GL_LIGHT0, GL_POSITION, lightPos);
-	glEnable(GL_LIGHT0);
-     
-   /* ------------------ Parâmetros luz ambiente ------------------------------- */
-
-   float globAmb[] = {0.4, 0.4, 0.4, 1.0};   
-   glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globAmb); // Global ambient light.
-
-   /* ------------------ Características gerais da iluminação ----------------- */
-
-   glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE); // Enable two-sided lighting.
-   glLightModeli(GL_LIGHT_MODEL_LOCAL_VIEWER, GL_TRUE);
-
-   /* ------------------------------------------------------------------------- */
-
-	makeMenu();
-
-}
-
-void resize(int w, int h)
-{
-	glViewport(0, 0, w, h);
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	glFrustum(-30.0, 30.0, -30.0, 30.0, 2.0, 200.0);
-	glMatrixMode(GL_MODELVIEW);
-}

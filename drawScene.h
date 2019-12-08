@@ -6,9 +6,8 @@ void drawScene(void)
    glEnable(GL_LIGHT0);
       
    /* ------------------------------------ TRANSFORMAÇÕES -------------------------------------- */
-   glTranslatef(0.0, 0.0, -10.0); //  0.0 0.0 0.0
-   glTranslatef(0.0 + transX , -50.0, 0.0 + transZ );
-   glScalef(20.0, 20.0, 1.0); 
+   glTranslatef(0.0 + transX , -50.0, -15.0 + transZ );
+   glScalef(16.0, 20.0, 1.0); 
    
    /* ------------------------------------ DEFINIÇÃO DO OBSERVADOR ------------------------------------ */
 

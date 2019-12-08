@@ -34,7 +34,8 @@
 
 // FUNCOES
 
-#include "./materiais.h"
 #include "./camera.h"
+#include "./luz.h"
+#include "./materiais.h"
 #include "./drawScene.h"
 #include "./menu.h"
