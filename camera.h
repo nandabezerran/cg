@@ -1,3 +1,4 @@
+double objx, objy, objz;
 /* PARÂMETROS DOS MOVIMENTOS DA CÂMERA */
 
 float rot = 0.0f;
@@ -81,7 +82,7 @@ void processMouse(int button, int state, int x, int y)
     gluUnProject( x, viewport[3]-y, z, modelview, 
 		projection, viewport, &objx, &objy, &objz );
  
-    cout << objx << " , " << objy << " , " << objz << "\n";
+    std::cout << objx << " , " << objy << " , " << objz << "\n";
 }
 
 /*Função do teclado*/
