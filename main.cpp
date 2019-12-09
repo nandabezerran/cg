@@ -68,9 +68,9 @@ int main(int argc, char **argv)
 	/*Adição da operação de teclado (camera.h)*/
 	glutKeyboardFunc(keyInput);
 
-    glutMouseFunc(processMouse);
+    glutMouseFunc(mouse);
 	/*Adição da operação de mouse (camera.h)*/
-	glutMouseFunc(mouse);
+	glutMouseFunc(processMouse);
 
 	/* Inicializa (menu.h)*/
 	setup();
