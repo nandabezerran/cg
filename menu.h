@@ -585,7 +585,7 @@ void piso_menu(int id)
       piso_matSpec[3] = 1.0f;
 
       piso_matShine[0] = 89.6f;
-
+      glutPostRedisplay();
    }
 
    else if(id == 2){
@@ -680,6 +680,20 @@ void luz3_menu(int id){
    }
 }
 
+void luz1_intensidade_menu(int id){
+   if( id == 1){
+      intensidade_luz1 = 1;
+      glutPostRedisplay();
+   }
+   if( id == 2){
+      intensidade_luz1 = 2;
+      glutPostRedisplay();
+   }
+   if ( id == 3){
+      intensidade_luz1 = 3;
+      glutPostRedisplay();
+   }
+}
 void makeMenu(void)
 {
 	/*Sub-menus pra cada objeto */
@@ -763,8 +777,14 @@ void makeMenu(void)
    int sub_menuespecular = glutCreateMenu(especular_menu);
    glutAddMenuEntry("Apagar/Acender", 1);
 
+   int sub_luz1_intensidade = glutCreateMenu(luz1_intensidade_menu);
+   glutAddMenuEntry("Intensidade 1", 1);
+   glutAddMenuEntry("Intensidade 2", 2);
+   glutAddMenuEntry("Intensidade 3", 3);
+
    int sub_menuluz1 = glutCreateMenu(luz1_menu);
    glutAddMenuEntry("Apagar/Acender", 1);
+   glutAddSubMenu("Intensidade", sub_luz1_intensidade);
 
    int sub_menuluz2 = glutCreateMenu(luz2_menu);
    glutAddMenuEntry("Apagar/Acender", 1);

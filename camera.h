@@ -40,6 +40,8 @@ bool show_luz1 = true; //direcional
 bool show_luz2 = true; //spot
 bool show_luz3 = true; //pontual
 
+int intensidade_luz1 = 0;
+
 /*Função do mouse*/
 void mouse(int button, int state, int x, int y)
 {
