@@ -17,6 +17,30 @@ void drawScene(void)
    /* --------------------------------------    OBJETOS:  ------------------------------------------ */
    
    iluminacao();
+   /* ------------------------------------------------------------
+                  DESENHO LUZES     
+   --------------------------------------------------------------*/
+
+   if(show_luz1){
+      // Habilita a luz de número 0 - Direcional
+      glEnable(GL_LIGHT0);
+   }else{
+      glDisable(GL_LIGHT0);
+   }
+
+   if(show_luz2){
+      //Habilita a luz de número 1 - SpotLight
+      glEnable(GL_LIGHT1);
+   }else{
+      glDisable(GL_LIGHT1);
+   }
+   
+   if(show_luz3){
+      //Habilita a luz de número 2 - Pontual
+      glEnable(GL_LIGHT2);
+   }else{
+      glDisable(GL_LIGHT2);
+   }
 
    if(show_sofas){
 

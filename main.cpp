@@ -26,15 +26,6 @@ void setup(void)
    //Habilita o uso de iluminação
    glEnable(GL_LIGHTING);  
 
-   // Habilita a luz de número 0 - Direcional
-   //glEnable(GL_LIGHT0);
-
-   //Habilita a luz de número 1 - SpotLight
-   //glEnable(GL_LIGHT1);
-   
-   //Habilita a luz de número 1 - Pontual
-   glEnable(GL_LIGHT2);
-
    // Habilita o depth-buffering
    glEnable(GL_DEPTH_TEST);
 

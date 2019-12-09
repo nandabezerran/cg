@@ -36,7 +36,9 @@ bool show_ambiente = true;
 bool show_difusa = true;
 bool show_especular = true;
 
-
+bool show_luz1 = true; //direcional
+bool show_luz2 = true; //spot
+bool show_luz3 = true; //pontual
 
 /*Função do mouse*/
 void mouse(int button, int state, int x, int y)

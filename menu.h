@@ -14,6 +14,9 @@ void menu_luzes(int id)
    if (id == 1) exit(0);
 }
 
+void menu_luzess(int id){
+   if(id == 1) exit(0);
+}
 
 void sofas(int id)
 {
@@ -656,6 +659,26 @@ void especular_menu(int id)
    }
 }
 
+void luz1_menu(int id){
+   if(id == 1){
+      show_luz1 = !show_luz1;
+      glutPostRedisplay();
+   }
+}
+
+void luz2_menu(int id){
+   if(id == 1){
+      show_luz2 = !show_luz2;
+      glutPostRedisplay();
+   }
+}
+
+void luz3_menu(int id){
+   if(id == 1){
+      show_luz3 = !show_luz3;
+      glutPostRedisplay();
+   }
+}
 
 void makeMenu(void)
 {
@@ -740,6 +763,14 @@ void makeMenu(void)
    int sub_menuespecular = glutCreateMenu(especular_menu);
    glutAddMenuEntry("Apagar/Acender", 1);
 
+   int sub_menuluz1 = glutCreateMenu(luz1_menu);
+   glutAddMenuEntry("Apagar/Acender", 1);
+
+   int sub_menuluz2 = glutCreateMenu(luz2_menu);
+   glutAddMenuEntry("Apagar/Acender", 1);
+
+   int sub_menuluz3 = glutCreateMenu(luz3_menu);
+   glutAddMenuEntry("Apagar/Acender", 1);
 
    /*Sub-menus de vizualização para cada objeto */
 
@@ -771,11 +802,17 @@ void makeMenu(void)
    glutAddSubMenu("Difusa", sub_menudifusa);
    glutAddSubMenu("Especular", sub_menuespecular);
 
+   int sub_menu_luzess;
+   sub_menu_luzess = glutCreateMenu(menu_luzess);
+   glutAddSubMenu("Luz 1 - Direcional", sub_menuluz1);
+   glutAddSubMenu("Luz 2 - SpotLight", sub_menuluz2);
+   glutAddSubMenu("Luz 3 - Pontual", sub_menuluz3);
 
 	/*Cria menu principal com opções Objeto e Sair*/
 	glutCreateMenu(menu_principal);
 	glutAddSubMenu("Objetos", sub_menu_objetos);
    glutAddSubMenu("Luzes", sub_menu_luzes);
+   glutAddSubMenu("Luzes 2", sub_menu_luzess);
 	glutAddMenuEntry("Sair", 1);
 
 	/*Configura para o menu abrir com o botão direito do mouse*/
