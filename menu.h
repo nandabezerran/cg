@@ -630,29 +630,12 @@ void direcional_menu(int id){
 
    else if(id == 2){
 
+      posicao_direcional = (posicao_direcional + 1)%3;
       glutPostRedisplay();
    }
 
    else if(id == 3){
       show_direcional = !show_direcional;
-      glutPostRedisplay();
-   }
-}
-
-void spot_menu(int id){
-   
-   if(id == 1){
-      intensidade_spot = (intensidade_spot + 1)%3;
-      glutPostRedisplay();
-   }
-
-   else if(id == 2){
-
-      glutPostRedisplay();
-   }
-
-   else if(id == 3){
-      show_spot = !show_spot;
       glutPostRedisplay();
    }
 }
@@ -666,6 +649,7 @@ void pontual_menu(int id){
 
    else if(id == 2){
 
+      posicao_pontual = (posicao_pontual + 1)%3;
       glutPostRedisplay();
    }
 
@@ -675,6 +659,34 @@ void pontual_menu(int id){
    }
 }
 
+void spot_menu(int id){
+   
+   if(id == 1){
+      intensidade_spot = (intensidade_spot + 1)%3;
+      glutPostRedisplay();
+   }
+
+   else if(id == 2){
+
+      posicao_spot = (posicao_spot + 1)%3;
+      glutPostRedisplay();
+   }
+   
+   else if(id == 3){
+      direcao_spot = (direcao_spot+1)%6;
+      glutPostRedisplay();
+   }
+
+   else if(id == 4){
+      angulo_spot = (angulo_spot + 1)%3;
+      glutPostRedisplay();
+   }
+
+   else if(id == 5){
+      show_spot = !show_spot;
+      glutPostRedisplay();
+   }
+}
 
 void makeMenu(void)
 {
@@ -756,16 +768,17 @@ void makeMenu(void)
    glutAddMenuEntry("Posicao", 2);
    glutAddMenuEntry("Apagar/Acender", 3);
 
-
-   int sub_menuspot = glutCreateMenu(spot_menu);
-   glutAddMenuEntry("Intensidade", 1);
-   glutAddMenuEntry("Posicao", 2);
-   glutAddMenuEntry("Apagar/Acender", 3);
-
    int sub_menupontual = glutCreateMenu(pontual_menu);
    glutAddMenuEntry("Intensidade", 1);
    glutAddMenuEntry("Posicao", 2);
    glutAddMenuEntry("Apagar/Acender", 3);
+
+   int sub_menuspot = glutCreateMenu(spot_menu);
+   glutAddMenuEntry("Intensidade", 1);
+   glutAddMenuEntry("Posicao", 2);
+   glutAddMenuEntry("Direcao", 3);
+   glutAddMenuEntry("Angulo", 4);
+   glutAddMenuEntry("Apagar/Acender", 5);
 
    /*Sub-menus de vizualização para cada objeto */
 
@@ -794,8 +807,8 @@ void makeMenu(void)
    int sub_menu_luzes;
    sub_menu_luzes = glutCreateMenu(menu_luzes);
    glutAddSubMenu("Direcional", sub_menudirecional);
-   glutAddSubMenu("SpotLight", sub_menuspot);
    glutAddSubMenu("Pontual", sub_menupontual);
+   glutAddSubMenu("SpotLight", sub_menuspot);
 
 	/*Cria menu principal com opções Objeto e Sair*/
 	glutCreateMenu(menu_principal);

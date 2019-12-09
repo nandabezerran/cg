@@ -25,18 +25,18 @@ void drawScene(void)
    else{
       glDisable(GL_LIGHT0);
    }
+   
+   //Habilita a luz de número 1 - Pontual   
+   if(show_pontual){
 
-   //Habilita a luz de número 1 - SpotLight
-   if(show_spot){
       glEnable(GL_LIGHT1);
    }
    else{
       glDisable(GL_LIGHT1);
    }
-   
-   //Habilita a luz de número 2 - Pontual   
-   if(show_pontual){
 
+   //Habilita a luz de número 2 - SpotLight
+   if(show_spot){
       glEnable(GL_LIGHT2);
    }
    else{

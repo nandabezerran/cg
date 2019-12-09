@@ -36,9 +36,17 @@ bool show_direcional = true; //direcional
 bool show_spot = true; //spot
 bool show_pontual = true; //pontual
 
-int intensidade_direcional = 1;
-int intensidade_spot = 1;
-int intensidade_pontual = 1;
+int intensidade_direcional = 0;
+int intensidade_spot = 0;
+int intensidade_pontual = 0;
+
+int posicao_direcional = 0;
+int posicao_spot = 0;
+int posicao_pontual = 0;
+
+int direcao_spot = 0;
+int angulo_spot = 0;
+
 
 /*Função do mouse*/
 void mouse(int button, int state, int x, int y)

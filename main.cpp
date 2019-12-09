@@ -22,7 +22,7 @@ void setup(void)
 {
 
    glClearColor(0.12,0.3,0.45,0.2);
-
+   glShadeModel(GL_SMOOTH);
    //Habilita o uso de iluminação
    glEnable(GL_LIGHTING);  
 
