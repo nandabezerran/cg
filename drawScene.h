@@ -1,12 +1,12 @@
+#include "./luz.h"
+
 void drawScene(void)
 {
    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
    glLoadIdentity();
-
-   glEnable(GL_LIGHT0);
       
    /* ------------------------------------ TRANSFORMAÇÕES -------------------------------------- */
-   glTranslatef(0.0 + transX , -50.0, -15.0 + transZ );
+   glTranslatef(0.0 , -50.0, -15.0 );
    glScalef(16.0, 20.0, 1.0); 
    
    /* ------------------------------------ DEFINIÇÃO DO OBSERVADOR ------------------------------------ */
@@ -16,6 +16,7 @@ void drawScene(void)
 
    /* --------------------------------------    OBJETOS:  ------------------------------------------ */
    
+   iluminacao();
 
    if(show_sofas){
 
@@ -458,7 +459,15 @@ void drawScene(void)
    }
 
    /* ---------------------------------------------------------------------- */
+   
+   /*
+   glColor3f(1.0, 1.0, 1.0);
+   glPointSize(20);
+   glBegin(GL_POINTS);
+   glVertex3f(2.980465, 1.5, -4.55);
+   glEnd();
+   */
 
-   glFlush();
+   
    glutSwapBuffers();
 }

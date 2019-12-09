@@ -15,6 +15,7 @@ void resize(int w, int h)
 	glLoadIdentity();
 	glFrustum(-30.0, 30.0, -30.0, 30.0, 2.0, 200.0);
 	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
 }
 
 void setup(void)
@@ -24,8 +25,16 @@ void setup(void)
 
    //Habilita o uso de iluminação
    glEnable(GL_LIGHTING);  
-   // Habilita a luz de número 0
-   glEnable(GL_LIGHT0);
+
+   // Habilita a luz de número 0 - Direcional
+   //glEnable(GL_LIGHT0);
+
+   //Habilita a luz de número 1 - SpotLight
+   //glEnable(GL_LIGHT1);
+   
+   //Habilita a luz de número 1 - Pontual
+   glEnable(GL_LIGHT2);
+
    // Habilita o depth-buffering
    glEnable(GL_DEPTH_TEST);
 
@@ -33,7 +42,6 @@ void setup(void)
    glEnableClientState(GL_NORMAL_ARRAY);
    glEnable(GL_NORMALIZE);
 
-   iluminacao();
    makeMenu();
 
 }
