@@ -32,15 +32,13 @@ bool show_paredes = true;
 
 /* PARÂMETROS DE VIZUALIZAÇÃO DAS LUZES */
 
-bool show_ambiente = true;
-bool show_difusa = true;
-bool show_especular = true;
+bool show_direcional = true; //direcional
+bool show_spot = true; //spot
+bool show_pontual = true; //pontual
 
-bool show_luz1 = true; //direcional
-bool show_luz2 = true; //spot
-bool show_luz3 = true; //pontual
-
-int intensidade_luz1 = 0;
+int intensidade_direcional = 1;
+int intensidade_spot = 1;
+int intensidade_pontual = 1;
 
 /*Função do mouse*/
 void mouse(int button, int state, int x, int y)

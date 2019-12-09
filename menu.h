@@ -9,12 +9,7 @@ void menu_objetos(int id)
 	if (id == 1) exit(0);
 }
 
-void menu_luzes(int id)
-{
-   if (id == 1) exit(0);
-}
-
-void menu_luzess(int id){
+void menu_luzes(int id){
    if(id == 1) exit(0);
 }
 
@@ -624,76 +619,63 @@ void paredes_menu(int id)
    }
 }
 
-/* SUB MENU LUZ AMBIENTE*/
+/* SUB MENU LUZES */
 
-void ambiente_menu(int id)
-{
-
-   if(id == 1){
-
-      show_ambiente = !show_ambiente;
-      glutPostRedisplay();
-
-   }
-}
-
-void difusa_menu(int id)
-{
+void direcional_menu(int id){
 
    if(id == 1){
-
-      show_difusa = !show_difusa;
+      intensidade_direcional = (intensidade_direcional + 1)%3;
       glutPostRedisplay();
+   }
 
+   else if(id == 2){
+
+      glutPostRedisplay();
+   }
+
+   else if(id == 3){
+      show_direcional = !show_direcional;
+      glutPostRedisplay();
    }
 }
 
-void especular_menu(int id)
-{
-
+void spot_menu(int id){
+   
    if(id == 1){
-
-      show_especular = !show_especular;
+      intensidade_spot = (intensidade_spot + 1)%3;
       glutPostRedisplay();
+   }
 
+   else if(id == 2){
+
+      glutPostRedisplay();
+   }
+
+   else if(id == 3){
+      show_spot = !show_spot;
+      glutPostRedisplay();
    }
 }
 
-void luz1_menu(int id){
+void pontual_menu(int id){
+   
    if(id == 1){
-      show_luz1 = !show_luz1;
+      intensidade_pontual = (intensidade_pontual + 1)%3;
+      glutPostRedisplay();
+   }
+
+   else if(id == 2){
+
+      glutPostRedisplay();
+   }
+
+   else if(id == 3){
+      show_pontual = !show_pontual;
       glutPostRedisplay();
    }
 }
 
-void luz2_menu(int id){
-   if(id == 1){
-      show_luz2 = !show_luz2;
-      glutPostRedisplay();
-   }
-}
 
-void luz3_menu(int id){
-   if(id == 1){
-      show_luz3 = !show_luz3;
-      glutPostRedisplay();
-   }
-}
-
-void luz1_intensidade_menu(int id){
-   if( id == 1){
-      intensidade_luz1 = 1;
-      glutPostRedisplay();
-   }
-   if( id == 2){
-      intensidade_luz1 = 2;
-      glutPostRedisplay();
-   }
-   if ( id == 3){
-      intensidade_luz1 = 3;
-      glutPostRedisplay();
-   }
-}
 void makeMenu(void)
 {
 	/*Sub-menus pra cada objeto */
@@ -768,29 +750,22 @@ void makeMenu(void)
 
    /*Sub-menus pra cada luz */
 
-   int sub_menuambiente = glutCreateMenu(ambiente_menu);
-   glutAddMenuEntry("Apagar/Acender", 1);
 
-   int sub_menudifusa = glutCreateMenu(difusa_menu);
-   glutAddMenuEntry("Apagar/Acender", 1);
+   int sub_menudirecional = glutCreateMenu(direcional_menu);
+   glutAddMenuEntry("Intensidade", 1);
+   glutAddMenuEntry("Posicao", 2);
+   glutAddMenuEntry("Apagar/Acender", 3);
 
-   int sub_menuespecular = glutCreateMenu(especular_menu);
-   glutAddMenuEntry("Apagar/Acender", 1);
 
-   int sub_luz1_intensidade = glutCreateMenu(luz1_intensidade_menu);
-   glutAddMenuEntry("Intensidade 1", 1);
-   glutAddMenuEntry("Intensidade 2", 2);
-   glutAddMenuEntry("Intensidade 3", 3);
+   int sub_menuspot = glutCreateMenu(spot_menu);
+   glutAddMenuEntry("Intensidade", 1);
+   glutAddMenuEntry("Posicao", 2);
+   glutAddMenuEntry("Apagar/Acender", 3);
 
-   int sub_menuluz1 = glutCreateMenu(luz1_menu);
-   glutAddMenuEntry("Apagar/Acender", 1);
-   glutAddSubMenu("Intensidade", sub_luz1_intensidade);
-
-   int sub_menuluz2 = glutCreateMenu(luz2_menu);
-   glutAddMenuEntry("Apagar/Acender", 1);
-
-   int sub_menuluz3 = glutCreateMenu(luz3_menu);
-   glutAddMenuEntry("Apagar/Acender", 1);
+   int sub_menupontual = glutCreateMenu(pontual_menu);
+   glutAddMenuEntry("Intensidade", 1);
+   glutAddMenuEntry("Posicao", 2);
+   glutAddMenuEntry("Apagar/Acender", 3);
 
    /*Sub-menus de vizualização para cada objeto */
 
@@ -818,21 +793,14 @@ void makeMenu(void)
 
    int sub_menu_luzes;
    sub_menu_luzes = glutCreateMenu(menu_luzes);
-   glutAddSubMenu("Ambiente", sub_menuambiente);
-   glutAddSubMenu("Difusa", sub_menudifusa);
-   glutAddSubMenu("Especular", sub_menuespecular);
-
-   int sub_menu_luzess;
-   sub_menu_luzess = glutCreateMenu(menu_luzess);
-   glutAddSubMenu("Luz 1 - Direcional", sub_menuluz1);
-   glutAddSubMenu("Luz 2 - SpotLight", sub_menuluz2);
-   glutAddSubMenu("Luz 3 - Pontual", sub_menuluz3);
+   glutAddSubMenu("Direcional", sub_menudirecional);
+   glutAddSubMenu("SpotLight", sub_menuspot);
+   glutAddSubMenu("Pontual", sub_menupontual);
 
 	/*Cria menu principal com opções Objeto e Sair*/
 	glutCreateMenu(menu_principal);
 	glutAddSubMenu("Objetos", sub_menu_objetos);
    glutAddSubMenu("Luzes", sub_menu_luzes);
-   glutAddSubMenu("Luzes 2", sub_menu_luzess);
 	glutAddMenuEntry("Sair", 1);
 
 	/*Configura para o menu abrir com o botão direito do mouse*/

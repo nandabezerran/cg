@@ -6,7 +6,7 @@ void drawScene(void)
    glLoadIdentity();
       
    /* ------------------------------------ TRANSFORMAÇÕES -------------------------------------- */
-   glTranslatef(0.0 , -50.0, -15.0 );
+   glTranslatef(0.0 + transX, -50.0, -15.0 + transZ);
    glScalef(16.0, 20.0, 1.0); 
    
    /* ------------------------------------ DEFINIÇÃO DO OBSERVADOR ------------------------------------ */
@@ -14,34 +14,38 @@ void drawScene(void)
    gluLookAt( 0.33 * cos(angleBeta) * cos(angleAlpha), 0.33 * sin(angleBeta), 0.33 * cos(angleBeta) * sin(angleAlpha), 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 
 
-   /* --------------------------------------    OBJETOS:  ------------------------------------------ */
-   
+   /* -------------------------------------- LUZES------------------------------------------ */
+
    iluminacao();
    
-   /* ------------------------------------------------------------
-                  DESENHO LUZES     
-   --------------------------------------------------------------*/
-
-   if(show_luz1){
-      // Habilita a luz de número 0 - Direcional
+   // Habilita a luz de número 0 - Direcional
+   if(show_direcional){
       glEnable(GL_LIGHT0);
-   }else{
+   }
+   else{
       glDisable(GL_LIGHT0);
    }
 
-   if(show_luz2){
-      //Habilita a luz de número 1 - SpotLight
+   //Habilita a luz de número 1 - SpotLight
+   if(show_spot){
       glEnable(GL_LIGHT1);
-   }else{
+   }
+   else{
       glDisable(GL_LIGHT1);
    }
    
-   if(show_luz3){
-      //Habilita a luz de número 2 - Pontual
+   //Habilita a luz de número 2 - Pontual   
+   if(show_pontual){
+
       glEnable(GL_LIGHT2);
-   }else{
+   }
+   else{
       glDisable(GL_LIGHT2);
    }
+
+
+   /* --------------------------------------OBJETOS------------------------------------------ */
+
 
    if(show_sofas){
 
